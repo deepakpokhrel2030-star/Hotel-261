@@ -1,12 +1,21 @@
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-/* ---------- Header solid-on-scroll ---------- */
+/* ---------- Header solid-on-scroll + scroll progress ---------- */
 const header = document.getElementById('header');
 if (header) {
-  const onScroll = () => header.classList.toggle('solid', window.scrollY > 40);
+  const progressBar = document.getElementById('scrollProgress');
+  const onScroll = () => {
+    header.classList.toggle('solid', window.scrollY > 40);
+    if (progressBar) {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0;
+      progressBar.style.width = pct + '%';
+    }
+  };
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
 }
 
 /* ---------- Mobile / full-screen menu ---------- */

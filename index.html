@@ -5,11 +5,71 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hotel 261 — Shepherd&rsquo;s Bush, London</title>
 <meta name="description" content="Hotel 261 is a family-run hotel on Uxbridge Road, Shepherd's Bush, West London. Free WiFi, private parking, ensuite rooms. Book direct online, no third-party fees.">
+<link rel="canonical" href="https://hotel-261.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hotel 261">
+<meta property="og:title" content="Hotel 261 — Shepherd's Bush, London">
+<meta property="og:description" content="Hotel 261 is a family-run hotel on Uxbridge Road, Shepherd's Bush, West London. Free WiFi, private parking, ensuite rooms. Book direct online, no third-party fees.">
+<meta property="og:url" content="https://hotel-261.vercel.app/">
+<meta property="og:image" content="https://hotel-261.vercel.app/images/site/hero-exterior.jpg">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="768">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hotel 261 — Shepherd's Bush, London">
+<meta name="twitter:description" content="Hotel 261 is a family-run hotel on Uxbridge Road, Shepherd's Bush, West London. Free WiFi, private parking, ensuite rooms. Book direct online, no third-party fees.">
+<meta name="twitter:image" content="https://hotel-261.vercel.app/images/site/hero-exterior.jpg">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏨</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Hotel",
+  "name": "Hotel 261",
+  "description": "Family-run hotel on Uxbridge Road, Shepherd's Bush, West London. Free WiFi, private parking, ensuite rooms.",
+  "url": "https://hotel-261.vercel.app/",
+  "telephone": "+442087434411",
+  "priceRange": "£54-£120",
+  "starRating": { "@type": "Rating", "ratingValue": "2" },
+  "image": [
+    "https://hotel-261.vercel.app/images/site/hero-exterior.jpg",
+    "https://hotel-261.vercel.app/images/site/family-room.jpg",
+    "https://hotel-261.vercel.app/images/site/double-room.jpg"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "261-263 Uxbridge Road",
+    "addressLocality": "Shepherd's Bush, London",
+    "addressRegion": "London",
+    "postalCode": "W12 9DS",
+    "addressCountry": "GB"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 51.5066126,
+    "longitude": -0.244454
+  },
+  "checkinTime": "14:00",
+  "checkoutTime": "11:00",
+  "petsAllowed": false,
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Private Parking", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Family Rooms", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Daily Housekeeping", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Non-Smoking", "value": true }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "6.4",
+    "bestRating": "10",
+    "worstRating": "1",
+    "reviewCount": "967"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -32,6 +92,7 @@
 </div>
 
 <header class="site-header" id="header">
+  <div class="scroll-progress" id="scrollProgress"></div>
   <div class="header-inner">
     <a href="index.html" class="logo">Hotel 261</a>
     <nav class="main-nav">
@@ -95,9 +156,9 @@
             <div class="stepper-row">
               <span>Guests</span>
               <div class="stepper">
-                <button type="button" data-step="-">&minus;</button>
+                <button type="button" data-step="-" aria-label="Decrease guests">&minus;</button>
                 <b>2</b>
-                <button type="button" data-step="+">&plus;</button>
+                <button type="button" data-step="+" aria-label="Increase guests">&plus;</button>
               </div>
             </div>
             <button type="button" class="btn btn-outline guests-done">Done</button>
