@@ -69,11 +69,6 @@ section > h2{ font-size:clamp(2.1rem,4.6vw,3.4rem); }
 .text-link{ font-weight:600; font-size:.92rem; border-bottom:1px solid var(--ink); padding-bottom:2px; transition:opacity .25s ease, border-color .25s ease; }
 .text-link:hover{ color:var(--accent); border-color:var(--accent); }
 
-/* ============ Page banner (interior pages) ============ */
-.hero--page{ height:50vh; min-height:400px; }
-.hero--page .hero-inner{ padding-bottom:64px; }
-.hero--page .hero-title{ font-size:clamp(2.4rem,6vw,4.2rem); }
-
 /* ============ Nav active state ============ */
 .main-nav a.active{ background:rgba(255,255,255,.16); color:#fff; }
 .main-nav a.active::after{ display:none; }
@@ -160,6 +155,11 @@ section > h2{ font-size:clamp(2.1rem,4.6vw,3.4rem); }
 }
 .scroll-cue span{ width:1px; height:44px; background:linear-gradient(180deg, #fff, transparent); animation:cueMove 2s ease-in-out infinite; }
 @keyframes cueMove{ 0%,100%{ transform:translateY(0); opacity:1; } 50%{ transform:translateY(6px); opacity:.4; } }
+
+/* ============ Page banner (interior pages) — must stay after .hero to win the cascade ============ */
+.hero--page{ height:clamp(320px, 40vh, 460px); min-height:0; }
+.hero--page .hero-inner{ padding-bottom:56px; }
+.hero--page .hero-title{ font-size:clamp(2.4rem,6vw,4.2rem); }
 
 /* ============ Search widget (Booking.com-style) ============ */
 .search-widget-wrap{ position:relative; z-index:20; max-width:1080px; margin:0 auto; padding:0 24px 60px; }
