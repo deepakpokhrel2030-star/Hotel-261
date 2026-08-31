@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Direct — Hotel 261</title>
+<meta name="description" content="Book direct at Hotel 261, Shepherd's Bush. Secure online payment, no third-party booking fees.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏨</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="menu-overlay" id="menuOverlay">
+  <nav class="menu-links">
+    <a href="index.html" style="--i:0">Home</a>
+    <a href="about.html" style="--i:1">About</a>
+    <a href="rooms.html" style="--i:2">Rooms</a>
+    <a href="gallery.html" style="--i:3">Gallery</a>
+    <a href="amenities.html" style="--i:4">Amenities</a>
+    <a href="reviews.html" style="--i:5">Reviews</a>
+    <a href="location.html" style="--i:6">Location</a>
+  </nav>
+  <div class="menu-foot">
+    <a href="tel:+442087434411">020 8743 4411</a>
+    <span>261&ndash;263 Uxbridge Road, London W12 9DS</span>
+  </div>
+</div>
+
+<header class="site-header" id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Hotel 261</a>
+    <nav class="main-nav">
+      <a href="about.html">About</a>
+      <a href="rooms.html">Rooms</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="amenities.html">Amenities</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="location.html">Location</a>
+    </nav>
+    <div class="header-right">
+      <a href="book.html" class="btn btn-pill magnetic">Reserve</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="hero hero--page">
+  <div class="hero-media">
+    <img src="images/site/double-room.jpg" alt="Double room at Hotel 261">
+  </div>
+  <div class="hero-scrim"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow load-in" style="--i:0">( Book Direct )</p>
+    <h1 class="hero-title">
+      <span class="line load-in" style="--i:1">Reserve your <em>room.</em></span>
+    </h1>
+  </div>
+</section>
+
+<section class="booking" style="padding-top:90px;">
+  <div class="booking-grid">
+
+    <form class="booking-form reveal" id="bookingForm" novalidate>
+      <div class="form-row">
+        <label for="roomType">Room type</label>
+        <select id="roomType" name="roomType" required>
+          <option value="" disabled selected>Choose a room&hellip;</option>
+          <option value="single" data-price="54" data-max="1">Single Room — from £54/night</option>
+          <option value="twin" data-price="75" data-max="2">Twin Room — from £75/night</option>
+          <option value="double12" data-price="75" data-max="2">Double Room (1&ndash;2 Adults) — from £75/night</option>
+          <option value="double" data-price="80" data-max="2">Double Room — from £80/night</option>
+          <option value="triple" data-price="95" data-max="3">Triple Room — from £95/night</option>
+          <option value="quad" data-price="120" data-max="4">Quadruple Room — from £120/night</option>
+          <option value="family" data-price="120" data-max="5">Family Room — from £120/night</option>
+        </select>
+      </div>
+
+      <div class="form-row two-col">
+        <div>
+          <label for="checkIn">Check-in</label>
+          <input type="date" id="checkIn" name="checkIn" required>
+        </div>
+        <div>
+          <label for="checkOut">Check-out</label>
+          <input type="date" id="checkOut" name="checkOut" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="guests">Guests</label>
+        <input type="number" id="guests" name="guests" min="1" max="5" value="1" required>
+      </div>
+
+      <div class="form-row two-col">
+        <div>
+          <label for="fullName">Full name</label>
+          <input type="text" id="fullName" name="fullName" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+      </div>
+
+      <div class="form-error" id="formError" role="alert"></div>
+
+      <button type="submit" class="btn btn-primary btn-lg" id="submitBtn" style="width:100%; margin-top:10px;">
+        Continue to Secure Payment
+      </button>
+
+      <p class="form-note">Payments are processed securely by <strong>Stripe</strong> &mdash; we never see or store your card details. Full payment is taken now to confirm your room.</p>
+    </form>
+
+    <aside class="booking-summary reveal">
+      <h3>Your stay</h3>
+      <div class="summary-row"><span>Room</span><b id="sumRoom">&mdash;</b></div>
+      <div class="summary-row"><span>Check-in</span><b id="sumCheckIn">&mdash;</b></div>
+      <div class="summary-row"><span>Check-out</span><b id="sumCheckOut">&mdash;</b></div>
+      <div class="summary-row"><span>Nights</span><b id="sumNights">&mdash;</b></div>
+      <div class="summary-row"><span>Guests</span><b id="sumGuests">&mdash;</b></div>
+      <div class="summary-total"><span>Total</span><b id="sumTotal">&pound;0</b></div>
+
+      <div class="summary-policies">
+        <p><strong>Check-in</strong> 14:00&ndash;23:30 &middot; <strong>Check-out</strong> 08:00&ndash;11:00</p>
+        <p>A government-issued photo ID is required at check-in.</p>
+        <p><a class="text-link" href="location.html#contact">Full house rules &rarr;</a></p>
+      </div>
+
+      <div class="summary-alt">
+        <p>Prefer to book by phone instead?</p>
+        <a href="tel:+442087434411" class="btn btn-outline magnetic" style="width:100%;">Call 020 8743 4411</a>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <a href="index.html" class="logo">Hotel 261</a>
+    <div class="footer-cols">
+      <div>
+        <h5>Visit</h5>
+        <p>261&ndash;263 Uxbridge Road<br>Shepherd&rsquo;s Bush, London W12 9DS</p>
+        <a href="tel:+442087434411">020 8743 4411</a>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="about.html">About</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="amenities.html">Amenities</a>
+      </div>
+      <div>
+        <h5>Guest Info</h5>
+        <a href="reviews.html">Reviews</a>
+        <a href="location.html">Location &amp; Info</a>
+        <a href="book.html">Book Direct</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; <span id="year"></span> Hotel 261. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+<script src="js/booking.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Confirmed — Hotel 261</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏨</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<header class="site-header solid" id="header" style="position:relative;">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Hotel 261</a>
+    <nav class="main-nav">
+      <a href="about.html">About</a>
+      <a href="rooms.html">Rooms</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="amenities.html">Amenities</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="location.html">Location</a>
+    </nav>
+    <div class="header-right">
+      <a href="book.html" class="btn btn-pill magnetic">Reserve</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="booking-result">
+  <div id="resultLoading">
+    <p class="eyebrow center">Confirming your booking&hellip;</p>
+  </div>
+
+  <div id="resultPaid" style="display:none;">
+    <p class="cta-eyebrow" style="color:var(--accent);">( Booking Confirmed )</p>
+    <h1 style="font-size:clamp(2.2rem,5vw,3.4rem); margin-bottom:20px;">Thank you<span id="resultName"></span>.<br>We&rsquo;ll see you soon.</h1>
+    <p style="color:var(--ink-soft); max-width:520px; margin-bottom:40px;">A receipt has been sent to your email. Here are your booking details:</p>
+
+    <div class="booking-summary" style="max-width:480px;">
+      <div class="summary-row"><span>Room</span><b id="rRoom">&mdash;</b></div>
+      <div class="summary-row"><span>Check-in</span><b id="rCheckIn">&mdash;</b></div>
+      <div class="summary-row"><span>Check-out</span><b id="rCheckOut">&mdash;</b></div>
+      <div class="summary-row"><span>Nights</span><b id="rNights">&mdash;</b></div>
+      <div class="summary-row"><span>Guests</span><b id="rGuests">&mdash;</b></div>
+      <div class="summary-total"><span>Paid</span><b id="rTotal">&mdash;</b></div>
+    </div>
+
+    <p style="color:var(--ink-soft); max-width:520px; margin-top:30px;">Please bring a government-issued photo ID at check-in (14:00&ndash;23:30). Questions? Call us on <a class="text-link" href="tel:+442087434411">020 8743 4411</a>.</p>
+  </div>
+
+  <div id="resultError" style="display:none;">
+    <p class="cta-eyebrow">( Something went wrong )</p>
+    <h1 style="font-size:clamp(2rem,4.5vw,3rem); margin-bottom:20px;">We couldn&rsquo;t confirm that booking.</h1>
+    <p style="color:var(--ink-soft); max-width:520px; margin-bottom:30px;" id="resultErrorMsg">If you were charged, don&rsquo;t worry &mdash; call us and we&rsquo;ll sort it out right away.</p>
+    <a href="tel:+442087434411" class="btn btn-primary magnetic">Call 020 8743 4411</a>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <a href="index.html" class="logo">Hotel 261</a>
+    <div class="footer-cols">
+      <div>
+        <h5>Visit</h5>
+        <p>261&ndash;263 Uxbridge Road<br>Shepherd&rsquo;s Bush, London W12 9DS</p>
+        <a href="tel:+442087434411">020 8743 4411</a>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="about.html">About</a>
+        <a href="rooms.html">Rooms</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="amenities.html">Amenities</a>
+      </div>
+      <div>
+        <h5>Guest Info</h5>
+        <a href="reviews.html">Reviews</a>
+        <a href="location.html">Location &amp; Info</a>
+        <a href="book.html">Book Direct</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; <span id="year"></span> Hotel 261. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+<script src="js/booking.js"></script>
+</body>
+</html>

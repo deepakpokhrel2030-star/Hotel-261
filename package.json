@@ -1,0 +1,9 @@
+{
+  "name": "hotel-261",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Hotel 261 website with direct online booking via Stripe Checkout",
+  "dependencies": {
+    "stripe": "^17.4.0"
+  }
+}
