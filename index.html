@@ -76,6 +76,39 @@
   <div class="scroll-cue"><span></span>Scroll</div>
 </section>
 
+<div class="search-widget-wrap overlap">
+  <div class="search-widget" id="heroSearchWidget">
+    <form>
+      <div style="display:contents;">
+        <div class="sw-field">
+          <label>Check-in</label>
+          <input type="date" id="hsCheckIn" required>
+        </div>
+        <div class="sw-field">
+          <label>Check-out</label>
+          <input type="date" id="hsCheckOut" required>
+        </div>
+        <div class="sw-field sw-guests-field">
+          <label>Guests</label>
+          <button type="button" class="sw-guests-toggle">2 guests</button>
+          <div class="guests-dropdown">
+            <div class="stepper-row">
+              <span>Guests</span>
+              <div class="stepper">
+                <button type="button" data-step="-">&minus;</button>
+                <b>2</b>
+                <button type="button" data-step="+">&plus;</button>
+              </div>
+            </div>
+            <button type="button" class="btn btn-outline guests-done">Done</button>
+          </div>
+        </div>
+        <button type="submit" class="sw-submit">Check Availability</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <div class="marquee">
   <div class="marquee-track">
     <span>Free WiFi</span><i>&middot;</i><span>Private Parking</span><i>&middot;</i><span>Family&nbsp;Run</span><i>&middot;</i><span>Ensuite Rooms</span><i>&middot;</i><span>Shepherd&rsquo;s Bush, London</span><i>&middot;</i>
@@ -281,5 +314,6 @@
 </a>
 
 <script src="js/script.js"></script>
+<script src="js/booking.js"></script>
 </body>
 </html>
