@@ -322,6 +322,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .score-big{ font-family:var(--ff-display); font-size:3.4rem; color:var(--accent); line-height:1; font-weight:700; }
 .score-big span{ font-size:1.2rem; color:var(--ink-soft); font-family:var(--ff-body); font-weight:400; }
 .score-caption{ color:var(--ink-soft); margin:12px 0 28px; }
+.score-highlight{ color:var(--ink-soft); font-size:.92rem; line-height:1.6; padding-top:24px; border-top:1px solid var(--line); }
 .score-bars{ display:grid; gap:14px; }
 .score-bar{ display:grid; grid-template-columns:100px 1fr 32px; align-items:center; gap:14px; font-size:.85rem; }
 .score-bar .bar{ height:6px; background:var(--line); border-radius:99px; overflow:hidden; }
