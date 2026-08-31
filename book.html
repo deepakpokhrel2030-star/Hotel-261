@@ -46,6 +46,19 @@
 
 <header class="site-header" id="header">
   <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="utility-bar">
+    <div class="utility-bar-inner">
+      <div class="utility-left">
+        <a href="tel:+442087434411"><svg class="icon" viewBox="0 0 24 24"><path d="M6 3h3l1.5 4.5L8 9.5a12 12 0 0 0 6.5 6.5l2-2.5L21 15v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2Z"/></svg> 020 8743 4411</a>
+        <a href="location.html"><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg> Shepherd&rsquo;s Bush, London</a>
+      </div>
+      <div class="utility-right">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2.5l2.9 6 6.6.7-4.9 4.5 1.3 6.5L12 16.9 6.1 20.2l1.3-6.5-4.9-4.5 6.6-.7L12 2.5Z"/></svg>
+        <b>6.4</b>&nbsp;Pleasant &middot; <a href="reviews.html">967&nbsp;reviews</a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-row">
   <div class="header-inner">
     <a href="index.html" class="logo">Hotel 261</a>
     <nav class="main-nav">
@@ -62,6 +75,7 @@
         <span></span><span></span>
       </button>
     </div>
+  </div>
   </div>
 </header>
 
@@ -85,15 +99,15 @@
     <form>
       <div style="display:contents;">
         <div class="sw-field">
-          <label>Check-in</label>
+          <label><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> Check-in</label>
           <input type="date" id="bsCheckIn" required>
         </div>
         <div class="sw-field">
-          <label>Check-out</label>
+          <label><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> Check-out</label>
           <input type="date" id="bsCheckOut" required>
         </div>
         <div class="sw-field sw-guests-field">
-          <label>Guests</label>
+          <label><svg class="icon" viewBox="0 0 24 24"><circle cx="8.5" cy="8" r="3"/><path d="M2.5 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15 20a5 5 0 0 1 7-4.6"/></svg> Guests</label>
           <button type="button" class="sw-guests-toggle">2 guests</button>
           <div class="guests-dropdown">
             <div class="stepper-row">
@@ -118,7 +132,12 @@
     <span class="section-num">01</span>
     <span class="section-label">Available Rooms</span>
   </div>
-  <p class="section-sub" style="max-width:620px; color:var(--ink-soft); margin-bottom:10px;">Choose your dates and guests above, then reserve the room that suits you. Payment is processed securely by Stripe &mdash; we never see or store your card details.</p>
+  <p class="section-sub" style="max-width:620px; color:var(--ink-soft); margin-bottom:0;">Choose your dates and guests above, then reserve the room that suits you. Payment is processed securely by Stripe &mdash; we never see or store your card details.</p>
+  <div class="trust-row" style="justify-content:flex-start; padding-top:22px; margin-top:22px;">
+    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l9 9-8 8-9-9V4h7Z"/><circle cx="8" cy="8" r="1.3" fill="currentColor" stroke="none"/></svg> Best rate, booked direct</span>
+    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> Secure payment via Stripe</span>
+    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> Instant confirmation</span>
+  </div>
 
   <div class="room-list" id="roomList"></div>
 

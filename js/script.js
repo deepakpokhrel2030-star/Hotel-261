@@ -18,6 +18,22 @@ if (header) {
   window.addEventListener('resize', onScroll, { passive: true });
 }
 
+/* ---------- Subtle hero parallax (on the media wrapper, not the img itself —
+   the img already has its own CSS zoom animation on transform, so parallax
+   is applied one level up to avoid the two fighting over the same property) ---------- */
+const heroMediaWrap = document.querySelector('.hero-media');
+const heroEl = document.querySelector('.hero');
+if (heroMediaWrap && heroEl && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+  const onParallax = () => {
+    const rect = heroEl.getBoundingClientRect();
+    if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+    const shift = window.scrollY * 0.12;
+    heroMediaWrap.style.transform = `translateY(${shift}px)`;
+  };
+  onParallax();
+  window.addEventListener('scroll', onParallax, { passive: true });
+}
+
 /* ---------- Mobile / full-screen menu ---------- */
 const menuBtn = document.getElementById('menuBtn');
 const menuOverlay = document.getElementById('menuOverlay');
