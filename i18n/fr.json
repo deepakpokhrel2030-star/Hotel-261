@@ -340,7 +340,8 @@
     "wontBeCharged": "Vous ne serez pas débité maintenant",
     "errNoRoomsSelected": "Veuillez indiquer le nombre souhaité pour au moins un type de chambre.",
     "chooseDatesPrompt": "Choisissez vos dates d’arrivée et de départ ci-dessus pour voir les chambres disponibles et leurs prix.",
-    "tooSmall": "Accueille jusqu’à {max} personne(s) — trop petit pour {guests} voyageurs"
+    "tooSmall": "Accueille jusqu’à {max} personne(s) — trop petit pour {guests} voyageurs",
+    "errCapacity": "Vos chambres sélectionnées accueillent jusqu’à {max} personne(s) — veuillez choisir plus d’espace pour {guests} voyageurs."
   },
   "success": {
     "confirming": "Confirmation de votre réservation&hellip;",

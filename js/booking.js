@@ -264,7 +264,12 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     `;
 
     HOTEL_ROOMS.forEach((room) => {
-      const tooSmall = room.maxGuests < stay.guests;
+      // A room type is only truly unbookable if even the max quantity (4)
+      // of it can't sleep the party — e.g. 2 people CAN pick 2 Single Rooms
+      // (1 guest each), so a lone Single Room isn't disabled just because it
+      // doesn't fit everyone by itself. The real per-selection capacity
+      // check happens once, across every room type together, at Reserve time.
+      const tooSmall = room.maxGuests * 4 < stay.guests;
       const totalForRoom = (stay.nights > 0 ? room.price * stay.nights : room.price);
       const nightsLabel = stay.nights > 0
         ? t('book.' + (stay.nights > 1 ? 'nightsTotalMany' : 'nightsTotalOne'), `${stay.nights} night${stay.nights > 1 ? 's' : ''} total`).replace('{n}', stay.nights)
@@ -275,7 +280,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       const roomSmall = room.small ? t('room.' + room.id + '.small', room.small) : '';
       const roomDesc = t('room.' + room.id + '.desc', room.nights_label + ' · ' + room.desc);
       const tooSmallNote = t('book.tooSmall', 'Sleeps up to {max} — too small for {guests} guests')
-        .replace('{max}', room.maxGuests).replace('{guests}', stay.guests);
+        .replace('{max}', room.maxGuests * 4).replace('{guests}', stay.guests);
 
       const qtyOptions = [0, 1, 2, 3, 4].map((n) => `<option value="${n}">${n}</option>`).join('');
 
@@ -333,6 +338,13 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     const items = collectSelectedRooms();
     if (items.length === 0) {
       reserveAllError.textContent = t('book.errNoRoomsSelected', 'Please choose how many of at least one room type you need.');
+      reserveAllError.classList.add('visible');
+      return;
+    }
+    const totalCapacity = items.reduce((sum, item) => sum + item.room.maxGuests * item.qty, 0);
+    if (totalCapacity < stay.guests) {
+      reserveAllError.textContent = t('book.errCapacity', 'Your selected rooms sleep up to {max} — please select more space for {guests} guests.')
+        .replace('{max}', totalCapacity).replace('{guests}', stay.guests);
       reserveAllError.classList.add('visible');
       return;
     }
@@ -521,8 +533,10 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       const el = document.getElementById('room-' + preselectRoom);
       if (room && el) {
         const stay = currentStay();
-        if (stay.checkIn && stay.checkOut) {
-          openCheckout(collectSelectedRooms(room.id), stay);
+        const items = collectSelectedRooms(room.id);
+        const totalCapacity = items.reduce((sum, item) => sum + item.room.maxGuests * item.qty, 0);
+        if (stay.checkIn && stay.checkOut && totalCapacity >= stay.guests) {
+          openCheckout(items, stay);
         } else {
           el.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
