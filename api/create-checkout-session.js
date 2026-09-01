@@ -30,10 +30,11 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { roomType, checkIn, checkOut, guests, rooms, name, email, phone, specialRequests } = req.body || {};
+    const { items, checkIn, checkOut, guests, name, email, phone, specialRequests } = req.body || {};
 
-    const room = ROOMS[roomType];
-    if (!room) return res.status(400).json({ error: 'Please choose a valid room type.' });
+    if (!Array.isArray(items) || items.length === 0 || items.length > 7) {
+      return res.status(400).json({ error: 'Please choose at least one room.' });
+    }
 
     if (!checkIn || !checkOut || !/^\d{4}-\d{2}-\d{2}$/.test(checkIn) || !/^\d{4}-\d{2}-\d{2}$/.test(checkOut)) {
       return res.status(400).json({ error: 'Please choose valid check-in and check-out dates.' });
@@ -45,18 +46,33 @@ module.exports = async (req, res) => {
     const nights = nightsBetween(checkIn, checkOut);
     if (nights < 1 || nights > 30) return res.status(400).json({ error: 'Stay must be between 1 and 30 nights.' });
 
-    const roomsQty = Math.min(4, Math.max(1, parseInt(rooms, 10) || 1));
+    // Re-derive every line from the authoritative ROOMS table — never trust a
+    // price or label the client sent.
+    let totalRooms = 0;
+    let totalCapacity = 0;
+    const cart = [];
+    for (const raw of items) {
+      const room = ROOMS[raw && raw.roomType];
+      if (!room) return res.status(400).json({ error: 'Please choose a valid room type.' });
+      const quantity = Math.min(4, Math.max(1, parseInt(raw.quantity, 10) || 0));
+      if (!quantity) return res.status(400).json({ error: 'Please choose how many of each room you need.' });
+      totalRooms += quantity;
+      totalCapacity += room.maxGuests * quantity;
+      const nightlyPrice = room.price;
+      const lineTotal = nightlyPrice * nights * quantity;
+      cart.push({ roomType: raw.roomType, roomLabel: room.label, quantity, nightlyPrice, lineTotal });
+    }
+    if (totalRooms > 10) return res.status(400).json({ error: 'For 10 or more rooms, please call us on 020 8743 4411.' });
+
     const guestCount = parseInt(guests, 10) || 1;
-    const capacity = room.maxGuests * roomsQty;
-    if (guestCount < 1 || guestCount > capacity) {
-      return res.status(400).json({ error: `${room.label} sleeps up to ${capacity} guest(s) across ${roomsQty} room(s).` });
+    if (guestCount < 1 || guestCount > totalCapacity) {
+      return res.status(400).json({ error: `Your selected rooms sleep up to ${totalCapacity} guest(s) — please add another room or reduce your party size.` });
     }
 
     if (!name || !String(name).trim()) return res.status(400).json({ error: 'Please enter your full name.' });
     if (!phone || !String(phone).trim()) return res.status(400).json({ error: 'Please enter a phone number.' });
 
-    const perRoomPounds = room.price * nights;
-    const totalPounds = perRoomPounds * roomsQty;
+    const totalPounds = cart.reduce((sum, item) => sum + item.lineTotal, 0);
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
     const origin = req.headers.origin || `https://${req.headers.host}`;
@@ -65,32 +81,29 @@ module.exports = async (req, res) => {
       mode: 'payment',
       payment_method_types: ['card'],
       customer_email: email || undefined,
-      line_items: [
-        {
-          price_data: {
-            currency: 'gbp',
-            unit_amount: Math.round(perRoomPounds * 100),
-            product_data: {
-              name: `Hotel 261 — ${room.label}`,
-              description: `${nights} night${nights > 1 ? 's' : ''} · ${checkIn} to ${checkOut} · ${guestCount} guest${guestCount > 1 ? 's' : ''}${roomsQty > 1 ? ` · ${roomsQty} rooms` : ''}`,
-            },
+      line_items: cart.map((item) => ({
+        price_data: {
+          currency: 'gbp',
+          unit_amount: Math.round(item.nightlyPrice * nights * 100),
+          product_data: {
+            name: `Hotel 261 — ${item.roomLabel}`,
+            description: `${nights} night${nights > 1 ? 's' : ''} · ${checkIn} to ${checkOut}${item.quantity > 1 ? ` · ${item.quantity} rooms` : ''}`,
           },
-          quantity: roomsQty,
         },
-      ],
+        quantity: item.quantity,
+      })),
       custom_fields: [
         { key: 'guest_name', label: { type: 'custom', custom: 'Full name' }, type: 'text', text: { default_value: String(name).slice(0, 200) } },
         { key: 'check_in', label: { type: 'custom', custom: 'Check-in' }, type: 'text', text: { default_value: checkIn } },
         { key: 'check_out', label: { type: 'custom', custom: 'Check-out' }, type: 'text', text: { default_value: checkOut } },
       ],
       metadata: {
-        roomType,
-        roomLabel: room.label,
+        roomSummary: cart.map((i) => `${i.roomLabel} ×${i.quantity}`).join(', ').slice(0, 400),
         checkIn,
         checkOut,
         nights: String(nights),
         guests: String(guestCount),
-        rooms: String(roomsQty),
+        rooms: String(totalRooms),
         guestName: String(name).slice(0, 200),
         guestPhone: String(phone).slice(0, 60),
         specialRequests: String(specialRequests || '').slice(0, 500),
@@ -102,11 +115,14 @@ module.exports = async (req, res) => {
     const notesParts = [`Phone: ${String(phone).trim()}`];
     if (specialRequests && String(specialRequests).trim()) notesParts.push(`Special requests: ${String(specialRequests).trim().slice(0, 500)}`);
 
+    const roomType = cart.length === 1 ? cart[0].roomType : 'multiple';
+    const roomLabel = cart.map((i) => `${i.roomLabel} ×${i.quantity}`).join(', ');
+
     await pool.query(
       `INSERT INTO hotel_bookings (
-        guest_name, email, room_type, room_label, check_in, check_out, guests, rooms, total_amount, status, stripe_session_id, notes
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, 'pending', $10, $11);`,
-      [String(name).trim(), String(email || '').trim(), roomType, room.label, checkIn, checkOut, guestCount, roomsQty, Number(totalPounds.toFixed(2)), session.id, notesParts.join(' | ')]
+        guest_name, email, room_type, room_label, check_in, check_out, guests, rooms, total_amount, status, stripe_session_id, notes, items
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, 'pending', $10, $11, $12);`,
+      [String(name).trim(), String(email || '').trim(), roomType, roomLabel, checkIn, checkOut, guestCount, totalRooms, Number(totalPounds.toFixed(2)), session.id, notesParts.join(' | '), JSON.stringify(cart)]
     );
 
     return res.status(200).json({ url: session.url });

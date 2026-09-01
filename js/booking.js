@@ -76,7 +76,10 @@ function initGuestsDropdown(root, onChange) {
       rows[type].minus.disabled = state[type] <= min;
       rows[type].plus.disabled = state[type] >= max;
     });
-    toggle.textContent = `${state.adults} ${wordFor('adults', state.adults)} · ${state.children} ${wordFor('children', state.children)} · ${state.rooms} ${wordFor('rooms', state.rooms)}`;
+    toggle.textContent = ['adults', 'children', 'rooms']
+      .filter((type) => rows[type])
+      .map((type) => `${state[type]} ${wordFor(type, state[type])}`)
+      .join(' · ');
     if (notify && onChange) onChange(occupancySummary());
   }
 
@@ -159,7 +162,6 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     const occ = occupancyCtrl.get();
     params.set('adults', occ.adults);
     params.set('children', occ.children);
-    params.set('rooms', occ.rooms);
     window.location.href = '/book?' + params.toString();
   });
 })();
@@ -178,14 +180,13 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
   const params = new URLSearchParams(window.location.search);
   if (params.get('checkin')) checkIn.value = params.get('checkin');
   if (params.get('checkout')) checkOut.value = params.get('checkout');
-  if (params.get('adults') || params.get('children') || params.get('rooms')) {
+  if (params.get('adults') || params.get('children')) {
     guestsCtrl.set({
       adults: parseInt(params.get('adults'), 10) || 2,
       children: parseInt(params.get('children'), 10) || 0,
-      rooms: parseInt(params.get('rooms'), 10) || 1,
     });
   } else if (params.get('guests')) {
-    // legacy links from before the adults/children/rooms picker existed
+    // legacy links from before the adults/children picker existed
     guestsCtrl.set({ adults: parseInt(params.get('guests'), 10) || 2 });
   }
   if (checkIn.value) checkOut.min = checkIn.value;
@@ -203,71 +204,162 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     return { checkIn: ci, checkOut: co, nights, ...guestsCtrl.get() };
   }
 
+  /* ---------- Cart: several room types, each with its own quantity ---------- */
+  const cartPanel = document.getElementById('cartPanel');
+  const cartItemsEl = document.getElementById('cartItems');
+  const cartTotalEl = document.getElementById('cartTotal');
+  const cartContinueBtn = document.getElementById('cartContinueBtn');
+  let cart = []; // [{ room, qty }]
+
+  function cartLineTotal(entry, stay) {
+    const nights = stay.nights || 0;
+    return (nights > 0 ? entry.room.price * nights : entry.room.price) * entry.qty;
+  }
+
+  function setCartQty(room, qty) {
+    const existing = cart.find((e) => e.room.id === room.id);
+    if (qty <= 0) {
+      cart = cart.filter((e) => e.room.id !== room.id);
+    } else if (existing) {
+      existing.qty = qty;
+    } else {
+      cart.push({ room, qty });
+    }
+    renderCart();
+    renderRooms();
+  }
+
+  function renderCart() {
+    const stay = currentStay();
+    if (cart.length === 0) {
+      cartPanel.style.display = 'none';
+      return;
+    }
+    cartPanel.style.display = 'block';
+    let total = 0;
+    cartItemsEl.innerHTML = cart.map((entry) => {
+      const lineTotal = cartLineTotal(entry, stay);
+      total += lineTotal;
+      const roomName = t('room.' + entry.room.id + '.name', entry.room.label);
+      const roomWord = entry.qty === 1 ? t('search.roomWord', 'room') : t('search.roomsWord', 'rooms');
+      return `
+        <div class="cart-item">
+          <div class="cart-item-thumb"><img src="${entry.room.img}" alt="${roomName}" loading="lazy"></div>
+          <div class="cart-item-info"><b>${roomName}</b><span>${entry.qty} ${roomWord}</span></div>
+          <div class="cart-item-price">£${lineTotal.toLocaleString('en-GB')}</div>
+          <button type="button" class="cart-item-remove" data-room="${entry.room.id}" data-i18n-attr="aria-label:book.removeItem" aria-label="${t('book.removeItem', 'Remove')}">&times;</button>
+        </div>
+      `;
+    }).join('');
+    cartTotalEl.textContent = '£' + total.toLocaleString('en-GB');
+
+    cartItemsEl.querySelectorAll('.cart-item-remove').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const roomId = btn.getAttribute('data-room');
+        const room = HOTEL_ROOMS.find((r) => r.id === roomId);
+        if (room) setCartQty(room, 0);
+      });
+    });
+  }
+
+  cartContinueBtn.addEventListener('click', () => {
+    if (cart.length === 0) return;
+    openCheckout(cart, currentStay());
+  });
+
+  function guestIconsHtml(maxGuests) {
+    const person = '<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.2"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>';
+    const shown = Math.min(maxGuests, 2);
+    let html = '<span class="rl-guest-icons">' + person.repeat(shown) + '</span>';
+    if (maxGuests > shown) html += `<span class="rl-guest-extra">&times;${maxGuests}</span>`;
+    return html;
+  }
+
   function renderRooms() {
     const stay = currentStay();
     roomListEl.innerHTML = '';
 
-    HOTEL_ROOMS.forEach((room) => {
-      const roomsQty = stay.rooms || 1;
-      const capacity = room.maxGuests * roomsQty;
-      const overGuests = stay.guests > capacity;
-      const item = document.createElement('article');
-      item.className = 'rl-item booking-card' + (overGuests ? ' dimmed' : '');
-      item.id = 'room-' + room.id;
+    const table = document.createElement('div');
+    table.className = 'rl-table';
+    table.innerHTML = `
+      <div class="rl-header rl-cols">
+        <div data-i18n="book.roomType">Room type</div>
+        <div data-i18n="book.numberOfGuests">Guests</div>
+        <div data-i18n="book.todaysPrice">Today&rsquo;s price</div>
+        <div data-i18n="book.yourChoices">Your choices</div>
+        <div data-i18n="book.selectRoomsCol">Select rooms</div>
+        <div></div>
+      </div>
+    `;
 
-      const totalPrice = (stay.nights > 0 ? room.price * stay.nights : room.price) * roomsQty;
-      let nightlyLabel = stay.nights > 0
+    HOTEL_ROOMS.forEach((room) => {
+      const totalForRoom = (stay.nights > 0 ? room.price * stay.nights : room.price);
+      const nightsLabel = stay.nights > 0
         ? t('book.' + (stay.nights > 1 ? 'nightsTotalMany' : 'nightsTotalOne'), `${stay.nights} night${stay.nights > 1 ? 's' : ''} total`).replace('{n}', stay.nights)
-        : t('book.perNightPhrase', 'per night');
-      if (roomsQty > 1) {
-        const roomWord = roomsQty === 1 ? t('search.roomWord', 'room') : t('search.roomsWord', 'rooms');
-        nightlyLabel += ` · ${roomsQty} ${roomWord}`;
-      }
+        : '';
       const reviewText = `${room.rating.toFixed(1)} · ${room.reviews} ${t('common.reviewsWord', 'reviews')}`;
       const tags = room.perks.map((perk) => `<span>${perk}</span>`).join('');
       const roomName = t('room.' + room.id + '.name', room.label);
       const roomSmall = room.small ? t('room.' + room.id + '.small', room.small) : '';
       const roomDesc = t('room.' + room.id + '.desc', room.nights_label + ' · ' + room.desc);
-      const tooSmallNote = t('book.tooSmall', 'Sleeps up to {max} — too small for {guests} guests')
-        .replace('{max}', capacity).replace('{guests}', stay.guests);
 
-      item.innerHTML = `
-        <div class="rl-media booking-card__media"><img src="${room.img}" alt="${roomName} at Hotel 261" loading="lazy"></div>
-        <div class="rl-body booking-card__body">
-          <div class="booking-card__header">
-            <div>
-              <div class="booking-card__badge">${room.badge}</div>
-              <h3>${roomName}${roomSmall ? ` <small>${roomSmall}</small>` : ''}</h3>
-            </div>
-            <div class="booking-card__score">
-              <span class="score-pill">${room.rating.toFixed(1)}</span>
-              <small>${reviewText}</small>
-            </div>
+      const cartEntry = cart.find((e) => e.room.id === room.id);
+      const qtyOptions = [1, 2, 3, 4].map((n) => `<option value="${n}" ${cartEntry && cartEntry.qty === n ? 'selected' : ''}>${n}</option>`).join('');
+
+      const row = document.createElement('div');
+      row.className = 'rl-row rl-cols';
+      row.id = 'room-' + room.id;
+      row.innerHTML = `
+        <div class="rl-col-room">
+          <div class="rl-thumb"><img src="${room.img}" alt="${roomName} at Hotel 261" loading="lazy"></div>
+          <div class="rl-info">
+            <div class="rl-badge">${room.badge}</div>
+            <h3>${roomName}${roomSmall ? ` <small>${roomSmall}</small>` : ''}</h3>
+            <p class="rl-meta">${roomDesc} &middot; ${reviewText}</p>
+            <div class="rl-tags">${tags}</div>
           </div>
-          <p class="rl-meta">${roomDesc}</p>
-          <div class="rl-tags">${tags}</div>
-          ${overGuests ? `<p class="rl-note">${tooSmallNote}</p>` : ''}
         </div>
-        <div class="rl-price booking-card__price">
-          <div class="booking-card__price-inner">
-            <span class="amount">£${totalPrice.toLocaleString('en-GB')}</span>
-            <span class="per">${nightlyLabel}</span>
-          </div>
-          <button type="button" class="btn btn-primary rl-reserve" ${overGuests ? 'disabled' : ''}>${t('book.reserveBtn', "I&rsquo;ll Reserve")}</button>
+        <div class="rl-col-guests" data-label="${t('book.numberOfGuests', 'Guests')}">${guestIconsHtml(room.maxGuests)}</div>
+        <div class="rl-col-price" data-label="${t('book.todaysPrice', "Today's price")}">
+          <b class="rl-amount">£${room.price.toLocaleString('en-GB')}</b>
+          <span class="rl-per">${t('book.perNightPhrase', 'per night')}</span>
+          ${nightsLabel ? `<span class="rl-total-note">£${totalForRoom.toLocaleString('en-GB')} &middot; ${nightsLabel}</span>` : ''}
+        </div>
+        <div class="rl-col-choices" data-label="${t('book.yourChoices', 'Your choices')}">
+          <span class="summary-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> <span>${t('book.freeCancellation', 'Free cancellation')}</span></span>
+          <p class="rl-choice-note"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> ${t('book.payOnlineNote', 'Pay online — secure via Stripe')}</p>
+        </div>
+        <div class="rl-col-select" data-label="${t('book.selectRoomsCol', 'Select rooms')}">
+          <select class="rl-qty">${qtyOptions}</select>
+        </div>
+        <div class="rl-col-action">
+          <button type="button" class="btn btn-primary rl-add">${t('book.reserveBtn', "I&rsquo;ll Reserve")}</button>
+          <p class="rl-charge-note">${t('book.wontBeCharged', "You won&rsquo;t be charged yet")}</p>
         </div>
       `;
 
-      const reserveBtn = item.querySelector('.rl-reserve');
-      if (!overGuests) {
-        reserveBtn.addEventListener('click', () => openCheckout(room, currentStay()));
-      }
+      const addBtn = row.querySelector('.rl-add');
+      const qtySelect = row.querySelector('.rl-qty');
+      addBtn.addEventListener('click', () => {
+        const qty = parseInt(qtySelect.value, 10) || 1;
+        setCartQty(room, qty);
+        addBtn.classList.add('added');
+        addBtn.textContent = t('book.addedToSelection', 'Added ✓');
+        setTimeout(() => {
+          addBtn.classList.remove('added');
+          addBtn.textContent = t('book.reserveBtn', "I'll Reserve");
+        }, 1400);
+      });
 
-      roomListEl.appendChild(item);
+      table.appendChild(row);
     });
+
+    roomListEl.appendChild(table);
   }
 
   renderRooms();
-  document.addEventListener('i18n:ready', renderRooms);
+  renderCart();
+  document.addEventListener('i18n:ready', () => { renderRooms(); renderCart(); });
 
   /* ---------- Checkout: room -> your details -> payment ---------- */
   const roomsSection = document.getElementById('roomsSection');
@@ -289,7 +381,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
   const coPayLabel = document.getElementById('coPayLabel');
   const coPayAmount = document.getElementById('coPayAmount');
 
-  let activeRoom = null;
+  let activeCart = null;
   let activeStay = null;
 
   function setError(box, msg) {
@@ -319,48 +411,43 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     return text;
   }
 
-  function fillSummary(room, stay) {
-    const roomsQty = stay.rooms || 1;
+  function fillSummary(cartItems, stay) {
     const nights = stay.nights || 0;
-    const perRoomTotal = (nights > 0 ? room.price * nights : room.price);
-    const totalPrice = perRoomTotal * roomsQty;
-    const roomWord = roomsQty === 1 ? t('search.roomWord', 'room') : t('search.roomsWord', 'rooms');
-    const roomName = t('room.' + room.id + '.name', room.label);
+    let totalPrice = 0;
+    let totalRooms = 0;
+    const itemsEl = document.getElementById('csItems');
+    itemsEl.innerHTML = cartItems.map((entry) => {
+      const lineTotal = cartLineTotal(entry, stay);
+      totalPrice += lineTotal;
+      totalRooms += entry.qty;
+      const roomName = t('room.' + entry.room.id + '.name', entry.room.label);
+      const roomWord = entry.qty === 1 ? t('search.roomWord', 'room') : t('search.roomsWord', 'rooms');
+      return `
+        <div class="summary-item">
+          <div class="summary-item-thumb"><img src="${entry.room.img}" alt="${roomName}"></div>
+          <div class="summary-item-info"><b>${roomName}</b><span>${entry.qty} ${roomWord}</span></div>
+          <div class="summary-item-price">£${lineTotal.toLocaleString('en-GB')}</div>
+        </div>
+      `;
+    }).join('');
 
-    const photo = document.getElementById('csPhoto');
-    photo.src = room.img;
-    photo.alt = roomName;
-
-    document.getElementById('csRoom').textContent = roomName;
     document.getElementById('csCheckIn').textContent = fmtDateShort(stay.checkIn);
     document.getElementById('csCheckOut').textContent = fmtDateShort(stay.checkOut);
     document.getElementById('csNights').textContent = nights || '—';
     document.getElementById('csGuests').textContent = occupancyText(stay);
-    document.getElementById('csRooms').textContent = roomsQty + ' ' + roomWord;
+    document.getElementById('csRooms').textContent = totalRooms + ' ' + (totalRooms === 1 ? t('search.roomWord', 'room') : t('search.roomsWord', 'rooms'));
     document.getElementById('csTotal').textContent = '£' + totalPrice.toLocaleString('en-GB');
     coPayAmount.textContent = '£' + totalPrice.toLocaleString('en-GB');
-
-    const breakdownEl = document.getElementById('csBreakdown');
-    if (nights > 0) {
-      const nightWord = nights === 1 ? t('book.nightWord', 'night') : t('book.nightsWord', 'nights');
-      let html = `<div class="summary-breakdown-row"><span>£${room.price} &times; ${nights} ${nightWord}</span><span>£${perRoomTotal.toLocaleString('en-GB')}</span></div>`;
-      if (roomsQty > 1) {
-        html += `<div class="summary-breakdown-row"><span>&times; ${roomsQty} ${roomWord}</span><span>£${totalPrice.toLocaleString('en-GB')}</span></div>`;
-      }
-      breakdownEl.innerHTML = html;
-    } else {
-      breakdownEl.innerHTML = '';
-    }
   }
 
-  function openCheckout(room, stay) {
+  function openCheckout(cartItems, stay) {
     if (!stay.checkIn || !stay.checkOut) {
       alert('Please choose your check-in and check-out dates above.');
       return;
     }
-    activeRoom = room;
+    activeCart = cartItems;
     activeStay = stay;
-    fillSummary(room, stay);
+    fillSummary(cartItems, stay);
     setError(coDetailsError, '');
     setError(coPaymentError, '');
     showDetailsStep();
@@ -415,7 +502,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
 
   coPayBtn.addEventListener('click', () => {
     setError(coPaymentError, '');
-    if (!activeRoom || !activeStay) return;
+    if (!activeCart || !activeCart.length || !activeStay) return;
 
     const name = (coFirstName.value.trim() + ' ' + coLastName.value.trim()).trim();
     const email = coEmail.value.trim();
@@ -430,8 +517,9 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        roomType: activeRoom.id, checkIn: activeStay.checkIn, checkOut: activeStay.checkOut,
-        guests: activeStay.guests, rooms: activeStay.rooms, adults: activeStay.adults, children: activeStay.children,
+        items: activeCart.map((entry) => ({ roomType: entry.room.id, quantity: entry.qty })),
+        checkIn: activeStay.checkIn, checkOut: activeStay.checkOut,
+        guests: activeStay.guests, adults: activeStay.adults, children: activeStay.children,
         name, email, phone, specialRequests,
       }),
     })
@@ -451,11 +539,13 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
   const preselectRoom = params.get('room');
   if (preselectRoom) {
     setTimeout(() => {
+      const room = HOTEL_ROOMS.find((r) => r.id === preselectRoom);
       const el = document.getElementById('room-' + preselectRoom);
-      if (el) {
+      if (room && el) {
+        setCartQty(room, 1);
         el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        const btn = el.querySelector('.rl-reserve');
-        if (btn && !btn.disabled) btn.click();
+        const stay = currentStay();
+        if (stay.checkIn && stay.checkOut) openCheckout(cart, stay);
       }
     }, 100);
   }

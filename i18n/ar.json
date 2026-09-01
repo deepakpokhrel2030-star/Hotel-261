@@ -319,7 +319,6 @@
     "nightsTotalOne": "ليلة واحدة إجمالاً",
     "nightsTotalMany": "{n} ليالٍ إجمالاً",
     "perNightPhrase": "لليلة الواحدة",
-    "tooSmall": "تتسع حتى {max} &mdash; صغيرة جدًا لعدد {guests} من النزلاء",
     "firstName": "الاسم الأول",
     "firstNamePlaceholder": "سارة",
     "lastName": "اسم العائلة",
@@ -331,7 +330,18 @@
     "errFirstName": "يُرجى إدخال اسمك الأول.",
     "errLastName": "يُرجى إدخال اسم العائلة.",
     "errEmail": "يُرجى إدخال عنوان بريد إلكتروني صحيح.",
-    "errPhone": "يُرجى إدخال رقم هاتف، في حال احتجنا للتواصل معك."
+    "errPhone": "يُرجى إدخال رقم هاتف، في حال احتجنا للتواصل معك.",
+    "roomType": "نوع الغرفة",
+    "numberOfGuests": "الضيوف",
+    "todaysPrice": "سعر اليوم",
+    "yourChoices": "خياراتك",
+    "selectRoomsCol": "اختر الغرف",
+    "payOnlineNote": "الدفع عبر الإنترنت — آمن عبر Stripe",
+    "wontBeCharged": "لن يتم خصم أي مبلغ الآن",
+    "addedToSelection": "تمت الإضافة ✓",
+    "removeItem": "إزالة",
+    "yourSelection": "اختيارك",
+    "continueToDetails": "المتابعة إلى بياناتك"
   },
   "success": {
     "confirming": "جارٍ تأكيد حجزك&hellip;",

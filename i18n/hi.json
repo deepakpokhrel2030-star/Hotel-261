@@ -319,7 +319,6 @@
     "nightsTotalOne": "कुल {n} रात",
     "nightsTotalMany": "कुल {n} रातें",
     "perNightPhrase": "प्रति रात",
-    "tooSmall": "अधिकतम {max} के लिए &mdash; {guests} मेहमानों के लिए बहुत छोटा है",
     "firstName": "पहला नाम",
     "firstNamePlaceholder": "जेन",
     "lastName": "अंतिम नाम",
@@ -331,7 +330,18 @@
     "errFirstName": "कृपया अपना पहला नाम दर्ज करें।",
     "errLastName": "कृपया अपना अंतिम नाम दर्ज करें।",
     "errEmail": "कृपया एक मान्य ईमेल पता दर्ज करें।",
-    "errPhone": "कृपया एक फ़ोन नंबर दर्ज करें, ताकि ज़रूरत पड़ने पर हम आपसे संपर्क कर सकें।"
+    "errPhone": "कृपया एक फ़ोन नंबर दर्ज करें, ताकि ज़रूरत पड़ने पर हम आपसे संपर्क कर सकें।",
+    "roomType": "कमरे का प्रकार",
+    "numberOfGuests": "मेहमान",
+    "todaysPrice": "आज की कीमत",
+    "yourChoices": "आपके विकल्प",
+    "selectRoomsCol": "कमरे चुनें",
+    "payOnlineNote": "ऑनलाइन भुगतान — Stripe के ज़रिए सुरक्षित",
+    "wontBeCharged": "अभी आपसे शुल्क नहीं लिया जाएगा",
+    "addedToSelection": "जोड़ा गया ✓",
+    "removeItem": "हटाएं",
+    "yourSelection": "आपका चयन",
+    "continueToDetails": "अपनी जानकारी जारी रखें"
   },
   "success": {
     "confirming": "आपकी बुकिंग की पुष्टि की जा रही है&hellip;",

@@ -29,22 +29,24 @@ module.exports = async (req, res) => {
     }
 
     const updated = await pool.query(
-      `UPDATE hotel_bookings SET status = 'confirmed', updated_at = NOW() WHERE stripe_session_id = $1 RETURNING id;`,
+      `UPDATE hotel_bookings SET status = 'confirmed', updated_at = NOW() WHERE stripe_session_id = $1 RETURNING *;`,
       [session_id]
     );
+    const booking = updated.rows[0];
 
     return res.status(200).json({
       paid: true,
-      bookingRef: updated.rows[0] ? updated.rows[0].id : null,
+      bookingRef: booking ? booking.id : null,
       amountTotal: session.amount_total,
       currency: session.currency,
       customerEmail: session.customer_details ? session.customer_details.email : null,
-      roomLabel: session.metadata ? session.metadata.roomLabel : null,
-      checkIn: session.metadata ? session.metadata.checkIn : null,
-      checkOut: session.metadata ? session.metadata.checkOut : null,
+      roomLabel: booking ? booking.room_label : (session.metadata && session.metadata.roomSummary),
+      items: booking ? booking.items : null,
+      checkIn: booking ? booking.check_in : (session.metadata && session.metadata.checkIn),
+      checkOut: booking ? booking.check_out : (session.metadata && session.metadata.checkOut),
       nights: session.metadata ? session.metadata.nights : null,
-      guests: session.metadata ? session.metadata.guests : null,
-      rooms: session.metadata ? session.metadata.rooms : null,
+      guests: booking ? booking.guests : (session.metadata && session.metadata.guests),
+      rooms: booking ? booking.rooms : (session.metadata && session.metadata.rooms),
       guestName: session.metadata ? session.metadata.guestName : null,
     });
   } catch (err) {

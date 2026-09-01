@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
 
   try {
     const result = await pool.query(
-      `SELECT id, guest_name, room_label, check_in, check_out, guests, rooms, total_amount, status, created_at
+      `SELECT id, guest_name, room_label, check_in, check_out, guests, rooms, total_amount, status, items, created_at
        FROM hotel_bookings WHERE id = $1 AND LOWER(email) = $2;`,
       [bookingId, cleanEmail]
     );
@@ -40,6 +40,7 @@ module.exports = async (req, res) => {
       checkOut: booking.check_out,
       guests: booking.guests,
       rooms: booking.rooms,
+      items: booking.items,
       totalAmount: booking.total_amount,
       status: booking.status,
     });

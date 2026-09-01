@@ -126,7 +126,7 @@
         </div>
         <div class="sw-field sw-guests-field">
           <label><svg class="icon" viewBox="0 0 24 24"><circle cx="8.5" cy="8" r="3"/><path d="M2.5 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15 20a5 5 0 0 1 7-4.6"/></svg> <span data-i18n="search.occupancyLabel">Occupancy</span></label>
-          <button type="button" class="sw-guests-toggle">2 adults &middot; 0 children &middot; 1 room</button>
+          <button type="button" class="sw-guests-toggle">2 adults &middot; 0 children</button>
           <div class="guests-dropdown">
             <div class="stepper-row">
               <span data-i18n="search.adults">Adults</span>
@@ -142,14 +142,6 @@
                 <button type="button" data-step="-" aria-label="Decrease children" data-i18n-attr="aria-label:search.decreaseChildren">&minus;</button>
                 <b>0</b>
                 <button type="button" data-step="+" aria-label="Increase children" data-i18n-attr="aria-label:search.increaseChildren">&plus;</button>
-              </div>
-            </div>
-            <div class="stepper-row">
-              <span data-i18n="search.rooms">Rooms</span>
-              <div class="stepper" data-type="rooms">
-                <button type="button" data-step="-" aria-label="Decrease rooms" data-i18n-attr="aria-label:search.decreaseRooms">&minus;</button>
-                <b>1</b>
-                <button type="button" data-step="+" aria-label="Increase rooms" data-i18n-attr="aria-label:search.increaseRooms">&plus;</button>
               </div>
             </div>
             <button type="button" class="btn btn-outline guests-done" data-i18n="search.done">Done</button>
@@ -174,6 +166,15 @@
   </div>
 
   <div class="room-list" id="roomList"></div>
+
+  <div class="cart-panel" id="cartPanel" style="display:none;">
+    <h3 data-i18n="book.yourSelection">Your selection</h3>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-foot">
+      <div class="cart-total"><span data-i18n="book.total">Total</span><b id="cartTotal">&mdash;</b></div>
+      <button type="button" class="btn btn-primary" id="cartContinueBtn" data-i18n="book.continueToDetails">Continue to your details</button>
+    </div>
+  </div>
 
   <div class="summary-alt" style="max-width:420px; margin:50px auto 0; text-align:center;">
     <p style="color:var(--ink-soft); font-size:.9rem; margin-bottom:14px;" data-i18n="book.preferPhone">Prefer to book by phone instead?</p>
@@ -251,23 +252,19 @@
 
     </div>
 
-    <div class="booking-summary has-photo" id="checkoutSummary">
-      <div class="summary-photo"><img id="csPhoto" src="" alt=""></div>
-      <div class="summary-body">
-        <h3 data-i18n="book.yourStay">Your stay</h3>
-        <span class="summary-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> <span data-i18n="book.freeCancellation">Free cancellation</span></span>
-        <div class="summary-row"><span data-i18n="book.room">Room</span><b id="csRoom">&mdash;</b></div>
-        <div class="summary-row"><span data-i18n="search.checkin">Check-in</span><b id="csCheckIn" dir="ltr">&mdash;</b></div>
-        <div class="summary-row"><span data-i18n="search.checkout">Check-out</span><b id="csCheckOut" dir="ltr">&mdash;</b></div>
-        <div class="summary-row"><span data-i18n="book.nights">Nights</span><b id="csNights">&mdash;</b></div>
-        <div class="summary-row"><span data-i18n="search.guestsLabel">Guests</span><b id="csGuests">&mdash;</b></div>
-        <div class="summary-row"><span data-i18n="search.rooms">Rooms</span><b id="csRooms">&mdash;</b></div>
-        <div class="summary-breakdown" id="csBreakdown"></div>
-        <div class="summary-total"><span data-i18n="book.total">Total</span><b id="csTotal">&mdash;</b></div>
-        <div class="summary-policies">
-          <p data-i18n="book.policy1">Pay now, direct to the hotel &mdash; no third-party booking fees.</p>
-          <p data-i18n="book.policy2">Free cancellation up to 48 hours before check-in.</p>
-        </div>
+    <div class="booking-summary" id="checkoutSummary">
+      <h3 data-i18n="book.yourStay">Your stay</h3>
+      <span class="summary-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> <span data-i18n="book.freeCancellation">Free cancellation</span></span>
+      <div class="summary-items" id="csItems"></div>
+      <div class="summary-row"><span data-i18n="search.checkin">Check-in</span><b id="csCheckIn" dir="ltr">&mdash;</b></div>
+      <div class="summary-row"><span data-i18n="search.checkout">Check-out</span><b id="csCheckOut" dir="ltr">&mdash;</b></div>
+      <div class="summary-row"><span data-i18n="book.nights">Nights</span><b id="csNights">&mdash;</b></div>
+      <div class="summary-row"><span data-i18n="search.guestsLabel">Guests</span><b id="csGuests">&mdash;</b></div>
+      <div class="summary-row"><span data-i18n="search.rooms">Rooms</span><b id="csRooms">&mdash;</b></div>
+      <div class="summary-total"><span data-i18n="book.total">Total</span><b id="csTotal">&mdash;</b></div>
+      <div class="summary-policies">
+        <p data-i18n="book.policy1">Pay now, direct to the hotel &mdash; no third-party booking fees.</p>
+        <p data-i18n="book.policy2">Free cancellation up to 48 hours before check-in.</p>
       </div>
     </div>
   </div>

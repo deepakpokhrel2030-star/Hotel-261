@@ -319,7 +319,6 @@
     "nightsTotalOne": "{n} night total",
     "nightsTotalMany": "{n} nights total",
     "perNightPhrase": "per night",
-    "tooSmall": "Sleeps up to {max} &mdash; too small for {guests} guests",
     "firstName": "First name",
     "firstNamePlaceholder": "Jane",
     "lastName": "Last name",
@@ -331,7 +330,18 @@
     "errFirstName": "Please enter your first name.",
     "errLastName": "Please enter your last name.",
     "errEmail": "Please enter a valid email address.",
-    "errPhone": "Please enter a phone number, in case we need to reach you."
+    "errPhone": "Please enter a phone number, in case we need to reach you.",
+    "roomType": "Room type",
+    "numberOfGuests": "Guests",
+    "todaysPrice": "Today&rsquo;s price",
+    "yourChoices": "Your choices",
+    "selectRoomsCol": "Select rooms",
+    "payOnlineNote": "Pay online &mdash; secure via Stripe",
+    "wontBeCharged": "You won&rsquo;t be charged yet",
+    "addedToSelection": "Added &#10003;",
+    "removeItem": "Remove",
+    "yourSelection": "Your selection",
+    "continueToDetails": "Continue to your details"
   },
   "success": {
     "confirming": "Confirming your booking&hellip;",
