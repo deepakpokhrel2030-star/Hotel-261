@@ -325,6 +325,8 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .rl-table{ border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:var(--surface); }
 .rl-empty{ border:1px dashed var(--line); border-radius:var(--radius); padding:60px 30px; text-align:center; }
 .rl-empty p{ color:var(--ink-soft); font-size:.95rem; max-width:380px; margin:0 auto; }
+.rl-tip{ font-size:.86rem; color:var(--ink-soft); background:var(--paper-2); border-radius:8px; padding:12px 16px; margin-top:22px; max-width:760px; }
+.rl-tip b{ color:var(--accent); }
 .rl-header{ display:grid; background:var(--ink); color:var(--paper); font-size:.76rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
 .rl-header > div{ padding:14px 16px; }
 .rl-row{ display:grid; border-top:1px solid var(--line); transition:background .2s ease; }

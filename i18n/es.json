@@ -341,7 +341,9 @@
     "errNoRoomsSelected": "Por favor, indica la cantidad de al menos un tipo de habitación.",
     "chooseDatesPrompt": "Elige tus fechas de entrada y salida arriba para ver las habitaciones disponibles y sus precios.",
     "tooSmall": "Capacidad para {max} persona(s) — demasiado pequeña para {guests} huéspedes",
-    "errCapacity": "Las habitaciones seleccionadas tienen capacidad para {max} — elige más espacio para {guests} huéspedes."
+    "errCapacity": "Las habitaciones seleccionadas tienen capacidad para {max} — elige más espacio para {guests} huéspedes.",
+    "tipLabel": "Consejo:",
+    "multiRoomTip": "Una habitación individual tiene capacidad para 1 persona. Si sois 2, simplemente selecciona 2 habitaciones individuales — lo mismo aplica a cualquier tipo de habitación."
   },
   "success": {
     "confirming": "Confirmando su reserva&hellip;",

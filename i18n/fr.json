@@ -341,7 +341,9 @@
     "errNoRoomsSelected": "Veuillez indiquer le nombre souhaité pour au moins un type de chambre.",
     "chooseDatesPrompt": "Choisissez vos dates d’arrivée et de départ ci-dessus pour voir les chambres disponibles et leurs prix.",
     "tooSmall": "Accueille jusqu’à {max} personne(s) — trop petit pour {guests} voyageurs",
-    "errCapacity": "Vos chambres sélectionnées accueillent jusqu’à {max} personne(s) — veuillez choisir plus d’espace pour {guests} voyageurs."
+    "errCapacity": "Vos chambres sélectionnées accueillent jusqu’à {max} personne(s) — veuillez choisir plus d’espace pour {guests} voyageurs.",
+    "tipLabel": "Astuce :",
+    "multiRoomTip": "Une chambre simple accueille 1 personne. Si vous êtes 2, sélectionnez simplement 2 chambres simples — la même logique s’applique à tous les types de chambres."
   },
   "success": {
     "confirming": "Confirmation de votre réservation&hellip;",
