@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>(function(){try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amenities — Hotel 261</title>
@@ -31,13 +32,13 @@
 
 <div class="menu-overlay" id="menuOverlay">
   <nav class="menu-links">
-    <a href="/" style="--i:0">Home</a>
-    <a href="/about" style="--i:1">About</a>
-    <a href="/rooms" style="--i:2">Rooms</a>
-    <a href="/gallery" style="--i:3">Gallery</a>
-    <a href="/amenities" class="active" style="--i:4">Amenities</a>
-    <a href="/reviews" style="--i:5">Reviews</a>
-    <a href="/location" style="--i:6">Location</a>
+    <a href="/" style="--i:0" data-i18n="nav.home">Home</a>
+    <a href="/about" style="--i:1" data-i18n="nav.about">About</a>
+    <a href="/rooms" style="--i:2" data-i18n="nav.rooms">Rooms</a>
+    <a href="/gallery" style="--i:3" data-i18n="nav.gallery">Gallery</a>
+    <a href="/amenities" class="active" style="--i:4" data-i18n="nav.amenities">Amenities</a>
+    <a href="/reviews" style="--i:5" data-i18n="nav.reviews">Reviews</a>
+    <a href="/location" style="--i:6" data-i18n="nav.location">Location</a>
   </nav>
   <div class="menu-foot">
     <a href="tel:+442087434411">020 8743 4411</a>
@@ -55,24 +56,39 @@
       </div>
       <div class="utility-right">
         <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2.5l2.9 6 6.6.7-4.9 4.5 1.3 6.5L12 16.9 6.1 20.2l1.3-6.5-4.9-4.5 6.6-.7L12 2.5Z"/></svg>
-        <b>3.3</b>&nbsp;&middot; <a href="/reviews">367&nbsp;reviews</a>
+        <b>3.3</b>&nbsp;&middot; <a href="/reviews">367&nbsp;<span data-i18n="common.reviewsWord">reviews</span></a>
       </div>
     </div>
   </div>
   <div class="nav-row">
   <div class="header-inner">
-    <a href="/" class="logo"><img src="/images/site/logo.png" alt="Hotel 261" class="logo-img"></a>
+    <a href="/" class="logo"><img src="/images/site/logo.png" alt="Hotel 261" class="logo-img logo-light"><img src="/images/site/logo-dark.png" alt="Hotel 261" class="logo-img logo-dark"></a>
     <nav class="main-nav">
-      <a href="/about">About</a>
-      <a href="/rooms">Rooms</a>
-      <a href="/gallery">Gallery</a>
-      <a href="/amenities" class="active">Amenities</a>
-      <a href="/reviews">Reviews</a>
-      <a href="/location">Location</a>
+      <a href="/about" data-i18n="nav.about">About</a>
+      <a href="/rooms" data-i18n="nav.rooms">Rooms</a>
+      <a href="/gallery" data-i18n="nav.gallery">Gallery</a>
+      <a href="/amenities" class="active" data-i18n="nav.amenities">Amenities</a>
+      <a href="/reviews" data-i18n="nav.reviews">Reviews</a>
+      <a href="/location" data-i18n="nav.location">Location</a>
     </nav>
     <div class="header-right">
-      <a href="/book" class="btn btn-pill magnetic">Reserve</a>
-      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-switch-toggle" id="langToggle" type="button" aria-label="Change language" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+          <span id="langCurrent">EN</span>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+          <button type="button" data-lang="en">English</button>
+          <button type="button" data-lang="fr">Français</button>
+          <button type="button" data-lang="es">Español</button>
+          <button type="button" data-lang="ar">العربية</button>
+          <button type="button" data-lang="it">Italiano</button>
+          <button type="button" data-lang="hi">हिन्दी</button>
+        </div>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" data-i18n-attr="aria-label:common.toggleDarkMode"><svg class="icon icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M4.6 4.6l1.85 1.85M17.55 17.55l1.85 1.85M2.5 12h2.6M18.9 12h2.6M4.6 19.4l1.85-1.85M17.55 6.45l1.85-1.85"/></svg><svg class="icon icon-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg></button>
+      <a href="/book" class="btn btn-pill magnetic" data-i18n="common.reserve">Reserve</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" data-i18n-attr="aria-label:common.toggleMenu" aria-expanded="false">
         <span></span><span></span>
       </button>
     </div>
@@ -88,41 +104,41 @@
   </div>
   <div class="hero-scrim"></div>
   <div class="hero-inner">
-    <p class="hero-eyebrow load-in" style="--i:0">( Amenities )</p>
+    <p class="hero-eyebrow load-in" style="--i:0" data-i18n="amenities.eyebrow">( Amenities )</p>
     <h1 class="hero-title">
-      <span class="line load-in" style="--i:1">Everything you need,</span>
-      <span class="line load-in" style="--i:2">nothing you <em>don&rsquo;t.</em></span>
+      <span class="line load-in" style="--i:1" data-i18n="amenities.title1">Everything you need,</span>
+      <span class="line load-in" style="--i:2" data-i18n-html="amenities.title2">nothing you <em>don&rsquo;t.</em></span>
     </h1>
   </div>
 </section>
 
 <section class="amenities" style="padding-top:70px; padding-bottom:100px;">
   <div class="amenities-list" style="border-top:none;">
-    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><path d="M2 8.5a16 16 0 0 1 20 0"/><path d="M5 12.5a11 11 0 0 1 14 0"/><path d="M8.5 16.5a6 6 0 0 1 7 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg></div><h4>Free WiFi</h4><p>Complimentary WiFi throughout the hotel and in every room, at no extra cost.</p></div>
-    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 16V8h3.5a2.5 2.5 0 0 1 0 5H9"/></svg></div><h4>Private Parking</h4><p>On-site parking available from £15/day, valid from 2pm on arrival to 11am on departure. Please contact us ahead to reserve a space, as spots are limited.</p></div>
-    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><circle cx="8.5" cy="8" r="3"/><path d="M2.5 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15 20a5 5 0 0 1 7-4.6"/></svg></div><h4>Family Rooms</h4><p>Spacious family rooms sleeping up to five guests &mdash; two single beds and one double, ideal for families or small groups.</p></div>
-    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2c1 3-2 4-2 7a3 3 0 0 0 6 0c1.5 1.5 2 3.5 2 5a6 6 0 1 1-12 0c0-4 3-5 3-8 1 1 1.5 2 1.5 3.5C11.5 7 11 4.5 12 2Z"/></svg></div><h4>Heating</h4><p>Every room is heated for year-round comfort, whatever the London weather is doing.</p></div>
-    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6L12 3Z"/></svg></div><h4>Daily Housekeeping</h4><p>Rooms are serviced daily. Bed linen and towels are refreshed on the morning of every fifth day of your stay &mdash; just leave used towels on the floor.</p></div>
-    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M4 12h16"/></svg></div><h4>Luggage Storage</h4><p>Drop off or store your bags on arrival or on your day of departure &mdash; departure-day storage is same-day only.</p></div>
-    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 4c-.5 1 .5 1.3 0 2.3M12 4c-.5 1 .5 1.3 0 2.3"/></svg></div><h4>Breakfast Nearby</h4><p>Full English or Italian breakfast is served 8am&ndash;11:30am at Little Napoli, a five-minute walk away. Ask reception for a voucher, and enjoy 15% off all other meals there too.</p></div>
-    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M5.5 5.5l13 13"/></svg></div><h4>Smoke-Free Hotel</h4><p>We&rsquo;re a smoke-free property. A designated outdoor smoking area is available away from the entrance.</p></div>
-    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><path d="M4 12h16v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-3Z"/><path d="M7 12V6a2 2 0 0 1 3.5-1.3"/><path d="M4 12V9"/></svg></div><h4>Ensuite Bathrooms</h4><p>Every room has its own ensuite bathroom with shower, towels and toiletries provided.</p></div>
-    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M8 21h8M12 18v3"/></svg></div><h4>Flat-Screen &amp; Satellite TV</h4><p>Satellite channels on a flat-screen TV in every room.</p></div>
-    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 4c-.5 1 .5 1.3 0 2.3M12 4c-.5 1 .5 1.3 0 2.3"/></svg></div><h4>Tea &amp; Coffee</h4><p>An electric kettle and tea/coffee making facilities in every room, plus a shared guest microwave.</p></div>
+    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><path d="M2 8.5a16 16 0 0 1 20 0"/><path d="M5 12.5a11 11 0 0 1 14 0"/><path d="M8.5 16.5a6 6 0 0 1 7 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg></div><h4 data-i18n="amenity.wifi.title">Free WiFi</h4><p data-i18n="amenity.wifi.desc">Complimentary WiFi throughout the hotel and in every room, at no extra cost.</p></div>
+    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 16V8h3.5a2.5 2.5 0 0 1 0 5H9"/></svg></div><h4 data-i18n="amenity.parking.title">Private Parking</h4><p data-i18n="amenity.parking.desc">On-site parking available from £15/day, valid from 2pm on arrival to 11am on departure. Please contact us ahead to reserve a space, as spots are limited.</p></div>
+    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><circle cx="8.5" cy="8" r="3"/><path d="M2.5 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15 20a5 5 0 0 1 7-4.6"/></svg></div><h4 data-i18n="amenity.family.title">Family Rooms</h4><p data-i18n="amenity.family.desc">Spacious family rooms sleeping up to five guests &mdash; two single beds and one double, ideal for families or small groups.</p></div>
+    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2c1 3-2 4-2 7a3 3 0 0 0 6 0c1.5 1.5 2 3.5 2 5a6 6 0 1 1-12 0c0-4 3-5 3-8 1 1 1.5 2 1.5 3.5C11.5 7 11 4.5 12 2Z"/></svg></div><h4 data-i18n="amenity.heating.title">Heating</h4><p data-i18n="amenity.heating.desc">Every room is heated for year-round comfort, whatever the London weather is doing.</p></div>
+    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6L12 3Z"/></svg></div><h4 data-i18n="amenity.housekeeping.title">Daily Housekeeping</h4><p data-i18n="amenity.housekeeping.desc">Rooms are serviced daily. Bed linen and towels are refreshed on the morning of every fifth day of your stay &mdash; just leave used towels on the floor.</p></div>
+    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M4 12h16"/></svg></div><h4 data-i18n="amenity.luggage.title">Luggage Storage</h4><p data-i18n="amenity.luggage.desc">Drop off or store your bags on arrival or on your day of departure &mdash; departure-day storage is same-day only.</p></div>
+    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 4c-.5 1 .5 1.3 0 2.3M12 4c-.5 1 .5 1.3 0 2.3"/></svg></div><h4 data-i18n="amenity.breakfast.title">Breakfast Nearby</h4><p data-i18n="amenity.breakfast.desc">Full English or Italian breakfast is served 8am&ndash;11:30am at Little Napoli, a five-minute walk away. Ask reception for a voucher, and enjoy 15% off all other meals there too.</p></div>
+    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M5.5 5.5l13 13"/></svg></div><h4 data-i18n="amenity.smokeFree.title">Smoke-Free Hotel</h4><p data-i18n="amenity.smokeFree.desc">We&rsquo;re a smoke-free property. A designated outdoor smoking area is available away from the entrance.</p></div>
+    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><path d="M4 12h16v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5v-3Z"/><path d="M7 12V6a2 2 0 0 1 3.5-1.3"/><path d="M4 12V9"/></svg></div><h4 data-i18n="amenity.ensuite.title">Ensuite Bathrooms</h4><p data-i18n="amenity.ensuite.desc">Every room has its own ensuite bathroom with shower, towels and toiletries provided.</p></div>
+    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M8 21h8M12 18v3"/></svg></div><h4 data-i18n="amenity.tv.title">Flat-Screen &amp; Satellite TV</h4><p data-i18n="amenity.tv.desc">Satellite channels on a flat-screen TV in every room.</p></div>
+    <div class="amenity-row reveal"><div class="icon-badge"><svg class="icon" viewBox="0 0 24 24"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 4c-.5 1 .5 1.3 0 2.3M12 4c-.5 1 .5 1.3 0 2.3"/></svg></div><h4 data-i18n="amenity.teaCoffee.title">Tea &amp; Coffee</h4><p data-i18n="amenity.teaCoffee.desc">An electric kettle and tea/coffee making facilities in every room, plus a shared guest microwave.</p></div>
   </div>
 </section>
 
 <section class="cta">
-  <p class="cta-eyebrow reveal">( Ready when you are )</p>
-  <h2 class="cta-title reveal">Your stay<br>starts here.</h2>
+  <p class="cta-eyebrow reveal"><span data-i18n="cta.eyebrow">( Ready when you are )</span></p>
+  <h2 class="cta-title reveal" data-i18n-html="cta.title">Your stay<br>starts here.</h2>
   <div class="cta-actions reveal">
-    <a href="tel:+442087434411" class="btn btn-primary btn-lg magnetic">Call 020 8743 4411</a>
-    <a href="/rooms" class="btn btn-outline-light btn-lg magnetic">View Rooms &amp; Rates</a>
+    <a href="tel:+442087434411" class="btn btn-primary btn-lg magnetic" data-i18n="cta.callBtn">Call 020 8743 4411</a>
+    <a href="/rooms" class="btn btn-outline-light btn-lg magnetic" data-i18n="cta.viewRoomsBtn">View Rooms &amp; Rates</a>
   </div>
   <div class="trust-row on-dark reveal">
-    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l9 9-8 8-9-9V4h7Z"/><circle cx="8" cy="8" r="1.3" fill="currentColor" stroke="none"/></svg> Best rate, booked direct</span>
-    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> Secure payment via Stripe</span>
-    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> Instant confirmation</span>
+    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l9 9-8 8-9-9V4h7Z"/><circle cx="8" cy="8" r="1.3" fill="currentColor" stroke="none"/></svg> <span data-i18n="trust.bestRate">Best rate, booked direct</span></span>
+    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> <span data-i18n="trust.securePayment">Secure payment via Stripe</span></span>
+    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> <span data-i18n="trust.instantConfirmation">Instant confirmation</span></span>
   </div>
 </section>
 
@@ -130,38 +146,40 @@
 
 <footer class="site-footer">
   <div class="footer-top">
-    <a href="/" class="logo"><img src="/images/site/logo.png" alt="Hotel 261" class="logo-img"></a>
+    <a href="/" class="logo"><img src="/images/site/logo.png" alt="Hotel 261" class="logo-img logo-light"><img src="/images/site/logo-dark.png" alt="Hotel 261" class="logo-img logo-dark"></a>
     <div class="footer-cols">
       <div>
-        <h5>Visit</h5>
+        <h5 data-i18n="footer.visit">Visit</h5>
         <p>261&ndash;263 Uxbridge Road<br>Shepherd&rsquo;s Bush, London W12 9DS</p>
         <a href="tel:+442087434411">020 8743 4411</a>
       </div>
       <div>
-        <h5>Explore</h5>
-        <a href="/about">About</a>
-        <a href="/rooms">Rooms</a>
-        <a href="/gallery">Gallery</a>
-        <a href="/amenities">Amenities</a>
+        <h5 data-i18n="footer.explore">Explore</h5>
+        <a href="/about" data-i18n="nav.about">About</a>
+        <a href="/rooms" data-i18n="nav.rooms">Rooms</a>
+        <a href="/gallery" data-i18n="nav.gallery">Gallery</a>
+        <a href="/amenities" data-i18n="nav.amenities">Amenities</a>
       </div>
       <div>
-        <h5>Guest Info</h5>
-        <a href="/reviews">Reviews</a>
-        <a href="/location">Location &amp; Info</a>
-        <a href="https://www.google.com/maps/place/Hotel261/@51.5066159,-0.2470289,17z/data=!3m1!4b1!4m9!3m8!1s0x48760e2fab56d229:0x4f2c86709ba2f56!5m2!4m1!1i2!8m2!3d51.5066126!4d-0.244454!16s%2Fg%2F12mkw93y2" target="_blank" rel="noopener">Review us on Google</a>
-        <a href="/book">Book Direct</a>
+        <h5 data-i18n="footer.guestInfo">Guest Info</h5>
+        <a href="/reviews" data-i18n="nav.reviews">Reviews</a>
+        <a href="/location"><span data-i18n="footer.locationInfo">Location &amp; Info</span></a>
+        <a href="https://www.google.com/maps/place/Hotel261/@51.5066159,-0.2470289,17z/data=!3m1!4b1!4m9!3m8!1s0x48760e2fab56d229:0x4f2c86709ba2f56!5m2!4m1!1i2!8m2!3d51.5066126!4d-0.244454!16s%2Fg%2F12mkw93y2" target="_blank" rel="noopener"><span data-i18n="footer.googleReview">Review us on Google</span></a>
+        <a href="/book"><span data-i18n="footer.bookDirect">Book Direct</span></a>
+        <a href="/check-booking"><span data-i18n="footer.checkBooking">Check Booking</span></a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; <span id="year"></span> Hotel 261. All rights reserved.</p>
+    <p>&copy; <span id="year"></span> Hotel 261. <span data-i18n="footer.rights">All rights reserved.</span></p>
   </div>
 </footer>
 
 <a href="tel:+442087434411" class="mobile-bar">
-  <span>Call to book &mdash; 020 8743 4411</span>
+  <span data-i18n="common.callToBookBar">Call to book &mdash; 020 8743 4411</span>
 </a>
 
+<script src="js/i18n.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>

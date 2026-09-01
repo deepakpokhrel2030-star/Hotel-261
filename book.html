@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>(function(){try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Book Direct — Hotel 261</title>
@@ -31,13 +32,13 @@
 
 <div class="menu-overlay" id="menuOverlay">
   <nav class="menu-links">
-    <a href="/" style="--i:0">Home</a>
-    <a href="/about" style="--i:1">About</a>
-    <a href="/rooms" style="--i:2">Rooms</a>
-    <a href="/gallery" style="--i:3">Gallery</a>
-    <a href="/amenities" style="--i:4">Amenities</a>
-    <a href="/reviews" style="--i:5">Reviews</a>
-    <a href="/location" style="--i:6">Location</a>
+    <a href="/" style="--i:0" data-i18n="nav.home">Home</a>
+    <a href="/about" style="--i:1" data-i18n="nav.about">About</a>
+    <a href="/rooms" style="--i:2" data-i18n="nav.rooms">Rooms</a>
+    <a href="/gallery" style="--i:3" data-i18n="nav.gallery">Gallery</a>
+    <a href="/amenities" style="--i:4" data-i18n="nav.amenities">Amenities</a>
+    <a href="/reviews" style="--i:5" data-i18n="nav.reviews">Reviews</a>
+    <a href="/location" style="--i:6" data-i18n="nav.location">Location</a>
   </nav>
   <div class="menu-foot">
     <a href="tel:+442087434411">020 8743 4411</a>
@@ -55,24 +56,39 @@
       </div>
       <div class="utility-right">
         <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2.5l2.9 6 6.6.7-4.9 4.5 1.3 6.5L12 16.9 6.1 20.2l1.3-6.5-4.9-4.5 6.6-.7L12 2.5Z"/></svg>
-        <b>3.3</b>&nbsp;&middot; <a href="/reviews">367&nbsp;reviews</a>
+        <b>3.3</b>&nbsp;&middot; <a href="/reviews">367&nbsp;<span data-i18n="common.reviewsWord">reviews</span></a>
       </div>
     </div>
   </div>
   <div class="nav-row">
   <div class="header-inner">
-    <a href="/" class="logo"><img src="/images/site/logo.png" alt="Hotel 261" class="logo-img"></a>
+    <a href="/" class="logo"><img src="/images/site/logo.png" alt="Hotel 261" class="logo-img logo-light"><img src="/images/site/logo-dark.png" alt="Hotel 261" class="logo-img logo-dark"></a>
     <nav class="main-nav">
-      <a href="/about">About</a>
-      <a href="/rooms">Rooms</a>
-      <a href="/gallery">Gallery</a>
-      <a href="/amenities">Amenities</a>
-      <a href="/reviews">Reviews</a>
-      <a href="/location">Location</a>
+      <a href="/about" data-i18n="nav.about">About</a>
+      <a href="/rooms" data-i18n="nav.rooms">Rooms</a>
+      <a href="/gallery" data-i18n="nav.gallery">Gallery</a>
+      <a href="/amenities" data-i18n="nav.amenities">Amenities</a>
+      <a href="/reviews" data-i18n="nav.reviews">Reviews</a>
+      <a href="/location" data-i18n="nav.location">Location</a>
     </nav>
     <div class="header-right">
-      <a href="/book" class="btn btn-pill magnetic">Reserve</a>
-      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-switch-toggle" id="langToggle" type="button" aria-label="Change language" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+          <span id="langCurrent">EN</span>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+          <button type="button" data-lang="en">English</button>
+          <button type="button" data-lang="fr">Français</button>
+          <button type="button" data-lang="es">Español</button>
+          <button type="button" data-lang="ar">العربية</button>
+          <button type="button" data-lang="it">Italiano</button>
+          <button type="button" data-lang="hi">हिन्दी</button>
+        </div>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" data-i18n-attr="aria-label:common.toggleDarkMode"><svg class="icon icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M4.6 4.6l1.85 1.85M17.55 17.55l1.85 1.85M2.5 12h2.6M18.9 12h2.6M4.6 19.4l1.85-1.85M17.55 6.45l1.85-1.85"/></svg><svg class="icon icon-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg></button>
+      <a href="/book" class="btn btn-pill magnetic" data-i18n="common.reserve">Reserve</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" data-i18n-attr="aria-label:common.toggleMenu" aria-expanded="false">
         <span></span><span></span>
       </button>
     </div>
@@ -88,9 +104,9 @@
   </div>
   <div class="hero-scrim"></div>
   <div class="hero-inner">
-    <p class="hero-eyebrow load-in" style="--i:0">( Book Direct )</p>
+    <p class="hero-eyebrow load-in" style="--i:0" data-i18n="book.eyebrow">( Book Direct )</p>
     <h1 class="hero-title">
-      <span class="line load-in" style="--i:1">Reserve your <em>room.</em></span>
+      <span class="line load-in" style="--i:1" data-i18n-html="book.heroTitle">Reserve your <em>room.</em></span>
     </h1>
   </div>
 </section>
@@ -100,30 +116,30 @@
     <form>
       <div style="display:contents;">
         <div class="sw-field">
-          <label><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> Check-in</label>
+          <label><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> <span data-i18n="search.checkin">Check-in</span></label>
           <input type="date" id="bsCheckIn" required>
         </div>
         <div class="sw-field">
-          <label><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> Check-out</label>
+          <label><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> <span data-i18n="search.checkout">Check-out</span></label>
           <input type="date" id="bsCheckOut" required>
           <span class="sw-nights" id="bsNights"></span>
         </div>
         <div class="sw-field sw-guests-field">
-          <label><svg class="icon" viewBox="0 0 24 24"><circle cx="8.5" cy="8" r="3"/><path d="M2.5 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15 20a5 5 0 0 1 7-4.6"/></svg> Guests</label>
+          <label><svg class="icon" viewBox="0 0 24 24"><circle cx="8.5" cy="8" r="3"/><path d="M2.5 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15 20a5 5 0 0 1 7-4.6"/></svg> <span data-i18n="search.guestsLabel">Guests</span></label>
           <button type="button" class="sw-guests-toggle">2 guests</button>
           <div class="guests-dropdown">
             <div class="stepper-row">
-              <span>Guests</span>
+              <span data-i18n="search.guestsLabel">Guests</span>
               <div class="stepper">
-                <button type="button" data-step="-" aria-label="Decrease guests">&minus;</button>
+                <button type="button" data-step="-" aria-label="Decrease guests" data-i18n-attr="aria-label:search.decreaseGuests">&minus;</button>
                 <b>2</b>
-                <button type="button" data-step="+" aria-label="Increase guests">&plus;</button>
+                <button type="button" data-step="+" aria-label="Increase guests" data-i18n-attr="aria-label:search.increaseGuests">&plus;</button>
               </div>
             </div>
-            <button type="button" class="btn btn-outline guests-done">Done</button>
+            <button type="button" class="btn btn-outline guests-done" data-i18n="search.done">Done</button>
           </div>
         </div>
-        <button type="submit" class="sw-submit">Check Availability</button>
+        <button type="submit" class="sw-submit" data-i18n="search.checkAvailability">Check Availability</button>
       </div>
     </form>
   </div>
@@ -132,86 +148,87 @@
 <section class="booking" id="roomsSection" style="padding-top:20px;">
   <div class="section-head">
     <span class="section-num">01</span>
-    <span class="section-label">Available Rooms</span>
+    <span class="section-label" data-i18n="book.availableRooms">Available Rooms</span>
   </div>
-  <p class="section-sub" style="max-width:620px; color:var(--ink-soft); margin-bottom:0;">Choose your dates and guests above, then reserve the room that suits you. Payment is processed securely by Stripe &mdash; we never see or store your card details.</p>
+  <p class="section-sub" style="max-width:620px; color:var(--ink-soft); margin-bottom:0;" data-i18n="book.availableRoomsSub">Choose your dates and guests above, then reserve the room that suits you. Payment is processed securely by Stripe &mdash; we never see or store your card details.</p>
   <div class="trust-row" style="justify-content:flex-start; padding-top:22px; margin-top:22px;">
-    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l9 9-8 8-9-9V4h7Z"/><circle cx="8" cy="8" r="1.3" fill="currentColor" stroke="none"/></svg> Best rate, booked direct</span>
-    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> Secure payment via Stripe</span>
-    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> Instant confirmation</span>
+    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l9 9-8 8-9-9V4h7Z"/><circle cx="8" cy="8" r="1.3" fill="currentColor" stroke="none"/></svg> <span data-i18n="trust.bestRate">Best rate, booked direct</span></span>
+    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> <span data-i18n="trust.securePayment">Secure payment via Stripe</span></span>
+    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> <span data-i18n="trust.instantConfirmation">Instant confirmation</span></span>
   </div>
 
   <div class="room-list" id="roomList"></div>
 
   <div class="summary-alt" style="max-width:420px; margin:50px auto 0; text-align:center;">
-    <p style="color:var(--ink-soft); font-size:.9rem; margin-bottom:14px;">Prefer to book by phone instead?</p>
-    <a href="tel:+442087434411" class="btn btn-outline magnetic" style="width:100%;">Call 020 8743 4411</a>
+    <p style="color:var(--ink-soft); font-size:.9rem; margin-bottom:14px;" data-i18n="book.preferPhone">Prefer to book by phone instead?</p>
+    <a href="tel:+442087434411" class="btn btn-outline magnetic" style="width:100%;" data-i18n="cta.callBtn">Call 020 8743 4411</a>
+    <p style="color:var(--ink-soft); font-size:.85rem; margin-top:22px;"><span data-i18n="book.alreadyBooked">Already booked?</span> <a href="/check-booking" class="text-link" data-i18n="book.checkStatusLink">Check your booking status</a></p>
   </div>
 </section>
 
 <section class="booking checkout-section" id="checkoutSection" style="display:none; padding-top:20px;">
   <div class="section-head">
     <span class="section-num">02</span>
-    <span class="section-label">Complete Your Booking</span>
+    <span class="section-label" data-i18n="book.completeBooking">Complete Your Booking</span>
   </div>
 
   <div class="checkout-steps" id="checkoutSteps">
-    <span class="checkout-step active" data-step="details"><i>1</i> Your details</span>
+    <span class="checkout-step active" data-step="details"><i>1</i> <span data-i18n="book.stepDetails">Your details</span></span>
     <span class="checkout-step-sep">&rarr;</span>
-    <span class="checkout-step" data-step="payment"><i>2</i> Payment</span>
+    <span class="checkout-step" data-step="payment"><i>2</i> <span data-i18n="book.stepPayment">Payment</span></span>
   </div>
 
   <div class="booking-grid" style="margin-top:30px;">
     <div>
 
       <div class="booking-form" id="checkoutDetailsPanel">
-        <button type="button" class="checkout-back" id="backToRooms">&larr; Change room</button>
-        <h3 style="font-family:var(--ff-display); font-weight:700; font-size:1.3rem; margin-bottom:22px;">Your details</h3>
+        <button type="button" class="checkout-back" id="backToRooms">&larr; <span data-i18n="book.changeRoom">Change room</span></button>
+        <h3 style="font-family:var(--ff-display); font-weight:700; font-size:1.3rem; margin-bottom:22px;" data-i18n="book.stepDetails">Your details</h3>
 
         <div class="form-row two-col">
-          <div><label>Full name</label><input type="text" id="coName" autocomplete="name" placeholder="As it appears on your ID"></div>
-          <div><label>Email</label><input type="email" id="coEmail" autocomplete="email" placeholder="you@example.com"></div>
+          <div><label data-i18n="book.fullName">Full name</label><input type="text" id="coName" autocomplete="name" placeholder="As it appears on your ID" data-i18n-attr="placeholder:book.fullNamePlaceholder"></div>
+          <div><label data-i18n="book.email">Email</label><input type="email" id="coEmail" autocomplete="email" placeholder="you@example.com"></div>
         </div>
         <div class="form-row two-col">
-          <div><label>Phone number</label><input type="tel" id="coPhone" autocomplete="tel" placeholder="+44 7&hellip;"></div>
-          <div><label>Guests</label><input type="text" id="coGuestsDisplay" disabled></div>
+          <div><label data-i18n="book.phoneNumber">Phone number</label><input type="tel" id="coPhone" autocomplete="tel" placeholder="+44 7&hellip;"></div>
+          <div><label data-i18n="search.guestsLabel">Guests</label><input type="text" id="coGuestsDisplay" disabled></div>
         </div>
         <div class="form-row">
-          <label>Special requests <span style="text-transform:none; font-weight:400;">(optional)</span></label>
-          <textarea id="coRequests" rows="3" placeholder="Late arrival, high floor, accessible room&hellip;" style="width:100%; padding:13px 14px; border:1.5px solid var(--line); border-radius:6px; font-family:var(--ff-body); font-size:.95rem; color:var(--ink); background:var(--paper); resize:vertical;"></textarea>
+          <label><span data-i18n="book.specialRequests">Special requests</span> <span style="text-transform:none; font-weight:400;" data-i18n="book.optional">(optional)</span></label>
+          <textarea id="coRequests" rows="3" placeholder="Late arrival, high floor, accessible room&hellip;" data-i18n-attr="placeholder:book.specialRequestsPlaceholder" style="width:100%; padding:13px 14px; border:1.5px solid var(--line); border-radius:6px; font-family:var(--ff-body); font-size:.95rem; color:var(--ink); background:var(--paper); resize:vertical;"></textarea>
         </div>
 
         <div class="form-error" id="coDetailsError"></div>
-        <button type="button" class="btn btn-primary" id="coContinueBtn" style="width:100%;">Continue to Payment</button>
+        <button type="button" class="btn btn-primary" id="coContinueBtn" style="width:100%;" data-i18n="book.continueToPayment">Continue to Payment</button>
       </div>
 
       <div class="booking-form" id="checkoutPaymentPanel" style="display:none;">
-        <button type="button" class="checkout-back" id="backToDetails">&larr; Back to your details</button>
-        <h3 style="font-family:var(--ff-display); font-weight:700; font-size:1.3rem; margin-bottom:10px;">Payment</h3>
-        <p style="color:var(--ink-soft); font-size:.9rem; margin-bottom:22px;">You&rsquo;ll be redirected to Stripe&rsquo;s secure checkout to enter your card details. We never see or store your card number.</p>
+        <button type="button" class="checkout-back" id="backToDetails">&larr; <span data-i18n="book.backToDetails">Back to your details</span></button>
+        <h3 style="font-family:var(--ff-display); font-weight:700; font-size:1.3rem; margin-bottom:10px;" data-i18n="book.stepPayment">Payment</h3>
+        <p style="color:var(--ink-soft); font-size:.9rem; margin-bottom:22px;" data-i18n="book.paymentDesc">You&rsquo;ll be redirected to Stripe&rsquo;s secure checkout to enter your card details. We never see or store your card number.</p>
 
         <div class="trust-row" style="justify-content:flex-start; padding:0 0 22px; margin:0;">
-          <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> 256-bit encryption</span>
-          <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> Instant confirmation</span>
+          <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> <span data-i18n="book.encryption">256-bit encryption</span></span>
+          <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> <span data-i18n="trust.instantConfirmation">Instant confirmation</span></span>
         </div>
 
         <div class="form-error" id="coPaymentError"></div>
-        <button type="button" class="btn btn-primary" id="coPayBtn" style="width:100%;"><span id="coPayLabel">Pay Securely &mdash;&nbsp;</span><span id="coPayAmount"></span></button>
+        <button type="button" class="btn btn-primary" id="coPayBtn" style="width:100%;"><span id="coPayLabel" data-i18n="book.paySecurely">Pay Securely &mdash;&nbsp;</span><span id="coPayAmount"></span></button>
       </div>
 
     </div>
 
     <div class="booking-summary" id="checkoutSummary">
-      <h3>Your stay</h3>
-      <div class="summary-row"><span>Room</span><b id="csRoom">&mdash;</b></div>
-      <div class="summary-row"><span>Check-in</span><b id="csCheckIn">&mdash;</b></div>
-      <div class="summary-row"><span>Check-out</span><b id="csCheckOut">&mdash;</b></div>
-      <div class="summary-row"><span>Nights</span><b id="csNights">&mdash;</b></div>
-      <div class="summary-row"><span>Guests</span><b id="csGuests">&mdash;</b></div>
-      <div class="summary-total"><span>Total</span><b id="csTotal">&mdash;</b></div>
+      <h3 data-i18n="book.yourStay">Your stay</h3>
+      <div class="summary-row"><span data-i18n="book.room">Room</span><b id="csRoom">&mdash;</b></div>
+      <div class="summary-row"><span data-i18n="search.checkin">Check-in</span><b id="csCheckIn">&mdash;</b></div>
+      <div class="summary-row"><span data-i18n="search.checkout">Check-out</span><b id="csCheckOut">&mdash;</b></div>
+      <div class="summary-row"><span data-i18n="book.nights">Nights</span><b id="csNights">&mdash;</b></div>
+      <div class="summary-row"><span data-i18n="search.guestsLabel">Guests</span><b id="csGuests">&mdash;</b></div>
+      <div class="summary-total"><span data-i18n="book.total">Total</span><b id="csTotal">&mdash;</b></div>
       <div class="summary-policies">
-        <p>Pay now, direct to the hotel &mdash; no third-party booking fees.</p>
-        <p>Free cancellation up to 48 hours before check-in.</p>
+        <p data-i18n="book.policy1">Pay now, direct to the hotel &mdash; no third-party booking fees.</p>
+        <p data-i18n="book.policy2">Free cancellation up to 48 hours before check-in.</p>
       </div>
     </div>
   </div>
@@ -221,34 +238,36 @@
 
 <footer class="site-footer">
   <div class="footer-top">
-    <a href="/" class="logo"><img src="/images/site/logo.png" alt="Hotel 261" class="logo-img"></a>
+    <a href="/" class="logo"><img src="/images/site/logo.png" alt="Hotel 261" class="logo-img logo-light"><img src="/images/site/logo-dark.png" alt="Hotel 261" class="logo-img logo-dark"></a>
     <div class="footer-cols">
       <div>
-        <h5>Visit</h5>
+        <h5 data-i18n="footer.visit">Visit</h5>
         <p>261&ndash;263 Uxbridge Road<br>Shepherd&rsquo;s Bush, London W12 9DS</p>
         <a href="tel:+442087434411">020 8743 4411</a>
       </div>
       <div>
-        <h5>Explore</h5>
-        <a href="/about">About</a>
-        <a href="/rooms">Rooms</a>
-        <a href="/gallery">Gallery</a>
-        <a href="/amenities">Amenities</a>
+        <h5 data-i18n="footer.explore">Explore</h5>
+        <a href="/about" data-i18n="nav.about">About</a>
+        <a href="/rooms" data-i18n="nav.rooms">Rooms</a>
+        <a href="/gallery" data-i18n="nav.gallery">Gallery</a>
+        <a href="/amenities" data-i18n="nav.amenities">Amenities</a>
       </div>
       <div>
-        <h5>Guest Info</h5>
-        <a href="/reviews">Reviews</a>
-        <a href="/location">Location &amp; Info</a>
-        <a href="https://www.google.com/maps/place/Hotel261/@51.5066159,-0.2470289,17z/data=!3m1!4b1!4m9!3m8!1s0x48760e2fab56d229:0x4f2c86709ba2f56!5m2!4m1!1i2!8m2!3d51.5066126!4d-0.244454!16s%2Fg%2F12mkw93y2" target="_blank" rel="noopener">Review us on Google</a>
-        <a href="/book">Book Direct</a>
+        <h5 data-i18n="footer.guestInfo">Guest Info</h5>
+        <a href="/reviews" data-i18n="nav.reviews">Reviews</a>
+        <a href="/location"><span data-i18n="footer.locationInfo">Location &amp; Info</span></a>
+        <a href="https://www.google.com/maps/place/Hotel261/@51.5066159,-0.2470289,17z/data=!3m1!4b1!4m9!3m8!1s0x48760e2fab56d229:0x4f2c86709ba2f56!5m2!4m1!1i2!8m2!3d51.5066126!4d-0.244454!16s%2Fg%2F12mkw93y2" target="_blank" rel="noopener"><span data-i18n="footer.googleReview">Review us on Google</span></a>
+        <a href="/book"><span data-i18n="footer.bookDirect">Book Direct</span></a>
+        <a href="/check-booking"><span data-i18n="footer.checkBooking">Check Booking</span></a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; <span id="year"></span> Hotel 261. All rights reserved.</p>
+    <p>&copy; <span id="year"></span> Hotel 261. <span data-i18n="footer.rights">All rights reserved.</span></p>
   </div>
 </footer>
 
+<script src="js/i18n.js"></script>
 <script src="js/script.js"></script>
 <script src="js/booking.js"></script>
 </body>

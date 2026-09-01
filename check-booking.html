@@ -4,21 +4,10 @@
 <script>(function(){try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery — Hotel 261</title>
-<meta name="description" content="Photo gallery of Hotel 261, Shepherd's Bush: rooms, bathrooms and the hotel exterior on Uxbridge Road, West London.">
-<link rel="canonical" href="https://www.hotel261.com/gallery">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="Hotel 261">
-<meta property="og:title" content="Gallery — Hotel 261">
-<meta property="og:description" content="Photo gallery of Hotel 261, Shepherd's Bush: rooms, bathrooms and the hotel exterior on Uxbridge Road, West London.">
-<meta property="og:url" content="https://www.hotel261.com/gallery">
-<meta property="og:image" content="https://hotel-261.vercel.app/images/site/hero-exterior.jpg">
-<meta property="og:image:width" content="1024">
-<meta property="og:image:height" content="768">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Gallery — Hotel 261">
-<meta name="twitter:description" content="Photo gallery of Hotel 261, Shepherd's Bush: rooms, bathrooms and the hotel exterior on Uxbridge Road, West London.">
-<meta name="twitter:image" content="https://hotel-261.vercel.app/images/site/hero-exterior.jpg">
+<title>Check Your Booking — Hotel 261</title>
+<meta name="description" content="Look up your Hotel 261 booking with your email and booking reference to check its status.">
+<link rel="canonical" href="https://www.hotel261.com/check-booking">
+<meta name="robots" content="noindex">
 <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-32.png">
 <link rel="apple-touch-icon" href="/images/site/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +24,7 @@
     <a href="/" style="--i:0" data-i18n="nav.home">Home</a>
     <a href="/about" style="--i:1" data-i18n="nav.about">About</a>
     <a href="/rooms" style="--i:2" data-i18n="nav.rooms">Rooms</a>
-    <a href="/gallery" class="active" style="--i:3" data-i18n="nav.gallery">Gallery</a>
+    <a href="/gallery" style="--i:3" data-i18n="nav.gallery">Gallery</a>
     <a href="/amenities" style="--i:4" data-i18n="nav.amenities">Amenities</a>
     <a href="/reviews" style="--i:5" data-i18n="nav.reviews">Reviews</a>
     <a href="/location" style="--i:6" data-i18n="nav.location">Location</a>
@@ -66,7 +55,7 @@
     <nav class="main-nav">
       <a href="/about" data-i18n="nav.about">About</a>
       <a href="/rooms" data-i18n="nav.rooms">Rooms</a>
-      <a href="/gallery" class="active" data-i18n="nav.gallery">Gallery</a>
+      <a href="/gallery" data-i18n="nav.gallery">Gallery</a>
       <a href="/amenities" data-i18n="nav.amenities">Amenities</a>
       <a href="/reviews" data-i18n="nav.reviews">Reviews</a>
       <a href="/location" data-i18n="nav.location">Location</a>
@@ -100,33 +89,53 @@
 
 <section class="hero hero--page">
   <div class="hero-media">
-    <img src="images/rooms/198063719.jpg" alt="Twin room with flowers at Hotel 261">
+    <img src="images/site/family-room.jpg" alt="Room at Hotel 261">
   </div>
   <div class="hero-scrim"></div>
   <div class="hero-inner">
-    <p class="hero-eyebrow load-in" style="--i:0" data-i18n="gallery.eyebrow">( Photo Gallery )</p>
+    <p class="hero-eyebrow load-in" style="--i:0" data-i18n="checkBooking.eyebrow">( Manage Your Stay )</p>
     <h1 class="hero-title">
-      <span class="line load-in" style="--i:1" data-i18n-html="gallery.heroTitle">A closer <em>look.</em></span>
+      <span class="line load-in" style="--i:1" data-i18n-html="checkBooking.heroTitle">Check your <em>booking.</em></span>
     </h1>
   </div>
 </section>
 
-<section class="gallery" style="padding-top:110px;">
-  <p class="section-sub reveal" style="max-width:620px; color:var(--ink-soft); margin-bottom:50px;" data-i18n="gallery.intro">Every photo below is from Hotel 261 &mdash; rooms, bathrooms and the building itself. Click any photo to view it full size.</p>
-  <div class="bento" id="bentoGrid"></div>
-</section>
-
-<section class="cta">
-  <p class="cta-eyebrow reveal"><span data-i18n="cta.eyebrow">( Ready when you are )</span></p>
-  <h2 class="cta-title reveal" data-i18n-html="cta.title">Your stay<br>starts here.</h2>
-  <div class="cta-actions reveal">
-    <a href="tel:+442087434411" class="btn btn-primary btn-lg magnetic" data-i18n="cta.callBtn">Call 020 8743 4411</a>
-    <a href="/rooms" class="btn btn-outline-light btn-lg magnetic" data-i18n="cta.viewRoomsBtn">View Rooms &amp; Rates</a>
+<section class="booking" style="padding-top:70px;">
+  <div class="section-head">
+    <span class="section-num">01</span>
+    <span class="section-label" data-i18n="checkBooking.findReservation">Find Your Reservation</span>
   </div>
-  <div class="trust-row on-dark reveal">
-    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l9 9-8 8-9-9V4h7Z"/><circle cx="8" cy="8" r="1.3" fill="currentColor" stroke="none"/></svg> <span data-i18n="trust.bestRate">Best rate, booked direct</span></span>
-    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> <span data-i18n="trust.securePayment">Secure payment via Stripe</span></span>
-    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> <span data-i18n="trust.instantConfirmation">Instant confirmation</span></span>
+  <p class="section-sub" style="max-width:620px; color:var(--ink-soft); margin-bottom:0;" data-i18n="checkBooking.intro">Enter the email address and booking reference from your confirmation to check your booking&rsquo;s status.</p>
+
+  <div class="booking-grid" style="margin-top:40px;">
+    <div class="booking-form" id="findBookingForm">
+      <div class="form-row">
+        <label data-i18n="checkBooking.emailAddress">Email address</label>
+        <input type="email" id="fbEmail" autocomplete="email" placeholder="you@example.com">
+      </div>
+      <div class="form-row">
+        <label data-i18n="success.bookingRef">Booking reference</label>
+        <input type="text" id="fbRef" autocomplete="off" placeholder="H261-000123">
+      </div>
+      <div class="form-error" id="fbError"></div>
+      <button type="button" class="btn btn-primary" id="fbSubmit" style="width:100%;" data-i18n="checkBooking.findBtn">Find My Booking</button>
+      <p class="form-note" data-i18n="checkBooking.refHint">Your booking reference was shown on your confirmation page and emailed to you by Stripe with your receipt.</p>
+    </div>
+
+    <div class="booking-summary" id="fbResult" style="display:none;">
+      <h3 data-i18n="checkBooking.yourBooking">Your booking</h3>
+      <div class="summary-row"><span data-i18n="success.bookingRef">Reference</span><b id="frRef">&mdash;</b></div>
+      <div class="summary-row"><span data-i18n="checkBooking.status">Status</span><b id="frStatus">&mdash;</b></div>
+      <div class="summary-row"><span data-i18n="book.room">Room</span><b id="frRoom">&mdash;</b></div>
+      <div class="summary-row"><span data-i18n="search.checkin">Check-in</span><b id="frCheckIn">&mdash;</b></div>
+      <div class="summary-row"><span data-i18n="search.checkout">Check-out</span><b id="frCheckOut">&mdash;</b></div>
+      <div class="summary-row"><span data-i18n="search.guestsLabel">Guests</span><b id="frGuests">&mdash;</b></div>
+      <div class="summary-total"><span data-i18n="book.total">Total</span><b id="frTotal">&mdash;</b></div>
+      <div class="summary-alt">
+        <p data-i18n="checkBooking.needChange">Need to change or cancel your booking?</p>
+        <a href="tel:+442087434411" class="btn btn-outline magnetic" style="width:100%;" data-i18n="cta.callBtn">Call 020 8743 4411</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -163,18 +172,8 @@
   </div>
 </footer>
 
-<div class="lightbox" id="lightbox">
-  <button class="lightbox-close" id="lightboxClose" aria-label="Close" data-i18n-attr="aria-label:gallery.close">&times;</button>
-  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous" data-i18n-attr="aria-label:gallery.previous">&#10094;</button>
-  <img src="" alt="" id="lightboxImg">
-  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next" data-i18n-attr="aria-label:gallery.next">&#10095;</button>
-</div>
-
-<a href="tel:+442087434411" class="mobile-bar">
-  <span data-i18n="common.callToBookBar">Call to book &mdash; 020 8743 4411</span>
-</a>
-
 <script src="js/i18n.js"></script>
 <script src="js/script.js"></script>
+<script src="js/booking.js"></script>
 </body>
 </html>

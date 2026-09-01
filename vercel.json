@@ -9,7 +9,8 @@
     { "source": "/reviews", "destination": "/reviews.html" },
     { "source": "/location", "destination": "/location.html" },
     { "source": "/book", "destination": "/book.html" },
-    { "source": "/booking-success", "destination": "/booking-success.html" }
+    { "source": "/booking-success", "destination": "/booking-success.html" },
+    { "source": "/check-booking", "destination": "/check-booking.html" }
   ],
   "redirects": [
     { "source": "/index.html", "destination": "/", "statusCode": 308 },
@@ -21,6 +22,7 @@
     { "source": "/reviews.html", "destination": "/reviews", "statusCode": 308 },
     { "source": "/location.html", "destination": "/location", "statusCode": 308 },
     { "source": "/book.html", "destination": "/book", "statusCode": 308 },
-    { "source": "/booking-success.html", "destination": "/booking-success", "statusCode": 308 }
+    { "source": "/booking-success.html", "destination": "/booking-success", "statusCode": 308 },
+    { "source": "/check-booking.html", "destination": "/check-booking", "statusCode": 308 }
   ]
 }

@@ -16,6 +16,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname)));
 
+app.post('/api/create-checkout-session', require('./api/create-checkout-session'));
+app.get('/api/verify-session', require('./api/verify-session'));
+app.post('/api/find-booking', require('./api/find-booking'));
+
 function requireAdmin(req, res, next) {
   const authorization = req.headers.authorization || '';
   const token = authorization.startsWith('Bearer ') ? authorization.slice(7) : req.headers['x-admin-token'];

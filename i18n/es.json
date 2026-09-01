@@ -1,0 +1,335 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "rooms": "Habitaciones",
+    "gallery": "Galería",
+    "amenities": "Servicios",
+    "reviews": "Opiniones",
+    "location": "Ubicación"
+  },
+  "common": {
+    "reserve": "Reservar",
+    "reviewsWord": "opiniones",
+    "toggleDarkMode": "Activar modo oscuro",
+    "toggleMenu": "Abrir menú",
+    "callToBookBar": "Llame para reservar &mdash; 020 8743 4411"
+  },
+  "search": {
+    "checkin": "Entrada",
+    "checkout": "Salida",
+    "guestsLabel": "Huéspedes",
+    "done": "Listo",
+    "checkAvailability": "Comprobar disponibilidad",
+    "decreaseGuests": "Reducir número de huéspedes",
+    "increaseGuests": "Aumentar número de huéspedes",
+    "guestWord": "huésped",
+    "guestsWord": "huéspedes"
+  },
+  "trust": {
+    "bestRate": "Mejor tarifa, reserva directa",
+    "securePayment": "Pago seguro con Stripe",
+    "instantConfirmation": "Confirmación instantánea"
+  },
+  "cta": {
+    "eyebrow": "( Cuando esté listo )",
+    "title": "Su estancia<br>empieza aquí.",
+    "callBtn": "Llame al 020 8743 4411",
+    "viewRoomsBtn": "Ver habitaciones y tarifas",
+    "bookDirectBtn": "Reservar directamente"
+  },
+  "footer": {
+    "visit": "Visítenos",
+    "explore": "Explorar",
+    "guestInfo": "Información para huéspedes",
+    "locationInfo": "Ubicación e información",
+    "googleReview": "Déjenos una opinión en Google",
+    "bookDirect": "Reservar directamente",
+    "checkBooking": "Consultar reserva",
+    "rights": "Todos los derechos reservados."
+  },
+  "tag": {
+    "ensuite": "Baño privado",
+    "flatscreenTv": "TV de pantalla plana",
+    "freeWifi": "WiFi gratis",
+    "teaCoffee": "Té y café"
+  },
+  "room": {
+    "from": "Desde",
+    "perNight": "/noche",
+    "checkAvailability": "Comprobar disponibilidad &rarr;",
+    "single": {
+      "name": "Habitación Individual",
+      "desc": "1 cama individual &middot; 1 persona. Una habitación compacta y tranquila para viajeros solos &mdash; todo lo necesario, sin nada de más."
+    },
+    "twin": {
+      "name": "Habitación Twin",
+      "desc": "2 camas individuales &middot; 2 personas. Ideal para amigos que viajan juntos y viajes de negocios cortos."
+    },
+    "double12": {
+      "name": "Habitación Doble",
+      "small": "(1&ndash;2 adultos)",
+      "desc": "1 cama de matrimonio &middot; 1&ndash;2 personas. Precio flexible tanto si viaja solo como en pareja."
+    },
+    "double": {
+      "name": "Habitación Doble",
+      "desc": "1 cama de matrimonio &middot; 2 personas. Nuestra doble clásica, cálida y cuidada, para parejas y escapadas urbanas."
+    },
+    "triple": {
+      "name": "Habitación Triple",
+      "desc": "3 camas individuales &middot; 3 personas. Espacio adicional para grupos pequeños sin pagar el precio de una suite."
+    },
+    "quad": {
+      "name": "Habitación Cuádruple",
+      "desc": "2 camas de matrimonio &middot; 4 personas. Amplia para dos parejas o una familia de cuatro."
+    },
+    "family": {
+      "name": "Habitación Familiar",
+      "desc": "2 camas individuales y 1 de matrimonio &middot; hasta 5 personas. Nuestra habitación más grande, pensada para familias."
+    }
+  },
+  "stats": {
+    "rating": "Valoración de huéspedes en Google",
+    "reviews": "opiniones en Google",
+    "roomTypes": "tipos de habitación",
+    "walkToTube": "minutos andando al metro"
+  },
+  "amenity": {
+    "wifi": {
+      "title": "WiFi gratis",
+      "desc": "WiFi gratuito en todo el hotel y en cada habitación, sin coste adicional."
+    },
+    "parking": {
+      "title": "Aparcamiento privado",
+      "desc": "Aparcamiento en el hotel desde 15&nbsp;£/día, válido de 14h a la llegada a 11h a la salida. Contáctenos con antelación para reservar plaza, ya que son limitadas."
+    },
+    "family": {
+      "title": "Habitaciones familiares",
+      "desc": "Amplias habitaciones familiares para hasta cinco huéspedes &mdash; dos camas individuales y una de matrimonio, ideales para familias o grupos pequeños."
+    },
+    "heating": {
+      "title": "Calefacción",
+      "desc": "Todas las habitaciones tienen calefacción para su comodidad durante todo el año, sea cual sea el clima londinense."
+    },
+    "housekeeping": {
+      "title": "Limpieza diaria",
+      "desc": "Las habitaciones se limpian a diario. La ropa de cama y las toallas se cambian cada quinto día de su estancia &mdash; simplemente deje las toallas usadas en el suelo."
+    },
+    "luggage": {
+      "title": "Consigna de equipaje",
+      "desc": "Deje o recoja su equipaje a la llegada o el día de salida &mdash; la consigna el día de salida es solo para ese mismo día."
+    },
+    "breakfast": {
+      "title": "Desayuno cerca",
+      "desc": "Desayuno inglés o italiano servido de 8:00 a 11:30 en Little Napoli, a cinco minutos andando. Pida un vale en recepción y disfrute de un 15&nbsp;% de descuento en el resto de comidas."
+    },
+    "smokeFree": {
+      "title": "Hotel libre de humo",
+      "desc": "Somos un establecimiento libre de humo. Hay una zona de fumadores habilitada en el exterior, alejada de la entrada."
+    },
+    "ensuite": {
+      "title": "Baños privados",
+      "desc": "Cada habitación cuenta con su propio baño con ducha, toallas y artículos de aseo incluidos."
+    },
+    "tv": {
+      "title": "TV de pantalla plana y satélite",
+      "desc": "Canales de satélite en una TV de pantalla plana en cada habitación."
+    },
+    "teaCoffee": {
+      "title": "Té y café",
+      "desc": "Hervidor eléctrico y lo necesario para preparar té/café en cada habitación, además de un microondas compartido para huéspedes."
+    }
+  },
+  "home": {
+    "eyebrow": "( Shepherd&rsquo;s Bush &middot; Oeste de Londres )",
+    "title1": "Un rincón tranquilo",
+    "title2": "del <em>Oeste de Londres,</em>",
+    "title3": "hecho para descansar.",
+    "heroSub": "Un hotel familiar desde hace décadas &mdash; habitaciones con baño privado, WiFi gratis y aparcamiento privado, a un corto paseo de Westfield London.",
+    "viewRoomsBtn": "Ver habitaciones",
+    "callToBookBtn": "Llamar para reservar",
+    "aboutLabel": "Sobre el hotel",
+    "aboutP1": "Situado en una tranquila calle de Shepherd&rsquo;s Bush, recibimos a nuestros huéspedes en el Oeste de Londres con habitaciones amplias, aparcamiento en el hotel y un trato genuinamente cercano.",
+    "aboutP2": "Estamos a un corto paseo de Westfield London, de varios bares y cafés de la zona, y bien situados para Wembley, el Hammersmith Apollo y el estadio de los Queens Park Rangers.",
+    "readStory": "Lea nuestra historia &rarr;",
+    "roomsTitle": "Siete habitaciones.<br>Una estancia fácil.",
+    "seeAllRooms": "Ver todas las habitaciones &rarr;",
+    "viewAll7": "Ver las 7 habitaciones y tarifas",
+    "closerLook": "Un vistazo de cerca",
+    "viewFullGallery": "Ver la galería completa",
+    "amenitiesTitle": "Todo lo que necesita,<br>nada de más.",
+    "amenity1desc": "En todo el hotel y en cada habitación.",
+    "amenity2desc": "En el hotel, desde 15&nbsp;£/día.",
+    "amenity3desc": "Para hasta cinco huéspedes.",
+    "amenity4desc": "A 5 minutos, en Little Napoli.",
+    "seeAllAmenities": "Ver todos los servicios",
+    "ratedByGuests": "Valorado por<br>nuestros huéspedes",
+    "readGuestReviews": "Leer opiniones de huéspedes &rarr;"
+  },
+  "about": {
+    "eyebrow": "( Nuestra historia )",
+    "heroTitle": "Sobre <em>Hotel 261</em>",
+    "whoWeAre": "Quiénes somos",
+    "lead": "Sencillo, cómodo, y gestionado por personas que realmente viven aquí &mdash; esa es toda la idea detrás de Hotel 261.",
+    "p1": "Situado en una tranquila calle de Shepherd&rsquo;s Bush, Hotel 261 recibe a sus huéspedes en el Oeste de Londres con habitaciones amplias, aparcamiento en el hotel y un trato genuinamente cercano. Cada habitación incluye TV vía satélite, lo necesario para preparar té y café, y un frigorífico, con un microondas compartido también disponible.",
+    "p2": "Estamos a un corto paseo del centro comercial Westfield London, de varios bares y cafés del Oeste de Londres, y bien situados para Wembley, el Hammersmith Apollo y el estadio de fútbol de los Queens Park Rangers &mdash; poco más de 10 minutos andando. La estación de metro Shepherd&rsquo;s Bush Market (líneas Circle y Hammersmith &amp; City) está a 15 minutos andando.",
+    "p3": "Somos un hotel familiar de 2 estrellas, muy popular entre viajeros solos y estancias cortas de una noche &mdash; sencillo y cómodo antes que ostentoso, a un precio que tiene sentido para el Oeste de Londres.",
+    "exploreRooms": "Explore nuestras habitaciones &rarr;",
+    "whatGuestsGet": "Lo que ofrecemos a nuestros huéspedes",
+    "g1": "<strong>Desayuno inglés o italiano</strong> disponible a cinco minutos andando en Little Napoli, con vales gestionados en recepción.",
+    "g2": "<strong>Aparcamiento en el hotel</strong> disponible por 15&nbsp;£/día, según disponibilidad &mdash; muy práctico para un hotel tan cerca del centro de Londres.",
+    "g3": "<strong>Limpieza diaria</strong> que mantiene las habitaciones impecables durante toda su estancia, y guardamos con gusto su equipaje el día de salida.",
+    "g4": "<strong>Baños privados</strong> en cada habitación, junto con TV de pantalla plana, canales de satélite y WiFi gratis en todo el edificio.",
+    "g5": "<strong>Habitaciones familiares</strong> para hasta cinco huéspedes &mdash; útiles para familiares de visita o grupos pequeños que quieran alojarse juntos.",
+    "g6": "Somos un hotel libre de humo con una zona de fumadores exterior habilitada, y lo bastante tranquilo como para que los viajeros solos nos valoren constantemente muy bien en cuanto a comodidad."
+  },
+  "rooms": {
+    "eyebrow": "( Habitaciones y Tarifas )",
+    "eyebrowLabel": "Habitaciones y Tarifas",
+    "title1": "Siete habitaciones.",
+    "title2": "Una estancia <em>fácil.</em>",
+    "intro": "Todas las habitaciones incluyen baño privado, TV de pantalla plana, canales de satélite y WiFi gratis. Reserve online de forma segura a continuación, o llámenos directamente al 020 8743 4411."
+  },
+  "amenities": {
+    "eyebrow": "( Servicios )",
+    "title1": "Todo lo que necesita,",
+    "title2": "nada de <em>más.</em>"
+  },
+  "gallery": {
+    "eyebrow": "( Galería de fotos )",
+    "heroTitle": "Un vistazo de <em>cerca.</em>",
+    "intro": "Todas las fotos a continuación son de Hotel 261 &mdash; habitaciones, baños y el propio edificio. Haga clic en cualquier foto para verla a tamaño completo.",
+    "close": "Cerrar",
+    "previous": "Anterior",
+    "next": "Siguiente"
+  },
+  "reviews": {
+    "eyebrow": "( Opiniones de huéspedes )",
+    "title1": "Valorados por",
+    "title2": "nuestros <em>huéspedes.</em>",
+    "scoreCaption": "Basado en 367 opiniones verificadas de Google",
+    "scoreHighlight": "Los huéspedes mencionan con más frecuencia la buena relación calidad-precio, el personal amable y atento, y el fácil acceso al transporte público.",
+    "t1": "&ldquo;Uno de los mejores hoteles en los que me he alojado. Habitación muy limpia y grande, y el personal fue muy atento y amable.&rdquo;",
+    "t2": "&ldquo;Muy buena ubicación para explorar el Oeste de Londres &mdash; cerca de Westfield, el metro y muchos sitios para comer. Buena relación calidad-precio para una estancia corta.&rdquo;",
+    "t3": "&ldquo;Personal amable y atento, y un lugar tranquilo para descansar. Justo lo que necesitábamos para una escala de una noche.&rdquo;",
+    "t4": "&ldquo;Sencillo, limpio y tal como se describía. El personal se esforzó por ayudarnos con una llegada tardía.&rdquo;",
+    "verifiedGuest": "Huésped verificado &middot; Opiniones de Google",
+    "previousReview": "Opinión anterior",
+    "nextReview": "Siguiente opinión",
+    "enjoyedStay": "( ¿Disfrutó de su estancia? )",
+    "tellOthers": "Cuente a otros lo que le pareció.",
+    "ctaSub": "Una opinión rápida en Google ayuda a otros viajeros a encontrarnos, y nos ayuda a saber qué estamos haciendo bien.",
+    "leaveReview": "Dejar una opinión en Google"
+  },
+  "location": {
+    "eyebrow": "( Ubicación y Contacto )",
+    "title1": "Encuéntrenos en",
+    "title2": "Shepherd&rsquo;s <em>Bush.</em>",
+    "heading": "Shepherd&rsquo;s Bush,<br>Oeste de Londres",
+    "li1": {
+      "label": "Westfield London",
+      "value": "~1,6&nbsp;km"
+    },
+    "li2": {
+      "label": "Estación Shepherd&rsquo;s Bush Market",
+      "value": "15 min andando"
+    },
+    "li3": {
+      "label": "Estadio de fútbol QPR",
+      "value": "10&ndash;14 min andando"
+    },
+    "li4": {
+      "label": "Hammersmith Apollo",
+      "value": "bien situado"
+    },
+    "openMaps": "Abrir en Google Maps &rarr;",
+    "contactBooking": "Contacto y Reservas",
+    "contactLead": "Llame directamente a recepción para obtener la mejor tarifa, o consulte la disponibilidad online.",
+    "phoneLabel": "Teléfono:",
+    "addressLabel": "Dirección:",
+    "hoursLabel": "Horario de recepción:",
+    "hoursValue": "8:00&ndash;23:30 todos los días",
+    "callToBook": "Llamar para reservar",
+    "goodToKnow": "Información útil",
+    "houseRules": "Normas del hotel"
+  },
+  "faq": {
+    "q1": "Entrada y salida",
+    "a1": "Entrada de 14:00 a 23:30. Salida de 08:00 a 11:00. Por favor, llegue antes de las 23:30, ya que el hotel permanece cerrado durante la noche. La entrada anticipada no puede garantizarse, pero le acomodaremos si su habitación está lista.",
+    "q2": "Identificación y depósito",
+    "a2": "Se requiere una identificación oficial con fotografía en el momento del check-in (no se aceptan identificaciones digitales o escaneadas). Se solicita un depósito de 20&nbsp;£ en efectivo o una identificación para las llaves de la habitación.",
+    "q3": "Desayuno",
+    "a3": "Desayuno inglés o italiano servido de 08:00 a 11:30 en Little Napoli, a 5 minutos andando. Pida un vale en recepción &mdash; y disfrute de un 15&nbsp;% de descuento en el resto de comidas.",
+    "q4": "Aparcamiento",
+    "a4": "Aparcamiento limitado en el hotel, 15&nbsp;£/día de 14:00 a la llegada a 11:00 a la salida. Contáctenos con antelación para reservar plaza, ya que la disponibilidad es limitada.",
+    "q5": "Pago",
+    "a5": "Se acepta efectivo en el hotel. Las reservas online pueden pagarse por adelantado o a la llegada, según la tarifa que elija.",
+    "q6": "Mascotas y fumar",
+    "a6": "Somos un hotel libre de humo con una zona de fumadores exterior habilitada. No se admiten mascotas.",
+    "q7": "Equipaje y bicicletas",
+    "a7": "El equipaje puede guardarse a la llegada o el día de salida (la consigna el día de salida es solo para ese mismo día). No se permiten bicicletas dentro del hotel; pueden encadenarse fuera, junto al aparcamiento, bajo su propia responsabilidad."
+  },
+  "book": {
+    "eyebrow": "( Reservar directamente )",
+    "heroTitle": "Reserve su <em>habitación.</em>",
+    "availableRooms": "Habitaciones disponibles",
+    "availableRoomsSub": "Elija sus fechas y número de huéspedes arriba, y reserve la habitación que más le convenga. El pago se procesa de forma segura con Stripe &mdash; nunca vemos ni almacenamos los datos de su tarjeta.",
+    "preferPhone": "¿Prefiere reservar por teléfono?",
+    "alreadyBooked": "¿Ya tiene una reserva?",
+    "checkStatusLink": "Consulte el estado de su reserva",
+    "completeBooking": "Complete su reserva",
+    "stepDetails": "Sus datos",
+    "stepPayment": "Pago",
+    "changeRoom": "Cambiar de habitación",
+    "fullName": "Nombre completo",
+    "fullNamePlaceholder": "Tal como aparece en su documento de identidad",
+    "email": "Correo electrónico",
+    "phoneNumber": "Número de teléfono",
+    "specialRequests": "Solicitudes especiales",
+    "specialRequestsPlaceholder": "Llegada tardía, planta alta, habitación accesible&hellip;",
+    "optional": "(opcional)",
+    "continueToPayment": "Continuar al pago",
+    "backToDetails": "Volver a sus datos",
+    "paymentDesc": "Será redirigido al proceso de pago seguro de Stripe para introducir los datos de su tarjeta. Nunca vemos ni almacenamos el número de su tarjeta.",
+    "encryption": "Cifrado de 256 bits",
+    "paySecurely": "Pagar de forma segura &mdash;&nbsp;",
+    "yourStay": "Su estancia",
+    "room": "Habitación",
+    "nights": "Noches",
+    "total": "Total",
+    "policy1": "Pague ahora, directamente al hotel &mdash; sin comisiones de intermediarios.",
+    "policy2": "Cancelación gratuita hasta 48 horas antes de la entrada.",
+    "reserveBtn": "Quiero esta habitación",
+    "nightsTotalOne": "{n} noche en total",
+    "nightsTotalMany": "{n} noches en total",
+    "perNightPhrase": "por noche",
+    "tooSmall": "Capacidad máxima {max} &mdash; demasiado pequeña para {guests} huéspedes"
+  },
+  "success": {
+    "confirming": "Confirmando su reserva&hellip;",
+    "confirmed": "( Reserva confirmada )",
+    "thankYou": "Gracias",
+    "seeYouSoon": "Nos vemos pronto.",
+    "receiptSent": "Se ha enviado un recibo a su correo electrónico. Estos son los detalles de su reserva:",
+    "bookingRef": "Referencia de reserva",
+    "paid": "Pagado",
+    "idNotice": "Traiga una identificación oficial con fotografía en el check-in (14:00&ndash;23:30). Guarde la referencia de su reserva &mdash; puede consultar su estancia en cualquier momento en <a class=\"text-link\" href=\"/check-booking\">Consultar reserva</a>. ¿Preguntas? Llámenos al <a class=\"text-link\" href=\"tel:+442087434411\">020 8743 4411</a>.",
+    "wentWrong": "( Algo ha ido mal )",
+    "couldNotConfirm": "No hemos podido confirmar esa reserva."
+  },
+  "checkBooking": {
+    "eyebrow": "( Gestione su estancia )",
+    "heroTitle": "Consulte su <em>reserva.</em>",
+    "findReservation": "Encuentre su reserva",
+    "intro": "Introduzca el correo electrónico y la referencia de su confirmación para consultar el estado de su reserva.",
+    "emailAddress": "Correo electrónico",
+    "findBtn": "Buscar mi reserva",
+    "refHint": "Su referencia de reserva se mostró en la página de confirmación y se le envió por correo electrónico junto con su recibo de Stripe.",
+    "yourBooking": "Su reserva",
+    "status": "Estado",
+    "needChange": "¿Necesita modificar o cancelar su reserva?",
+    "statusPending": "Pago pendiente",
+    "statusConfirmed": "Confirmada",
+    "statusCancelled": "Cancelada"
+  }
+}

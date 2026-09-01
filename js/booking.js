@@ -21,6 +21,14 @@ function nightsBetween(a, b) {
   const n = Math.round(ms / 86400000);
   return isNaN(n) ? 0 : n;
 }
+function t(key, fallback) {
+  const val = window.HOTEL261_I18N && window.HOTEL261_I18N.t(key);
+  return val !== undefined ? val : fallback;
+}
+function formatBookingRef(id) {
+  if (!id) return '—';
+  return 'H261-' + String(id).padStart(6, '0');
+}
 function fmtDateShort(d) {
   if (!d) return '—';
   const dt = new Date(d + 'T00:00:00');
@@ -46,7 +54,8 @@ function initGuestsDropdown(root, onChange) {
     countEl.textContent = count;
     minus.disabled = count <= MIN;
     plus.disabled = count >= MAX;
-    toggle.textContent = count + (count === 1 ? ' guest' : ' guests');
+    const guestWord = count === 1 ? t('search.guestWord', 'guest') : t('search.guestsWord', 'guests');
+    toggle.textContent = count + ' ' + guestWord;
     if (notify && onChange) onChange(count);
   }
   minus.addEventListener('click', (e) => { e.stopPropagation(); if (count > MIN) { count--; render(true); } });
@@ -62,6 +71,7 @@ function initGuestsDropdown(root, onChange) {
   });
 
   render(false);
+  document.addEventListener('i18n:ready', () => render(false));
   return { get: () => count, set: (v) => { count = Math.min(MAX, Math.max(MIN, v)); render(true); } };
 }
 
@@ -157,33 +167,40 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       item.id = 'room-' + room.id;
 
       const totalPrice = stay.nights > 0 ? room.price * stay.nights : room.price;
-      const nightlyLabel = stay.nights > 0 ? `${stay.nights} night${stay.nights > 1 ? 's' : ''} total` : 'per night';
-      const reviewText = `${room.rating.toFixed(1)} · ${room.reviews} reviews`;
+      const nightlyLabel = stay.nights > 0
+        ? t('book.' + (stay.nights > 1 ? 'nightsTotalMany' : 'nightsTotalOne'), `${stay.nights} night${stay.nights > 1 ? 's' : ''} total`).replace('{n}', stay.nights)
+        : t('book.perNightPhrase', 'per night');
+      const reviewText = `${room.rating.toFixed(1)} · ${room.reviews} ${t('common.reviewsWord', 'reviews')}`;
       const tags = room.perks.map((perk) => `<span>${perk}</span>`).join('');
+      const roomName = t('room.' + room.id + '.name', room.label);
+      const roomSmall = room.small ? t('room.' + room.id + '.small', room.small) : '';
+      const roomDesc = t('room.' + room.id + '.desc', room.nights_label + ' · ' + room.desc);
+      const tooSmallNote = t('book.tooSmall', 'Sleeps up to {max} — too small for {guests} guests')
+        .replace('{max}', room.maxGuests).replace('{guests}', stay.guests);
 
       item.innerHTML = `
-        <div class="rl-media booking-card__media"><img src="${room.img}" alt="${room.label} at Hotel 261" loading="lazy"></div>
+        <div class="rl-media booking-card__media"><img src="${room.img}" alt="${roomName} at Hotel 261" loading="lazy"></div>
         <div class="rl-body booking-card__body">
           <div class="booking-card__header">
             <div>
               <div class="booking-card__badge">${room.badge}</div>
-              <h3>${room.label}${room.small ? ` <small>${room.small}</small>` : ''}</h3>
+              <h3>${roomName}${roomSmall ? ` <small>${roomSmall}</small>` : ''}</h3>
             </div>
             <div class="booking-card__score">
               <span class="score-pill">${room.rating.toFixed(1)}</span>
               <small>${reviewText}</small>
             </div>
           </div>
-          <p class="rl-meta">${room.nights_label} · ${room.desc}</p>
+          <p class="rl-meta">${roomDesc}</p>
           <div class="rl-tags">${tags}</div>
-          ${overGuests ? `<p class="rl-note">Sleeps up to ${room.maxGuests} — too small for ${stay.guests} guests</p>` : ''}
+          ${overGuests ? `<p class="rl-note">${tooSmallNote}</p>` : ''}
         </div>
         <div class="rl-price booking-card__price">
           <div class="booking-card__price-inner">
             <span class="amount">£${totalPrice.toLocaleString('en-GB')}</span>
             <span class="per">${nightlyLabel}</span>
           </div>
-          <button type="button" class="btn btn-primary rl-reserve" ${overGuests ? 'disabled' : ''}>I&rsquo;ll Reserve</button>
+          <button type="button" class="btn btn-primary rl-reserve" ${overGuests ? 'disabled' : ''}>${t('book.reserveBtn', "I&rsquo;ll Reserve")}</button>
         </div>
       `;
 
@@ -197,6 +214,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
   }
 
   renderRooms();
+  document.addEventListener('i18n:ready', renderRooms);
 
   /* ---------- Checkout: room -> your details -> payment ---------- */
   const roomsSection = document.getElementById('roomsSection');
@@ -234,7 +252,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     document.getElementById('csNights').textContent = stay.nights || '—';
     document.getElementById('csGuests').textContent = stay.guests;
     document.getElementById('csTotal').textContent = '£' + totalPrice.toLocaleString('en-GB');
-    coGuestsDisplay.value = stay.guests + (stay.guests === 1 ? ' guest' : ' guests');
+    coGuestsDisplay.value = stay.guests + ' ' + (stay.guests === 1 ? t('search.guestWord', 'guest') : t('search.guestsWord', 'guests'));
     coPayAmount.textContent = '£' + totalPrice.toLocaleString('en-GB');
   }
 
@@ -369,6 +387,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
         return;
       }
       document.getElementById('resultName').textContent = data.guestName ? ', ' + data.guestName.split(' ')[0] : '';
+      document.getElementById('rRef').textContent = formatBookingRef(data.bookingRef);
       document.getElementById('rRoom').textContent = data.roomLabel || '—';
       document.getElementById('rCheckIn').textContent = fmtDateShort(data.checkIn);
       document.getElementById('rCheckOut').textContent = fmtDateShort(data.checkOut);
@@ -382,4 +401,65 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       errorMsg.textContent = 'We couldn’t reach the server to confirm this booking.';
       show(errorBox);
     });
+})();
+
+/* ---------- Check Booking page ---------- */
+(function () {
+  const form = document.getElementById('findBookingForm');
+  const resultBox = document.getElementById('fbResult');
+  if (!form || !resultBox) return;
+
+  const emailInput = document.getElementById('fbEmail');
+  const refInput = document.getElementById('fbRef');
+  const errorBox = document.getElementById('fbError');
+  const submitBtn = document.getElementById('fbSubmit');
+
+  const STATUS_LABELS = {
+    pending: t('checkBooking.statusPending', 'Payment pending'),
+    confirmed: t('checkBooking.statusConfirmed', 'Confirmed'),
+    cancelled: t('checkBooking.statusCancelled', 'Cancelled'),
+  };
+
+  function setError(msg) {
+    errorBox.textContent = msg;
+    errorBox.classList.toggle('visible', !!msg);
+  }
+
+  submitBtn.addEventListener('click', () => {
+    setError('');
+    resultBox.style.display = 'none';
+
+    const email = emailInput.value.trim();
+    const reference = refInput.value.trim();
+    if (!email) { setError('Please enter the email address you booked with.'); emailInput.focus(); return; }
+    if (!reference) { setError('Please enter your booking reference.'); refInput.focus(); return; }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Searching…';
+
+    fetch('/api/find-booking', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, reference }),
+    })
+      .then(res => res.json().then(data => ({ ok: res.ok, data })))
+      .then(({ ok, data }) => {
+        if (!ok) throw new Error((data && data.error) || 'We couldn’t find that booking.');
+
+        document.getElementById('frRef').textContent = formatBookingRef(data.bookingRef);
+        document.getElementById('frStatus').textContent = STATUS_LABELS[data.status] || data.status;
+        document.getElementById('frRoom').textContent = data.roomLabel || '—';
+        document.getElementById('frCheckIn').textContent = fmtDateShort(data.checkIn);
+        document.getElementById('frCheckOut').textContent = fmtDateShort(data.checkOut);
+        document.getElementById('frGuests').textContent = data.guests || '—';
+        document.getElementById('frTotal').textContent = '£' + Number(data.totalAmount).toLocaleString('en-GB');
+        resultBox.style.display = 'block';
+        resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      })
+      .catch(err => setError(err.message))
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Find My Booking';
+      });
+  });
 })();

@@ -28,13 +28,14 @@ module.exports = async (req, res) => {
       return res.status(200).json({ paid: false });
     }
 
-    await pool.query(
-      `UPDATE hotel_bookings SET status = 'confirmed', updated_at = NOW() WHERE stripe_session_id = $1;`,
+    const updated = await pool.query(
+      `UPDATE hotel_bookings SET status = 'confirmed', updated_at = NOW() WHERE stripe_session_id = $1 RETURNING id;`,
       [session_id]
     );
 
     return res.status(200).json({
       paid: true,
+      bookingRef: updated.rows[0] ? updated.rows[0].id : null,
       amountTotal: session.amount_total,
       currency: session.currency,
       customerEmail: session.customer_details ? session.customer_details.email : null,

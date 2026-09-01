@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>(function(){try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Location &amp; Contact — Hotel 261</title>
@@ -31,13 +32,13 @@
 
 <div class="menu-overlay" id="menuOverlay">
   <nav class="menu-links">
-    <a href="/" style="--i:0">Home</a>
-    <a href="/about" style="--i:1">About</a>
-    <a href="/rooms" style="--i:2">Rooms</a>
-    <a href="/gallery" style="--i:3">Gallery</a>
-    <a href="/amenities" style="--i:4">Amenities</a>
-    <a href="/reviews" style="--i:5">Reviews</a>
-    <a href="/location" class="active" style="--i:6">Location</a>
+    <a href="/" style="--i:0" data-i18n="nav.home">Home</a>
+    <a href="/about" style="--i:1" data-i18n="nav.about">About</a>
+    <a href="/rooms" style="--i:2" data-i18n="nav.rooms">Rooms</a>
+    <a href="/gallery" style="--i:3" data-i18n="nav.gallery">Gallery</a>
+    <a href="/amenities" style="--i:4" data-i18n="nav.amenities">Amenities</a>
+    <a href="/reviews" style="--i:5" data-i18n="nav.reviews">Reviews</a>
+    <a href="/location" class="active" style="--i:6" data-i18n="nav.location">Location</a>
   </nav>
   <div class="menu-foot">
     <a href="tel:+442087434411">020 8743 4411</a>
@@ -55,24 +56,39 @@
       </div>
       <div class="utility-right">
         <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2.5l2.9 6 6.6.7-4.9 4.5 1.3 6.5L12 16.9 6.1 20.2l1.3-6.5-4.9-4.5 6.6-.7L12 2.5Z"/></svg>
-        <b>3.3</b>&nbsp;&middot; <a href="/reviews">367&nbsp;reviews</a>
+        <b>3.3</b>&nbsp;&middot; <a href="/reviews">367&nbsp;<span data-i18n="common.reviewsWord">reviews</span></a>
       </div>
     </div>
   </div>
   <div class="nav-row">
   <div class="header-inner">
-    <a href="/" class="logo"><img src="/images/site/logo.png" alt="Hotel 261" class="logo-img"></a>
+    <a href="/" class="logo"><img src="/images/site/logo.png" alt="Hotel 261" class="logo-img logo-light"><img src="/images/site/logo-dark.png" alt="Hotel 261" class="logo-img logo-dark"></a>
     <nav class="main-nav">
-      <a href="/about">About</a>
-      <a href="/rooms">Rooms</a>
-      <a href="/gallery">Gallery</a>
-      <a href="/amenities">Amenities</a>
-      <a href="/reviews">Reviews</a>
-      <a href="/location" class="active">Location</a>
+      <a href="/about" data-i18n="nav.about">About</a>
+      <a href="/rooms" data-i18n="nav.rooms">Rooms</a>
+      <a href="/gallery" data-i18n="nav.gallery">Gallery</a>
+      <a href="/amenities" data-i18n="nav.amenities">Amenities</a>
+      <a href="/reviews" data-i18n="nav.reviews">Reviews</a>
+      <a href="/location" class="active" data-i18n="nav.location">Location</a>
     </nav>
     <div class="header-right">
-      <a href="/book" class="btn btn-pill magnetic">Reserve</a>
-      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-switch-toggle" id="langToggle" type="button" aria-label="Change language" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+          <span id="langCurrent">EN</span>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+          <button type="button" data-lang="en">English</button>
+          <button type="button" data-lang="fr">Français</button>
+          <button type="button" data-lang="es">Español</button>
+          <button type="button" data-lang="ar">العربية</button>
+          <button type="button" data-lang="it">Italiano</button>
+          <button type="button" data-lang="hi">हिन्दी</button>
+        </div>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" data-i18n-attr="aria-label:common.toggleDarkMode"><svg class="icon icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M4.6 4.6l1.85 1.85M17.55 17.55l1.85 1.85M2.5 12h2.6M18.9 12h2.6M4.6 19.4l1.85-1.85M17.55 6.45l1.85-1.85"/></svg><svg class="icon icon-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg></button>
+      <a href="/book" class="btn btn-pill magnetic" data-i18n="common.reserve">Reserve</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" data-i18n-attr="aria-label:common.toggleMenu" aria-expanded="false">
         <span></span><span></span>
       </button>
     </div>
@@ -88,10 +104,10 @@
   </div>
   <div class="hero-scrim"></div>
   <div class="hero-inner">
-    <p class="hero-eyebrow load-in" style="--i:0">( Location &amp; Contact )</p>
+    <p class="hero-eyebrow load-in" style="--i:0" data-i18n="location.eyebrow">( Location &amp; Contact )</p>
     <h1 class="hero-title">
-      <span class="line load-in" style="--i:1">Find us in</span>
-      <span class="line load-in" style="--i:2">Shepherd&rsquo;s <em>Bush.</em></span>
+      <span class="line load-in" style="--i:1" data-i18n="location.title1">Find us in</span>
+      <span class="line load-in" style="--i:2" data-i18n-html="location.title2">Shepherd&rsquo;s <em>Bush.</em></span>
     </h1>
   </div>
 </section>
@@ -99,15 +115,15 @@
 <section class="location" style="padding-top:110px;">
   <div class="location-grid">
     <div class="location-info reveal">
-      <h2>Shepherd&rsquo;s Bush,<br>West London</h2>
+      <h2 data-i18n-html="location.heading">Shepherd&rsquo;s Bush,<br>West London</h2>
       <p class="location-address">261&ndash;263 Uxbridge Road, Shepherd&rsquo;s Bush,<br>Hammersmith &amp; Fulham, London W12 9DS</p>
       <ul class="location-list">
-        <li><span>Westfield London</span><small>~1 mile</small></li>
-        <li><span>Shepherd&rsquo;s Bush Market Station</span><small>15 min walk</small></li>
-        <li><span>QPR Football Stadium</span><small>10&ndash;14 min walk</small></li>
-        <li><span>Hammersmith Apollo</span><small>well placed</small></li>
+        <li><span data-i18n="location.li1.label">Westfield London</span><small data-i18n="location.li1.value">~1 mile</small></li>
+        <li><span data-i18n="location.li2.label">Shepherd&rsquo;s Bush Market Station</span><small data-i18n="location.li2.value">15 min walk</small></li>
+        <li><span data-i18n="location.li3.label">QPR Football Stadium</span><small data-i18n="location.li3.value">10&ndash;14 min walk</small></li>
+        <li><span data-i18n="location.li4.label">Hammersmith Apollo</span><small data-i18n="location.li4.value">well placed</small></li>
       </ul>
-      <a class="text-link" href="https://www.google.com/maps/place/Hotel261/@51.5066159,-0.2470289,17z/data=!3m1!4b1!4m9!3m8!1s0x48760e2fab56d229:0x4f2c86709ba2f56!5m2!4m1!1i2!8m2!3d51.5066126!4d-0.244454!16s%2Fg%2F12mkw93y2" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+      <a class="text-link" href="https://www.google.com/maps/place/Hotel261/@51.5066159,-0.2470289,17z/data=!3m1!4b1!4m9!3m8!1s0x48760e2fab56d229:0x4f2c86709ba2f56!5m2!4m1!1i2!8m2!3d51.5066126!4d-0.244454!16s%2Fg%2F12mkw93y2" target="_blank" rel="noopener"><span data-i18n="location.openMaps">Open in Google Maps &rarr;</span></a>
     </div>
     <div class="location-map reveal">
       <iframe title="Map showing Hotel 261 location" src="https://www.google.com/maps?q=Hotel261,261+Uxbridge+Road,London,W12+9DS&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -118,17 +134,17 @@
 <section class="about" id="contact">
   <div class="section-head">
     <span class="section-num">01</span>
-    <span class="section-label">Contact &amp; Booking</span>
+    <span class="section-label" data-i18n="location.contactBooking">Contact &amp; Booking</span>
   </div>
   <div class="about-grid">
-    <h2 class="about-lead reveal">Call reception directly for the best rate, or check live availability online.</h2>
+    <h2 class="about-lead reveal" data-i18n="location.contactLead">Call reception directly for the best rate, or check live availability online.</h2>
     <div class="about-body reveal">
-      <p><strong>Phone:</strong> <a class="text-link" href="tel:+442087434411">020 8743 4411</a></p>
-      <p><strong>Address:</strong> 261&ndash;263 Uxbridge Road, Shepherd&rsquo;s Bush, London W12 9DS</p>
-      <p><strong>Reception hours:</strong> 8am&ndash;11:30pm daily</p>
+      <p><strong data-i18n="location.phoneLabel">Phone:</strong> <a class="text-link" href="tel:+442087434411">020 8743 4411</a></p>
+      <p><strong data-i18n="location.addressLabel">Address:</strong> 261&ndash;263 Uxbridge Road, Shepherd&rsquo;s Bush, London W12 9DS</p>
+      <p><strong data-i18n="location.hoursLabel">Reception hours:</strong> <span data-i18n="location.hoursValue">8am&ndash;11:30pm daily</span></p>
       <div class="cta-actions" style="justify-content:flex-start; margin-top:30px;">
-        <a href="tel:+442087434411" class="btn btn-primary magnetic">Call to Book</a>
-        <a href="/book" class="btn btn-outline magnetic">Book Direct</a>
+        <a href="tel:+442087434411" class="btn btn-primary magnetic" data-i18n="location.callToBook">Call to Book</a>
+        <a href="/book" class="btn btn-outline magnetic" data-i18n="footer.bookDirect">Book Direct</a>
       </div>
     </div>
   </div>
@@ -137,37 +153,37 @@
 <section class="info" style="padding-top:0;">
   <div class="section-head">
     <span class="section-num">02</span>
-    <span class="section-label">Good to Know</span>
+    <span class="section-label" data-i18n="location.goodToKnow">Good to Know</span>
   </div>
-  <h2 class="reveal">House rules</h2>
+  <h2 class="reveal" data-i18n="location.houseRules">House rules</h2>
   <div class="accordion reveal">
     <div class="acc-item">
-      <button class="acc-trigger">Check-in &amp; Check-out<span>+</span></button>
-      <div class="acc-panel"><div class="acc-panel-inner"><p>Check-in from 14:00&ndash;23:30. Check-out 08:00&ndash;11:00. Please arrive by 23:30 as the hotel is closed overnight. Early check-in cannot be guaranteed, but if your room is ready we&rsquo;ll accommodate you.</p></div></div>
+      <button class="acc-trigger"><span data-i18n="faq.q1">Check-in &amp; Check-out</span><span>+</span></button>
+      <div class="acc-panel"><div class="acc-panel-inner"><p data-i18n="faq.a1">Check-in from 14:00&ndash;23:30. Check-out 08:00&ndash;11:00. Please arrive by 23:30 as the hotel is closed overnight. Early check-in cannot be guaranteed, but if your room is ready we&rsquo;ll accommodate you.</p></div></div>
     </div>
     <div class="acc-item">
-      <button class="acc-trigger">ID &amp; Deposit<span>+</span></button>
-      <div class="acc-panel"><div class="acc-panel-inner"><p>A government-issued photo ID is required at check-in (digital or scanned IDs are not accepted). A £20 cash or ID deposit is required for room keys.</p></div></div>
+      <button class="acc-trigger"><span data-i18n="faq.q2">ID &amp; Deposit</span><span>+</span></button>
+      <div class="acc-panel"><div class="acc-panel-inner"><p data-i18n="faq.a2">A government-issued photo ID is required at check-in (digital or scanned IDs are not accepted). A £20 cash or ID deposit is required for room keys.</p></div></div>
     </div>
     <div class="acc-item">
-      <button class="acc-trigger">Breakfast<span>+</span></button>
-      <div class="acc-panel"><div class="acc-panel-inner"><p>Full English or Italian breakfast served 08:00&ndash;11:30 at Little Napoli, a 5-minute walk away. Ask reception for a voucher &mdash; and enjoy 15% off all other meals there too.</p></div></div>
+      <button class="acc-trigger"><span data-i18n="faq.q3">Breakfast</span><span>+</span></button>
+      <div class="acc-panel"><div class="acc-panel-inner"><p data-i18n="faq.a3">Full English or Italian breakfast served 08:00&ndash;11:30 at Little Napoli, a 5-minute walk away. Ask reception for a voucher &mdash; and enjoy 15% off all other meals there too.</p></div></div>
     </div>
     <div class="acc-item">
-      <button class="acc-trigger">Parking<span>+</span></button>
-      <div class="acc-panel"><div class="acc-panel-inner"><p>Limited on-site parking, £15/day from 14:00 on arrival to 11:00 on departure. Contact us ahead to reserve a space, as availability is limited.</p></div></div>
+      <button class="acc-trigger"><span data-i18n="faq.q4">Parking</span><span>+</span></button>
+      <div class="acc-panel"><div class="acc-panel-inner"><p data-i18n="faq.a4">Limited on-site parking, £15/day from 14:00 on arrival to 11:00 on departure. Contact us ahead to reserve a space, as availability is limited.</p></div></div>
     </div>
     <div class="acc-item">
-      <button class="acc-trigger">Payment<span>+</span></button>
-      <div class="acc-panel"><div class="acc-panel-inner"><p>Cash accepted on site. Online bookings can be paid in advance or on arrival, depending on the rate you choose.</p></div></div>
+      <button class="acc-trigger"><span data-i18n="faq.q5">Payment</span><span>+</span></button>
+      <div class="acc-panel"><div class="acc-panel-inner"><p data-i18n="faq.a5">Cash accepted on site. Online bookings can be paid in advance or on arrival, depending on the rate you choose.</p></div></div>
     </div>
     <div class="acc-item">
-      <button class="acc-trigger">Pets &amp; Smoking<span>+</span></button>
-      <div class="acc-panel"><div class="acc-panel-inner"><p>We are a smoke-free hotel with a designated outdoor smoking area. Pets are not permitted.</p></div></div>
+      <button class="acc-trigger"><span data-i18n="faq.q6">Pets &amp; Smoking</span><span>+</span></button>
+      <div class="acc-panel"><div class="acc-panel-inner"><p data-i18n="faq.a6">We are a smoke-free hotel with a designated outdoor smoking area. Pets are not permitted.</p></div></div>
     </div>
     <div class="acc-item">
-      <button class="acc-trigger">Luggage &amp; Bikes<span>+</span></button>
-      <div class="acc-panel"><div class="acc-panel-inner"><p>Luggage can be stored on arrival or departure day (departure storage is same-day only). Bicycles are not permitted inside the hotel; they may be chained outside by the car park at your own risk.</p></div></div>
+      <button class="acc-trigger"><span data-i18n="faq.q7">Luggage &amp; Bikes</span><span>+</span></button>
+      <div class="acc-panel"><div class="acc-panel-inner"><p data-i18n="faq.a7">Luggage can be stored on arrival or departure day (departure storage is same-day only). Bicycles are not permitted inside the hotel; they may be chained outside by the car park at your own risk.</p></div></div>
     </div>
   </div>
 </section>
@@ -176,38 +192,40 @@
 
 <footer class="site-footer">
   <div class="footer-top">
-    <a href="/" class="logo"><img src="/images/site/logo.png" alt="Hotel 261" class="logo-img"></a>
+    <a href="/" class="logo"><img src="/images/site/logo.png" alt="Hotel 261" class="logo-img logo-light"><img src="/images/site/logo-dark.png" alt="Hotel 261" class="logo-img logo-dark"></a>
     <div class="footer-cols">
       <div>
-        <h5>Visit</h5>
+        <h5 data-i18n="footer.visit">Visit</h5>
         <p>261&ndash;263 Uxbridge Road<br>Shepherd&rsquo;s Bush, London W12 9DS</p>
         <a href="tel:+442087434411">020 8743 4411</a>
       </div>
       <div>
-        <h5>Explore</h5>
-        <a href="/about">About</a>
-        <a href="/rooms">Rooms</a>
-        <a href="/gallery">Gallery</a>
-        <a href="/amenities">Amenities</a>
+        <h5 data-i18n="footer.explore">Explore</h5>
+        <a href="/about" data-i18n="nav.about">About</a>
+        <a href="/rooms" data-i18n="nav.rooms">Rooms</a>
+        <a href="/gallery" data-i18n="nav.gallery">Gallery</a>
+        <a href="/amenities" data-i18n="nav.amenities">Amenities</a>
       </div>
       <div>
-        <h5>Guest Info</h5>
-        <a href="/reviews">Reviews</a>
-        <a href="/location">Location &amp; Info</a>
-        <a href="https://www.google.com/maps/place/Hotel261/@51.5066159,-0.2470289,17z/data=!3m1!4b1!4m9!3m8!1s0x48760e2fab56d229:0x4f2c86709ba2f56!5m2!4m1!1i2!8m2!3d51.5066126!4d-0.244454!16s%2Fg%2F12mkw93y2" target="_blank" rel="noopener">Review us on Google</a>
-        <a href="/book">Book Direct</a>
+        <h5 data-i18n="footer.guestInfo">Guest Info</h5>
+        <a href="/reviews" data-i18n="nav.reviews">Reviews</a>
+        <a href="/location"><span data-i18n="footer.locationInfo">Location &amp; Info</span></a>
+        <a href="https://www.google.com/maps/place/Hotel261/@51.5066159,-0.2470289,17z/data=!3m1!4b1!4m9!3m8!1s0x48760e2fab56d229:0x4f2c86709ba2f56!5m2!4m1!1i2!8m2!3d51.5066126!4d-0.244454!16s%2Fg%2F12mkw93y2" target="_blank" rel="noopener"><span data-i18n="footer.googleReview">Review us on Google</span></a>
+        <a href="/book"><span data-i18n="footer.bookDirect">Book Direct</span></a>
+        <a href="/check-booking"><span data-i18n="footer.checkBooking">Check Booking</span></a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; <span id="year"></span> Hotel 261. All rights reserved.</p>
+    <p>&copy; <span id="year"></span> Hotel 261. <span data-i18n="footer.rights">All rights reserved.</span></p>
   </div>
 </footer>
 
 <a href="tel:+442087434411" class="mobile-bar">
-  <span>Call to book &mdash; 020 8743 4411</span>
+  <span data-i18n="common.callToBookBar">Call to book &mdash; 020 8743 4411</span>
 </a>
 
+<script src="js/i18n.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>

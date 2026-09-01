@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>(function(){try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rooms &amp; Rates — Hotel 261</title>
@@ -31,13 +32,13 @@
 
 <div class="menu-overlay" id="menuOverlay">
   <nav class="menu-links">
-    <a href="/" style="--i:0">Home</a>
-    <a href="/about" style="--i:1">About</a>
-    <a href="/rooms" class="active" style="--i:2">Rooms</a>
-    <a href="/gallery" style="--i:3">Gallery</a>
-    <a href="/amenities" style="--i:4">Amenities</a>
-    <a href="/reviews" style="--i:5">Reviews</a>
-    <a href="/location" style="--i:6">Location</a>
+    <a href="/" style="--i:0" data-i18n="nav.home">Home</a>
+    <a href="/about" style="--i:1" data-i18n="nav.about">About</a>
+    <a href="/rooms" class="active" style="--i:2" data-i18n="nav.rooms">Rooms</a>
+    <a href="/gallery" style="--i:3" data-i18n="nav.gallery">Gallery</a>
+    <a href="/amenities" style="--i:4" data-i18n="nav.amenities">Amenities</a>
+    <a href="/reviews" style="--i:5" data-i18n="nav.reviews">Reviews</a>
+    <a href="/location" style="--i:6" data-i18n="nav.location">Location</a>
   </nav>
   <div class="menu-foot">
     <a href="tel:+442087434411">020 8743 4411</a>
@@ -55,24 +56,39 @@
       </div>
       <div class="utility-right">
         <svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2.5l2.9 6 6.6.7-4.9 4.5 1.3 6.5L12 16.9 6.1 20.2l1.3-6.5-4.9-4.5 6.6-.7L12 2.5Z"/></svg>
-        <b>3.3</b>&nbsp;&middot; <a href="/reviews">367&nbsp;reviews</a>
+        <b>3.3</b>&nbsp;&middot; <a href="/reviews">367&nbsp;<span data-i18n="common.reviewsWord">reviews</span></a>
       </div>
     </div>
   </div>
   <div class="nav-row">
   <div class="header-inner">
-    <a href="/" class="logo"><img src="/images/site/logo.png" alt="Hotel 261" class="logo-img"></a>
+    <a href="/" class="logo"><img src="/images/site/logo.png" alt="Hotel 261" class="logo-img logo-light"><img src="/images/site/logo-dark.png" alt="Hotel 261" class="logo-img logo-dark"></a>
     <nav class="main-nav">
-      <a href="/about">About</a>
-      <a href="/rooms" class="active">Rooms</a>
-      <a href="/gallery">Gallery</a>
-      <a href="/amenities">Amenities</a>
-      <a href="/reviews">Reviews</a>
-      <a href="/location">Location</a>
+      <a href="/about" data-i18n="nav.about">About</a>
+      <a href="/rooms" class="active" data-i18n="nav.rooms">Rooms</a>
+      <a href="/gallery" data-i18n="nav.gallery">Gallery</a>
+      <a href="/amenities" data-i18n="nav.amenities">Amenities</a>
+      <a href="/reviews" data-i18n="nav.reviews">Reviews</a>
+      <a href="/location" data-i18n="nav.location">Location</a>
     </nav>
     <div class="header-right">
-      <a href="/book" class="btn btn-pill magnetic">Reserve</a>
-      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
+      <div class="lang-switch" id="langSwitch">
+        <button class="lang-switch-toggle" id="langToggle" type="button" aria-label="Change language" aria-expanded="false">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/></svg>
+          <span id="langCurrent">EN</span>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+          <button type="button" data-lang="en">English</button>
+          <button type="button" data-lang="fr">Français</button>
+          <button type="button" data-lang="es">Español</button>
+          <button type="button" data-lang="ar">العربية</button>
+          <button type="button" data-lang="it">Italiano</button>
+          <button type="button" data-lang="hi">हिन्दी</button>
+        </div>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" data-i18n-attr="aria-label:common.toggleDarkMode"><svg class="icon icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M4.6 4.6l1.85 1.85M17.55 17.55l1.85 1.85M2.5 12h2.6M18.9 12h2.6M4.6 19.4l1.85-1.85M17.55 6.45l1.85-1.85"/></svg><svg class="icon icon-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg></button>
+      <a href="/book" class="btn btn-pill magnetic" data-i18n="common.reserve">Reserve</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" data-i18n-attr="aria-label:common.toggleMenu" aria-expanded="false">
         <span></span><span></span>
       </button>
     </div>
@@ -88,16 +104,16 @@
   </div>
   <div class="hero-scrim"></div>
   <div class="hero-inner">
-    <p class="hero-eyebrow load-in" style="--i:0">( Rooms &amp; Rates )</p>
+    <p class="hero-eyebrow load-in" style="--i:0" data-i18n="rooms.eyebrow">( Rooms &amp; Rates )</p>
     <h1 class="hero-title">
-      <span class="line load-in" style="--i:1">Seven rooms.</span>
-      <span class="line load-in" style="--i:2">One easy <em>stay.</em></span>
+      <span class="line load-in" style="--i:1" data-i18n="rooms.title1">Seven rooms.</span>
+      <span class="line load-in" style="--i:2" data-i18n-html="rooms.title2">One easy <em>stay.</em></span>
     </h1>
   </div>
 </section>
 
 <section class="rooms" style="padding-top:110px;">
-  <p class="section-sub reveal" style="max-width:620px; color:var(--ink-soft); margin-bottom:60px;">Every room includes an ensuite bathroom, flat-screen TV, satellite channels and free WiFi. Book securely online below, or call us directly on 020 8743 4411.</p>
+  <p class="section-sub reveal" style="max-width:620px; color:var(--ink-soft); margin-bottom:60px;" data-i18n="rooms.intro">Every room includes an ensuite bathroom, flat-screen TV, satellite channels and free WiFi. Book securely online below, or call us directly on 020 8743 4411.</p>
 
   <div class="room-rows">
 
@@ -105,12 +121,12 @@
       <div class="room-row-media"><img src="images/site/single-room.jpg" alt="Single Room at Hotel 261" loading="lazy"></div>
       <div class="room-row-body">
         <span class="room-index">01</span>
-        <h3>Single Room</h3>
-        <p class="room-desc">1 single bed &middot; sleeps 1. A compact, quiet room for solo travellers &mdash; everything you need, nothing you don&rsquo;t.</p>
-        <div class="room-tags"><span>Ensuite</span><span>Flat-screen TV</span><span>Free WiFi</span><span>Tea &amp; Coffee</span></div>
+        <h3 data-i18n="room.single.name">Single Room</h3>
+        <p class="room-desc" data-i18n="room.single.desc">1 single bed &middot; sleeps 1. A compact, quiet room for solo travellers &mdash; everything you need, nothing you don&rsquo;t.</p>
+        <div class="room-tags"><span data-i18n="tag.ensuite">Ensuite</span><span data-i18n="tag.flatscreenTv">Flat-screen TV</span><span data-i18n="tag.freeWifi">Free WiFi</span><span data-i18n="tag.teaCoffee">Tea &amp; Coffee</span></div>
         <div class="room-row-foot">
-          <span class="room-price">From £54<small>/night</small></span>
-          <a href="/book?room=single" class="text-link">Check availability &rarr;</a>
+          <span class="room-price"><span data-i18n="room.from">From</span> £54<small data-i18n="room.perNight">/night</small></span>
+          <a href="/book?room=single" class="text-link" data-i18n="room.checkAvailability">Check availability &rarr;</a>
         </div>
       </div>
     </article>
@@ -119,12 +135,12 @@
       <div class="room-row-media"><img src="images/site/twin-room.jpg" alt="Twin Room at Hotel 261" loading="lazy"></div>
       <div class="room-row-body">
         <span class="room-index">02</span>
-        <h3>Twin Room</h3>
-        <p class="room-desc">2 single beds &middot; sleeps 2. A favourite with friends travelling together and short business trips.</p>
-        <div class="room-tags"><span>Ensuite</span><span>Flat-screen TV</span><span>Free WiFi</span><span>Tea &amp; Coffee</span></div>
+        <h3 data-i18n="room.twin.name">Twin Room</h3>
+        <p class="room-desc" data-i18n="room.twin.desc">2 single beds &middot; sleeps 2. A favourite with friends travelling together and short business trips.</p>
+        <div class="room-tags"><span data-i18n="tag.ensuite">Ensuite</span><span data-i18n="tag.flatscreenTv">Flat-screen TV</span><span data-i18n="tag.freeWifi">Free WiFi</span><span data-i18n="tag.teaCoffee">Tea &amp; Coffee</span></div>
         <div class="room-row-foot">
-          <span class="room-price">From £75<small>/night</small></span>
-          <a href="/book?room=twin" class="text-link">Check availability &rarr;</a>
+          <span class="room-price"><span data-i18n="room.from">From</span> £75<small data-i18n="room.perNight">/night</small></span>
+          <a href="/book?room=twin" class="text-link" data-i18n="room.checkAvailability">Check availability &rarr;</a>
         </div>
       </div>
     </article>
@@ -133,12 +149,12 @@
       <div class="room-row-media"><img src="images/site/double-room-1-2.jpg" alt="Double Room, one to two adults, at Hotel 261" loading="lazy"></div>
       <div class="room-row-body">
         <span class="room-index">03</span>
-        <h3>Double Room <small>(1&ndash;2 Adults)</small></h3>
-        <p class="room-desc">1 double bed &middot; sleeps 1&ndash;2. Flexible pricing whether you&rsquo;re travelling solo or as a pair.</p>
-        <div class="room-tags"><span>Ensuite</span><span>Flat-screen TV</span><span>Free WiFi</span><span>Tea &amp; Coffee</span></div>
+        <h3><span data-i18n="room.double12.name">Double Room</span> <small data-i18n="room.double12.small">(1&ndash;2 Adults)</small></h3>
+        <p class="room-desc" data-i18n="room.double12.desc">1 double bed &middot; sleeps 1&ndash;2. Flexible pricing whether you&rsquo;re travelling solo or as a pair.</p>
+        <div class="room-tags"><span data-i18n="tag.ensuite">Ensuite</span><span data-i18n="tag.flatscreenTv">Flat-screen TV</span><span data-i18n="tag.freeWifi">Free WiFi</span><span data-i18n="tag.teaCoffee">Tea &amp; Coffee</span></div>
         <div class="room-row-foot">
-          <span class="room-price">From £75<small>/night</small></span>
-          <a href="/book?room=double12" class="text-link">Check availability &rarr;</a>
+          <span class="room-price"><span data-i18n="room.from">From</span> £75<small data-i18n="room.perNight">/night</small></span>
+          <a href="/book?room=double12" class="text-link" data-i18n="room.checkAvailability">Check availability &rarr;</a>
         </div>
       </div>
     </article>
@@ -147,12 +163,12 @@
       <div class="room-row-media"><img src="images/site/double-room.jpg" alt="Double Room at Hotel 261" loading="lazy"></div>
       <div class="room-row-body">
         <span class="room-index">04</span>
-        <h3>Double Room</h3>
-        <p class="room-desc">1 double bed &middot; sleeps 2. Our classic double, warm and well kept for couples and city breaks.</p>
-        <div class="room-tags"><span>Ensuite</span><span>Flat-screen TV</span><span>Free WiFi</span><span>Tea &amp; Coffee</span></div>
+        <h3 data-i18n="room.double.name">Double Room</h3>
+        <p class="room-desc" data-i18n="room.double.desc">1 double bed &middot; sleeps 2. Our classic double, warm and well kept for couples and city breaks.</p>
+        <div class="room-tags"><span data-i18n="tag.ensuite">Ensuite</span><span data-i18n="tag.flatscreenTv">Flat-screen TV</span><span data-i18n="tag.freeWifi">Free WiFi</span><span data-i18n="tag.teaCoffee">Tea &amp; Coffee</span></div>
         <div class="room-row-foot">
-          <span class="room-price">From £80<small>/night</small></span>
-          <a href="/book?room=double" class="text-link">Check availability &rarr;</a>
+          <span class="room-price"><span data-i18n="room.from">From</span> £80<small data-i18n="room.perNight">/night</small></span>
+          <a href="/book?room=double" class="text-link" data-i18n="room.checkAvailability">Check availability &rarr;</a>
         </div>
       </div>
     </article>
@@ -161,12 +177,12 @@
       <div class="room-row-media"><img src="images/site/triple-room.jpg" alt="Triple Room at Hotel 261" loading="lazy"></div>
       <div class="room-row-body">
         <span class="room-index">05</span>
-        <h3>Triple Room</h3>
-        <p class="room-desc">3 single beds &middot; sleeps 3. Extra space for small groups without paying for a suite.</p>
-        <div class="room-tags"><span>Ensuite</span><span>Flat-screen TV</span><span>Free WiFi</span><span>Tea &amp; Coffee</span></div>
+        <h3 data-i18n="room.triple.name">Triple Room</h3>
+        <p class="room-desc" data-i18n="room.triple.desc">3 single beds &middot; sleeps 3. Extra space for small groups without paying for a suite.</p>
+        <div class="room-tags"><span data-i18n="tag.ensuite">Ensuite</span><span data-i18n="tag.flatscreenTv">Flat-screen TV</span><span data-i18n="tag.freeWifi">Free WiFi</span><span data-i18n="tag.teaCoffee">Tea &amp; Coffee</span></div>
         <div class="room-row-foot">
-          <span class="room-price">From £95<small>/night</small></span>
-          <a href="/book?room=triple" class="text-link">Check availability &rarr;</a>
+          <span class="room-price"><span data-i18n="room.from">From</span> £95<small data-i18n="room.perNight">/night</small></span>
+          <a href="/book?room=triple" class="text-link" data-i18n="room.checkAvailability">Check availability &rarr;</a>
         </div>
       </div>
     </article>
@@ -175,12 +191,12 @@
       <div class="room-row-media"><img src="images/site/quadruple-room.jpg" alt="Quadruple Room at Hotel 261" loading="lazy"></div>
       <div class="room-row-body">
         <span class="room-index">06</span>
-        <h3>Quadruple Room</h3>
-        <p class="room-desc">2 double beds &middot; sleeps 4. Roomy enough for two couples or a family of four.</p>
-        <div class="room-tags"><span>Ensuite</span><span>Flat-screen TV</span><span>Free WiFi</span><span>Tea &amp; Coffee</span></div>
+        <h3 data-i18n="room.quad.name">Quadruple Room</h3>
+        <p class="room-desc" data-i18n="room.quad.desc">2 double beds &middot; sleeps 4. Roomy enough for two couples or a family of four.</p>
+        <div class="room-tags"><span data-i18n="tag.ensuite">Ensuite</span><span data-i18n="tag.flatscreenTv">Flat-screen TV</span><span data-i18n="tag.freeWifi">Free WiFi</span><span data-i18n="tag.teaCoffee">Tea &amp; Coffee</span></div>
         <div class="room-row-foot">
-          <span class="room-price">From £120<small>/night</small></span>
-          <a href="/book?room=quad" class="text-link">Check availability &rarr;</a>
+          <span class="room-price"><span data-i18n="room.from">From</span> £120<small data-i18n="room.perNight">/night</small></span>
+          <a href="/book?room=quad" class="text-link" data-i18n="room.checkAvailability">Check availability &rarr;</a>
         </div>
       </div>
     </article>
@@ -189,12 +205,12 @@
       <div class="room-row-media"><img src="images/site/family-room.jpg" alt="Family Room at Hotel 261" loading="lazy"></div>
       <div class="room-row-body">
         <span class="room-index">07</span>
-        <h3>Family Room</h3>
-        <p class="room-desc">2 single beds &amp; 1 double bed &middot; sleeps up to 5. Our largest room, built for family stays.</p>
-        <div class="room-tags"><span>Ensuite</span><span>Flat-screen TV</span><span>Free WiFi</span><span>Tea &amp; Coffee</span></div>
+        <h3 data-i18n="room.family.name">Family Room</h3>
+        <p class="room-desc" data-i18n="room.family.desc">2 single beds &amp; 1 double bed &middot; sleeps up to 5. Our largest room, built for family stays.</p>
+        <div class="room-tags"><span data-i18n="tag.ensuite">Ensuite</span><span data-i18n="tag.flatscreenTv">Flat-screen TV</span><span data-i18n="tag.freeWifi">Free WiFi</span><span data-i18n="tag.teaCoffee">Tea &amp; Coffee</span></div>
         <div class="room-row-foot">
-          <span class="room-price">From £120<small>/night</small></span>
-          <a href="/book?room=family" class="text-link">Check availability &rarr;</a>
+          <span class="room-price"><span data-i18n="room.from">From</span> £120<small data-i18n="room.perNight">/night</small></span>
+          <a href="/book?room=family" class="text-link" data-i18n="room.checkAvailability">Check availability &rarr;</a>
         </div>
       </div>
     </article>
@@ -203,16 +219,16 @@
 </section>
 
 <section class="cta">
-  <p class="cta-eyebrow reveal">( Ready when you are )</p>
-  <h2 class="cta-title reveal">Your stay<br>starts here.</h2>
+  <p class="cta-eyebrow reveal"><span data-i18n="cta.eyebrow">( Ready when you are )</span></p>
+  <h2 class="cta-title reveal" data-i18n-html="cta.title">Your stay<br>starts here.</h2>
   <div class="cta-actions reveal">
-    <a href="tel:+442087434411" class="btn btn-primary btn-lg magnetic">Call 020 8743 4411</a>
-    <a href="/book" class="btn btn-outline-light btn-lg magnetic">Book Direct</a>
+    <a href="tel:+442087434411" class="btn btn-primary btn-lg magnetic" data-i18n="cta.callBtn">Call 020 8743 4411</a>
+    <a href="/book" class="btn btn-outline-light btn-lg magnetic" data-i18n="cta.bookDirectBtn">Book Direct</a>
   </div>
   <div class="trust-row on-dark reveal">
-    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l9 9-8 8-9-9V4h7Z"/><circle cx="8" cy="8" r="1.3" fill="currentColor" stroke="none"/></svg> Best rate, booked direct</span>
-    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> Secure payment via Stripe</span>
-    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> Instant confirmation</span>
+    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l9 9-8 8-9-9V4h7Z"/><circle cx="8" cy="8" r="1.3" fill="currentColor" stroke="none"/></svg> <span data-i18n="trust.bestRate">Best rate, booked direct</span></span>
+    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> <span data-i18n="trust.securePayment">Secure payment via Stripe</span></span>
+    <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> <span data-i18n="trust.instantConfirmation">Instant confirmation</span></span>
   </div>
 </section>
 
@@ -220,38 +236,40 @@
 
 <footer class="site-footer">
   <div class="footer-top">
-    <a href="/" class="logo"><img src="/images/site/logo.png" alt="Hotel 261" class="logo-img"></a>
+    <a href="/" class="logo"><img src="/images/site/logo.png" alt="Hotel 261" class="logo-img logo-light"><img src="/images/site/logo-dark.png" alt="Hotel 261" class="logo-img logo-dark"></a>
     <div class="footer-cols">
       <div>
-        <h5>Visit</h5>
+        <h5 data-i18n="footer.visit">Visit</h5>
         <p>261&ndash;263 Uxbridge Road<br>Shepherd&rsquo;s Bush, London W12 9DS</p>
         <a href="tel:+442087434411">020 8743 4411</a>
       </div>
       <div>
-        <h5>Explore</h5>
-        <a href="/about">About</a>
-        <a href="/rooms">Rooms</a>
-        <a href="/gallery">Gallery</a>
-        <a href="/amenities">Amenities</a>
+        <h5 data-i18n="footer.explore">Explore</h5>
+        <a href="/about" data-i18n="nav.about">About</a>
+        <a href="/rooms" data-i18n="nav.rooms">Rooms</a>
+        <a href="/gallery" data-i18n="nav.gallery">Gallery</a>
+        <a href="/amenities" data-i18n="nav.amenities">Amenities</a>
       </div>
       <div>
-        <h5>Guest Info</h5>
-        <a href="/reviews">Reviews</a>
-        <a href="/location">Location &amp; Info</a>
-        <a href="https://www.google.com/maps/place/Hotel261/@51.5066159,-0.2470289,17z/data=!3m1!4b1!4m9!3m8!1s0x48760e2fab56d229:0x4f2c86709ba2f56!5m2!4m1!1i2!8m2!3d51.5066126!4d-0.244454!16s%2Fg%2F12mkw93y2" target="_blank" rel="noopener">Review us on Google</a>
-        <a href="/book">Book Direct</a>
+        <h5 data-i18n="footer.guestInfo">Guest Info</h5>
+        <a href="/reviews" data-i18n="nav.reviews">Reviews</a>
+        <a href="/location"><span data-i18n="footer.locationInfo">Location &amp; Info</span></a>
+        <a href="https://www.google.com/maps/place/Hotel261/@51.5066159,-0.2470289,17z/data=!3m1!4b1!4m9!3m8!1s0x48760e2fab56d229:0x4f2c86709ba2f56!5m2!4m1!1i2!8m2!3d51.5066126!4d-0.244454!16s%2Fg%2F12mkw93y2" target="_blank" rel="noopener"><span data-i18n="footer.googleReview">Review us on Google</span></a>
+        <a href="/book"><span data-i18n="footer.bookDirect">Book Direct</span></a>
+        <a href="/check-booking"><span data-i18n="footer.checkBooking">Check Booking</span></a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; <span id="year"></span> Hotel 261. All rights reserved.</p>
+    <p>&copy; <span id="year"></span> Hotel 261. <span data-i18n="footer.rights">All rights reserved.</span></p>
   </div>
 </footer>
 
 <a href="tel:+442087434411" class="mobile-bar">
-  <span>Call to book &mdash; 020 8743 4411</span>
+  <span data-i18n="common.callToBookBar">Call to book &mdash; 020 8743 4411</span>
 </a>
 
+<script src="js/i18n.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>

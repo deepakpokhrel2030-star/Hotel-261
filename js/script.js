@@ -1,6 +1,57 @@
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+/* ---------- Language switcher ---------- */
+const langToggle = document.getElementById('langToggle');
+const langDropdown = document.getElementById('langDropdown');
+const langCurrent = document.getElementById('langCurrent');
+if (langToggle && langDropdown) {
+  const LANG_LABELS = { en: 'EN', fr: 'FR', es: 'ES', ar: 'AR', it: 'IT', hi: 'HI' };
+
+  function syncLangUI(lang) {
+    if (langCurrent) langCurrent.textContent = LANG_LABELS[lang] || 'EN';
+    langDropdown.querySelectorAll('button[data-lang]').forEach((btn) => {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+  }
+
+  langToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = langDropdown.classList.contains('open');
+    langDropdown.classList.toggle('open', !isOpen);
+    langToggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+  langDropdown.querySelectorAll('button[data-lang]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const lang = btn.getAttribute('data-lang');
+      if (window.HOTEL261_I18N) window.HOTEL261_I18N.setLang(lang);
+      syncLangUI(lang);
+      langDropdown.classList.remove('open');
+      langToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!langToggle.contains(e.target) && !langDropdown.contains(e.target)) {
+      langDropdown.classList.remove('open');
+      langToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+  document.addEventListener('i18n:ready', (e) => syncLangUI(e.detail.lang));
+  if (window.HOTEL261_I18N) syncLangUI(window.HOTEL261_I18N.lang);
+}
+
+/* ---------- Dark / light mode toggle ---------- */
+const themeToggle = document.getElementById('themeToggle');
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const current = document.documentElement.getAttribute('data-theme') || (systemDark ? 'dark' : 'light');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+}
+
 /* ---------- Header solid-on-scroll + scroll progress ---------- */
 const header = document.getElementById('header');
 if (header) {
