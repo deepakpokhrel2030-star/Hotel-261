@@ -218,7 +218,9 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       const roomId = row.id.replace('room-', '');
       const room = HOTEL_ROOMS.find((r) => r.id === roomId);
       if (!room) return;
-      let qty = parseInt(row.querySelector('.rl-qty').value, 10) || 0;
+      const select = row.querySelector('.rl-qty');
+      if (select.disabled) return; // too small for the current party size
+      let qty = parseInt(select.value, 10) || 0;
       if (roomId === forceRoomId && qty === 0) qty = 1;
       if (qty > 0) items.push({ room, qty });
     });
@@ -262,6 +264,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     `;
 
     HOTEL_ROOMS.forEach((room) => {
+      const tooSmall = room.maxGuests < stay.guests;
       const totalForRoom = (stay.nights > 0 ? room.price * stay.nights : room.price);
       const nightsLabel = stay.nights > 0
         ? t('book.' + (stay.nights > 1 ? 'nightsTotalMany' : 'nightsTotalOne'), `${stay.nights} night${stay.nights > 1 ? 's' : ''} total`).replace('{n}', stay.nights)
@@ -271,11 +274,13 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       const roomName = t('room.' + room.id + '.name', room.label);
       const roomSmall = room.small ? t('room.' + room.id + '.small', room.small) : '';
       const roomDesc = t('room.' + room.id + '.desc', room.nights_label + ' · ' + room.desc);
+      const tooSmallNote = t('book.tooSmall', 'Sleeps up to {max} — too small for {guests} guests')
+        .replace('{max}', room.maxGuests).replace('{guests}', stay.guests);
 
       const qtyOptions = [0, 1, 2, 3, 4].map((n) => `<option value="${n}">${n}</option>`).join('');
 
       const row = document.createElement('div');
-      row.className = 'rl-row rl-cols';
+      row.className = 'rl-row rl-cols' + (tooSmall ? ' dimmed' : '');
       row.id = 'room-' + room.id;
       row.innerHTML = `
         <div class="rl-col-room">
@@ -294,11 +299,13 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
           ${nightsLabel ? `<span class="rl-total-note">£${totalForRoom.toLocaleString('en-GB')} &middot; ${nightsLabel}</span>` : ''}
         </div>
         <div class="rl-col-choices" data-label="${t('book.yourChoices', 'Your choices')}">
-          <span class="summary-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> <span>${t('book.freeCancellation', 'Free cancellation')}</span></span>
-          <p class="rl-choice-note"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> ${t('book.payOnlineNote', 'Pay online — secure via Stripe')}</p>
+          ${tooSmall
+            ? `<p class="rl-note">${tooSmallNote}</p>`
+            : `<span class="summary-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> <span>${t('book.freeCancellation', 'Free cancellation')}</span></span>
+               <p class="rl-choice-note"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> ${t('book.payOnlineNote', 'Pay online — secure via Stripe')}</p>`}
         </div>
         <div class="rl-col-select" data-label="${t('book.selectRoomsCol', 'Select rooms')}">
-          <select class="rl-qty">${qtyOptions}</select>
+          <select class="rl-qty" ${tooSmall ? 'disabled' : ''}>${qtyOptions}</select>
         </div>
       `;
 

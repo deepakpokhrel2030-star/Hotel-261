@@ -331,6 +331,9 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .rl-row:hover{ background:var(--paper-2); }
 .rl-row > div{ padding:18px 16px; border-right:1px solid var(--line); display:flex; flex-direction:column; justify-content:center; }
 .rl-row > div:last-child{ border-right:0; }
+.rl-row.dimmed{ opacity:.5; filter:saturate(.85); }
+.rl-row.dimmed:hover{ background:none; }
+.rl-note{ font-size:.8rem; color:var(--accent); font-weight:700; }
 
 .rl-col-room{ flex-direction:row !important; gap:16px; align-items:flex-start !important; }
 .rl-thumb{ flex:none; width:110px; aspect-ratio:4/3; border-radius:8px; overflow:hidden; background:var(--paper-2); }
