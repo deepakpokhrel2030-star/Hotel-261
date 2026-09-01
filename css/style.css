@@ -458,12 +458,27 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   transition:border-color .2s ease;
 }
 .form-row input:focus, .form-row select:focus{ outline:none; border-color:var(--accent); }
+.form-row input.invalid, .form-row textarea.invalid{ border-color:#c0392b; }
+.field-error{ display:block; font-size:.78rem; color:#c0392b; margin-top:6px; font-weight:500; }
 .form-error{ display:none; background:#fbeae7; border:1px solid #e2a89c; color:#8a2f1f; padding:12px 16px; border-radius:6px; font-size:.88rem; margin-bottom:18px; }
 .form-error.visible{ display:block; }
 .form-note{ font-size:.8rem; color:var(--ink-soft); margin-top:16px; text-align:center; }
 
-.booking-summary{ background:var(--paper-2); border-radius:var(--radius); padding:30px; position:sticky; top:90px; }
+.booking-summary{ background:var(--paper-2); border-radius:var(--radius); padding:30px; position:sticky; top:90px; overflow:hidden; }
+.booking-summary.has-photo{ padding:0; }
 .booking-summary h3{ font-family:var(--ff-display); font-weight:700; font-size:1.2rem; margin-bottom:18px; }
+.summary-body{ padding:26px 30px 30px; }
+.summary-photo{ aspect-ratio:16/9; overflow:hidden; background:var(--line); }
+.summary-photo img{ width:100%; height:100%; object-fit:cover; }
+.summary-badge{
+  display:inline-flex; align-items:center; gap:6px; background:rgba(46,125,50,.12); color:#2e7d32;
+  font-size:.76rem; font-weight:700; padding:5px 12px; border-radius:999px; margin-bottom:18px;
+}
+:root:not([data-theme="light"]) .summary-badge{ background:rgba(102,214,110,.16); color:#8ce396; }
+:root[data-theme="dark"] .summary-badge{ background:rgba(102,214,110,.16); color:#8ce396; }
+.summary-badge .icon{ width:13px; height:13px; }
+.summary-breakdown{ margin-bottom:6px; }
+.summary-breakdown-row{ display:flex; justify-content:space-between; padding:6px 0; font-size:.86rem; color:var(--ink-soft); }
 .summary-row{ display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--line); font-size:.9rem; }
 .summary-row span{ color:var(--ink-soft); }
 .summary-total{ display:flex; justify-content:space-between; align-items:baseline; padding-top:16px; margin-top:6px; }
@@ -478,13 +493,13 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .booking-result .booking-summary{ position:static; text-align:left; width:100%; }
 
 /* ============ Checkout (details -> payment) ============ */
-.checkout-steps{ display:flex; align-items:center; gap:14px; margin-top:18px; }
-.checkout-step{ display:inline-flex; align-items:center; gap:10px; font-size:.85rem; font-weight:600; color:var(--ink-soft); }
-.checkout-step i{ font-style:normal; display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:var(--paper-2); color:var(--ink-soft); font-size:.78rem; font-weight:700; }
+.checkout-steps{ display:flex; align-items:center; margin-top:26px; max-width:360px; }
+.checkout-step{ display:inline-flex; align-items:center; gap:10px; font-size:.85rem; font-weight:600; color:var(--ink-soft); white-space:nowrap; }
+.checkout-step i{ font-style:normal; display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:50%; background:var(--surface); border:1.5px solid var(--line); color:var(--ink-soft); font-size:.85rem; font-weight:700; transition:background .2s ease, border-color .2s ease, color .2s ease; }
 .checkout-step.active{ color:var(--ink); }
-.checkout-step.active i{ background:var(--accent); color:#fff; }
-.checkout-step.done i{ background:var(--accent); color:#fff; }
-.checkout-step-sep{ color:var(--line); }
+.checkout-step.active i{ background:var(--accent); border-color:var(--accent); color:#fff; }
+.checkout-step.done i{ background:var(--accent); border-color:var(--accent); color:#fff; }
+.checkout-step-sep{ flex:1; height:2px; background:var(--line); margin:0 10px; position:relative; top:-11px; min-width:24px; }
 .checkout-back{ background:none; border:0; padding:0; margin-bottom:18px; color:var(--ink-soft); font-size:.85rem; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; gap:6px; transition:color .2s ease; }
 .checkout-back:hover{ color:var(--accent); }
 .checkout-section .booking-form + .booking-form{ margin-top:0; }

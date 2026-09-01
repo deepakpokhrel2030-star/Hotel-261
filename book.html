@@ -190,7 +190,7 @@
 
   <div class="checkout-steps" id="checkoutSteps">
     <span class="checkout-step active" data-step="details"><i>1</i> <span data-i18n="book.stepDetails">Your details</span></span>
-    <span class="checkout-step-sep">&rarr;</span>
+    <span class="checkout-step-sep"></span>
     <span class="checkout-step" data-step="payment"><i>2</i> <span data-i18n="book.stepPayment">Payment</span></span>
   </div>
 
@@ -202,12 +202,28 @@
         <h3 style="font-family:var(--ff-display); font-weight:700; font-size:1.3rem; margin-bottom:22px;" data-i18n="book.stepDetails">Your details</h3>
 
         <div class="form-row two-col">
-          <div><label data-i18n="book.fullName">Full name</label><input type="text" id="coName" autocomplete="name" placeholder="As it appears on your ID" data-i18n-attr="placeholder:book.fullNamePlaceholder"></div>
-          <div><label data-i18n="book.email">Email</label><input type="email" id="coEmail" autocomplete="email" placeholder="you@example.com"></div>
+          <div>
+            <label data-i18n="book.firstName">First name</label>
+            <input type="text" id="coFirstName" autocomplete="given-name" placeholder="Jane" data-i18n-attr="placeholder:book.firstNamePlaceholder">
+            <span class="field-error" id="coFirstNameError" style="display:none;"></span>
+          </div>
+          <div>
+            <label data-i18n="book.lastName">Last name</label>
+            <input type="text" id="coLastName" autocomplete="family-name" placeholder="Smith" data-i18n-attr="placeholder:book.lastNamePlaceholder">
+            <span class="field-error" id="coLastNameError" style="display:none;"></span>
+          </div>
         </div>
         <div class="form-row two-col">
-          <div><label data-i18n="book.phoneNumber">Phone number</label><input type="tel" id="coPhone" autocomplete="tel" placeholder="+44 7&hellip;"></div>
-          <div><label data-i18n="search.guestsLabel">Guests</label><input type="text" id="coGuestsDisplay" disabled></div>
+          <div>
+            <label data-i18n="book.email">Email</label>
+            <input type="email" id="coEmail" autocomplete="email" placeholder="you@example.com">
+            <span class="field-error" id="coEmailError" style="display:none;"></span>
+          </div>
+          <div>
+            <label data-i18n="book.phoneNumber">Phone number</label>
+            <input type="tel" id="coPhone" autocomplete="tel" placeholder="+44 7&hellip;">
+            <span class="field-error" id="coPhoneError" style="display:none;"></span>
+          </div>
         </div>
         <div class="form-row">
           <label><span data-i18n="book.specialRequests">Special requests</span> <span style="text-transform:none; font-weight:400;" data-i18n="book.optional">(optional)</span></label>
@@ -216,6 +232,7 @@
 
         <div class="form-error" id="coDetailsError"></div>
         <button type="button" class="btn btn-primary" id="coContinueBtn" style="width:100%;" data-i18n="book.continueToPayment">Continue to Payment</button>
+        <p class="form-note" data-i18n="book.privacyNote">Your details are only used to manage this booking — we never sell or share them.</p>
       </div>
 
       <div class="booking-form" id="checkoutPaymentPanel" style="display:none;">
@@ -234,18 +251,23 @@
 
     </div>
 
-    <div class="booking-summary" id="checkoutSummary">
-      <h3 data-i18n="book.yourStay">Your stay</h3>
-      <div class="summary-row"><span data-i18n="book.room">Room</span><b id="csRoom">&mdash;</b></div>
-      <div class="summary-row"><span data-i18n="search.checkin">Check-in</span><b id="csCheckIn">&mdash;</b></div>
-      <div class="summary-row"><span data-i18n="search.checkout">Check-out</span><b id="csCheckOut">&mdash;</b></div>
-      <div class="summary-row"><span data-i18n="book.nights">Nights</span><b id="csNights">&mdash;</b></div>
-      <div class="summary-row"><span data-i18n="search.guestsLabel">Guests</span><b id="csGuests">&mdash;</b></div>
-      <div class="summary-row"><span data-i18n="search.rooms">Rooms</span><b id="csRooms">&mdash;</b></div>
-      <div class="summary-total"><span data-i18n="book.total">Total</span><b id="csTotal">&mdash;</b></div>
-      <div class="summary-policies">
-        <p data-i18n="book.policy1">Pay now, direct to the hotel &mdash; no third-party booking fees.</p>
-        <p data-i18n="book.policy2">Free cancellation up to 48 hours before check-in.</p>
+    <div class="booking-summary has-photo" id="checkoutSummary">
+      <div class="summary-photo"><img id="csPhoto" src="" alt=""></div>
+      <div class="summary-body">
+        <h3 data-i18n="book.yourStay">Your stay</h3>
+        <span class="summary-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> <span data-i18n="book.freeCancellation">Free cancellation</span></span>
+        <div class="summary-row"><span data-i18n="book.room">Room</span><b id="csRoom">&mdash;</b></div>
+        <div class="summary-row"><span data-i18n="search.checkin">Check-in</span><b id="csCheckIn" dir="ltr">&mdash;</b></div>
+        <div class="summary-row"><span data-i18n="search.checkout">Check-out</span><b id="csCheckOut" dir="ltr">&mdash;</b></div>
+        <div class="summary-row"><span data-i18n="book.nights">Nights</span><b id="csNights">&mdash;</b></div>
+        <div class="summary-row"><span data-i18n="search.guestsLabel">Guests</span><b id="csGuests">&mdash;</b></div>
+        <div class="summary-row"><span data-i18n="search.rooms">Rooms</span><b id="csRooms">&mdash;</b></div>
+        <div class="summary-breakdown" id="csBreakdown"></div>
+        <div class="summary-total"><span data-i18n="book.total">Total</span><b id="csTotal">&mdash;</b></div>
+        <div class="summary-policies">
+          <p data-i18n="book.policy1">Pay now, direct to the hotel &mdash; no third-party booking fees.</p>
+          <p data-i18n="book.policy2">Free cancellation up to 48 hours before check-in.</p>
+        </div>
       </div>
     </div>
   </div>

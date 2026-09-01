@@ -277,10 +277,10 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
   const stepDetails = document.querySelector('.checkout-step[data-step="details"]');
   const stepPayment = document.querySelector('.checkout-step[data-step="payment"]');
 
-  const coName = document.getElementById('coName');
+  const coFirstName = document.getElementById('coFirstName');
+  const coLastName = document.getElementById('coLastName');
   const coEmail = document.getElementById('coEmail');
   const coPhone = document.getElementById('coPhone');
-  const coGuestsDisplay = document.getElementById('coGuestsDisplay');
   const coRequests = document.getElementById('coRequests');
   const coDetailsError = document.getElementById('coDetailsError');
   const coPaymentError = document.getElementById('coPaymentError');
@@ -297,6 +297,18 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     box.classList.toggle('visible', !!msg);
   }
 
+  function setFieldError(input, msg) {
+    const errorEl = document.getElementById(input.id + 'Error');
+    input.classList.toggle('invalid', !!msg);
+    if (errorEl) {
+      errorEl.textContent = msg || '';
+      errorEl.style.display = msg ? 'block' : 'none';
+    }
+  }
+  [coFirstName, coLastName, coEmail, coPhone].forEach((input) => {
+    input.addEventListener('input', () => setFieldError(input, ''));
+  });
+
   function occupancyText(stay) {
     const adultWord = stay.adults === 1 ? t('search.adultWord', 'adult') : t('search.adultsWord', 'adults');
     let text = `${stay.adults} ${adultWord}`;
@@ -309,17 +321,36 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
 
   function fillSummary(room, stay) {
     const roomsQty = stay.rooms || 1;
-    const totalPrice = (stay.nights > 0 ? room.price * stay.nights : room.price) * roomsQty;
+    const nights = stay.nights || 0;
+    const perRoomTotal = (nights > 0 ? room.price * nights : room.price);
+    const totalPrice = perRoomTotal * roomsQty;
     const roomWord = roomsQty === 1 ? t('search.roomWord', 'room') : t('search.roomsWord', 'rooms');
-    document.getElementById('csRoom').textContent = t('room.' + room.id + '.name', room.label);
+    const roomName = t('room.' + room.id + '.name', room.label);
+
+    const photo = document.getElementById('csPhoto');
+    photo.src = room.img;
+    photo.alt = roomName;
+
+    document.getElementById('csRoom').textContent = roomName;
     document.getElementById('csCheckIn').textContent = fmtDateShort(stay.checkIn);
     document.getElementById('csCheckOut').textContent = fmtDateShort(stay.checkOut);
-    document.getElementById('csNights').textContent = stay.nights || '—';
+    document.getElementById('csNights').textContent = nights || '—';
     document.getElementById('csGuests').textContent = occupancyText(stay);
     document.getElementById('csRooms').textContent = roomsQty + ' ' + roomWord;
     document.getElementById('csTotal').textContent = '£' + totalPrice.toLocaleString('en-GB');
-    coGuestsDisplay.value = occupancyText(stay) + ' · ' + roomsQty + ' ' + roomWord;
     coPayAmount.textContent = '£' + totalPrice.toLocaleString('en-GB');
+
+    const breakdownEl = document.getElementById('csBreakdown');
+    if (nights > 0) {
+      const nightWord = nights === 1 ? t('book.nightWord', 'night') : t('book.nightsWord', 'nights');
+      let html = `<div class="summary-breakdown-row"><span>£${room.price} &times; ${nights} ${nightWord}</span><span>£${perRoomTotal.toLocaleString('en-GB')}</span></div>`;
+      if (roomsQty > 1) {
+        html += `<div class="summary-breakdown-row"><span>&times; ${roomsQty} ${roomWord}</span><span>£${totalPrice.toLocaleString('en-GB')}</span></div>`;
+      }
+      breakdownEl.innerHTML = html;
+    } else {
+      breakdownEl.innerHTML = '';
+    }
   }
 
   function openCheckout(room, stay) {
@@ -336,7 +367,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     roomsSection.style.display = 'none';
     checkoutSection.style.display = 'block';
     checkoutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    setTimeout(() => coName.focus(), 300);
+    setTimeout(() => coFirstName.focus(), 300);
   }
 
   function showDetailsStep() {
@@ -365,12 +396,20 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
 
   coContinueBtn.addEventListener('click', () => {
     setError(coDetailsError, '');
-    const name = coName.value.trim();
+    const firstName = coFirstName.value.trim();
+    const lastName = coLastName.value.trim();
     const email = coEmail.value.trim();
     const phone = coPhone.value.trim();
-    if (!name) { setError(coDetailsError, 'Please enter your full name.'); coName.focus(); return; }
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setError(coDetailsError, 'Please enter a valid email address.'); coEmail.focus(); return; }
-    if (!phone) { setError(coDetailsError, 'Please enter a phone number, in case we need to reach you.'); coPhone.focus(); return; }
+
+    [coFirstName, coLastName, coEmail, coPhone].forEach((input) => setFieldError(input, ''));
+
+    let firstInvalid = null;
+    if (!firstName) { setFieldError(coFirstName, t('book.errFirstName', 'Please enter your first name.')); firstInvalid = firstInvalid || coFirstName; }
+    if (!lastName) { setFieldError(coLastName, t('book.errLastName', 'Please enter your last name.')); firstInvalid = firstInvalid || coLastName; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setFieldError(coEmail, t('book.errEmail', 'Please enter a valid email address.')); firstInvalid = firstInvalid || coEmail; }
+    if (!phone) { setFieldError(coPhone, t('book.errPhone', 'Please enter a phone number, in case we need to reach you.')); firstInvalid = firstInvalid || coPhone; }
+
+    if (firstInvalid) { firstInvalid.focus(); return; }
     showPaymentStep();
   });
 
@@ -378,7 +417,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     setError(coPaymentError, '');
     if (!activeRoom || !activeStay) return;
 
-    const name = coName.value.trim();
+    const name = (coFirstName.value.trim() + ' ' + coLastName.value.trim()).trim();
     const email = coEmail.value.trim();
     const phone = coPhone.value.trim();
     const specialRequests = coRequests.value.trim();

@@ -319,7 +319,19 @@
     "nightsTotalOne": "{n} nuit au total",
     "nightsTotalMany": "{n} nuits au total",
     "perNightPhrase": "par nuit",
-    "tooSmall": "Accueille jusqu&rsquo;à {max} &mdash; trop petite pour {guests} voyageurs"
+    "tooSmall": "Accueille jusqu&rsquo;à {max} &mdash; trop petite pour {guests} voyageurs",
+    "firstName": "Prénom",
+    "firstNamePlaceholder": "Jeanne",
+    "lastName": "Nom",
+    "lastNamePlaceholder": "Dupont",
+    "freeCancellation": "Annulation gratuite",
+    "privacyNote": "Vos informations ne servent qu&rsquo;à gérer cette réservation &mdash; nous ne les vendons ni ne les partageons jamais.",
+    "nightWord": "nuit",
+    "nightsWord": "nuits",
+    "errFirstName": "Veuillez indiquer votre prénom.",
+    "errLastName": "Veuillez indiquer votre nom.",
+    "errEmail": "Veuillez saisir une adresse e-mail valide.",
+    "errPhone": "Veuillez indiquer un numéro de téléphone, au cas où nous devrions vous contacter."
   },
   "success": {
     "confirming": "Confirmation de votre réservation&hellip;",

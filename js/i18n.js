@@ -93,7 +93,10 @@
       document.dispatchEvent(new CustomEvent('i18n:ready', { detail: { lang: 'en' } }));
       return Promise.resolve();
     }
-    return fetch('/i18n/' + lang + '.json')
+    // 'no-cache' (not 'force-cache'): always revalidate with the server rather
+    // than trusting a stale cached copy indefinitely — these translation files
+    // do get updated, and a stale copy would silently show old/missing text.
+    return fetch('/i18n/' + lang + '.json', { cache: 'no-cache' })
       .then(function (res) { if (!res.ok) throw new Error('missing translation file'); return res.json(); })
       .then(function (dict) {
         if (requestId !== requestSeq) return; // superseded by a newer language switch
