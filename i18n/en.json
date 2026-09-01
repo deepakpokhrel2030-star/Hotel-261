@@ -337,11 +337,7 @@
     "yourChoices": "Your choices",
     "selectRoomsCol": "Select rooms",
     "payOnlineNote": "Pay online &mdash; secure via Stripe",
-    "wontBeCharged": "You won&rsquo;t be charged yet",
-    "addedToSelection": "Added &#10003;",
-    "removeItem": "Remove",
-    "yourSelection": "Your selection",
-    "continueToDetails": "Continue to your details"
+    "wontBeCharged": "You won&rsquo;t be charged yet"
   },
   "success": {
     "confirming": "Confirming your booking&hellip;",

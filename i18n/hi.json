@@ -337,11 +337,7 @@
     "yourChoices": "आपके विकल्प",
     "selectRoomsCol": "कमरे चुनें",
     "payOnlineNote": "ऑनलाइन भुगतान — Stripe के ज़रिए सुरक्षित",
-    "wontBeCharged": "अभी आपसे शुल्क नहीं लिया जाएगा",
-    "addedToSelection": "जोड़ा गया ✓",
-    "removeItem": "हटाएं",
-    "yourSelection": "आपका चयन",
-    "continueToDetails": "अपनी जानकारी जारी रखें"
+    "wontBeCharged": "अभी आपसे शुल्क नहीं लिया जाएगा"
   },
   "success": {
     "confirming": "आपकी बुकिंग की पुष्टि की जा रही है&hellip;",

@@ -337,11 +337,7 @@
     "yourChoices": "Vos options",
     "selectRoomsCol": "Choisir les chambres",
     "payOnlineNote": "Paiement en ligne — sécurisé via Stripe",
-    "wontBeCharged": "Vous ne serez pas débité maintenant",
-    "addedToSelection": "Ajouté ✓",
-    "removeItem": "Supprimer",
-    "yourSelection": "Votre sélection",
-    "continueToDetails": "Continuer vers vos informations"
+    "wontBeCharged": "Vous ne serez pas débité maintenant"
   },
   "success": {
     "confirming": "Confirmation de votre réservation&hellip;",

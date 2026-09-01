@@ -204,68 +204,26 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     return { checkIn: ci, checkOut: co, nights, ...guestsCtrl.get() };
   }
 
-  /* ---------- Cart: several room types, each with its own quantity ---------- */
-  const cartPanel = document.getElementById('cartPanel');
-  const cartItemsEl = document.getElementById('cartItems');
-  const cartTotalEl = document.getElementById('cartTotal');
-  const cartContinueBtn = document.getElementById('cartContinueBtn');
-  let cart = []; // [{ room, qty }]
-
-  function cartLineTotal(entry, stay) {
+  /* ---------- Several room types can be picked at once: each row has its own
+     quantity selector, and clicking ANY row's "I'll Reserve" reads every
+     row's selector and books the whole set in one go — no separate cart step. ---------- */
+  function lineTotalFor(entry, stay) {
     const nights = stay.nights || 0;
     return (nights > 0 ? entry.room.price * nights : entry.room.price) * entry.qty;
   }
 
-  function setCartQty(room, qty) {
-    const existing = cart.find((e) => e.room.id === room.id);
-    if (qty <= 0) {
-      cart = cart.filter((e) => e.room.id !== room.id);
-    } else if (existing) {
-      existing.qty = qty;
-    } else {
-      cart.push({ room, qty });
-    }
-    renderCart();
-    renderRooms();
-  }
-
-  function renderCart() {
-    const stay = currentStay();
-    if (cart.length === 0) {
-      cartPanel.style.display = 'none';
-      return;
-    }
-    cartPanel.style.display = 'block';
-    let total = 0;
-    cartItemsEl.innerHTML = cart.map((entry) => {
-      const lineTotal = cartLineTotal(entry, stay);
-      total += lineTotal;
-      const roomName = t('room.' + entry.room.id + '.name', entry.room.label);
-      const roomWord = entry.qty === 1 ? t('search.roomWord', 'room') : t('search.roomsWord', 'rooms');
-      return `
-        <div class="cart-item">
-          <div class="cart-item-thumb"><img src="${entry.room.img}" alt="${roomName}" loading="lazy"></div>
-          <div class="cart-item-info"><b>${roomName}</b><span>${entry.qty} ${roomWord}</span></div>
-          <div class="cart-item-price">£${lineTotal.toLocaleString('en-GB')}</div>
-          <button type="button" class="cart-item-remove" data-room="${entry.room.id}" data-i18n-attr="aria-label:book.removeItem" aria-label="${t('book.removeItem', 'Remove')}">&times;</button>
-        </div>
-      `;
-    }).join('');
-    cartTotalEl.textContent = '£' + total.toLocaleString('en-GB');
-
-    cartItemsEl.querySelectorAll('.cart-item-remove').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const roomId = btn.getAttribute('data-room');
-        const room = HOTEL_ROOMS.find((r) => r.id === roomId);
-        if (room) setCartQty(room, 0);
-      });
+  function collectSelectedRooms(forceRoomId) {
+    const items = [];
+    roomListEl.querySelectorAll('.rl-row').forEach((row) => {
+      const roomId = row.id.replace('room-', '');
+      const room = HOTEL_ROOMS.find((r) => r.id === roomId);
+      if (!room) return;
+      let qty = parseInt(row.querySelector('.rl-qty').value, 10) || 0;
+      if (roomId === forceRoomId && qty === 0) qty = 1;
+      if (qty > 0) items.push({ room, qty });
     });
+    return items;
   }
-
-  cartContinueBtn.addEventListener('click', () => {
-    if (cart.length === 0) return;
-    openCheckout(cart, currentStay());
-  });
 
   function guestIconsHtml(maxGuests) {
     const person = '<svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.2"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>';
@@ -303,8 +261,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       const roomSmall = room.small ? t('room.' + room.id + '.small', room.small) : '';
       const roomDesc = t('room.' + room.id + '.desc', room.nights_label + ' · ' + room.desc);
 
-      const cartEntry = cart.find((e) => e.room.id === room.id);
-      const qtyOptions = [1, 2, 3, 4].map((n) => `<option value="${n}" ${cartEntry && cartEntry.qty === n ? 'selected' : ''}>${n}</option>`).join('');
+      const qtyOptions = [0, 1, 2, 3, 4].map((n) => `<option value="${n}">${n}</option>`).join('');
 
       const row = document.createElement('div');
       row.className = 'rl-row rl-cols';
@@ -339,16 +296,13 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       `;
 
       const addBtn = row.querySelector('.rl-add');
-      const qtySelect = row.querySelector('.rl-qty');
       addBtn.addEventListener('click', () => {
-        const qty = parseInt(qtySelect.value, 10) || 1;
-        setCartQty(room, qty);
-        addBtn.classList.add('added');
-        addBtn.textContent = t('book.addedToSelection', 'Added ✓');
-        setTimeout(() => {
-          addBtn.classList.remove('added');
-          addBtn.textContent = t('book.reserveBtn', "I'll Reserve");
-        }, 1400);
+        const stay = currentStay();
+        if (!stay.checkIn || !stay.checkOut) {
+          alert('Please choose your check-in and check-out dates above.');
+          return;
+        }
+        openCheckout(collectSelectedRooms(room.id), stay);
       });
 
       table.appendChild(row);
@@ -358,8 +312,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
   }
 
   renderRooms();
-  renderCart();
-  document.addEventListener('i18n:ready', () => { renderRooms(); renderCart(); });
+  document.addEventListener('i18n:ready', renderRooms);
 
   /* ---------- Checkout: room -> your details -> payment ---------- */
   const roomsSection = document.getElementById('roomsSection');
@@ -417,7 +370,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     let totalRooms = 0;
     const itemsEl = document.getElementById('csItems');
     itemsEl.innerHTML = cartItems.map((entry) => {
-      const lineTotal = cartLineTotal(entry, stay);
+      const lineTotal = lineTotalFor(entry, stay);
       totalPrice += lineTotal;
       totalRooms += entry.qty;
       const roomName = t('room.' + entry.room.id + '.name', entry.room.label);
@@ -542,10 +495,12 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       const room = HOTEL_ROOMS.find((r) => r.id === preselectRoom);
       const el = document.getElementById('room-' + preselectRoom);
       if (room && el) {
-        setCartQty(room, 1);
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
         const stay = currentStay();
-        if (stay.checkIn && stay.checkOut) openCheckout(cart, stay);
+        if (stay.checkIn && stay.checkOut) {
+          openCheckout(collectSelectedRooms(room.id), stay);
+        } else {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
       }
     }, 100);
   }

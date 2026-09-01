@@ -337,11 +337,7 @@
     "yourChoices": "خياراتك",
     "selectRoomsCol": "اختر الغرف",
     "payOnlineNote": "الدفع عبر الإنترنت — آمن عبر Stripe",
-    "wontBeCharged": "لن يتم خصم أي مبلغ الآن",
-    "addedToSelection": "تمت الإضافة ✓",
-    "removeItem": "إزالة",
-    "yourSelection": "اختيارك",
-    "continueToDetails": "المتابعة إلى بياناتك"
+    "wontBeCharged": "لن يتم خصم أي مبلغ الآن"
   },
   "success": {
     "confirming": "جارٍ تأكيد حجزك&hellip;",

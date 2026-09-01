@@ -355,7 +355,6 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .rl-qty{ width:100%; }
 
 .rl-charge-note{ font-size:.7rem; color:var(--ink-soft); margin-top:8px; text-align:center; }
-.rl-add.added{ background:#2e7d32; border-color:#2e7d32; }
 
 @media (max-width:1100px){
   .rl-cols{ grid-template-columns:minmax(240px,2fr) 78px 118px minmax(150px,1.1fr) 98px 140px; }
@@ -509,22 +508,6 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .summary-item-info span{ font-size:.76rem; color:var(--ink-soft); }
 .summary-item-price{ font-size:.86rem; font-weight:600; white-space:nowrap; }
 
-/* ============ Cart panel (multi-room selection, /book) ============ */
-.cart-panel{ max-width:620px; margin:36px auto 0; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:26px 30px; }
-.cart-panel h3{ font-family:var(--ff-display); font-weight:700; font-size:1.1rem; margin-bottom:14px; }
-.cart-item{ display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid var(--line); }
-.cart-item-thumb{ flex:none; width:52px; height:52px; border-radius:6px; overflow:hidden; background:var(--paper-2); }
-.cart-item-thumb img{ width:100%; height:100%; object-fit:cover; }
-.cart-item-info{ flex:1; min-width:0; }
-.cart-item-info b{ display:block; font-size:.9rem; font-weight:600; }
-.cart-item-info span{ font-size:.78rem; color:var(--ink-soft); }
-.cart-item-price{ font-size:.9rem; font-weight:600; white-space:nowrap; }
-.cart-item-remove{ background:none; border:0; color:var(--ink-soft); font-size:1.1rem; line-height:1; cursor:pointer; padding:4px 6px; transition:color .2s ease; }
-.cart-item-remove:hover{ color:var(--accent); }
-.cart-foot{ display:flex; align-items:center; justify-content:space-between; gap:20px; padding-top:18px; margin-top:6px; }
-.cart-total{ display:flex; align-items:baseline; gap:8px; }
-.cart-total span{ color:var(--ink-soft); font-size:.9rem; }
-.cart-total b{ font-family:var(--ff-display); font-size:1.5rem; color:var(--accent); }
 
 .booking-result{ max-width:1240px; margin:0 auto; padding:120px 24px 100px; text-align:center; display:flex; flex-direction:column; align-items:center; }
 .booking-result .booking-summary{ position:static; text-align:left; width:100%; }
@@ -673,6 +656,4 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   .rl-col-guests::before, .rl-col-price::before, .rl-col-choices::before, .rl-col-select::before{
     content:attr(data-label); display:block; font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft); margin-bottom:8px;
   }
-  .cart-foot{ flex-direction:column; align-items:stretch; gap:14px; }
-  .cart-foot .cart-total{ justify-content:space-between; }
 }
