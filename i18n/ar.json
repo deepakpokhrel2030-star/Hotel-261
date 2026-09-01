@@ -338,7 +338,8 @@
     "selectRoomsCol": "اختر الغرف",
     "payOnlineNote": "الدفع عبر الإنترنت — آمن عبر Stripe",
     "wontBeCharged": "لن يتم خصم أي مبلغ الآن",
-    "errNoRoomsSelected": "يرجى اختيار عدد الغرف لنوع واحد على الأقل."
+    "errNoRoomsSelected": "يرجى اختيار عدد الغرف لنوع واحد على الأقل.",
+    "chooseDatesPrompt": "اختر تاريخي الوصول والمغادرة أعلاه لعرض الغرف المتاحة وأسعارها."
   },
   "success": {
     "confirming": "جارٍ تأكيد حجزك&hellip;",

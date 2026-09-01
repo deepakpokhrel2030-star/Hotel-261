@@ -338,7 +338,8 @@
     "selectRoomsCol": "Seleziona camere",
     "payOnlineNote": "Paga online — sicuro con Stripe",
     "wontBeCharged": "Non ti verrà addebitato nulla ora",
-    "errNoRoomsSelected": "Indica la quantità per almeno un tipo di camera."
+    "errNoRoomsSelected": "Indica la quantità per almeno un tipo di camera.",
+    "chooseDatesPrompt": "Scegli le date di arrivo e partenza qui sopra per vedere le camere disponibili e i prezzi."
   },
   "success": {
     "confirming": "Conferma della tua prenotazione in corso&hellip;",

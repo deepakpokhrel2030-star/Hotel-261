@@ -236,6 +236,18 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
   function renderRooms() {
     const stay = currentStay();
     roomListEl.innerHTML = '';
+    const reservePanel = document.querySelector('.rl-reserve-all');
+
+    if (!stay.checkIn || !stay.checkOut) {
+      roomListEl.innerHTML = `
+        <div class="rl-empty">
+          <p data-i18n="book.chooseDatesPrompt">Choose your check-in and check-out dates above to see available rooms and prices.</p>
+        </div>
+      `;
+      if (reservePanel) reservePanel.style.display = 'none';
+      return;
+    }
+    if (reservePanel) reservePanel.style.display = '';
 
     const table = document.createElement('div');
     table.className = 'rl-table';
