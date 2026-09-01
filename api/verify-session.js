@@ -1,4 +1,5 @@
 const Stripe = require('stripe');
+const { pool } = require('../lib/db');
 
 module.exports = async (req, res) => {
   if (req.method !== 'GET') {
@@ -20,8 +21,17 @@ module.exports = async (req, res) => {
     const session = await stripe.checkout.sessions.retrieve(session_id);
 
     if (session.payment_status !== 'paid') {
+      await pool.query(
+        `UPDATE hotel_bookings SET status = 'cancelled', updated_at = NOW() WHERE stripe_session_id = $1;`,
+        [session_id]
+      );
       return res.status(200).json({ paid: false });
     }
+
+    await pool.query(
+      `UPDATE hotel_bookings SET status = 'confirmed', updated_at = NOW() WHERE stripe_session_id = $1;`,
+      [session_id]
+    );
 
     return res.status(200).json({
       paid: true,

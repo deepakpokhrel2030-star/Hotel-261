@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel 261 Admin</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/site/favicon-32.png">
+    <link rel="apple-touch-icon" href="/images/site/apple-touch-icon.png">
+    <style>
+      :root {
+        --bg: #f7f3ee;
+        --panel: #ffffff;
+        --card: #f3e8dc;
+        --accent: #8c5e3c;
+        --accent-strong: #6d452b;
+        --muted: #615448;
+        --ok: #2e7d32;
+        --warn: #c7771e;
+        --danger: #b33535;
+        --border: #e6d8c7;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: #1b1b1b;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .container {
+        width: min(1200px, calc(100% - 32px));
+        margin: 40px auto;
+      }
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+      .brand { font-size: 2rem; font-weight: 700; }
+      .actions { display: flex; gap: 12px; align-items: center; }
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: 0 12px 32px rgba(63, 41, 25, 0.06);
+      }
+      .login-box {
+        max-width: 420px;
+        margin: 72px auto;
+      }
+      h1, h2, h3, p { margin-top: 0; }
+      label { display: block; margin-bottom: 8px; font-weight: 600; }
+      input, select, button {
+        width: 100%;
+        padding: 12px 14px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        font: inherit;
+      }
+      input, select { background: #fff; }
+      button {
+        cursor: pointer;
+        background: var(--accent);
+        color: white;
+        border: none;
+        font-weight: 700;
+      }
+      button.secondary {
+        background: transparent;
+        color: var(--accent-strong);
+        border: 1px solid var(--border);
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+      .stat-card {
+        background: var(--card);
+        border-radius: 14px;
+        padding: 18px;
+      }
+      .stat-label { color: var(--muted); font-size: 0.8rem; text-transform: uppercase; }
+      .stat-value { font-size: 1.9rem; font-weight: 700; margin-top: 8px; }
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(300px, 420px);
+        gap: 20px;
+      }
+      .table-wrap {
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.92rem;
+      }
+      th, td {
+        border-bottom: 1px solid var(--border);
+        padding: 12px 10px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; }
+      .status-pill {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: capitalize;
+      }
+      .status-pending { background: rgba(199,119,30,0.12); color: var(--warn); }
+      .status-confirmed { background: rgba(46,125,50,0.12); color: var(--ok); }
+      .status-cancelled { background: rgba(179,53,53,0.12); color: var(--danger); }
+      .error { color: var(--danger); margin-top: 10px; }
+      .success { color: var(--ok); margin-top: 10px; }
+      .hidden { display: none !important; }
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+      @media (max-width: 820px) {
+        .layout { grid-template-columns: 1fr; }
+        .grid-2 { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="loginView" class="panel login-box">
+        <h1>Hotel 261 Admin</h1>
+        <p>Use the admin password configured in the backend environment.</p>
+        <form id="loginForm">
+          <div>
+            <label for="adminPassword">Password</label>
+            <input id="adminPassword" name="password" type="password" placeholder="Enter admin password" required />
+          </div>
+          <div style="margin-top: 18px;">
+            <button type="submit">Open dashboard</button>
+          </div>
+          <div id="loginError" class="error hidden"></div>
+        </form>
+      </div>
+
+      <div id="dashboardView" class="hidden">
+        <div class="topbar">
+          <div class="brand">Hotel 261 Admin</div>
+          <div class="actions">
+            <button id="refreshBtn" class="secondary" type="button">Refresh</button>
+            <button id="logoutBtn" type="button">Log out</button>
+          </div>
+        </div>
+
+        <section class="stats">
+          <div class="stat-card panel">
+            <div class="stat-label">Total bookings</div>
+            <div id="totalBookings" class="stat-value">0</div>
+          </div>
+          <div class="stat-card panel">
+            <div class="stat-label">Pending</div>
+            <div id="pendingBookings" class="stat-value">0</div>
+          </div>
+          <div class="stat-card panel">
+            <div class="stat-label">Confirmed</div>
+            <div id="confirmedBookings" class="stat-value">0</div>
+          </div>
+          <div class="stat-card panel">
+            <div class="stat-label">Revenue</div>
+            <div id="revenueTotal" class="stat-value">£0</div>
+          </div>
+        </section>
+
+        <div class="layout">
+          <section class="panel">
+            <h2>Recent bookings</h2>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Guest</th>
+                    <th>Room</th>
+                    <th>Dates</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody id="bookingsTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <aside class="panel">
+            <h2>Add booking</h2>
+            <form id="bookingForm">
+              <div class="grid-2">
+                <div>
+                  <label for="guestName">Guest name</label>
+                  <input id="guestName" name="guestName" required />
+                </div>
+                <div>
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" required />
+                </div>
+              </div>
+              <div class="grid-2" style="margin-top: 12px;">
+                <div>
+                  <label for="roomType">Room type</label>
+                  <select id="roomType" name="roomType">
+                    <option value="single">Single</option>
+                    <option value="twin">Twin</option>
+                    <option value="double12">Double 1-2 Adults</option>
+                    <option value="double">Double</option>
+                    <option value="triple">Triple</option>
+                    <option value="quad">Quadruple</option>
+                    <option value="family">Family</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="status">Status</label>
+                  <select id="status" name="status">
+                    <option value="pending">Pending</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="cancelled">Cancelled</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid-2" style="margin-top: 12px;">
+                <div>
+                  <label for="checkIn">Check-in</label>
+                  <input id="checkIn" name="checkIn" type="date" required />
+                </div>
+                <div>
+                  <label for="checkOut">Check-out</label>
+                  <input id="checkOut" name="checkOut" type="date" required />
+                </div>
+              </div>
+
+              <div class="grid-2" style="margin-top: 12px;">
+                <div>
+                  <label for="guests">Guests</label>
+                  <input id="guests" name="guests" type="number" min="1" max="8" value="2" required />
+                </div>
+                <div>
+                  <label for="totalAmount">Total amount (£)</label>
+                  <input id="totalAmount" name="totalAmount" type="number" min="0" step="0.01" value="0" required />
+                </div>
+              </div>
+
+              <div style="margin-top: 12px;">
+                <label for="notes">Notes</label>
+                <input id="notes" name="notes" />
+              </div>
+
+              <div style="margin-top: 18px;">
+                <button type="submit">Save booking</button>
+              </div>
+              <div id="bookingMessage" class="success hidden"></div>
+            </form>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const ADMIN_SECRET_KEY = 'hotel261_admin_session';
+      const loginView = document.getElementById('loginView');
+      const dashboardView = document.getElementById('dashboardView');
+      const loginForm = document.getElementById('loginForm');
+      const bookingForm = document.getElementById('bookingForm');
+
+      function setAuthToken(token) {
+        if (token) localStorage.setItem(ADMIN_SECRET_KEY, token);
+        else localStorage.removeItem(ADMIN_SECRET_KEY);
+      }
+
+      function getAuthToken() {
+        return localStorage.getItem(ADMIN_SECRET_KEY) || '';
+      }
+
+      function renderLogin(show) {
+        loginView.classList.toggle('hidden', !show);
+        dashboardView.classList.toggle('hidden', show);
+      }
+
+      function authHeaders() {
+        return {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${getAuthToken()}`,
+        };
+      }
+
+      async function apiFetch(url, options = {}) {
+        const requestHeaders = { ...(options.headers || {}) };
+
+        if (options.body && !requestHeaders['Content-Type'] && !requestHeaders['content-type']) {
+          requestHeaders['Content-Type'] = 'application/json';
+        }
+
+        const response = await fetch(url, {
+          ...options,
+          headers: requestHeaders,
+        });
+
+        const data = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Request failed');
+        }
+
+        return data;
+      }
+
+      async function login(event) {
+        event.preventDefault();
+        const password = document.getElementById('adminPassword').value;
+        const errorBox = document.getElementById('loginError');
+
+        try {
+          const data = await apiFetch('/api/admin/login', {
+            method: 'POST',
+            body: JSON.stringify({ password }),
+          });
+
+          setAuthToken(data.token);
+          renderLogin(false);
+          await loadDashboard();
+        } catch (error) {
+          errorBox.textContent = error.message;
+          errorBox.classList.remove('hidden');
+        }
+      }
+
+      function formatMoney(value) {
+        return `£${Number(value || 0).toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+      }
+
+      function badgeClass(status) {
+        return `status-pill status-${status || 'pending'}`;
+      }
+
+      function buildRows(bookings) {
+        const body = document.getElementById('bookingsTableBody');
+        body.innerHTML = '';
+
+        if (!bookings.length) {
+          body.innerHTML = '<tr><td colspan="5">No bookings found.</td></tr>';
+          return;
+        }
+
+        for (const booking of bookings) {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>
+              <strong>${booking.guest_name}</strong><br>
+              <small>${booking.email}</small>
+            </td>
+            <td>${booking.room_label}</td>
+            <td>${booking.check_in} → ${booking.check_out}</td>
+            <td>
+              <select data-booking-id="${booking.id}" class="booking-status">
+                <option value="pending" ${booking.status === 'pending' ? 'selected' : ''}>Pending</option>
+                <option value="confirmed" ${booking.status === 'confirmed' ? 'selected' : ''}>Confirmed</option>
+                <option value="cancelled" ${booking.status === 'cancelled' ? 'selected' : ''}>Cancelled</option>
+              </select>
+            </td>
+            <td>${formatMoney(booking.total_amount)}</td>
+          `;
+
+          body.appendChild(row);
+        }
+
+        document.querySelectorAll('.booking-status').forEach((select) => {
+          select.addEventListener('change', async (event) => {
+            const id = event.target.dataset.bookingId;
+            const status = event.target.value;
+            await apiFetch(`/api/admin/bookings/${id}/status`, {
+              method: 'PATCH',
+              headers: authHeaders(),
+              body: JSON.stringify({ status }),
+            });
+            await loadDashboard();
+          });
+        });
+      }
+
+      async function loadDashboard() {
+        const summary = await apiFetch('/api/admin/summary', { headers: authHeaders() });
+        const bookings = (await apiFetch('/api/admin/bookings', { headers: authHeaders() })).bookings || [];
+
+        document.getElementById('totalBookings').textContent = Number(summary.total_bookings || 0);
+        document.getElementById('pendingBookings').textContent = Number(summary.pending || 0);
+        document.getElementById('confirmedBookings').textContent = Number(summary.confirmed || 0);
+        document.getElementById('revenueTotal').textContent = formatMoney(summary.confirmed_revenue || 0);
+        buildRows(bookings);
+      }
+
+      async function handleBookingSubmit(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const payload = {
+          guestName: formData.get('guestName'),
+          email: formData.get('email'),
+          roomType: formData.get('roomType'),
+          roomLabel: formData.get('roomType'),
+          checkIn: formData.get('checkIn'),
+          checkOut: formData.get('checkOut'),
+          guests: Number(formData.get('guests') || 1),
+          totalAmount: Number(formData.get('totalAmount') || 0),
+          status: formData.get('status'),
+          notes: formData.get('notes') || '',
+        };
+
+        const roomNames = {
+          single: 'Single Room',
+          twin: 'Twin Room',
+          double12: 'Double Room (1–2 Adults)',
+          double: 'Double Room',
+          triple: 'Triple Room',
+          quad: 'Quadruple Room',
+          family: 'Family Room',
+        };
+
+        payload.roomLabel = roomNames[payload.roomType] || payload.roomType;
+
+        try {
+          await apiFetch('/api/admin/bookings', {
+            method: 'POST',
+            headers: authHeaders(),
+            body: JSON.stringify(payload),
+          });
+
+          document.getElementById('bookingMessage').textContent = 'Booking saved successfully.';
+          document.getElementById('bookingMessage').classList.remove('hidden');
+          bookingForm.reset();
+          await loadDashboard();
+        } catch (error) {
+          document.getElementById('bookingMessage').textContent = error.message;
+          document.getElementById('bookingMessage').classList.remove('hidden');
+        }
+      }
+
+      function logout() {
+        setAuthToken('');
+        renderLogin(true);
+      }
+
+      document.getElementById('loginForm').addEventListener('submit', login);
+      document.getElementById('logoutBtn').addEventListener('click', logout);
+      document.getElementById('refreshBtn').addEventListener('click', loadDashboard);
+      document.getElementById('bookingForm').addEventListener('submit', handleBookingSubmit);
+
+      if (getAuthToken()) {
+        renderLogin(false);
+        loadDashboard().catch(() => logout());
+      } else {
+        renderLogin(true);
+      }
+    </script>
+  </body>
+</html>

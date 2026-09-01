@@ -1,12 +1,12 @@
 /* ---------- Shared room data ---------- */
 const HOTEL_ROOMS = [
-  { id: 'single',   label: 'Single Room',                nights_label: '1 single bed · sleeps 1',       price: 54,  maxGuests: 1, img: 'images/site/single-room.jpg',     desc: 'A compact, quiet room for solo travellers.' },
-  { id: 'twin',     label: 'Twin Room',                   nights_label: '2 single beds · sleeps 2',      price: 75,  maxGuests: 2, img: 'images/site/twin-room.jpg',       desc: 'A favourite with friends travelling together.' },
-  { id: 'double12', label: 'Double Room', small: '(1–2 Adults)', nights_label: '1 double bed · sleeps 1–2', price: 75, maxGuests: 2, img: 'images/site/double-room-1-2.jpg', desc: 'Flexible whether you’re solo or a pair.' },
-  { id: 'double',   label: 'Double Room',                 nights_label: '1 double bed · sleeps 2',        price: 80,  maxGuests: 2, img: 'images/site/double-room.jpg',     desc: 'Our classic double for couples and city breaks.' },
-  { id: 'triple',   label: 'Triple Room',                 nights_label: '3 single beds · sleeps 3',       price: 95,  maxGuests: 3, img: 'images/site/triple-room.jpg',     desc: 'Extra space for small groups.' },
-  { id: 'quad',     label: 'Quadruple Room',               nights_label: '2 double beds · sleeps 4',       price: 120, maxGuests: 4, img: 'images/site/quadruple-room.jpg',  desc: 'Roomy enough for two couples or a family of four.' },
-  { id: 'family',   label: 'Family Room',                 nights_label: '2 single beds & 1 double · sleeps 5', price: 120, maxGuests: 5, img: 'images/site/family-room.jpg', desc: 'Our largest room, built for family stays.' },
+  { id: 'single',   label: 'Single Room',                nights_label: '1 single bed · sleeps 1',       price: 54,  maxGuests: 1, img: 'images/site/single-room.jpg',     desc: 'A compact, quiet room for solo travellers.', rating: 4.8, reviews: 127, badge: 'Popular', perks: ['Free WiFi', 'Private parking', 'Air-conditioned'] },
+  { id: 'twin',     label: 'Twin Room',                   nights_label: '2 single beds · sleeps 2',      price: 75,  maxGuests: 2, img: 'images/site/twin-room.jpg',       desc: 'A favourite with friends travelling together.', rating: 4.7, reviews: 96, badge: 'Best for friends', perks: ['Two single beds', 'Large bathroom', 'Great location'] },
+  { id: 'double12', label: 'Double Room', small: '(1–2 Adults)', nights_label: '1 double bed · sleeps 1–2', price: 75, maxGuests: 2, img: 'images/site/double-room-1-2.jpg', desc: 'Flexible whether you’re solo or a pair.', rating: 4.6, reviews: 84, badge: 'Top value', perks: ['Flexible guest setup', 'En-suite', 'Fast check-in'] },
+  { id: 'double',   label: 'Double Room',                 nights_label: '1 double bed · sleeps 2',        price: 80,  maxGuests: 2, img: 'images/site/double-room.jpg',     desc: 'Our classic double for couples and city breaks.', rating: 4.9, reviews: 214, badge: 'Guest favourite', perks: ['Breakfast available', 'Quiet street', 'Flat‑screen TV'] },
+  { id: 'triple',   label: 'Triple Room',                 nights_label: '3 single beds · sleeps 3',       price: 95,  maxGuests: 3, img: 'images/site/triple-room.jpg',     desc: 'Extra space for small groups.', rating: 4.7, reviews: 73, badge: 'Family pick', perks: ['Extra space', 'Near Westfield', 'Non-smoking'] },
+  { id: 'quad',     label: 'Quadruple Room',               nights_label: '2 double beds · sleeps 4',       price: 120, maxGuests: 4, img: 'images/site/quadruple-room.jpg',  desc: 'Roomy enough for two couples or a family of four.', rating: 4.8, reviews: 61, badge: 'Large family room', perks: ['Spacious', 'Two double beds', 'Private parking'] },
+  { id: 'family',   label: 'Family Room',                 nights_label: '2 single beds & 1 double · sleeps 5', price: 120, maxGuests: 5, img: 'images/site/family-room.jpg', desc: 'Our largest room, built for family stays.', rating: 4.9, reviews: 118, badge: 'Very popular', perks: ['Sleeps 5', 'Family-friendly', 'Easy transport links'] },
 ];
 
 function nightsBetween(a, b) {
@@ -91,7 +91,7 @@ function setDateConstraints(checkInInput, checkOutInput) {
     if (checkOut.value) params.set('checkout', checkOut.value);
     const guests = widget.querySelector('.stepper b').textContent;
     params.set('guests', guests);
-    window.location.href = 'book.html?' + params.toString();
+    window.location.href = '/book?' + params.toString();
   });
 })();
 
@@ -124,39 +124,169 @@ function setDateConstraints(checkInInput, checkOutInput) {
     return { checkIn: ci, checkOut: co, nights, guests: guestsCtrl.get() };
   }
 
-  function closeAllPanels(except) {
-    roomListEl.querySelectorAll('.reserve-panel.open').forEach(p => {
-      if (p !== except) p.classList.remove('open');
+  function renderRooms() {
+    const stay = currentStay();
+    roomListEl.innerHTML = '';
+
+    HOTEL_ROOMS.forEach((room) => {
+      const overGuests = stay.guests > room.maxGuests;
+      const item = document.createElement('article');
+      item.className = 'rl-item booking-card' + (overGuests ? ' dimmed' : '');
+      item.id = 'room-' + room.id;
+
+      const totalPrice = stay.nights > 0 ? room.price * stay.nights : room.price;
+      const nightlyLabel = stay.nights > 0 ? `${stay.nights} night${stay.nights > 1 ? 's' : ''} total` : 'per night';
+      const reviewText = `${room.rating.toFixed(1)} · ${room.reviews} reviews`;
+      const tags = room.perks.map((perk) => `<span>${perk}</span>`).join('');
+
+      item.innerHTML = `
+        <div class="rl-media booking-card__media"><img src="${room.img}" alt="${room.label} at Hotel 261" loading="lazy"></div>
+        <div class="rl-body booking-card__body">
+          <div class="booking-card__header">
+            <div>
+              <div class="booking-card__badge">${room.badge}</div>
+              <h3>${room.label}${room.small ? ` <small>${room.small}</small>` : ''}</h3>
+            </div>
+            <div class="booking-card__score">
+              <span class="score-pill">${room.rating.toFixed(1)}</span>
+              <small>${reviewText}</small>
+            </div>
+          </div>
+          <p class="rl-meta">${room.nights_label} · ${room.desc}</p>
+          <div class="rl-tags">${tags}</div>
+          ${overGuests ? `<p class="rl-note">Sleeps up to ${room.maxGuests} — too small for ${stay.guests} guests</p>` : ''}
+        </div>
+        <div class="rl-price booking-card__price">
+          <div class="booking-card__price-inner">
+            <span class="amount">£${totalPrice.toLocaleString('en-GB')}</span>
+            <span class="per">${nightlyLabel}</span>
+          </div>
+          <button type="button" class="btn btn-primary rl-reserve" ${overGuests ? 'disabled' : ''}>I&rsquo;ll Reserve</button>
+        </div>
+      `;
+
+      const reserveBtn = item.querySelector('.rl-reserve');
+      if (!overGuests) {
+        reserveBtn.addEventListener('click', () => openCheckout(room, currentStay()));
+      }
+
+      roomListEl.appendChild(item);
     });
   }
 
-  function submitReservation(room, stay, panel, btn) {
-    const nameInput = panel.querySelector('.rp-name');
-    const emailInput = panel.querySelector('.rp-email');
-    const errorBox = panel.querySelector('.form-error');
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
+  renderRooms();
 
-    errorBox.textContent = '';
-    errorBox.classList.remove('visible');
+  /* ---------- Checkout: room -> your details -> payment ---------- */
+  const roomsSection = document.getElementById('roomsSection');
+  const checkoutSection = document.getElementById('checkoutSection');
+  const detailsPanel = document.getElementById('checkoutDetailsPanel');
+  const paymentPanel = document.getElementById('checkoutPaymentPanel');
+  const stepDetails = document.querySelector('.checkout-step[data-step="details"]');
+  const stepPayment = document.querySelector('.checkout-step[data-step="payment"]');
 
+  const coName = document.getElementById('coName');
+  const coEmail = document.getElementById('coEmail');
+  const coPhone = document.getElementById('coPhone');
+  const coGuestsDisplay = document.getElementById('coGuestsDisplay');
+  const coRequests = document.getElementById('coRequests');
+  const coDetailsError = document.getElementById('coDetailsError');
+  const coPaymentError = document.getElementById('coPaymentError');
+  const coContinueBtn = document.getElementById('coContinueBtn');
+  const coPayBtn = document.getElementById('coPayBtn');
+  const coPayLabel = document.getElementById('coPayLabel');
+  const coPayAmount = document.getElementById('coPayAmount');
+
+  let activeRoom = null;
+  let activeStay = null;
+
+  function setError(box, msg) {
+    box.textContent = msg;
+    box.classList.toggle('visible', !!msg);
+  }
+
+  function fillSummary(room, stay) {
+    const totalPrice = stay.nights > 0 ? room.price * stay.nights : room.price;
+    document.getElementById('csRoom').textContent = room.label;
+    document.getElementById('csCheckIn').textContent = fmtDateShort(stay.checkIn);
+    document.getElementById('csCheckOut').textContent = fmtDateShort(stay.checkOut);
+    document.getElementById('csNights').textContent = stay.nights || '—';
+    document.getElementById('csGuests').textContent = stay.guests;
+    document.getElementById('csTotal').textContent = '£' + totalPrice.toLocaleString('en-GB');
+    coGuestsDisplay.value = stay.guests + (stay.guests === 1 ? ' guest' : ' guests');
+    coPayAmount.textContent = '£' + totalPrice.toLocaleString('en-GB');
+  }
+
+  function openCheckout(room, stay) {
     if (!stay.checkIn || !stay.checkOut) {
-      errorBox.textContent = 'Please choose your check-in and check-out dates above.';
-      errorBox.classList.add('visible');
+      alert('Please choose your check-in and check-out dates above.');
       return;
     }
-    if (!name) { errorBox.textContent = 'Please enter your full name.'; errorBox.classList.add('visible'); return; }
-    if (!email) { errorBox.textContent = 'Please enter your email address.'; errorBox.classList.add('visible'); return; }
+    activeRoom = room;
+    activeStay = stay;
+    fillSummary(room, stay);
+    setError(coDetailsError, '');
+    setError(coPaymentError, '');
+    showDetailsStep();
+    roomsSection.style.display = 'none';
+    checkoutSection.style.display = 'block';
+    checkoutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => coName.focus(), 300);
+  }
 
-    btn.disabled = true;
-    btn.textContent = 'Redirecting…';
+  function showDetailsStep() {
+    detailsPanel.style.display = 'block';
+    paymentPanel.style.display = 'none';
+    stepDetails.classList.add('active');
+    stepDetails.classList.remove('done');
+    stepPayment.classList.remove('active');
+  }
+
+  function showPaymentStep() {
+    detailsPanel.style.display = 'none';
+    paymentPanel.style.display = 'block';
+    stepDetails.classList.remove('active');
+    stepDetails.classList.add('done');
+    stepPayment.classList.add('active');
+  }
+
+  document.getElementById('backToRooms').addEventListener('click', () => {
+    checkoutSection.style.display = 'none';
+    roomsSection.style.display = 'block';
+    roomsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  document.getElementById('backToDetails').addEventListener('click', showDetailsStep);
+
+  coContinueBtn.addEventListener('click', () => {
+    setError(coDetailsError, '');
+    const name = coName.value.trim();
+    const email = coEmail.value.trim();
+    const phone = coPhone.value.trim();
+    if (!name) { setError(coDetailsError, 'Please enter your full name.'); coName.focus(); return; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setError(coDetailsError, 'Please enter a valid email address.'); coEmail.focus(); return; }
+    if (!phone) { setError(coDetailsError, 'Please enter a phone number, in case we need to reach you.'); coPhone.focus(); return; }
+    showPaymentStep();
+  });
+
+  coPayBtn.addEventListener('click', () => {
+    setError(coPaymentError, '');
+    if (!activeRoom || !activeStay) return;
+
+    const name = coName.value.trim();
+    const email = coEmail.value.trim();
+    const phone = coPhone.value.trim();
+    const specialRequests = coRequests.value.trim();
+
+    coPayBtn.disabled = true;
+    coPayLabel.textContent = 'Redirecting…';
+    coPayAmount.style.display = 'none';
 
     fetch('/api/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        roomType: room.id, checkIn: stay.checkIn, checkOut: stay.checkOut,
-        guests: stay.guests, name, email,
+        roomType: activeRoom.id, checkIn: activeStay.checkIn, checkOut: activeStay.checkOut,
+        guests: activeStay.guests, name, email, phone, specialRequests,
       }),
     })
       .then(res => res.json().then(data => ({ ok: res.ok, data })))
@@ -165,68 +295,12 @@ function setDateConstraints(checkInInput, checkOutInput) {
         window.location.href = data.url;
       })
       .catch(err => {
-        errorBox.textContent = err.message;
-        errorBox.classList.add('visible');
-        btn.disabled = false;
-        btn.textContent = 'Continue to Secure Payment';
+        setError(coPaymentError, err.message);
+        coPayBtn.disabled = false;
+        coPayLabel.textContent = 'Pay Securely — ';
+        coPayAmount.style.display = '';
       });
-  }
-
-  function renderRooms() {
-    const stay = currentStay();
-    roomListEl.innerHTML = '';
-
-    HOTEL_ROOMS.forEach((room, i) => {
-      const overGuests = stay.guests > room.maxGuests;
-      const item = document.createElement('article');
-      item.className = 'rl-item' + (overGuests ? ' dimmed' : '');
-      item.id = 'room-' + room.id;
-
-      const priceHtml = stay.nights > 0
-        ? `<span class="amount">£${(room.price * stay.nights).toLocaleString('en-GB')}</span><span class="per">${stay.nights} night${stay.nights > 1 ? 's' : ''} total</span>`
-        : `<span class="amount">£${room.price}</span><span class="per">per night</span>`;
-
-      item.innerHTML = `
-        <div class="rl-media"><img src="${room.img}" alt="${room.label} at Hotel 261" loading="lazy"></div>
-        <div class="rl-body">
-          <h3>${room.label}${room.small ? ` <small>${room.small}</small>` : ''}</h3>
-          <p class="rl-meta">${room.nights_label} &middot; ${room.desc}</p>
-          <div class="rl-tags"><span>Ensuite</span><span>Flat-screen TV</span><span>Free WiFi</span></div>
-          ${overGuests ? `<p class="rl-note">Sleeps up to ${room.maxGuests} — too small for ${stay.guests} guests</p>` : ''}
-        </div>
-        <div class="rl-price">
-          ${priceHtml}
-          <button type="button" class="btn btn-primary rl-reserve" ${overGuests ? 'disabled' : ''}>I&rsquo;ll Reserve</button>
-        </div>
-        <div class="reserve-panel">
-          <div class="reserve-panel-inner">
-            <div class="form-row"><label>Full name</label><input type="text" class="rp-name" autocomplete="name"></div>
-            <div class="form-row"><label>Email</label><input type="email" class="rp-email" autocomplete="email"></div>
-            <button type="button" class="btn btn-primary rp-submit">Continue to Secure Payment</button>
-            <div class="form-error"></div>
-          </div>
-        </div>
-      `;
-
-      const panel = item.querySelector('.reserve-panel');
-      const reserveBtn = item.querySelector('.rl-reserve');
-      const submitBtn = item.querySelector('.rp-submit');
-
-      if (!overGuests) {
-        reserveBtn.addEventListener('click', () => {
-          const isOpen = panel.classList.contains('open');
-          closeAllPanels();
-          panel.classList.toggle('open', !isOpen);
-          if (!isOpen) panel.querySelector('.rp-name').focus();
-        });
-        submitBtn.addEventListener('click', () => submitReservation(room, currentStay(), panel, submitBtn));
-      }
-
-      roomListEl.appendChild(item);
-    });
-  }
-
-  renderRooms();
+  });
 
   const preselectRoom = params.get('room');
   if (preselectRoom) {
@@ -241,7 +315,7 @@ function setDateConstraints(checkInInput, checkOutInput) {
   }
 })();
 
-/* ---------- Booking result (booking-success.html) ---------- */
+/* ---------- Booking result ---------- */
 (function () {
   const loading = document.getElementById('resultLoading');
   if (!loading) return;

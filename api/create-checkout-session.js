@@ -1,4 +1,5 @@
 const Stripe = require('stripe');
+const { pool } = require('../lib/db');
 
 // Authoritative room prices (GBP per night). Never trust a price sent by the client.
 const ROOMS = {
@@ -29,7 +30,7 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { roomType, checkIn, checkOut, guests, name, email } = req.body || {};
+    const { roomType, checkIn, checkOut, guests, name, email, phone, specialRequests } = req.body || {};
 
     const room = ROOMS[roomType];
     if (!room) return res.status(400).json({ error: 'Please choose a valid room type.' });
@@ -50,6 +51,7 @@ module.exports = async (req, res) => {
     }
 
     if (!name || !String(name).trim()) return res.status(400).json({ error: 'Please enter your full name.' });
+    if (!phone || !String(phone).trim()) return res.status(400).json({ error: 'Please enter a phone number.' });
 
     const totalPounds = room.price * nights;
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -86,10 +88,22 @@ module.exports = async (req, res) => {
         nights: String(nights),
         guests: String(guestCount),
         guestName: String(name).slice(0, 200),
+        guestPhone: String(phone).slice(0, 60),
+        specialRequests: String(specialRequests || '').slice(0, 500),
       },
-      success_url: `${origin}/booking-success.html?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}/book.html?cancelled=1`,
+      success_url: `${origin}/booking-success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${origin}/book?cancelled=1`,
     });
+
+    const notesParts = [`Phone: ${String(phone).trim()}`];
+    if (specialRequests && String(specialRequests).trim()) notesParts.push(`Special requests: ${String(specialRequests).trim().slice(0, 500)}`);
+
+    await pool.query(
+      `INSERT INTO hotel_bookings (
+        guest_name, email, room_type, room_label, check_in, check_out, guests, total_amount, status, stripe_session_id, notes
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, 'pending', $9, $10);`,
+      [String(name).trim(), String(email || '').trim(), roomType, room.label, checkIn, checkOut, guestCount, Number(totalPounds.toFixed(2)), session.id, notesParts.join(' | ')]
+    );
 
     return res.status(200).json({ url: session.url });
   } catch (err) {
