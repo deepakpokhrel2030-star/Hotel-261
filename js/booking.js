@@ -9,6 +9,12 @@ const HOTEL_ROOMS = [
   { id: 'family',   label: 'Family Room',                 nights_label: '2 single beds & 1 double · sleeps 5', price: 120, maxGuests: 5, img: 'images/site/family-room.jpg', desc: 'Our largest room, built for family stays.', rating: 4.9, reviews: 118, badge: 'Very popular', perks: ['Sleeps 5', 'Family-friendly', 'Easy transport links'] },
 ];
 
+function toLocalISODate(date) {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
 function nightsBetween(a, b) {
   if (!a || !b) return 0;
   const ms = new Date(b + 'T00:00:00').getTime() - new Date(a + 'T00:00:00').getTime();
@@ -59,20 +65,35 @@ function initGuestsDropdown(root, onChange) {
   return { get: () => count, set: (v) => { count = Math.min(MAX, Math.max(MIN, v)); render(true); } };
 }
 
-function setDateConstraints(checkInInput, checkOutInput) {
-  const todayStr = new Date().toISOString().slice(0, 10);
+function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
+  const todayStr = toLocalISODate(new Date());
   checkInInput.min = todayStr;
+
+  function updateNights() {
+    if (!nightsEl) return;
+    const n = nightsBetween(checkInInput.value, checkOutInput.value);
+    if (n > 0) {
+      nightsEl.textContent = n + (n === 1 ? ' night' : ' nights');
+      nightsEl.classList.add('visible');
+    } else {
+      nightsEl.classList.remove('visible');
+    }
+  }
+
   checkInInput.addEventListener('change', () => {
     if (!checkInInput.value) return;
     const next = new Date(checkInInput.value + 'T00:00:00');
     if (isNaN(next.getTime())) return;
     next.setDate(next.getDate() + 1);
-    const nextStr = next.toISOString().slice(0, 10);
+    const nextStr = toLocalISODate(next);
     checkOutInput.min = nextStr;
     if (!checkOutInput.value || checkOutInput.value <= checkInInput.value) {
       checkOutInput.value = nextStr;
     }
+    updateNights();
   });
+  checkOutInput.addEventListener('change', updateNights);
+  updateNights();
 }
 
 /* ================= Homepage hero search widget ================= */
@@ -81,7 +102,7 @@ function setDateConstraints(checkInInput, checkOutInput) {
   if (!widget) return;
   const checkIn = widget.querySelector('#hsCheckIn');
   const checkOut = widget.querySelector('#hsCheckOut');
-  setDateConstraints(checkIn, checkOut);
+  setDateConstraints(checkIn, checkOut, widget.querySelector('#hsNights'));
   initGuestsDropdown(widget);
 
   widget.querySelector('form').addEventListener('submit', (e) => {
@@ -103,7 +124,7 @@ function setDateConstraints(checkInInput, checkOutInput) {
 
   const checkIn = widget.querySelector('#bsCheckIn');
   const checkOut = widget.querySelector('#bsCheckOut');
-  setDateConstraints(checkIn, checkOut);
+  setDateConstraints(checkIn, checkOut, widget.querySelector('#bsNights'));
   const guestsCtrl = initGuestsDropdown(widget, renderRooms);
 
   const params = new URLSearchParams(window.location.search);
@@ -111,6 +132,7 @@ function setDateConstraints(checkInInput, checkOutInput) {
   if (params.get('checkout')) checkOut.value = params.get('checkout');
   if (params.get('guests')) guestsCtrl.set(parseInt(params.get('guests'), 10) || 2);
   if (checkIn.value) checkOut.min = checkIn.value;
+  if (checkIn.value || checkOut.value) checkOut.dispatchEvent(new Event('change'));
 
   widget.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
