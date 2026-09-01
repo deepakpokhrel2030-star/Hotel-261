@@ -125,15 +125,31 @@
           <span class="sw-nights" id="bsNights"></span>
         </div>
         <div class="sw-field sw-guests-field">
-          <label><svg class="icon" viewBox="0 0 24 24"><circle cx="8.5" cy="8" r="3"/><path d="M2.5 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15 20a5 5 0 0 1 7-4.6"/></svg> <span data-i18n="search.guestsLabel">Guests</span></label>
-          <button type="button" class="sw-guests-toggle">2 guests</button>
+          <label><svg class="icon" viewBox="0 0 24 24"><circle cx="8.5" cy="8" r="3"/><path d="M2.5 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15 20a5 5 0 0 1 7-4.6"/></svg> <span data-i18n="search.occupancyLabel">Occupancy</span></label>
+          <button type="button" class="sw-guests-toggle">2 adults &middot; 0 children &middot; 1 room</button>
           <div class="guests-dropdown">
             <div class="stepper-row">
-              <span data-i18n="search.guestsLabel">Guests</span>
-              <div class="stepper">
-                <button type="button" data-step="-" aria-label="Decrease guests" data-i18n-attr="aria-label:search.decreaseGuests">&minus;</button>
+              <span data-i18n="search.adults">Adults</span>
+              <div class="stepper" data-type="adults">
+                <button type="button" data-step="-" aria-label="Decrease adults" data-i18n-attr="aria-label:search.decreaseAdults">&minus;</button>
                 <b>2</b>
-                <button type="button" data-step="+" aria-label="Increase guests" data-i18n-attr="aria-label:search.increaseGuests">&plus;</button>
+                <button type="button" data-step="+" aria-label="Increase adults" data-i18n-attr="aria-label:search.increaseAdults">&plus;</button>
+              </div>
+            </div>
+            <div class="stepper-row">
+              <span data-i18n="search.children">Children</span>
+              <div class="stepper" data-type="children">
+                <button type="button" data-step="-" aria-label="Decrease children" data-i18n-attr="aria-label:search.decreaseChildren">&minus;</button>
+                <b>0</b>
+                <button type="button" data-step="+" aria-label="Increase children" data-i18n-attr="aria-label:search.increaseChildren">&plus;</button>
+              </div>
+            </div>
+            <div class="stepper-row">
+              <span data-i18n="search.rooms">Rooms</span>
+              <div class="stepper" data-type="rooms">
+                <button type="button" data-step="-" aria-label="Decrease rooms" data-i18n-attr="aria-label:search.decreaseRooms">&minus;</button>
+                <b>1</b>
+                <button type="button" data-step="+" aria-label="Increase rooms" data-i18n-attr="aria-label:search.increaseRooms">&plus;</button>
               </div>
             </div>
             <button type="button" class="btn btn-outline guests-done" data-i18n="search.done">Done</button>
@@ -225,6 +241,7 @@
       <div class="summary-row"><span data-i18n="search.checkout">Check-out</span><b id="csCheckOut">&mdash;</b></div>
       <div class="summary-row"><span data-i18n="book.nights">Nights</span><b id="csNights">&mdash;</b></div>
       <div class="summary-row"><span data-i18n="search.guestsLabel">Guests</span><b id="csGuests">&mdash;</b></div>
+      <div class="summary-row"><span data-i18n="search.rooms">Rooms</span><b id="csRooms">&mdash;</b></div>
       <div class="summary-total"><span data-i18n="book.total">Total</span><b id="csTotal">&mdash;</b></div>
       <div class="summary-policies">
         <p data-i18n="book.policy1">Pay now, direct to the hotel &mdash; no third-party booking fees.</p>

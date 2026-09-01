@@ -44,6 +44,7 @@ module.exports = async (req, res) => {
       checkOut: session.metadata ? session.metadata.checkOut : null,
       nights: session.metadata ? session.metadata.nights : null,
       guests: session.metadata ? session.metadata.guests : null,
+      rooms: session.metadata ? session.metadata.rooms : null,
       guestName: session.metadata ? session.metadata.guestName : null,
     });
   } catch (err) {

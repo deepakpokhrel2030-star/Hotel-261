@@ -36,18 +36,28 @@
   }
 
   var state = { lang: 'en', dict: null, ready: Promise.resolve() };
+  var requestSeq = 0;
 
+  // Switching language doesn't just apply a new dict — switching BACK to
+  // English (or hitting a key a given language is missing) needs to restore
+  // the original English markup, not leave stale text from whatever language
+  // was applied previously. So the first time any element is touched, its
+  // original English innerHTML/attribute value is snapshotted into a data-*
+  // attribute, and that snapshot — not a no-op — is what "no translation
+  // available" falls back to from then on.
   function applyDom(dict) {
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
+      if (!el.hasAttribute('data-i18n-src')) el.setAttribute('data-i18n-src', el.innerHTML);
       var val = getPath(dict, el.getAttribute('data-i18n'));
       // innerHTML (not textContent): translation values use HTML entities
       // (&rsquo;, &mdash;, etc.) for the site's typography. All values come
       // from our own JSON files, never user input, so this is safe.
-      if (typeof val === 'string') el.innerHTML = val;
+      el.innerHTML = (typeof val === 'string') ? val : el.getAttribute('data-i18n-src');
     });
     document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+      if (!el.hasAttribute('data-i18n-src')) el.setAttribute('data-i18n-src', el.innerHTML);
       var val = getPath(dict, el.getAttribute('data-i18n-html'));
-      if (typeof val === 'string') el.innerHTML = val;
+      el.innerHTML = (typeof val === 'string') ? val : el.getAttribute('data-i18n-src');
     });
     document.querySelectorAll('[data-i18n-attr]').forEach(function (el) {
       el.getAttribute('data-i18n-attr').split('|').forEach(function (pair) {
@@ -55,8 +65,10 @@
         if (idx === -1) return;
         var attr = pair.slice(0, idx).trim();
         var key = pair.slice(idx + 1).trim();
+        var srcAttr = 'data-i18n-src-' + attr;
+        if (!el.hasAttribute(srcAttr)) el.setAttribute(srcAttr, el.getAttribute(attr) || '');
         var val = getPath(dict, key);
-        if (typeof val === 'string') el.setAttribute(attr, val);
+        el.setAttribute(attr, (typeof val === 'string') ? val : el.getAttribute(srcAttr));
       });
     });
   }
@@ -67,7 +79,13 @@
   }
 
   function loadLang(lang) {
+    // Guard against out-of-order responses: if the user switches languages
+    // twice in quick succession, an earlier (slower) request resolving after
+    // a later (faster, cached) one must not clobber the more recent choice.
+    var requestId = ++requestSeq;
+
     if (lang === 'en') {
+      if (requestId !== requestSeq) return Promise.resolve();
       state.lang = 'en';
       state.dict = {};
       setLangAttrs('en');
@@ -75,9 +93,10 @@
       document.dispatchEvent(new CustomEvent('i18n:ready', { detail: { lang: 'en' } }));
       return Promise.resolve();
     }
-    return fetch('/i18n/' + lang + '.json', { cache: 'force-cache' })
+    return fetch('/i18n/' + lang + '.json')
       .then(function (res) { if (!res.ok) throw new Error('missing translation file'); return res.json(); })
       .then(function (dict) {
+        if (requestId !== requestSeq) return; // superseded by a newer language switch
         state.lang = lang;
         state.dict = dict;
         setLangAttrs(lang);
@@ -85,6 +104,7 @@
         document.dispatchEvent(new CustomEvent('i18n:ready', { detail: { lang: lang } }));
       })
       .catch(function () {
+        if (requestId !== requestSeq) return;
         state.lang = 'en';
         state.dict = {};
         setLangAttrs('en');

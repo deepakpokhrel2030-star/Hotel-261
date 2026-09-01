@@ -42,24 +42,49 @@ function initGuestsDropdown(root, onChange) {
   if (!field) return null;
   const toggle = field.querySelector('.sw-guests-toggle');
   const dropdown = field.querySelector('.guests-dropdown');
-  const minus = field.querySelector('[data-step="-"]');
-  const plus = field.querySelector('[data-step="+"]');
-  const countEl = field.querySelector('.stepper b');
   const doneBtn = field.querySelector('.guests-done');
 
-  let count = parseInt(countEl.textContent, 10) || 2;
-  const MIN = 1, MAX = 8;
+  const LIMITS = { adults: [1, 8], children: [0, 6], rooms: [1, 4] };
+  const state = { adults: 2, children: 0, rooms: 1 };
+  const rows = {};
+
+  field.querySelectorAll('.stepper').forEach((stepperEl) => {
+    const type = stepperEl.getAttribute('data-type');
+    if (!LIMITS[type]) return;
+    rows[type] = {
+      minus: stepperEl.querySelector('[data-step="-"]'),
+      plus: stepperEl.querySelector('[data-step="+"]'),
+      countEl: stepperEl.querySelector('b'),
+    };
+  });
+
+  function occupancySummary() {
+    return { adults: state.adults, children: state.children, rooms: state.rooms, guests: state.adults + state.children };
+  }
+
+  function wordFor(type, n) {
+    const singular = { adults: 'search.adultWord', children: 'search.childWord', rooms: 'search.roomWord' }[type];
+    const plural = { adults: 'search.adultsWord', children: 'search.childrenWord', rooms: 'search.roomsWord' }[type];
+    const fallback = { adults: ['adult', 'adults'], children: ['child', 'children'], rooms: ['room', 'rooms'] }[type];
+    return n === 1 ? t(singular, fallback[0]) : t(plural, fallback[1]);
+  }
 
   function render(notify) {
-    countEl.textContent = count;
-    minus.disabled = count <= MIN;
-    plus.disabled = count >= MAX;
-    const guestWord = count === 1 ? t('search.guestWord', 'guest') : t('search.guestsWord', 'guests');
-    toggle.textContent = count + ' ' + guestWord;
-    if (notify && onChange) onChange(count);
+    Object.keys(rows).forEach((type) => {
+      const [min, max] = LIMITS[type];
+      rows[type].countEl.textContent = state[type];
+      rows[type].minus.disabled = state[type] <= min;
+      rows[type].plus.disabled = state[type] >= max;
+    });
+    toggle.textContent = `${state.adults} ${wordFor('adults', state.adults)} · ${state.children} ${wordFor('children', state.children)} · ${state.rooms} ${wordFor('rooms', state.rooms)}`;
+    if (notify && onChange) onChange(occupancySummary());
   }
-  minus.addEventListener('click', (e) => { e.stopPropagation(); if (count > MIN) { count--; render(true); } });
-  plus.addEventListener('click', (e) => { e.stopPropagation(); if (count < MAX) { count++; render(true); } });
+
+  Object.keys(rows).forEach((type) => {
+    const [min, max] = LIMITS[type];
+    rows[type].minus.addEventListener('click', (e) => { e.stopPropagation(); if (state[type] > min) { state[type]--; render(true); } });
+    rows[type].plus.addEventListener('click', (e) => { e.stopPropagation(); if (state[type] < max) { state[type]++; render(true); } });
+  });
   toggle.addEventListener('click', (e) => {
     e.stopPropagation();
     document.querySelectorAll('.guests-dropdown.open').forEach(d => { if (d !== dropdown) d.classList.remove('open'); });
@@ -72,7 +97,18 @@ function initGuestsDropdown(root, onChange) {
 
   render(false);
   document.addEventListener('i18n:ready', () => render(false));
-  return { get: () => count, set: (v) => { count = Math.min(MAX, Math.max(MIN, v)); render(true); } };
+
+  return {
+    get: occupancySummary,
+    set: (partial) => {
+      if (partial && typeof partial === 'object') Object.assign(state, partial);
+      Object.keys(LIMITS).forEach((type) => {
+        const [min, max] = LIMITS[type];
+        state[type] = Math.min(max, Math.max(min, parseInt(state[type], 10) || min));
+      });
+      render(true);
+    },
+  };
 }
 
 function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
@@ -113,15 +149,17 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
   const checkIn = widget.querySelector('#hsCheckIn');
   const checkOut = widget.querySelector('#hsCheckOut');
   setDateConstraints(checkIn, checkOut, widget.querySelector('#hsNights'));
-  initGuestsDropdown(widget);
+  const occupancyCtrl = initGuestsDropdown(widget);
 
   widget.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
     const params = new URLSearchParams();
     if (checkIn.value) params.set('checkin', checkIn.value);
     if (checkOut.value) params.set('checkout', checkOut.value);
-    const guests = widget.querySelector('.stepper b').textContent;
-    params.set('guests', guests);
+    const occ = occupancyCtrl.get();
+    params.set('adults', occ.adults);
+    params.set('children', occ.children);
+    params.set('rooms', occ.rooms);
     window.location.href = '/book?' + params.toString();
   });
 })();
@@ -140,7 +178,16 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
   const params = new URLSearchParams(window.location.search);
   if (params.get('checkin')) checkIn.value = params.get('checkin');
   if (params.get('checkout')) checkOut.value = params.get('checkout');
-  if (params.get('guests')) guestsCtrl.set(parseInt(params.get('guests'), 10) || 2);
+  if (params.get('adults') || params.get('children') || params.get('rooms')) {
+    guestsCtrl.set({
+      adults: parseInt(params.get('adults'), 10) || 2,
+      children: parseInt(params.get('children'), 10) || 0,
+      rooms: parseInt(params.get('rooms'), 10) || 1,
+    });
+  } else if (params.get('guests')) {
+    // legacy links from before the adults/children/rooms picker existed
+    guestsCtrl.set({ adults: parseInt(params.get('guests'), 10) || 2 });
+  }
   if (checkIn.value) checkOut.min = checkIn.value;
   if (checkIn.value || checkOut.value) checkOut.dispatchEvent(new Event('change'));
 
@@ -153,7 +200,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
   function currentStay() {
     const ci = checkIn.value, co = checkOut.value;
     const nights = nightsBetween(ci, co);
-    return { checkIn: ci, checkOut: co, nights, guests: guestsCtrl.get() };
+    return { checkIn: ci, checkOut: co, nights, ...guestsCtrl.get() };
   }
 
   function renderRooms() {
@@ -161,22 +208,28 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     roomListEl.innerHTML = '';
 
     HOTEL_ROOMS.forEach((room) => {
-      const overGuests = stay.guests > room.maxGuests;
+      const roomsQty = stay.rooms || 1;
+      const capacity = room.maxGuests * roomsQty;
+      const overGuests = stay.guests > capacity;
       const item = document.createElement('article');
       item.className = 'rl-item booking-card' + (overGuests ? ' dimmed' : '');
       item.id = 'room-' + room.id;
 
-      const totalPrice = stay.nights > 0 ? room.price * stay.nights : room.price;
-      const nightlyLabel = stay.nights > 0
+      const totalPrice = (stay.nights > 0 ? room.price * stay.nights : room.price) * roomsQty;
+      let nightlyLabel = stay.nights > 0
         ? t('book.' + (stay.nights > 1 ? 'nightsTotalMany' : 'nightsTotalOne'), `${stay.nights} night${stay.nights > 1 ? 's' : ''} total`).replace('{n}', stay.nights)
         : t('book.perNightPhrase', 'per night');
+      if (roomsQty > 1) {
+        const roomWord = roomsQty === 1 ? t('search.roomWord', 'room') : t('search.roomsWord', 'rooms');
+        nightlyLabel += ` · ${roomsQty} ${roomWord}`;
+      }
       const reviewText = `${room.rating.toFixed(1)} · ${room.reviews} ${t('common.reviewsWord', 'reviews')}`;
       const tags = room.perks.map((perk) => `<span>${perk}</span>`).join('');
       const roomName = t('room.' + room.id + '.name', room.label);
       const roomSmall = room.small ? t('room.' + room.id + '.small', room.small) : '';
       const roomDesc = t('room.' + room.id + '.desc', room.nights_label + ' · ' + room.desc);
       const tooSmallNote = t('book.tooSmall', 'Sleeps up to {max} — too small for {guests} guests')
-        .replace('{max}', room.maxGuests).replace('{guests}', stay.guests);
+        .replace('{max}', capacity).replace('{guests}', stay.guests);
 
       item.innerHTML = `
         <div class="rl-media booking-card__media"><img src="${room.img}" alt="${roomName} at Hotel 261" loading="lazy"></div>
@@ -244,15 +297,28 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     box.classList.toggle('visible', !!msg);
   }
 
+  function occupancyText(stay) {
+    const adultWord = stay.adults === 1 ? t('search.adultWord', 'adult') : t('search.adultsWord', 'adults');
+    let text = `${stay.adults} ${adultWord}`;
+    if (stay.children > 0) {
+      const childWord = stay.children === 1 ? t('search.childWord', 'child') : t('search.childrenWord', 'children');
+      text += `, ${stay.children} ${childWord}`;
+    }
+    return text;
+  }
+
   function fillSummary(room, stay) {
-    const totalPrice = stay.nights > 0 ? room.price * stay.nights : room.price;
-    document.getElementById('csRoom').textContent = room.label;
+    const roomsQty = stay.rooms || 1;
+    const totalPrice = (stay.nights > 0 ? room.price * stay.nights : room.price) * roomsQty;
+    const roomWord = roomsQty === 1 ? t('search.roomWord', 'room') : t('search.roomsWord', 'rooms');
+    document.getElementById('csRoom').textContent = t('room.' + room.id + '.name', room.label);
     document.getElementById('csCheckIn').textContent = fmtDateShort(stay.checkIn);
     document.getElementById('csCheckOut').textContent = fmtDateShort(stay.checkOut);
     document.getElementById('csNights').textContent = stay.nights || '—';
-    document.getElementById('csGuests').textContent = stay.guests;
+    document.getElementById('csGuests').textContent = occupancyText(stay);
+    document.getElementById('csRooms').textContent = roomsQty + ' ' + roomWord;
     document.getElementById('csTotal').textContent = '£' + totalPrice.toLocaleString('en-GB');
-    coGuestsDisplay.value = stay.guests + ' ' + (stay.guests === 1 ? t('search.guestWord', 'guest') : t('search.guestsWord', 'guests'));
+    coGuestsDisplay.value = occupancyText(stay) + ' · ' + roomsQty + ' ' + roomWord;
     coPayAmount.textContent = '£' + totalPrice.toLocaleString('en-GB');
   }
 
@@ -326,7 +392,8 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         roomType: activeRoom.id, checkIn: activeStay.checkIn, checkOut: activeStay.checkOut,
-        guests: activeStay.guests, name, email, phone, specialRequests,
+        guests: activeStay.guests, rooms: activeStay.rooms, adults: activeStay.adults, children: activeStay.children,
+        name, email, phone, specialRequests,
       }),
     })
       .then(res => res.json().then(data => ({ ok: res.ok, data })))
@@ -393,6 +460,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       document.getElementById('rCheckOut').textContent = fmtDateShort(data.checkOut);
       document.getElementById('rNights').textContent = data.nights || '—';
       document.getElementById('rGuests').textContent = data.guests || '—';
+      document.getElementById('rRooms').textContent = data.rooms || '1';
       const amount = (data.amountTotal / 100).toLocaleString('en-GB', { style: 'currency', currency: (data.currency || 'gbp').toUpperCase() });
       document.getElementById('rTotal').textContent = amount;
       show(paidBox);
@@ -452,6 +520,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
         document.getElementById('frCheckIn').textContent = fmtDateShort(data.checkIn);
         document.getElementById('frCheckOut').textContent = fmtDateShort(data.checkOut);
         document.getElementById('frGuests').textContent = data.guests || '—';
+        document.getElementById('frRooms').textContent = data.rooms || '1';
         document.getElementById('frTotal').textContent = '£' + Number(data.totalAmount).toLocaleString('en-GB');
         resultBox.style.display = 'block';
         resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });

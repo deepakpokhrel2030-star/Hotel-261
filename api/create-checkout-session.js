@@ -30,7 +30,7 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { roomType, checkIn, checkOut, guests, name, email, phone, specialRequests } = req.body || {};
+    const { roomType, checkIn, checkOut, guests, rooms, name, email, phone, specialRequests } = req.body || {};
 
     const room = ROOMS[roomType];
     if (!room) return res.status(400).json({ error: 'Please choose a valid room type.' });
@@ -45,15 +45,18 @@ module.exports = async (req, res) => {
     const nights = nightsBetween(checkIn, checkOut);
     if (nights < 1 || nights > 30) return res.status(400).json({ error: 'Stay must be between 1 and 30 nights.' });
 
+    const roomsQty = Math.min(4, Math.max(1, parseInt(rooms, 10) || 1));
     const guestCount = parseInt(guests, 10) || 1;
-    if (guestCount < 1 || guestCount > room.maxGuests) {
-      return res.status(400).json({ error: `${room.label} sleeps up to ${room.maxGuests} guest(s).` });
+    const capacity = room.maxGuests * roomsQty;
+    if (guestCount < 1 || guestCount > capacity) {
+      return res.status(400).json({ error: `${room.label} sleeps up to ${capacity} guest(s) across ${roomsQty} room(s).` });
     }
 
     if (!name || !String(name).trim()) return res.status(400).json({ error: 'Please enter your full name.' });
     if (!phone || !String(phone).trim()) return res.status(400).json({ error: 'Please enter a phone number.' });
 
-    const totalPounds = room.price * nights;
+    const perRoomPounds = room.price * nights;
+    const totalPounds = perRoomPounds * roomsQty;
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
     const origin = req.headers.origin || `https://${req.headers.host}`;
@@ -66,13 +69,13 @@ module.exports = async (req, res) => {
         {
           price_data: {
             currency: 'gbp',
-            unit_amount: Math.round(totalPounds * 100),
+            unit_amount: Math.round(perRoomPounds * 100),
             product_data: {
               name: `Hotel 261 — ${room.label}`,
-              description: `${nights} night${nights > 1 ? 's' : ''} · ${checkIn} to ${checkOut} · ${guestCount} guest${guestCount > 1 ? 's' : ''}`,
+              description: `${nights} night${nights > 1 ? 's' : ''} · ${checkIn} to ${checkOut} · ${guestCount} guest${guestCount > 1 ? 's' : ''}${roomsQty > 1 ? ` · ${roomsQty} rooms` : ''}`,
             },
           },
-          quantity: 1,
+          quantity: roomsQty,
         },
       ],
       custom_fields: [
@@ -87,6 +90,7 @@ module.exports = async (req, res) => {
         checkOut,
         nights: String(nights),
         guests: String(guestCount),
+        rooms: String(roomsQty),
         guestName: String(name).slice(0, 200),
         guestPhone: String(phone).slice(0, 60),
         specialRequests: String(specialRequests || '').slice(0, 500),
@@ -100,9 +104,9 @@ module.exports = async (req, res) => {
 
     await pool.query(
       `INSERT INTO hotel_bookings (
-        guest_name, email, room_type, room_label, check_in, check_out, guests, total_amount, status, stripe_session_id, notes
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, 'pending', $9, $10);`,
-      [String(name).trim(), String(email || '').trim(), roomType, room.label, checkIn, checkOut, guestCount, Number(totalPounds.toFixed(2)), session.id, notesParts.join(' | ')]
+        guest_name, email, room_type, room_label, check_in, check_out, guests, rooms, total_amount, status, stripe_session_id, notes
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, 'pending', $10, $11);`,
+      [String(name).trim(), String(email || '').trim(), roomType, room.label, checkIn, checkOut, guestCount, roomsQty, Number(totalPounds.toFixed(2)), session.id, notesParts.join(' | ')]
     );
 
     return res.status(200).json({ url: session.url });
