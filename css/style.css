@@ -320,7 +320,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .guests-done{ width:100%; margin-top:16px; }
 
 /* ============ Room list (Booking.com-style availability table) ============ */
-.rl-cols{ grid-template-columns:minmax(280px,2.2fr) 92px 130px minmax(170px,1.3fr) 108px 156px; }
+.rl-cols{ grid-template-columns:minmax(280px,2.2fr) 92px 130px minmax(170px,1.3fr) 140px; }
 .rl-table{ margin-top:26px; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:var(--surface); }
 .rl-header{ display:grid; background:var(--ink); color:var(--paper); font-size:.76rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
 .rl-header > div{ padding:14px 16px; }
@@ -356,8 +356,12 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 
 .rl-charge-note{ font-size:.7rem; color:var(--ink-soft); margin-top:8px; text-align:center; }
 
+.rl-reserve-all{ max-width:420px; margin:36px auto 0; text-align:center; }
+.rl-reserve-all .btn{ width:100%; }
+.rl-reserve-all .rl-charge-note{ margin-top:12px; }
+
 @media (max-width:1100px){
-  .rl-cols{ grid-template-columns:minmax(240px,2fr) 78px 118px minmax(150px,1.1fr) 98px 140px; }
+  .rl-cols{ grid-template-columns:minmax(240px,2fr) 78px 118px minmax(150px,1.1fr) 120px; }
 }
 
 .reserve-panel{ grid-column:1 / -1; max-height:0; overflow:hidden; transition:max-height .4s var(--ease); }

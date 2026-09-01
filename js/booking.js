@@ -246,7 +246,6 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
         <div data-i18n="book.todaysPrice">Today&rsquo;s price</div>
         <div data-i18n="book.yourChoices">Your choices</div>
         <div data-i18n="book.selectRoomsCol">Select rooms</div>
-        <div></div>
       </div>
     `;
 
@@ -289,21 +288,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
         <div class="rl-col-select" data-label="${t('book.selectRoomsCol', 'Select rooms')}">
           <select class="rl-qty">${qtyOptions}</select>
         </div>
-        <div class="rl-col-action">
-          <button type="button" class="btn btn-primary rl-add">${t('book.reserveBtn', "I&rsquo;ll Reserve")}</button>
-          <p class="rl-charge-note">${t('book.wontBeCharged', "You won&rsquo;t be charged yet")}</p>
-        </div>
       `;
-
-      const addBtn = row.querySelector('.rl-add');
-      addBtn.addEventListener('click', () => {
-        const stay = currentStay();
-        if (!stay.checkIn || !stay.checkOut) {
-          alert('Please choose your check-in and check-out dates above.');
-          return;
-        }
-        openCheckout(collectSelectedRooms(room.id), stay);
-      });
 
       table.appendChild(row);
     });
@@ -313,6 +298,27 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
 
   renderRooms();
   document.addEventListener('i18n:ready', renderRooms);
+
+  /* ---------- One "I'll Reserve" for the whole table: pick quantities across
+     as many room types as you like, then this reads every row at once. ---------- */
+  const reserveAllBtn = document.getElementById('reserveAllBtn');
+  const reserveAllError = document.getElementById('reserveAllError');
+  reserveAllBtn.addEventListener('click', () => {
+    reserveAllError.textContent = '';
+    reserveAllError.classList.remove('visible');
+    const stay = currentStay();
+    if (!stay.checkIn || !stay.checkOut) {
+      alert('Please choose your check-in and check-out dates above.');
+      return;
+    }
+    const items = collectSelectedRooms();
+    if (items.length === 0) {
+      reserveAllError.textContent = t('book.errNoRoomsSelected', 'Please choose how many of at least one room type you need.');
+      reserveAllError.classList.add('visible');
+      return;
+    }
+    openCheckout(items, stay);
+  });
 
   /* ---------- Checkout: room -> your details -> payment ---------- */
   const roomsSection = document.getElementById('roomsSection');
