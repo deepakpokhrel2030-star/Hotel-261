@@ -320,8 +320,9 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .guests-done{ width:100%; margin-top:16px; }
 
 /* ============ Room list (Booking.com-style availability table) ============ */
+.rl-layout{ display:grid; grid-template-columns:1fr 200px; gap:24px; align-items:start; margin-top:26px; }
 .rl-cols{ grid-template-columns:minmax(280px,2.2fr) 92px 130px minmax(170px,1.3fr) 140px; }
-.rl-table{ margin-top:26px; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:var(--surface); }
+.rl-table{ border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:var(--surface); }
 .rl-header{ display:grid; background:var(--ink); color:var(--paper); font-size:.76rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
 .rl-header > div{ padding:14px 16px; }
 .rl-row{ display:grid; border-top:1px solid var(--line); transition:background .2s ease; }
@@ -356,7 +357,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 
 .rl-charge-note{ font-size:.7rem; color:var(--ink-soft); margin-top:8px; text-align:center; }
 
-.rl-reserve-all{ max-width:420px; margin:36px auto 0; text-align:center; }
+.rl-reserve-all{ position:sticky; top:100px; text-align:center; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:22px 18px; }
 .rl-reserve-all .btn{ width:100%; }
 .rl-reserve-all .rl-charge-note{ margin-top:12px; }
 
@@ -617,6 +618,8 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 @media (max-width:1000px){
   .about-grid, .reviews-grid, .location-grid, .booking-grid{ grid-template-columns:1fr; }
   .booking-summary{ position:static; }
+  .rl-layout{ grid-template-columns:1fr; }
+  .rl-reserve-all{ position:static; }
   .room-row, .room-row.reverse{ grid-template-columns:1fr; }
   .room-row.reverse .room-row-media, .room-row.reverse .room-row-body{ order:initial; }
   .stats-row{ grid-template-columns:1fr 1fr; row-gap:28px; }

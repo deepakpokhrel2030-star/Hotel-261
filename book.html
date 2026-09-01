@@ -165,12 +165,14 @@
     <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> <span data-i18n="trust.instantConfirmation">Instant confirmation</span></span>
   </div>
 
-  <div class="room-list" id="roomList"></div>
+  <div class="rl-layout">
+    <div class="room-list" id="roomList"></div>
 
-  <div class="rl-reserve-all">
-    <div class="form-error" id="reserveAllError"></div>
-    <button type="button" class="btn btn-primary" id="reserveAllBtn" data-i18n="book.reserveBtn">I&rsquo;ll Reserve</button>
-    <p class="rl-charge-note" data-i18n="book.wontBeCharged">You won&rsquo;t be charged yet</p>
+    <div class="rl-reserve-all">
+      <div class="form-error" id="reserveAllError"></div>
+      <button type="button" class="btn btn-primary" id="reserveAllBtn" data-i18n="book.reserveBtn">I&rsquo;ll Reserve</button>
+      <p class="rl-charge-note" data-i18n="book.wontBeCharged">You won&rsquo;t be charged yet</p>
+    </div>
   </div>
 
   <div class="summary-alt" style="max-width:420px; margin:50px auto 0; text-align:center;">
