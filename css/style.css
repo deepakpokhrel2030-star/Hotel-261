@@ -822,6 +822,11 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   .search-widget{ grid-template-columns:1fr; }
   .search-widget-wrap.overlap{ margin-top:-20px; }
   .sw-field{ border-right:0; border-bottom:1px solid var(--line); }
+  /* The "X nights" badge is absolutely positioned below the check-out
+     field — fine when Occupancy sits beside it, but once fields stack
+     on mobile that badge floats right on top of the Occupancy field
+     below. Reserve real space under check-out so it has room. */
+  .sw-field:nth-child(2){ margin-bottom:34px; }
   .guests-dropdown{ width:100%; left:0; right:0; }
   .menu-overlay{ width:100%; padding:0 32px; }
   .menu-overlay.open ~ .site-header{ width:100%; border-left:0; }
