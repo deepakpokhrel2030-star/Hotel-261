@@ -246,7 +246,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .menu-foot a{ color:var(--ink); font-weight:600; }
 
 /* ============ Hero ============ */
-.hero{ position:relative; height:82vh; min-height:520px; max-height:760px; display:flex; align-items:flex-end; overflow:hidden; padding:0; max-width:none; }
+.hero{ position:relative; height:68vh; min-height:460px; max-height:640px; display:flex; align-items:flex-end; overflow:hidden; padding:0; max-width:none; }
 .hero-media{ position:absolute; inset:-4%; }
 .hero-media img{
   width:100%; height:100%; object-fit:cover;
