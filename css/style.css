@@ -5,7 +5,7 @@
   --paper:#faf7f2;
   --paper-2:#f0e9dd;
   --surface:#ffffff;
-  --header-bg:rgba(250,247,242,.28);
+  --header-bg:rgba(250,247,242,.14);
   --header-bg-solid:rgba(250,247,242,.82);
   --menu-bg:rgba(250,247,242,.93);
   --header-edge:rgba(255,255,255,.55);
@@ -32,7 +32,7 @@
     --paper:#161310;
     --paper-2:#211d18;
     --surface:#28231d;
-    --header-bg:rgba(22,19,16,.3);
+    --header-bg:rgba(22,19,16,.16);
     --header-bg-solid:rgba(22,19,16,.82);
     --menu-bg:rgba(22,19,16,.93);
     --header-edge:rgba(255,255,255,.14);
@@ -53,7 +53,7 @@
   --paper:#161310;
   --paper-2:#211d18;
   --surface:#28231d;
-  --header-bg:rgba(22,19,16,.3);
+  --header-bg:rgba(22,19,16,.16);
   --header-bg-solid:rgba(22,19,16,.82);
   --menu-bg:rgba(22,19,16,.93);
   --header-edge:rgba(255,255,255,.14);
