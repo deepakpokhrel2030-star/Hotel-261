@@ -329,7 +329,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 @keyframes heroZoom{ to{ transform:scale(1); } }
 .hero-scrim{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,16,13,.35) 0%, rgba(20,16,13,.05) 30%, rgba(20,16,13,.75) 100%); }
 .hero-inner{ position:relative; z-index:2; width:100%; max-width:1240px; margin:0 auto; padding:130px 32px 0; color:#fff; display:flex; flex-direction:column; }
-.hero:not(.hero--page) .hero-inner{ padding-bottom:48px; }
+.hero:not(.hero--page) .hero-inner{ padding-bottom:130px; justify-content:center; }
 .hero-eyebrow{ text-transform:uppercase; letter-spacing:.14em; font-size:.76rem; color:#fff; margin-bottom:14px; font-weight:600; opacity:.9; }
 .hero-title{ font-size:clamp(2.1rem,4.6vw,3.6rem); font-weight:600; line-height:1.12; }
 .hero-title .line{ display:block; overflow:hidden; }
@@ -364,7 +364,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 /* ============ Search widget (Booking.com-style) ============ */
 .search-widget-wrap{ position:relative; z-index:20; max-width:1200px; margin:0 auto; padding:0 24px 50px; }
 .search-widget-wrap.overlap{ margin-top:-46px; }
-.hero-cta-bar .search-widget-wrap.overlap{ margin-top:-90px; }
+.hero-cta-bar .search-widget-wrap.overlap{ margin-top:-112px; }
 .search-widget{
   background:var(--surface); border-radius:14px; box-shadow:0 24px 56px rgba(var(--shadow-rgb),.2); border:1px solid var(--line);
   display:grid; grid-template-columns:1fr 1fr 1.2fr auto; align-items:stretch;
