@@ -247,6 +247,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 
 /* ============ Hero ============ */
 .hero{ position:relative; height:82vh; min-height:520px; max-height:760px; display:flex; align-items:flex-start; overflow:hidden; padding:0; max-width:none; }
+.hero:not(.hero--page){ align-items:stretch; }
 .hero-media{ position:absolute; inset:-4%; }
 .hero-media img{
   width:100%; height:100%; object-fit:cover;
@@ -256,7 +257,8 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .hero-media img.fading{ opacity:0; }
 @keyframes heroZoom{ to{ transform:scale(1); } }
 .hero-scrim{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,16,13,.35) 0%, rgba(20,16,13,.05) 30%, rgba(20,16,13,.75) 100%); }
-.hero-inner{ position:relative; z-index:2; width:100%; max-width:1240px; margin:0 auto; padding:56px 32px 0; color:#fff; }
+.hero-inner{ position:relative; z-index:2; width:100%; max-width:1240px; margin:0 auto; padding:56px 32px 0; color:#fff; display:flex; flex-direction:column; }
+.hero:not(.hero--page) .hero-inner{ justify-content:space-between; padding-bottom:48px; }
 .hero--page .hero-inner{ padding-top:0; }
 .hero-eyebrow{ text-transform:uppercase; letter-spacing:.14em; font-size:.76rem; color:#fff; margin-bottom:14px; font-weight:600; opacity:.9; }
 .hero-title{ font-size:clamp(2.1rem,4.6vw,3.6rem); font-weight:600; line-height:1.12; }
@@ -265,9 +267,8 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .hero-cta{ display:flex; gap:12px; flex-wrap:wrap; }
 .scroll-cue{ display:none; }
 
-/* ============ Hero CTA bar (below the hero image, not overlapping it) ============ */
+/* ============ Hero CTA bar (search widget below the hero image) ============ */
 .hero-cta-bar{ background:var(--paper); padding-top:36px; }
-.hero-cta-bar .hero-cta{ max-width:1240px; margin:0 auto 24px; padding:0 32px; }
 
 /* ============ Trust row (near booking CTAs) ============ */
 .trust-row{ display:flex; flex-wrap:wrap; gap:28px; justify-content:center; margin-top:36px; padding-top:28px; border-top:1px solid var(--line); }
@@ -690,7 +691,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   .site-header.solid .nav-row{ padding:11px 20px; }
   .form-row.two-col{ grid-template-columns:1fr; }
   .booking-form{ padding:24px; }
-  .hero-cta-bar .hero-cta{ flex-direction:column; align-items:stretch; }
+  .hero-cta{ flex-direction:column; align-items:stretch; }
   .bento{ grid-template-columns:repeat(2,1fr); grid-auto-rows:150px; }
   .bento .g-big, .bento .g-wide, .bento .g-tall, .bento .g-norm{ grid-column:span 1; grid-row:span 1; }
   .mobile-bar{ display:block; }
