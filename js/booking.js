@@ -283,6 +283,21 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       if (reservePanel) reservePanel.style.display = 'none';
       return;
     }
+    // Rooms is how many separate rooms they want, so each one needs to fit
+    // its share of the party — e.g. 4 adults in 1 room only fits Quad/Family.
+    const perRoomGuests = Math.ceil(stay.guests / Math.max(1, stay.rooms));
+    const viableRooms = HOTEL_ROOMS.filter((room) => room.maxGuests >= perRoomGuests);
+
+    if (viableRooms.length === 0) {
+      roomListEl.innerHTML = `
+        <div class="rl-empty">
+          <p>${t('book.noRoomsForParty', 'No rooms fit {guests} guests in {rooms} room(s). Please select more rooms.')
+            .replace('{guests}', stay.guests).replace('{rooms}', stay.rooms)}</p>
+        </div>
+      `;
+      if (reservePanel) reservePanel.style.display = 'none';
+      return;
+    }
     if (reservePanel) reservePanel.style.display = '';
 
     const table = document.createElement('div');
@@ -297,13 +312,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       </div>
     `;
 
-    HOTEL_ROOMS.forEach((room) => {
-      // A room type is only truly unbookable if even the max quantity (4)
-      // of it can't sleep the party — e.g. 2 people CAN pick 2 Single Rooms
-      // (1 guest each), so a lone Single Room isn't disabled just because it
-      // doesn't fit everyone by itself. The real per-selection capacity
-      // check happens once, across every room type together, at Reserve time.
-      const tooSmall = room.maxGuests * 4 < stay.guests;
+    viableRooms.forEach((room) => {
       const totalForRoom = (stay.nights > 0 ? room.price * stay.nights : room.price);
       const nightsLabel = stay.nights > 0
         ? t('book.' + (stay.nights > 1 ? 'nightsTotalMany' : 'nightsTotalOne'), `${stay.nights} night${stay.nights > 1 ? 's' : ''} total`).replace('{n}', stay.nights)
@@ -312,13 +321,11 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       const roomName = t('room.' + room.id + '.name', room.label);
       const roomSmall = room.small ? t('room.' + room.id + '.small', room.small) : '';
       const roomDesc = t('room.' + room.id + '.desc', room.nights_label + ' · ' + room.desc);
-      const tooSmallNote = t('book.tooSmall', 'Sleeps up to {max} — too small for {guests} guests')
-        .replace('{max}', room.maxGuests * 4).replace('{guests}', stay.guests);
 
       const qtyOptions = [0, 1, 2, 3, 4].map((n) => `<option value="${n}">${n}</option>`).join('');
 
       const row = document.createElement('div');
-      row.className = 'rl-row rl-cols' + (tooSmall ? ' dimmed' : '');
+      row.className = 'rl-row rl-cols';
       row.id = 'room-' + room.id;
       row.innerHTML = `
         <div class="rl-col-room">
@@ -337,13 +344,11 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
           ${nightsLabel ? `<span class="rl-total-note">£${totalForRoom.toLocaleString('en-GB')} &middot; ${nightsLabel}</span>` : ''}
         </div>
         <div class="rl-col-choices" data-label="${t('book.yourChoices', 'Your choices')}">
-          ${tooSmall
-            ? `<p class="rl-note">${tooSmallNote}</p>`
-            : `<p class="rl-choice-note"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> ${t('book.payOnlineNote', 'Pay online — secure via Stripe')}</p>
-               <p class="rl-choice-note">${t('book.nonRefundable', 'Non-refundable')}</p>`}
+          <p class="rl-choice-note"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> ${t('book.payOnlineNote', 'Pay online — secure via Stripe')}</p>
+          <p class="rl-choice-note">${t('book.nonRefundable', 'Non-refundable')}</p>
         </div>
         <div class="rl-col-select" data-label="${t('book.selectRoomsCol', 'Select rooms')}">
-          <select class="rl-qty" ${tooSmall ? 'disabled' : ''}>${qtyOptions}</select>
+          <select class="rl-qty">${qtyOptions}</select>
         </div>
       `;
 

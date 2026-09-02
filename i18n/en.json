@@ -347,7 +347,7 @@
     "wontBeCharged": "You won&rsquo;t be charged yet",
     "errNoRoomsSelected": "Please choose how many of at least one room type you need.",
     "chooseDatesPrompt": "Choose your check-in and check-out dates above to see available rooms and prices.",
-    "tooSmall": "Sleeps up to {max} — too small for {guests} guests",
+    "noRoomsForParty": "No rooms fit {guests} guests in {rooms} room(s). Please select more rooms.",
     "errCapacity": "Your selected rooms sleep up to {max} — please select more space for {guests} guests.",
     "tipLabel": "Tip:",
     "multiRoomTip": "A Single Room sleeps 1 person. If there are 2 of you, just select 2 Single Rooms — the same goes for any room type.",
