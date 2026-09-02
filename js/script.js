@@ -291,3 +291,28 @@ if (window.matchMedia('(pointer:fine)').matches) {
     btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
   });
 }
+
+/* ---------- Hero image rotation (homepage only, via data-images) ---------- */
+const heroImg = document.getElementById('heroImg');
+if (heroImg && heroImg.dataset.images) {
+  let heroSlides;
+  try {
+    heroSlides = JSON.parse(heroImg.dataset.images);
+  } catch (e) {
+    heroSlides = null;
+  }
+  if (heroSlides && heroSlides.length > 1) {
+    // Preload the other slides so the crossfade doesn't stall on a slow network.
+    heroSlides.slice(1).forEach((slide) => { new Image().src = slide.src; });
+    let heroIndex = 0;
+    setInterval(() => {
+      heroImg.classList.add('fading');
+      setTimeout(() => {
+        heroIndex = (heroIndex + 1) % heroSlides.length;
+        heroImg.src = heroSlides[heroIndex].src;
+        heroImg.alt = heroSlides[heroIndex].alt;
+        heroImg.classList.remove('fading');
+      }, 800);
+    }, 6000);
+  }
+}
