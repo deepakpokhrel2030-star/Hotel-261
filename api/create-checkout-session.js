@@ -32,7 +32,7 @@ module.exports = async (req, res) => {
   try {
     const {
       items, checkIn, checkOut, guests, name, email, phone, specialRequests,
-      address, city, postcode, country, arrivalTime, bookingFor, mainGuestName, travelPurpose,
+      address, city, postcode, country, arrivalTime, bookingFor, mainGuestName, travelPurpose, companyName, vatNumber,
     } = req.body || {};
 
     if (!Array.isArray(items) || items.length === 0 || items.length > 7) {
@@ -125,7 +125,12 @@ module.exports = async (req, res) => {
     const notesParts = [`Phone: ${String(phone).trim()}`, `Address: ${addressLine}`];
     if (arrivalTime) notesParts.push(`Estimated arrival: ${String(arrivalTime).slice(0, 40)}`);
     if (bookingFor === 'someone_else') notesParts.push(`Booking is for someone else — main guest: ${String(mainGuestName).trim().slice(0, 200)}`);
-    if (travelPurpose === 'yes') notesParts.push('Travelling for work');
+    if (travelPurpose === 'yes') {
+      let businessLine = 'Travelling for work';
+      if (companyName && String(companyName).trim()) businessLine += ` — ${String(companyName).trim().slice(0, 200)}`;
+      if (vatNumber && String(vatNumber).trim()) businessLine += ` (VAT: ${String(vatNumber).trim().slice(0, 40)})`;
+      notesParts.push(businessLine);
+    }
     if (specialRequests && String(specialRequests).trim()) notesParts.push(`Special requests: ${String(specialRequests).trim().slice(0, 500)}`);
 
     const roomType = cart.length === 1 ? cart[0].roomType : 'multiple';

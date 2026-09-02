@@ -364,7 +364,11 @@
     "travelPurposeLabel": "¿Viajas por trabajo?",
     "mainGuestName": "Nombre del huésped principal",
     "mainGuestNamePlaceholder": "Ana García",
-    "errMainGuestName": "Introduce el nombre del huésped principal."
+    "errMainGuestName": "Introduce el nombre del huésped principal.",
+    "companyName": "Nombre de la empresa",
+    "companyNamePlaceholder": "Acme S.L.",
+    "vatNumber": "Número de IVA",
+    "vatNumberPlaceholder": "ES123456789"
   },
   "success": {
     "confirming": "Confirmando su reserva&hellip;",

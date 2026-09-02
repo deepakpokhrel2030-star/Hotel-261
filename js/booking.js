@@ -371,6 +371,9 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
   const coArrivalTime = document.getElementById('coArrivalTime');
   const coMainGuestNameRow = document.getElementById('coMainGuestNameRow');
   const coMainGuestName = document.getElementById('coMainGuestName');
+  const coBusinessRow = document.getElementById('coBusinessRow');
+  const coCompanyName = document.getElementById('coCompanyName');
+  const coVatNumber = document.getElementById('coVatNumber');
   const coDetailsError = document.getElementById('coDetailsError');
   const coPaymentError = document.getElementById('coPaymentError');
   const coContinueBtn = document.getElementById('coContinueBtn');
@@ -403,6 +406,14 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       const someoneElse = document.querySelector('input[name="coBookingFor"]:checked').value === 'someone_else';
       coMainGuestNameRow.style.display = someoneElse ? 'block' : 'none';
       if (!someoneElse) { coMainGuestName.value = ''; setFieldError(coMainGuestName, ''); }
+    });
+  });
+
+  document.querySelectorAll('input[name="coTravelPurpose"]').forEach((radio) => {
+    radio.addEventListener('change', () => {
+      const forWork = document.querySelector('input[name="coTravelPurpose"]:checked').value === 'yes';
+      coBusinessRow.style.display = forWork ? 'grid' : 'none';
+      if (!forWork) { coCompanyName.value = ''; coVatNumber.value = ''; }
     });
   });
 
@@ -528,6 +539,8 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     const bookingFor = document.querySelector('input[name="coBookingFor"]:checked').value;
     const mainGuestName = bookingFor === 'someone_else' ? coMainGuestName.value.trim() : '';
     const travelPurpose = document.querySelector('input[name="coTravelPurpose"]:checked').value;
+    const companyName = travelPurpose === 'yes' ? coCompanyName.value.trim() : '';
+    const vatNumber = travelPurpose === 'yes' ? coVatNumber.value.trim() : '';
 
     coPayBtn.disabled = true;
     coPayLabel.textContent = 'Redirecting…';
@@ -541,7 +554,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
         checkIn: activeStay.checkIn, checkOut: activeStay.checkOut,
         guests: activeStay.guests, adults: activeStay.adults, children: activeStay.children,
         name, email, phone, specialRequests,
-        address, city, postcode, country, arrivalTime, bookingFor, mainGuestName, travelPurpose,
+        address, city, postcode, country, arrivalTime, bookingFor, mainGuestName, travelPurpose, companyName, vatNumber,
       }),
     })
       .then(res => res.json().then(data => ({ ok: res.ok, data })))

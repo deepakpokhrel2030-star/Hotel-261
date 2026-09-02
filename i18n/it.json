@@ -364,7 +364,11 @@
     "travelPurposeLabel": "Stai viaggiando per lavoro?",
     "mainGuestName": "Nome dell’ospite principale",
     "mainGuestNamePlaceholder": "Maria Rossi",
-    "errMainGuestName": "Inserisci il nome dell’ospite principale."
+    "errMainGuestName": "Inserisci il nome dell’ospite principale.",
+    "companyName": "Nome dell’azienda",
+    "companyNamePlaceholder": "Acme S.r.l.",
+    "vatNumber": "Partita IVA",
+    "vatNumberPlaceholder": "IT12345678901"
   },
   "success": {
     "confirming": "Conferma della tua prenotazione in corso&hellip;",

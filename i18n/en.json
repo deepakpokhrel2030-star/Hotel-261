@@ -364,7 +364,11 @@
     "travelPurposeLabel": "Are you travelling for work?",
     "mainGuestName": "Main guest’s name",
     "mainGuestNamePlaceholder": "Jane Smith",
-    "errMainGuestName": "Please enter the main guest's name."
+    "errMainGuestName": "Please enter the main guest's name.",
+    "companyName": "Company name",
+    "companyNamePlaceholder": "Acme Ltd",
+    "vatNumber": "VAT number",
+    "vatNumberPlaceholder": "GB123456789"
   },
   "success": {
     "confirming": "Confirming your booking&hellip;",

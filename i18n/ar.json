@@ -364,7 +364,11 @@
     "travelPurposeLabel": "هل تسافر من أجل العمل؟",
     "mainGuestName": "اسم الضيف الرئيسي",
     "mainGuestNamePlaceholder": "أحمد محمد",
-    "errMainGuestName": "يرجى إدخال اسم الضيف الرئيسي."
+    "errMainGuestName": "يرجى إدخال اسم الضيف الرئيسي.",
+    "companyName": "اسم الشركة",
+    "companyNamePlaceholder": "شركة المثال",
+    "vatNumber": "الرقم الضريبي",
+    "vatNumberPlaceholder": "GB123456789"
   },
   "success": {
     "confirming": "جارٍ تأكيد حجزك&hellip;",

@@ -364,7 +364,11 @@
     "travelPurposeLabel": "Voyagez-vous pour affaires ?",
     "mainGuestName": "Nom du client principal",
     "mainGuestNamePlaceholder": "Jeanne Dupont",
-    "errMainGuestName": "Veuillez indiquer le nom du client principal."
+    "errMainGuestName": "Veuillez indiquer le nom du client principal.",
+    "companyName": "Nom de l’entreprise",
+    "companyNamePlaceholder": "Acme SARL",
+    "vatNumber": "Numéro de TVA",
+    "vatNumberPlaceholder": "FR12345678901"
   },
   "success": {
     "confirming": "Confirmation de votre réservation&hellip;",

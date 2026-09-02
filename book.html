@@ -319,6 +319,16 @@
             <label class="radio-option"><input type="radio" name="coTravelPurpose" value="yes"> <span data-i18n="common.yes">Yes</span></label>
             <label class="radio-option"><input type="radio" name="coTravelPurpose" value="no" checked> <span data-i18n="common.no">No</span></label>
           </div>
+          <div id="coBusinessRow" class="form-row two-col" style="display:none; margin-top:14px; margin-bottom:0;">
+            <div>
+              <label><span data-i18n="book.companyName">Company name</span> <span style="text-transform:none; font-weight:400;" data-i18n="book.optional">(optional)</span></label>
+              <input type="text" id="coCompanyName" autocomplete="organization" placeholder="Acme Ltd" data-i18n-attr="placeholder:book.companyNamePlaceholder">
+            </div>
+            <div>
+              <label><span data-i18n="book.vatNumber">VAT number</span> <span style="text-transform:none; font-weight:400;" data-i18n="book.optional">(optional)</span></label>
+              <input type="text" id="coVatNumber" placeholder="GB123456789" data-i18n-attr="placeholder:book.vatNumberPlaceholder">
+            </div>
+          </div>
         </div>
 
         <div class="form-error" id="coDetailsError"></div>
