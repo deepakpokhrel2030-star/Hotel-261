@@ -41,32 +41,36 @@
       answer: 'Yes &mdash; on our <a href="/book">Book</a> page you can select more than one room, including several of the same type, to cover a larger party. For 10 or more rooms, please call us on <a href="tel:+442087434411">' + PHONE + '</a> so we can help directly.'
     },
     {
-      keywords: ['check-in', 'check in', 'checkin', 'check-out', 'check out', 'checkout', 'arrival time', 'what time'],
+      keywords: ['check-in', 'check in', 'checkin', 'check-out', 'check out', 'checkout', 'arrival time', 'what time', 'late arrival', 'early arrival'],
       answer: 'Check-in is from 14:00&ndash;23:30, and check-out is 08:00&ndash;11:00. Please arrive by 23:30 as the hotel is closed overnight. Early check-in can\'t be guaranteed, but we\'ll accommodate you if your room is ready.'
     },
     {
-      keywords: ['id', 'identification', 'deposit', 'passport'],
+      keywords: ['reception hours', 'front desk', 'opening hours', 'open 24', '24 hour', '24/7', 'reception open'],
+      answer: 'Reception is staffed 8am&ndash;11:30pm daily. It\'s not a 24-hour desk, which is also why check-in has to happen by 23:30 &mdash; the hotel is closed overnight.'
+    },
+    {
+      keywords: ['id', 'identification', 'deposit', 'passport', 'photo id', 'identity'],
       answer: 'A government-issued photo ID is required at check-in (digital or scanned IDs aren\'t accepted). A £20 cash or ID deposit is required for room keys.'
     },
     {
-      keywords: ['breakfast', 'food', 'eat'],
+      keywords: ['breakfast', 'food', 'eat', 'restaurant', 'dinner', 'lunch'],
       answer: 'Full English or Italian breakfast is served 08:00&ndash;11:30 at Little Napoli, a 5-minute walk away. Ask reception for a voucher &mdash; you\'ll also get 15% off all other meals there.'
     },
     {
-      keywords: ['parking', 'park', 'car'],
+      keywords: ['parking', 'park', 'car', 'car park', 'garage'],
       answer: 'Limited on-site parking is available for £15/day, from 14:00 on arrival to 11:00 on departure. Contact us ahead to reserve a space, as availability is limited.'
     },
     {
-      keywords: ['pay', 'payment', 'card'],
+      keywords: ['pay', 'payment', 'card', 'credit card', 'debit card', 'cash'],
       answer: 'Cash is accepted on site. Online bookings can be paid in advance or on arrival, depending on the rate you choose &mdash; and our online checkout is secured by Stripe, so we never see or store your card details.'
     },
     {
-      keywords: ['pet', 'pets', 'dog', 'cat'],
+      keywords: ['pet', 'pets', 'dog', 'cat', 'animal'],
       answer: 'Sorry, pets aren\'t permitted at Hotel 261.'
     },
     {
-      keywords: ['smoke', 'smoking'],
-      answer: 'We\'re a smoke-free hotel with a designated outdoor smoking area.'
+      keywords: ['smoke', 'smoking', 'cigarette', 'vape', 'vaping'],
+      answer: 'We\'re a smoke-free hotel &mdash; that includes vaping too. There\'s a designated outdoor smoking area away from the entrance.'
     },
     {
       keywords: ['luggage', 'bag', 'bags', 'suitcase'],
@@ -77,7 +81,7 @@
       answer: 'Bicycles aren\'t permitted inside the hotel, but they can be chained outside by the car park at your own risk.'
     },
     {
-      keywords: ['wifi', 'wi-fi', 'internet'],
+      keywords: ['wifi', 'wi-fi', 'internet', 'internet access'],
       answer: 'Free WiFi is available throughout the hotel and in every room.'
     },
     {
@@ -101,8 +105,8 @@
       answer: 'Guests consistently tell us the hotel is quiet and comfortable &mdash; it\'s one of the things solo travellers rate us highly for.'
     },
     {
-      keywords: ['nearby', 'attractions', 'things to do', 'westfield', 'wembley', 'apollo', 'qpr', 'shopping', 'bars', 'restaurants'],
-      answer: 'We\'re a short walk from Westfield London shopping centre and a handful of local bars and caf&eacute;s, and well placed for Wembley, the Hammersmith Apollo and Queens Park Rangers\' football stadium &mdash; just over 10 minutes on foot.'
+      keywords: ['nearby', 'attractions', 'things to do', 'westfield', 'wembley', 'apollo', 'qpr', 'shopping', 'bars', 'restaurants', 'stadium', 'gig', 'concert'],
+      answer: 'Westfield London shopping centre is about a mile away, and we\'re well placed for Queens Park Rangers\' stadium (10&ndash;14 minutes on foot), the Hammersmith Apollo, and Wembley &mdash; plus a handful of local bars and caf&eacute;s nearby.'
     },
     {
       keywords: ['availability', 'available', 'vacancy', 'vacant', 'free room', 'sold out', 'dates'],
@@ -171,13 +175,17 @@
   function findAnswer(rawText) {
     var text = normalize(rawText);
     if (!text) return null;
+    // Pad with spaces so every keyword is matched as a whole word/phrase, not
+    // as a substring of an unrelated word (e.g. "id" inside "outside").
+    var padded = ' ' + text + ' ';
     var best = null;
     var bestScore = 0;
     for (var i = 0; i < KB.length; i++) {
       var entry = KB[i];
       var score = 0;
       for (var j = 0; j < entry.keywords.length; j++) {
-        if (text.indexOf(entry.keywords[j]) !== -1) score++;
+        var kw = entry.keywords[j];
+        if (padded.indexOf(' ' + kw + ' ') !== -1) score += kw.length;
       }
       if (score > bestScore) {
         bestScore = score;
