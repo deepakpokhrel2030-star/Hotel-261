@@ -306,6 +306,11 @@
             <label class="radio-option"><input type="radio" name="coBookingFor" value="main" checked> <span data-i18n="book.bookingForMain">I am the main guest</span></label>
             <label class="radio-option"><input type="radio" name="coBookingFor" value="someone_else"> <span data-i18n="book.bookingForOther">Booking is for someone else</span></label>
           </div>
+          <div id="coMainGuestNameRow" style="display:none; margin-top:14px;">
+            <label data-i18n="book.mainGuestName">Main guest&rsquo;s name</label>
+            <input type="text" id="coMainGuestName" placeholder="Jane Smith" data-i18n-attr="placeholder:book.mainGuestNamePlaceholder">
+            <span class="field-error" id="coMainGuestNameError" style="display:none;"></span>
+          </div>
         </div>
 
         <div class="form-row">

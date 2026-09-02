@@ -32,7 +32,7 @@ module.exports = async (req, res) => {
   try {
     const {
       items, checkIn, checkOut, guests, name, email, phone, specialRequests,
-      address, city, postcode, country, arrivalTime, bookingFor, travelPurpose,
+      address, city, postcode, country, arrivalTime, bookingFor, mainGuestName, travelPurpose,
     } = req.body || {};
 
     if (!Array.isArray(items) || items.length === 0 || items.length > 7) {
@@ -76,6 +76,9 @@ module.exports = async (req, res) => {
     if (!phone || !String(phone).trim()) return res.status(400).json({ error: 'Please enter a phone number.' });
     if (!address || !String(address).trim()) return res.status(400).json({ error: 'Please enter your address.' });
     if (!city || !String(city).trim()) return res.status(400).json({ error: 'Please enter your city.' });
+    if (bookingFor === 'someone_else' && (!mainGuestName || !String(mainGuestName).trim())) {
+      return res.status(400).json({ error: "Please enter the main guest's name." });
+    }
 
     const totalPounds = cart.reduce((sum, item) => sum + item.lineTotal, 0);
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -121,7 +124,7 @@ module.exports = async (req, res) => {
       .filter(Boolean).join(', ');
     const notesParts = [`Phone: ${String(phone).trim()}`, `Address: ${addressLine}`];
     if (arrivalTime) notesParts.push(`Estimated arrival: ${String(arrivalTime).slice(0, 40)}`);
-    if (bookingFor === 'someone_else') notesParts.push('Booking is for someone else');
+    if (bookingFor === 'someone_else') notesParts.push(`Booking is for someone else — main guest: ${String(mainGuestName).trim().slice(0, 200)}`);
     if (travelPurpose === 'yes') notesParts.push('Travelling for work');
     if (specialRequests && String(specialRequests).trim()) notesParts.push(`Special requests: ${String(specialRequests).trim().slice(0, 500)}`);
 

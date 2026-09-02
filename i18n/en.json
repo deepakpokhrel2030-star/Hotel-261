@@ -361,7 +361,10 @@
     "bookingForLabel": "Who are you booking for?",
     "bookingForMain": "I am the main guest",
     "bookingForOther": "Booking is for someone else",
-    "travelPurposeLabel": "Are you travelling for work?"
+    "travelPurposeLabel": "Are you travelling for work?",
+    "mainGuestName": "Main guest’s name",
+    "mainGuestNamePlaceholder": "Jane Smith",
+    "errMainGuestName": "Please enter the main guest's name."
   },
   "success": {
     "confirming": "Confirming your booking&hellip;",

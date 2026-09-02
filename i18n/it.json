@@ -361,7 +361,10 @@
     "bookingForLabel": "Per chi stai prenotando?",
     "bookingForMain": "Sono l’ospite principale",
     "bookingForOther": "La prenotazione è per qualcun altro",
-    "travelPurposeLabel": "Stai viaggiando per lavoro?"
+    "travelPurposeLabel": "Stai viaggiando per lavoro?",
+    "mainGuestName": "Nome dell’ospite principale",
+    "mainGuestNamePlaceholder": "Maria Rossi",
+    "errMainGuestName": "Inserisci il nome dell’ospite principale."
   },
   "success": {
     "confirming": "Conferma della tua prenotazione in corso&hellip;",

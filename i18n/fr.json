@@ -361,7 +361,10 @@
     "bookingForLabel": "Pour qui réservez-vous ?",
     "bookingForMain": "Je suis le client principal",
     "bookingForOther": "La réservation est pour quelqu’un d’autre",
-    "travelPurposeLabel": "Voyagez-vous pour affaires ?"
+    "travelPurposeLabel": "Voyagez-vous pour affaires ?",
+    "mainGuestName": "Nom du client principal",
+    "mainGuestNamePlaceholder": "Jeanne Dupont",
+    "errMainGuestName": "Veuillez indiquer le nom du client principal."
   },
   "success": {
     "confirming": "Confirmation de votre réservation&hellip;",

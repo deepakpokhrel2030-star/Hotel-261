@@ -361,7 +361,10 @@
     "bookingForLabel": "لمن هذا الحجز؟",
     "bookingForMain": "أنا الضيف الرئيسي",
     "bookingForOther": "الحجز لشخص آخر",
-    "travelPurposeLabel": "هل تسافر من أجل العمل؟"
+    "travelPurposeLabel": "هل تسافر من أجل العمل؟",
+    "mainGuestName": "اسم الضيف الرئيسي",
+    "mainGuestNamePlaceholder": "أحمد محمد",
+    "errMainGuestName": "يرجى إدخال اسم الضيف الرئيسي."
   },
   "success": {
     "confirming": "جارٍ تأكيد حجزك&hellip;",

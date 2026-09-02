@@ -369,6 +369,8 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
   const coCountry = document.getElementById('coCountry');
   const coRequests = document.getElementById('coRequests');
   const coArrivalTime = document.getElementById('coArrivalTime');
+  const coMainGuestNameRow = document.getElementById('coMainGuestNameRow');
+  const coMainGuestName = document.getElementById('coMainGuestName');
   const coDetailsError = document.getElementById('coDetailsError');
   const coPaymentError = document.getElementById('coPaymentError');
   const coContinueBtn = document.getElementById('coContinueBtn');
@@ -392,8 +394,16 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       errorEl.style.display = msg ? 'block' : 'none';
     }
   }
-  [coFirstName, coLastName, coEmail, coPhone, coAddress, coCity].forEach((input) => {
+  [coFirstName, coLastName, coEmail, coPhone, coAddress, coCity, coMainGuestName].forEach((input) => {
     input.addEventListener('input', () => setFieldError(input, ''));
+  });
+
+  document.querySelectorAll('input[name="coBookingFor"]').forEach((radio) => {
+    radio.addEventListener('change', () => {
+      const someoneElse = document.querySelector('input[name="coBookingFor"]:checked').value === 'someone_else';
+      coMainGuestNameRow.style.display = someoneElse ? 'block' : 'none';
+      if (!someoneElse) { coMainGuestName.value = ''; setFieldError(coMainGuestName, ''); }
+    });
   });
 
   function occupancyText(stay) {
@@ -484,8 +494,10 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     const phone = coPhone.value.trim();
     const address = coAddress.value.trim();
     const city = coCity.value.trim();
+    const bookingForSomeoneElse = document.querySelector('input[name="coBookingFor"]:checked').value === 'someone_else';
+    const mainGuestName = coMainGuestName.value.trim();
 
-    [coFirstName, coLastName, coEmail, coPhone, coAddress, coCity].forEach((input) => setFieldError(input, ''));
+    [coFirstName, coLastName, coEmail, coPhone, coAddress, coCity, coMainGuestName].forEach((input) => setFieldError(input, ''));
 
     let firstInvalid = null;
     if (!firstName) { setFieldError(coFirstName, t('book.errFirstName', 'Please enter your first name.')); firstInvalid = firstInvalid || coFirstName; }
@@ -494,6 +506,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     if (!phone) { setFieldError(coPhone, t('book.errPhone', 'Please enter a phone number, in case we need to reach you.')); firstInvalid = firstInvalid || coPhone; }
     if (!address) { setFieldError(coAddress, t('book.errAddress', 'Please enter your address.')); firstInvalid = firstInvalid || coAddress; }
     if (!city) { setFieldError(coCity, t('book.errCity', 'Please enter your city.')); firstInvalid = firstInvalid || coCity; }
+    if (bookingForSomeoneElse && !mainGuestName) { setFieldError(coMainGuestName, t('book.errMainGuestName', "Please enter the main guest's name.")); firstInvalid = firstInvalid || coMainGuestName; }
 
     if (firstInvalid) { firstInvalid.focus(); return; }
     showPaymentStep();
@@ -513,6 +526,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     const country = coCountry.value;
     const arrivalTime = coArrivalTime.value;
     const bookingFor = document.querySelector('input[name="coBookingFor"]:checked').value;
+    const mainGuestName = bookingFor === 'someone_else' ? coMainGuestName.value.trim() : '';
     const travelPurpose = document.querySelector('input[name="coTravelPurpose"]:checked').value;
 
     coPayBtn.disabled = true;
@@ -527,7 +541,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
         checkIn: activeStay.checkIn, checkOut: activeStay.checkOut,
         guests: activeStay.guests, adults: activeStay.adults, children: activeStay.children,
         name, email, phone, specialRequests,
-        address, city, postcode, country, arrivalTime, bookingFor, travelPurpose,
+        address, city, postcode, country, arrivalTime, bookingFor, mainGuestName, travelPurpose,
       }),
     })
       .then(res => res.json().then(data => ({ ok: res.ok, data })))

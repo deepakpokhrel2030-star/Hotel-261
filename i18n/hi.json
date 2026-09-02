@@ -361,7 +361,10 @@
     "bookingForLabel": "आप किसके लिए बुकिंग कर रहे हैं?",
     "bookingForMain": "मैं मुख्य मेहमान हूं",
     "bookingForOther": "बुकिंग किसी और के लिए है",
-    "travelPurposeLabel": "क्या आप काम के लिए यात्रा कर रहे हैं?"
+    "travelPurposeLabel": "क्या आप काम के लिए यात्रा कर रहे हैं?",
+    "mainGuestName": "मुख्य मेहमान का नाम",
+    "mainGuestNamePlaceholder": "रोहन शर्मा",
+    "errMainGuestName": "कृपया मुख्य मेहमान का नाम दर्ज करें।"
   },
   "success": {
     "confirming": "आपकी बुकिंग की पुष्टि की जा रही है&hellip;",
