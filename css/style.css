@@ -281,9 +281,10 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .hero-inner .trust-row{ justify-content:flex-start; border-top:0; padding-top:0; margin-top:28px; }
 
 /* ============ Page banner (interior pages) — must stay after .hero to win the cascade ============ */
-.hero--page{ height:clamp(260px, 34vh, 380px); min-height:0; max-height:none; }
-.hero--page .hero-inner{ padding-bottom:44px; }
+.hero--page{ height:clamp(260px, 34vh, 380px); min-height:0; max-height:none; align-items:center; }
+.hero--page .hero-inner{ padding-bottom:0; }
 .hero--page .hero-title{ font-size:clamp(2rem,4.6vw,3rem); }
+.hero--page .hero-media img{ object-position:center 50%; }
 
 /* ============ Search widget (Booking.com-style) ============ */
 .search-widget-wrap{ position:relative; z-index:20; max-width:1200px; margin:0 auto; padding:0 24px 50px; }
