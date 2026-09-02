@@ -283,10 +283,13 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       if (reservePanel) reservePanel.style.display = 'none';
       return;
     }
-    // Rooms is how many separate rooms they want, so each one needs to fit
-    // its share of the party — e.g. 4 adults in 1 room only fits Quad/Family.
-    const perRoomGuests = Math.ceil(stay.guests / Math.max(1, stay.rooms));
-    const viableRooms = HOTEL_ROOMS.filter((room) => room.maxGuests >= perRoomGuests);
+    // With just 1 room, that one room has to sleep everyone by itself — e.g.
+    // 4 adults in 1 room only fits Quad/Family. With 2+ rooms, any type can
+    // be part of a mixed combo (e.g. 1 Single + 1 Family for 5 guests), so
+    // nothing is filtered out of the list itself.
+    const viableRooms = stay.rooms <= 1
+      ? HOTEL_ROOMS.filter((room) => room.maxGuests >= stay.guests)
+      : HOTEL_ROOMS;
 
     if (viableRooms.length === 0) {
       roomListEl.innerHTML = `
@@ -322,12 +325,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       const roomSmall = room.small ? t('room.' + room.id + '.small', room.small) : '';
       const roomDesc = t('room.' + room.id + '.desc', room.nights_label + ' · ' + room.desc);
 
-      // A quantity is only pickable if that many of THIS room type alone
-      // sleeps the whole party — e.g. Single Room's "1" is greyed out for
-      // 2 adults, but "2" (two Singles) is fine.
-      const qtyOptions = [0, 1, 2, 3, 4]
-        .map((n) => `<option value="${n}" ${n > 0 && room.maxGuests * n < stay.guests ? 'disabled' : ''}>${n}</option>`)
-        .join('');
+      const qtyOptions = [0, 1, 2, 3, 4].map((n) => `<option value="${n}">${n}</option>`).join('');
 
       const row = document.createElement('div');
       row.className = 'rl-row rl-cols';
