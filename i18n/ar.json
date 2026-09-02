@@ -321,6 +321,8 @@
     "nights": "الليالي",
     "total": "الإجمالي",
     "policy1": "ادفع الآن مباشرة للفندق &mdash; دون أي رسوم وسيط.",
+    "nonRefundable": "غير قابل للاسترداد",
+    "nonRefundableNote": "هذا الحجز غير قابل للاسترداد.",
     "reserveBtn": "سأحجز هذه الغرفة",
     "nightsTotalOne": "ليلة واحدة إجمالاً",
     "nightsTotalMany": "{n} ليالٍ إجمالاً",

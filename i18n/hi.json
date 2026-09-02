@@ -321,6 +321,8 @@
     "nights": "रातें",
     "total": "कुल",
     "policy1": "अभी भुगतान करें, सीधे होटल को &mdash; बिना किसी तीसरे-पक्ष की बुकिंग फीस के।",
+    "nonRefundable": "गैर-वापसी योग्य",
+    "nonRefundableNote": "यह बुकिंग गैर-वापसी योग्य है।",
     "reserveBtn": "मैं यह बुक करूं",
     "nightsTotalOne": "कुल {n} रात",
     "nightsTotalMany": "कुल {n} रातें",

@@ -321,6 +321,8 @@
     "nights": "Nights",
     "total": "Total",
     "policy1": "Pay now, direct to the hotel &mdash; no third-party booking fees.",
+    "nonRefundable": "Non-refundable",
+    "nonRefundableNote": "This booking is non-refundable.",
     "reserveBtn": "I&rsquo;ll Reserve",
     "nightsTotalOne": "{n} night total",
     "nightsTotalMany": "{n} nights total",

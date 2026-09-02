@@ -321,6 +321,8 @@
     "nights": "Notti",
     "total": "Totale",
     "policy1": "Paga ora, direttamente all&rsquo;hotel &mdash; senza commissioni di intermediari.",
+    "nonRefundable": "Non rimborsabile",
+    "nonRefundableNote": "Questa prenotazione non &egrave; rimborsabile.",
     "reserveBtn": "Prenoto questa",
     "nightsTotalOne": "{n} notte in totale",
     "nightsTotalMany": "{n} notti in totale",

@@ -114,7 +114,7 @@
     },
     {
       keywords: ['cancel', 'cancellation', 'refund', 'change my booking'],
-      answer: 'To change or cancel a booking, please call us on <a href="tel:+442087434411">' + PHONE + '</a> and we\'ll sort it out with you directly.'
+      answer: 'Bookings are non-refundable. If you need to discuss changing or cancelling one, please call us on <a href="tel:+442087434411">' + PHONE + '</a> and we\'ll see what we can do.'
     },
     {
       keywords: ['book', 'booking', 'reserve', 'reservation'],
