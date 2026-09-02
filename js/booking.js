@@ -322,7 +322,12 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       const roomSmall = room.small ? t('room.' + room.id + '.small', room.small) : '';
       const roomDesc = t('room.' + room.id + '.desc', room.nights_label + ' · ' + room.desc);
 
-      const qtyOptions = [0, 1, 2, 3, 4].map((n) => `<option value="${n}">${n}</option>`).join('');
+      // A quantity is only pickable if that many of THIS room type alone
+      // sleeps the whole party — e.g. Single Room's "1" is greyed out for
+      // 2 adults, but "2" (two Singles) is fine.
+      const qtyOptions = [0, 1, 2, 3, 4]
+        .map((n) => `<option value="${n}" ${n > 0 && room.maxGuests * n < stay.guests ? 'disabled' : ''}>${n}</option>`)
+        .join('');
 
       const row = document.createElement('div');
       row.className = 'rl-row rl-cols';
