@@ -183,8 +183,8 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   display:flex; align-items:center; gap:44px;
 }
 .logo{ font-family:var(--ff-display); font-size:1.3rem; font-weight:700; color:var(--ink); letter-spacing:.01em; display:inline-flex; align-items:center; flex-shrink:0; }
-.logo-img{ height:40px; width:auto; display:block; flex-shrink:0; transition:height .25s ease; }
-.site-header.solid .logo-img{ height:36px; }
+.logo-img{ height:38px; width:auto; display:block; flex-shrink:0; transition:height .25s ease; }
+.site-header.solid .logo-img{ height:34px; }
 .logo-dark{ display:none; }
 .main-nav{
   display:flex; align-items:center; gap:6px;
