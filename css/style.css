@@ -182,8 +182,8 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   width:100%; max-width:1280px;
   display:flex; align-items:center; gap:44px;
 }
-.logo{ font-family:var(--ff-display); font-size:1.3rem; font-weight:700; color:var(--ink); letter-spacing:.01em; display:inline-flex; align-items:center; }
-.logo-img{ height:40px; width:auto; display:block; transition:height .25s ease; }
+.logo{ font-family:var(--ff-display); font-size:1.3rem; font-weight:700; color:var(--ink); letter-spacing:.01em; display:inline-flex; align-items:center; flex-shrink:0; }
+.logo-img{ height:40px; width:auto; display:block; flex-shrink:0; transition:height .25s ease; }
 .site-header.solid .logo-img{ height:36px; }
 .logo-dark{ display:none; }
 .main-nav{
@@ -738,6 +738,15 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 @media (max-width:760px){
   section{ padding:64px 20px; }
   .main-nav{ display:none; }
+  /* Logo + EN pill + theme toggle + Reserve + hamburger together don't
+     fit a phone-width header — without flex-shrink:0 (added above) the
+     logo would get crushed to a sliver trying to make room. Reserve is
+     redundant with the persistent "Call to book" mobile bar, and the
+     language switcher only needs its icon here, not the "EN" label. */
+  .site-header .btn.btn-pill{ display:none; }
+  .lang-switch-toggle{ width:38px; padding:0; justify-content:center; }
+  .lang-switch-toggle #langCurrent{ display:none; }
+  .header-right{ gap:10px; }
   .site-header{ top:10px; left:10px; right:10px; border-radius:16px; }
   .site-header.solid{ top:6px; }
   .nav-row{ padding:14px 20px; }
