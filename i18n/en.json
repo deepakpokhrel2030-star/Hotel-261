@@ -76,7 +76,7 @@
   "room": {
     "from": "From",
     "perNight": "/night",
-    "checkAvailability": "Check availability &rarr;",
+    "checkAvailability": "Check availability",
     "single": {
       "name": "Single Room",
       "desc": "1 single bed &middot; sleeps 1. A compact, quiet room for solo travellers &mdash; everything you need, nothing you don&rsquo;t."
@@ -170,9 +170,9 @@
     "aboutLabel": "About the Hotel",
     "aboutP1": "Tucked into a quiet stretch of Shepherd&rsquo;s Bush, we&rsquo;ve been welcoming guests to West London with large rooms, on-site parking and genuinely friendly service.",
     "aboutP2": "We&rsquo;re a short walk from Westfield London, a handful of local bars and cafés, and well placed for Wembley, the Hammersmith Apollo and Queens Park Rangers&rsquo; stadium.",
-    "readStory": "Read our story &rarr;",
+    "readStory": "Read our story",
     "roomsTitle": "Seven rooms.<br>One easy stay.",
-    "seeAllRooms": "See all rooms &rarr;",
+    "seeAllRooms": "See all rooms",
     "viewAll7": "View All 7 Rooms &amp; Rates",
     "closerLook": "A closer look",
     "viewFullGallery": "View Full Gallery",
@@ -181,9 +181,9 @@
     "amenity2desc": "On-site, from £15/day &mdash; rare for this part of London.",
     "amenity3desc": "Sleeping up to four, without a squeeze.",
     "amenity4desc": "5 minutes on foot, at Little Napoli.",
-    "seeAllAmenities": "See all amenities &rarr;",
+    "seeAllAmenities": "See all amenities",
     "ratedByGuests": "Rated by<br>our guests",
-    "readGuestReviews": "Read guest reviews &rarr;",
+    "readGuestReviews": "Read guest reviews",
     "amenitiesLead": "No spa, no minibar markup, no confusing extras. Just what a good stay actually needs &mdash; sorted properly."
   },
   "about": {
@@ -194,7 +194,7 @@
     "p1": "Tucked into a quiet stretch of Shepherd&rsquo;s Bush, Hotel 261 has been welcoming guests to West London with large rooms, on-site parking and genuinely friendly service. Every room comes with satellite TV, tea &amp; coffee making facilities and a fridge, with a shared guest microwave available too.",
     "p2": "We&rsquo;re a short walk from Westfield London shopping centre, a handful of West London bars and cafés, and well placed for Wembley, the Hammersmith Apollo and Queens Park Rangers&rsquo; football stadium &mdash; just over 10 minutes on foot. Shepherd&rsquo;s Bush Market Underground station (Circle &amp; Hammersmith &amp; City lines) is a 15 minute walk away.",
     "p3": "We&rsquo;re a family-run 2-star hotel, popular with solo travellers and short, one-night stays &mdash; simple and comfortable rather than flashy, at a price that makes sense for West London.",
-    "exploreRooms": "Explore our rooms &rarr;",
+    "exploreRooms": "Explore our rooms",
     "whatGuestsGet": "What Guests Get",
     "g1": "<strong>Full English or Italian breakfast</strong> is available a five-minute walk away at Little Napoli, with vouchers arranged through reception.",
     "g2": "<strong>On-site parking</strong> is available for £15/day, subject to availability &mdash; handy for a hotel this close to central London.",
@@ -262,7 +262,7 @@
       "label": "Hammersmith Apollo",
       "value": "well placed"
     },
-    "openMaps": "Open in Google Maps &rarr;",
+    "openMaps": "Open in Google Maps",
     "contactBooking": "Contact &amp; Booking",
     "contactLead": "Call reception directly for the best rate, or check live availability online.",
     "phoneLabel": "Phone:",

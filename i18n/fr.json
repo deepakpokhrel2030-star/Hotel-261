@@ -76,7 +76,7 @@
   "room": {
     "from": "À partir de",
     "perNight": "/nuit",
-    "checkAvailability": "Vérifier les disponibilités &rarr;",
+    "checkAvailability": "Vérifier les disponibilités",
     "single": {
       "name": "Chambre Simple",
       "desc": "1 lit simple &middot; 1 personne. Une chambre compacte et calme pour les voyageurs solo &mdash; l&rsquo;essentiel, sans superflu."
@@ -170,9 +170,9 @@
     "aboutLabel": "À propos de l&rsquo;hôtel",
     "aboutP1": "Niché dans une rue calme de Shepherd&rsquo;s Bush, nous accueillons nos clients dans l&rsquo;Ouest de Londres avec de grandes chambres, un parking sur place et un service sincèrement chaleureux.",
     "aboutP2": "Nous sommes à deux pas de Westfield London, de plusieurs bars et cafés du quartier, et bien placés pour Wembley, le Hammersmith Apollo et le stade des Queens Park Rangers.",
-    "readStory": "Découvrez notre histoire &rarr;",
+    "readStory": "Découvrez notre histoire",
     "roomsTitle": "Sept chambres.<br>Un séjour facile.",
-    "seeAllRooms": "Voir toutes les chambres &rarr;",
+    "seeAllRooms": "Voir toutes les chambres",
     "viewAll7": "Voir les 7 chambres et tarifs",
     "closerLook": "Un aperçu en images",
     "viewFullGallery": "Voir toute la galerie",
@@ -181,9 +181,9 @@
     "amenity2desc": "Sur place, à partir de 15&nbsp;£/jour &mdash; rare dans ce quartier de Londres.",
     "amenity3desc": "Jusqu’à quatre personnes, sans être à l’étroit.",
     "amenity4desc": "À 5 minutes à pied, chez Little Napoli.",
-    "seeAllAmenities": "Voir tous les équipements &rarr;",
+    "seeAllAmenities": "Voir tous les équipements",
     "ratedByGuests": "L&rsquo;avis<br>de nos clients",
-    "readGuestReviews": "Lire les avis clients &rarr;",
+    "readGuestReviews": "Lire les avis clients",
     "amenitiesLead": "Pas de spa, pas de minibar hors de prix, pas d’extras qui compliquent tout. Juste ce qu’il faut pour un vrai bon séjour &mdash; bien fait."
   },
   "about": {
@@ -194,7 +194,7 @@
     "p1": "Niché dans une rue calme de Shepherd&rsquo;s Bush, Hotel 261 accueille ses clients dans l&rsquo;Ouest de Londres avec de grandes chambres, un parking sur place et un service sincèrement chaleureux. Chaque chambre dispose d&rsquo;une TV satellite, de quoi préparer thé et café, et d&rsquo;un réfrigérateur, avec un four à micro-ondes partagé également disponible.",
     "p2": "Nous sommes à deux pas du centre commercial Westfield London, de plusieurs bars et cafés de l&rsquo;Ouest de Londres, et bien placés pour Wembley, le Hammersmith Apollo et le stade de football des Queens Park Rangers &mdash; à un peu plus de 10 minutes à pied. La station de métro Shepherd&rsquo;s Bush Market (lignes Circle et Hammersmith &amp; City) est à 15 minutes à pied.",
     "p3": "Nous sommes un hôtel familial 2 étoiles, apprécié des voyageurs solo et pour les courts séjours d&rsquo;une nuit &mdash; simple et confortable plutôt qu&rsquo;ostentatoire, à un prix qui a du sens pour l&rsquo;Ouest de Londres.",
-    "exploreRooms": "Découvrez nos chambres &rarr;",
+    "exploreRooms": "Découvrez nos chambres",
     "whatGuestsGet": "Ce que nos clients apprécient",
     "g1": "<strong>Petit-déjeuner anglais ou italien</strong> disponible à cinq minutes à pied au Little Napoli, avec des bons organisés à la réception.",
     "g2": "<strong>Parking sur place</strong> disponible pour 15&nbsp;£/jour, selon disponibilité &mdash; pratique pour un hôtel aussi proche du centre de Londres.",
@@ -262,7 +262,7 @@
       "label": "Hammersmith Apollo",
       "value": "bien situé"
     },
-    "openMaps": "Ouvrir dans Google Maps &rarr;",
+    "openMaps": "Ouvrir dans Google Maps",
     "contactBooking": "Contact &amp; Réservation",
     "contactLead": "Appelez directement la réception pour le meilleur tarif, ou vérifiez les disponibilités en ligne.",
     "phoneLabel": "Téléphone&nbsp;:",
