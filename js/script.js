@@ -52,15 +52,29 @@ if (themeToggle) {
   });
 }
 
-/* ---------- Header solid-on-scroll + scroll progress ---------- */
+/* ---------- Header solid-on-scroll + hide-on-scroll-down + scroll progress ---------- */
 const header = document.getElementById('header');
-if (header) {
+if (header && getComputedStyle(header).position === 'fixed') {
   const progressBar = document.getElementById('scrollProgress');
+  const menuOverlayEl = document.getElementById('menuOverlay');
+  let lastY = window.scrollY;
   const onScroll = () => {
-    header.classList.toggle('solid', window.scrollY > 40);
+    const y = window.scrollY;
+    header.classList.toggle('solid', y > 40);
+
+    const menuOpen = menuOverlayEl && menuOverlayEl.classList.contains('open');
+    if (menuOpen || y <= 80) {
+      header.classList.remove('nav-hidden');
+    } else if (y > lastY + 4) {
+      header.classList.add('nav-hidden');
+    } else if (y < lastY - 4) {
+      header.classList.remove('nav-hidden');
+    }
+    lastY = y;
+
     if (progressBar) {
       const max = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0;
+      const pct = max > 0 ? Math.min(100, (y / max) * 100) : 0;
       progressBar.style.width = pct + '%';
     }
   };
