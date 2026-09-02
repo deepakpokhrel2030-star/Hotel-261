@@ -306,6 +306,9 @@
     "email": "ईमेल",
     "phoneNumber": "फ़ोन नंबर",
     "specialRequests": "विशेष अनुरोध",
+    "addOns": "ऐड-ऑन",
+    "breakfastAddOn": "नाश्ता जोड़ें — प्रति व्यक्ति, प्रति रात्रि £12",
+    "breakfast": "नाश्ता",
     "specialRequestsPlaceholder": "देर से आगमन, ऊंची मंज़िल, सुलभ कमरा&hellip;",
     "optional": "(वैकल्पिक)",
     "continueToPayment": "भुगतान पर जारी रखें",
@@ -397,6 +400,8 @@
     "yourBooking": "आपकी बुकिंग",
     "status": "स्थिति",
     "needChange": "क्या आपको अपनी बुकिंग बदलने या रद्द करने की आवश्यकता है?",
+    "freeCancelUntil": "चेक-इन से 48 घंटे पहले तक मुफ़्त रद्दीकरण।",
+    "cancelBtn": "यह बुकिंग रद्द करें",
     "statusPending": "भुगतान लंबित",
     "statusConfirmed": "पुष्टि हो गई",
     "statusCancelled": "रद्द कर दी गई"

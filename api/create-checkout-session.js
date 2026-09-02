@@ -1,6 +1,8 @@
 const Stripe = require('stripe');
 const { pool } = require('../lib/db');
 
+const BREAKFAST_PRICE_PER_PERSON_PER_NIGHT = 12;
+
 // Authoritative room prices (GBP per night). Never trust a price sent by the client.
 const ROOMS = {
   single:   { label: 'Single Room',                 price: 54,  maxGuests: 1 },
@@ -32,7 +34,7 @@ module.exports = async (req, res) => {
   try {
     const {
       items, checkIn, checkOut, guests, name, email, phone, specialRequests,
-      address, city, postcode, country, arrivalTime, bookingFor, mainGuestName, travelPurpose, companyName, vatNumber,
+      address, city, postcode, country, arrivalTime, bookingFor, mainGuestName, travelPurpose, companyName, vatNumber, addBreakfast,
     } = req.body || {};
 
     if (!Array.isArray(items) || items.length === 0 || items.length > 7) {
@@ -80,7 +82,9 @@ module.exports = async (req, res) => {
       return res.status(400).json({ error: "Please enter the main guest's name." });
     }
 
-    const totalPounds = cart.reduce((sum, item) => sum + item.lineTotal, 0);
+    const breakfastRequested = addBreakfast === true;
+    const breakfastCost = breakfastRequested ? BREAKFAST_PRICE_PER_PERSON_PER_NIGHT * guestCount * nights : 0;
+    const totalPounds = cart.reduce((sum, item) => sum + item.lineTotal, 0) + breakfastCost;
     const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
     const origin = req.headers.origin || `https://${req.headers.host}`;
@@ -99,7 +103,17 @@ module.exports = async (req, res) => {
           },
         },
         quantity: item.quantity,
-      })),
+      })).concat(breakfastRequested ? [{
+        price_data: {
+          currency: 'gbp',
+          unit_amount: Math.round(BREAKFAST_PRICE_PER_PERSON_PER_NIGHT * 100),
+          product_data: {
+            name: 'Hotel 261 — Breakfast',
+            description: `£${BREAKFAST_PRICE_PER_PERSON_PER_NIGHT} per person per night · ${guestCount} guest${guestCount > 1 ? 's' : ''} · ${nights} night${nights > 1 ? 's' : ''}`,
+          },
+        },
+        quantity: guestCount * nights,
+      }] : []),
       custom_fields: [
         { key: 'guest_name', label: { type: 'custom', custom: 'Full name' }, type: 'text', text: { default_value: String(name).slice(0, 200) } },
         { key: 'check_in', label: { type: 'custom', custom: 'Check-in' }, type: 'text', text: { default_value: checkIn } },
@@ -115,6 +129,7 @@ module.exports = async (req, res) => {
         guestName: String(name).slice(0, 200),
         guestPhone: String(phone).slice(0, 60),
         specialRequests: String(specialRequests || '').slice(0, 500),
+        breakfastAdded: String(breakfastRequested),
       },
       success_url: `${origin}/booking-success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/book?cancelled=1`,
@@ -131,6 +146,7 @@ module.exports = async (req, res) => {
       if (vatNumber && String(vatNumber).trim()) businessLine += ` (VAT: ${String(vatNumber).trim().slice(0, 40)})`;
       notesParts.push(businessLine);
     }
+    if (breakfastRequested) notesParts.push(`Breakfast added: £${BREAKFAST_PRICE_PER_PERSON_PER_NIGHT}pp/night × ${guestCount} guests × ${nights} nights = £${breakfastCost.toFixed(2)}`);
     if (specialRequests && String(specialRequests).trim()) notesParts.push(`Special requests: ${String(specialRequests).trim().slice(0, 500)}`);
 
     const roomType = cart.length === 1 ? cart[0].roomType : 'multiple';

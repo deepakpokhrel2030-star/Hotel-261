@@ -127,6 +127,11 @@
       <div class="summary-row"><span data-i18n="search.guestsLabel">Guests</span><b id="frGuests">&mdash;</b></div>
       <div class="summary-row"><span data-i18n="search.rooms">Rooms</span><b id="frRooms">&mdash;</b></div>
       <div class="summary-total"><span data-i18n="book.total">Total</span><b id="frTotal">&mdash;</b></div>
+      <div class="summary-alt" id="frCancelBox" style="display:none;">
+        <p data-i18n="checkBooking.freeCancelUntil">Free cancellation up to 48 hours before check-in.</p>
+        <button type="button" class="btn btn-outline magnetic" style="width:100%;" id="frCancelBtn" data-i18n="checkBooking.cancelBtn">Cancel This Booking</button>
+        <div class="form-error" id="frCancelError"></div>
+      </div>
       <div class="summary-alt">
         <p data-i18n="checkBooking.needChange">Need to change or cancel your booking?</p>
         <a href="tel:+442087434411" class="btn btn-outline magnetic" style="width:100%;" data-i18n="cta.callBtn">Call 020 8743 4411</a>

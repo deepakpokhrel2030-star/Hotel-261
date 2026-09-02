@@ -367,6 +367,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
   const coCity = document.getElementById('coCity');
   const coPostcode = document.getElementById('coPostcode');
   const coCountry = document.getElementById('coCountry');
+  const coBreakfast = document.getElementById('coBreakfast');
   const coRequests = document.getElementById('coRequests');
   const coArrivalTime = document.getElementById('coArrivalTime');
   const coMainGuestNameRow = document.getElementById('coMainGuestNameRow');
@@ -447,6 +448,18 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       `;
     }).join('');
 
+    if (coBreakfast && coBreakfast.checked && stay.guests && nights) {
+      const breakfastCost = 12 * stay.guests * nights;
+      totalPrice += breakfastCost;
+      itemsEl.innerHTML += `
+        <div class="summary-item">
+          <div class="summary-item-thumb" style="display:flex; align-items:center; justify-content:center; background:var(--paper-2);"><svg class="icon" viewBox="0 0 24 24" style="width:22px; height:22px;"><path d="M4 9h13v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/></svg></div>
+          <div class="summary-item-info"><b>${t('book.breakfast', 'Breakfast')}</b><span>${stay.guests} &times; ${nights} ${t('book.nights', 'nights')}</span></div>
+          <div class="summary-item-price">£${breakfastCost.toLocaleString('en-GB')}</div>
+        </div>
+      `;
+    }
+
     document.getElementById('csCheckIn').textContent = fmtDateShort(stay.checkIn);
     document.getElementById('csCheckOut').textContent = fmtDateShort(stay.checkOut);
     document.getElementById('csNights').textContent = nights || '—';
@@ -454,6 +467,12 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     document.getElementById('csRooms').textContent = totalRooms + ' ' + (totalRooms === 1 ? t('search.roomWord', 'room') : t('search.roomsWord', 'rooms'));
     document.getElementById('csTotal').textContent = '£' + totalPrice.toLocaleString('en-GB');
     coPayAmount.textContent = '£' + totalPrice.toLocaleString('en-GB');
+  }
+
+  if (coBreakfast) {
+    coBreakfast.addEventListener('change', () => {
+      if (activeCart && activeStay) fillSummary(activeCart, activeStay);
+    });
   }
 
   function openCheckout(cartItems, stay) {
@@ -541,6 +560,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     const travelPurpose = document.querySelector('input[name="coTravelPurpose"]:checked').value;
     const companyName = travelPurpose === 'yes' ? coCompanyName.value.trim() : '';
     const vatNumber = travelPurpose === 'yes' ? coVatNumber.value.trim() : '';
+    const addBreakfast = !!(coBreakfast && coBreakfast.checked);
 
     coPayBtn.disabled = true;
     coPayLabel.textContent = 'Redirecting…';
@@ -554,7 +574,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
         checkIn: activeStay.checkIn, checkOut: activeStay.checkOut,
         guests: activeStay.guests, adults: activeStay.adults, children: activeStay.children,
         name, email, phone, specialRequests,
-        address, city, postcode, country, arrivalTime, bookingFor, mainGuestName, travelPurpose, companyName, vatNumber,
+        address, city, postcode, country, arrivalTime, bookingFor, mainGuestName, travelPurpose, companyName, vatNumber, addBreakfast,
       }),
     })
       .then(res => res.json().then(data => ({ ok: res.ok, data })))
@@ -649,6 +669,9 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
   const refInput = document.getElementById('fbRef');
   const errorBox = document.getElementById('fbError');
   const submitBtn = document.getElementById('fbSubmit');
+  const cancelBox = document.getElementById('frCancelBox');
+  const cancelBtn = document.getElementById('frCancelBtn');
+  const cancelError = document.getElementById('frCancelError');
 
   const STATUS_LABELS = {
     pending: t('checkBooking.statusPending', 'Payment pending'),
@@ -656,9 +679,16 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     cancelled: t('checkBooking.statusCancelled', 'Cancelled'),
   };
 
+  let lookupContext = null;
+
   function setError(msg) {
     errorBox.textContent = msg;
     errorBox.classList.toggle('visible', !!msg);
+  }
+
+  function setCancelError(msg) {
+    cancelError.textContent = msg;
+    cancelError.classList.toggle('visible', !!msg);
   }
 
   submitBtn.addEventListener('click', () => {
@@ -693,6 +723,11 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
         document.getElementById('frTotal').textContent = '£' + Number(data.totalAmount).toLocaleString('en-GB');
         resultBox.style.display = 'block';
         resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        lookupContext = { email, phone, reference, checkIn: data.checkIn };
+        setCancelError('');
+        const hoursUntilCheckIn = (new Date(data.checkIn + 'T14:00:00').getTime() - Date.now()) / 3600000;
+        cancelBox.style.display = (data.status === 'confirmed' && hoursUntilCheckIn >= 48) ? 'block' : 'none';
       })
       .catch(err => setError(err.message))
       .finally(() => {
@@ -700,4 +735,32 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
         submitBtn.textContent = 'Find My Booking';
       });
   });
+
+  if (cancelBtn) {
+    cancelBtn.addEventListener('click', () => {
+      if (!lookupContext) return;
+      if (!window.confirm('Cancel this booking? This can\'t be undone online — you\'ll need to call us to rebook.')) return;
+
+      setCancelError('');
+      cancelBtn.disabled = true;
+      cancelBtn.textContent = 'Cancelling…';
+
+      fetch('/api/cancel-booking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(lookupContext),
+      })
+        .then(res => res.json().then(data => ({ ok: res.ok, data })))
+        .then(({ ok, data }) => {
+          if (!ok) throw new Error((data && data.error) || 'Something went wrong cancelling your booking.');
+          document.getElementById('frStatus').textContent = STATUS_LABELS.cancelled;
+          cancelBox.style.display = 'none';
+        })
+        .catch(err => setCancelError(err.message))
+        .finally(() => {
+          cancelBtn.disabled = false;
+          cancelBtn.textContent = t('checkBooking.cancelBtn', 'Cancel This Booking');
+        });
+    });
+  }
 })();

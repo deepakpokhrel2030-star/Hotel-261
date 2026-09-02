@@ -19,6 +19,7 @@ app.use(express.static(path.join(__dirname)));
 app.post('/api/create-checkout-session', require('./api/create-checkout-session'));
 app.get('/api/verify-session', require('./api/verify-session'));
 app.post('/api/find-booking', require('./api/find-booking'));
+app.post('/api/cancel-booking', require('./api/cancel-booking'));
 
 function requireAdmin(req, res, next) {
   const authorization = req.headers.authorization || '';

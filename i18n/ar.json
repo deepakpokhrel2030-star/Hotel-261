@@ -306,6 +306,9 @@
     "email": "البريد الإلكتروني",
     "phoneNumber": "رقم الهاتف",
     "specialRequests": "طلبات خاصة",
+    "addOns": "إضافات",
+    "breakfastAddOn": "أضف الإفطار — 12 جنيهًا إسترلينيًا للشخص، لكل ليلة",
+    "breakfast": "الإفطار",
     "specialRequestsPlaceholder": "وصول متأخر، طابق مرتفع، غرفة سهلة الوصول&hellip;",
     "optional": "(اختياري)",
     "continueToPayment": "المتابعة إلى الدفع",
@@ -397,6 +400,8 @@
     "yourBooking": "حجزك",
     "status": "الحالة",
     "needChange": "هل تحتاج إلى تعديل أو إلغاء حجزك؟",
+    "freeCancelUntil": "إلغاء مجاني حتى 48 ساعة قبل تسجيل الوصول.",
+    "cancelBtn": "إلغاء هذا الحجز",
     "statusPending": "الدفع معلق",
     "statusConfirmed": "مؤكدة",
     "statusCancelled": "ملغاة"

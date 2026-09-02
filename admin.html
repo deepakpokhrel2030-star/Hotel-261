@@ -171,7 +171,15 @@
             <div id="confirmedBookings" class="stat-value">0</div>
           </div>
           <div class="stat-card panel">
-            <div class="stat-label">Revenue</div>
+            <div class="stat-label">Cancelled</div>
+            <div id="cancelledBookings" class="stat-value">0</div>
+          </div>
+          <div class="stat-card panel">
+            <div class="stat-label">Upcoming stays</div>
+            <div id="upcomingBookings" class="stat-value">0</div>
+          </div>
+          <div class="stat-card panel">
+            <div class="stat-label">Revenue (confirmed)</div>
             <div id="revenueTotal" class="stat-value">£0</div>
           </div>
         </section>
@@ -183,9 +191,11 @@
               <table>
                 <thead>
                   <tr>
+                    <th>Ref</th>
                     <th>Guest</th>
                     <th>Room</th>
                     <th>Dates</th>
+                    <th>Booked</th>
                     <th>Status</th>
                     <th>Total</th>
                   </tr>
@@ -350,19 +360,23 @@
         body.innerHTML = '';
 
         if (!bookings.length) {
-          body.innerHTML = '<tr><td colspan="5">No bookings found.</td></tr>';
+          body.innerHTML = '<tr><td colspan="7">No bookings found.</td></tr>';
           return;
         }
 
         for (const booking of bookings) {
           const row = document.createElement('tr');
+          const ref = 'H261-' + String(booking.id).padStart(6, '0');
+          const bookedDate = booking.created_at ? new Date(booking.created_at).toLocaleDateString('en-GB') : '—';
           row.innerHTML = `
+            <td><code>${ref}</code></td>
             <td>
               <strong>${booking.guest_name}</strong><br>
-              <small>${booking.email}</small>
+              <small>${booking.email}</small>${booking.phone ? `<br><small>${booking.phone}</small>` : ''}
             </td>
             <td>${booking.room_label}</td>
             <td>${booking.check_in} → ${booking.check_out}</td>
+            <td>${bookedDate}</td>
             <td>
               <select data-booking-id="${booking.id}" class="booking-status">
                 <option value="pending" ${booking.status === 'pending' ? 'selected' : ''}>Pending</option>
@@ -397,6 +411,8 @@
         document.getElementById('totalBookings').textContent = Number(summary.total_bookings || 0);
         document.getElementById('pendingBookings').textContent = Number(summary.pending || 0);
         document.getElementById('confirmedBookings').textContent = Number(summary.confirmed || 0);
+        document.getElementById('cancelledBookings').textContent = Number(summary.cancelled || 0);
+        document.getElementById('upcomingBookings').textContent = Number(summary.upcoming || 0);
         document.getElementById('revenueTotal').textContent = formatMoney(summary.confirmed_revenue || 0);
         buildRows(bookings);
       }

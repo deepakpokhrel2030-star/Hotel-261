@@ -306,6 +306,9 @@
     "email": "Email",
     "phoneNumber": "Phone number",
     "specialRequests": "Special requests",
+    "addOns": "Add-ons",
+    "breakfastAddOn": "Add breakfast &mdash; £12 per person, per night",
+    "breakfast": "Breakfast",
     "specialRequestsPlaceholder": "Late arrival, high floor, accessible room&hellip;",
     "optional": "(optional)",
     "continueToPayment": "Continue to Payment",
@@ -397,6 +400,8 @@
     "yourBooking": "Your booking",
     "status": "Status",
     "needChange": "Need to change or cancel your booking?",
+    "freeCancelUntil": "Free cancellation up to 48 hours before check-in.",
+    "cancelBtn": "Cancel This Booking",
     "statusPending": "Payment pending",
     "statusConfirmed": "Confirmed",
     "statusCancelled": "Cancelled"
