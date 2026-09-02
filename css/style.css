@@ -258,13 +258,13 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 @keyframes heroZoom{ to{ transform:scale(1); } }
 .hero-scrim{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,16,13,.35) 0%, rgba(20,16,13,.05) 30%, rgba(20,16,13,.75) 100%); }
 .hero-inner{ position:relative; z-index:2; width:100%; max-width:1240px; margin:0 auto; padding:56px 32px 0; color:#fff; display:flex; flex-direction:column; }
-.hero:not(.hero--page) .hero-inner{ justify-content:space-between; padding-bottom:48px; }
+.hero:not(.hero--page) .hero-inner{ padding-bottom:48px; }
 .hero--page .hero-inner{ padding-top:0; }
 .hero-eyebrow{ text-transform:uppercase; letter-spacing:.14em; font-size:.76rem; color:#fff; margin-bottom:14px; font-weight:600; opacity:.9; }
 .hero-title{ font-size:clamp(2.1rem,4.6vw,3.6rem); font-weight:600; line-height:1.12; }
 .hero-title .line{ display:block; overflow:hidden; }
 .hero-sub{ max-width:400px; color:#f1ede7; font-size:1rem; margin-top:26px; }
-.hero-cta{ display:flex; gap:12px; flex-wrap:wrap; }
+.hero-cta{ display:flex; gap:12px; flex-wrap:wrap; margin-top:28px; }
 .scroll-cue{ display:none; }
 
 /* ============ Hero CTA bar (search widget below the hero image) ============ */
