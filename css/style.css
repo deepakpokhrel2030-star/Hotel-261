@@ -133,16 +133,20 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .all-photos-btn{ margin-top:36px; display:block; width:max-content; margin-left:auto; margin-right:auto; }
 .text-link{ font-weight:600; font-size:.92rem; color:var(--accent); border-bottom:1px solid transparent; padding-bottom:2px; transition:border-color .2s ease; }
 .text-link:hover{ border-color:var(--accent); }
-/* A small vector arrow instead of a relying on the Unicode "→" glyph,
-   which renders inconsistently (often oversized/misaligned) across
-   fonts. Only on the CTA-style text-links, not plain ones like a
-   phone number. */
-.text-link.link-arrow{ display:inline-flex; align-items:center; gap:6px; }
+/* CTA-style text-links get a small pill/box treatment (border, fill
+   on hover) instead of reading as plain underlined text — plain
+   .text-link usages like a phone number are untouched. */
+.text-link.link-arrow{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:9px 18px; border:1.5px solid var(--accent); border-radius:999px;
+  transition:background .25s ease, color .25s ease, border-color .25s ease;
+}
+.text-link.link-arrow:hover{ background:var(--accent); color:#fff; }
 .text-link.link-arrow::after{
   content:''; width:13px; height:13px; flex-shrink:0; background:currentColor;
   mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") no-repeat center / contain;
   -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") no-repeat center / contain;
-  transition:transform .25s var(--ease);
+  transition:transform .25s var(--ease), background-color .25s ease;
 }
 .text-link.link-arrow:hover::after{ transform:translateX(4px); }
 :root[dir="rtl"] .text-link.link-arrow::after{ transform:scaleX(-1); }
