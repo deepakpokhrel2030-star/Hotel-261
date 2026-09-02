@@ -191,8 +191,10 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .menu-overlay.open ~ .site-header .lang-switch,
 .menu-overlay.open ~ .site-header .theme-toggle,
 .menu-overlay.open ~ .site-header .btn.btn-pill{ display:none; }
-.menu-overlay.open ~ .site-header .logo-img{ flex-shrink:0; }
-.menu-overlay.open ~ .site-header .header-inner{ position:relative; justify-content:center; }
+/* The link list already has a "Home" entry, so the logo here is
+   redundant — drop it and just keep the close button. */
+.menu-overlay.open ~ .site-header .logo{ display:none; }
+.menu-overlay.open ~ .site-header .header-inner{ position:relative; }
 .menu-overlay.open ~ .site-header .header-right{ position:absolute; right:0; top:50%; transform:translateY(-50%); margin-left:0; }
 .nav-row{ padding:16px 32px; display:flex; justify-content:center; transition:padding .25s ease; }
 .site-header.solid .nav-row{ padding:12px 32px; }
@@ -255,7 +257,10 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 :root[dir="rtl"] .lang-dropdown{ right:auto; left:0; }
 :root[dir="rtl"] .lang-dropdown button{ text-align:right; }
 
-.menu-btn{ background:none; border:0; cursor:pointer; width:26px; height:18px; position:relative; }
+/* On desktop every link is already visible in .main-nav, so a
+   hamburger opening the same links again is pure redundancy — only
+   show it where .main-nav is actually hidden (mobile, see below). */
+.menu-btn{ display:none; background:none; border:0; cursor:pointer; width:26px; height:18px; position:relative; }
 .menu-btn span{ position:absolute; left:0; right:0; height:2px; background:var(--ink); transition:transform .25s ease, opacity .25s ease; }
 .menu-btn span:first-child{ top:1px; }
 .menu-btn span:last-child{ bottom:1px; }
@@ -756,6 +761,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 @media (max-width:760px){
   section{ padding:64px 20px; }
   .main-nav{ display:none; }
+  .menu-btn{ display:block; }
   /* Logo + EN pill + theme toggle + Reserve + hamburger together don't
      fit a phone-width header — without flex-shrink:0 (added above) the
      logo would get crushed to a sliver trying to make room. Reserve is
