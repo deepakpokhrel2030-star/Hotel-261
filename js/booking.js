@@ -307,6 +307,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
           ${tooSmall
             ? `<p class="rl-note">${tooSmallNote}</p>`
             : `<span class="summary-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> <span>${t('book.freeCancellation', 'Free cancellation')}</span></span>
+               <p class="rl-choice-note">${t('book.policy2', 'Free cancellation up to 48 hours before check-in.')}</p>
                <p class="rl-choice-note"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> ${t('book.payOnlineNote', 'Pay online — secure via Stripe')}</p>`}
         </div>
         <div class="rl-col-select" data-label="${t('book.selectRoomsCol', 'Select rooms')}">
