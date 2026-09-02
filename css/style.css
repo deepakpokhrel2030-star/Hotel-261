@@ -771,6 +771,17 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
      time on mobile — drop them there rather than showing "Reserve"
      twice (plus a phone-call option that's no longer the priority). */
   .hero-cta{ display:none; }
+  .hero-sub{ display:none; }
+  /* The homepage's three room "teaser" cards each repeated a full
+     description plus the same three tags (Ensuite/TV/WiFi) — on
+     mobile that's a lot of near-identical text before you even reach
+     the full listing at /rooms, which is what these link to anyway.
+     Scoped to #rooms (homepage only) — the actual /rooms page keeps
+     its descriptions and tags, since that's where people compare. */
+  #rooms .room-desc, #rooms .room-tags{ display:none; }
+  /* Second About paragraph is supplementary (nearby landmarks) —
+     drop it on mobile and keep just the opening paragraph. */
+  .about-body p:nth-of-type(2){ display:none; }
   /* Logo + EN pill + theme toggle + Reserve + hamburger together don't
      fit a phone-width header — without flex-shrink:0 (added above) the
      logo would get crushed to a sliver trying to make room. Reserve is
