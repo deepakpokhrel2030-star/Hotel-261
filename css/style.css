@@ -285,6 +285,12 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .hero--page .hero-inner{ padding-bottom:0; }
 .hero--page .hero-title{ font-size:clamp(2rem,4.6vw,3rem); }
 .hero--page .hero-media img{ object-position:center 50%; }
+/* The default scrim is nearly transparent around its 30% mark (tuned for a
+   top-aligned title on the tall homepage hero) — with the title centered in
+   this much shorter band, that's exactly where the text now sits, so it
+   needs its own stronger, more even darkening to stay readable. */
+.hero--page .hero-scrim{ background:linear-gradient(180deg, rgba(20,16,13,.5) 0%, rgba(20,16,13,.42) 50%, rgba(20,16,13,.6) 100%); }
+.hero--page .hero-title, .hero--page .hero-eyebrow{ text-shadow:0 1px 12px rgba(0,0,0,.35); }
 
 /* ============ Search widget (Booking.com-style) ============ */
 .search-widget-wrap{ position:relative; z-index:20; max-width:1200px; margin:0 auto; padding:0 24px 50px; }
