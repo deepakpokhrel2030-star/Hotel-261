@@ -163,7 +163,7 @@
     "title1": "A quiet corner",
     "title2": "of <em>West London,</em>",
     "title3": "made for resting.",
-    "heroSub": "Family-run since decades &mdash; ensuite rooms, free WiFi and private parking, a short walk from Westfield London.",
+    "heroSub": "Run by a local family, not a chain &mdash; ensuite rooms, free WiFi and private parking, a short walk from Westfield London.",
     "viewRoomsBtn": "View Rooms",
     "callToBookBtn": "Call to Book",
     "aboutLabel": "About the Hotel",
@@ -177,12 +177,13 @@
     "viewFullGallery": "View Full Gallery",
     "amenitiesTitle": "Everything you need,<br>nothing you don&rsquo;t.",
     "amenity1desc": "Throughout the hotel and in every room.",
-    "amenity2desc": "On-site, from £15/day.",
-    "amenity3desc": "Sleeping up to five guests.",
-    "amenity4desc": "5 minutes away at Little Napoli.",
-    "seeAllAmenities": "See All Amenities",
+    "amenity2desc": "On-site, from £15/day &mdash; rare for this part of London.",
+    "amenity3desc": "Sleeping up to five, without a squeeze.",
+    "amenity4desc": "5 minutes on foot, at Little Napoli.",
+    "seeAllAmenities": "See all amenities &rarr;",
     "ratedByGuests": "Rated by<br>our guests",
-    "readGuestReviews": "Read guest reviews &rarr;"
+    "readGuestReviews": "Read guest reviews &rarr;",
+    "amenitiesLead": "No spa, no minibar markup, no confusing extras. Just what a good stay actually needs &mdash; sorted properly."
   },
   "about": {
     "eyebrow": "( Our Story )",

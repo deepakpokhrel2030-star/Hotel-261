@@ -163,7 +163,7 @@
     "title1": "Un coin tranquille",
     "title2": "de l&rsquo;<em>Ouest de Londres,</em>",
     "title3": "fait pour se reposer.",
-    "heroSub": "Un hôtel familial depuis des décennies &mdash; chambres avec salle de bain privée, WiFi gratuit et parking privé, à deux pas de Westfield London.",
+    "heroSub": "Tenu par une famille locale, pas une chaîne &mdash; chambres avec salle de bain privée, WiFi gratuit et parking privé, à deux pas de Westfield London.",
     "viewRoomsBtn": "Voir les chambres",
     "callToBookBtn": "Appeler pour réserver",
     "aboutLabel": "À propos de l&rsquo;hôtel",
@@ -177,12 +177,13 @@
     "viewFullGallery": "Voir toute la galerie",
     "amenitiesTitle": "Tout ce qu&rsquo;il vous faut,<br>rien de superflu.",
     "amenity1desc": "Dans tout l&rsquo;hôtel et dans chaque chambre.",
-    "amenity2desc": "Sur place, à partir de 15&nbsp;£/jour.",
-    "amenity3desc": "Pour cinq personnes.",
-    "amenity4desc": "À 5 minutes, au Little Napoli.",
-    "seeAllAmenities": "Voir tous les services",
+    "amenity2desc": "Sur place, à partir de 15&nbsp;£/jour &mdash; rare dans ce quartier de Londres.",
+    "amenity3desc": "Jusqu’à cinq personnes, sans être à l’étroit.",
+    "amenity4desc": "À 5 minutes à pied, chez Little Napoli.",
+    "seeAllAmenities": "Voir tous les équipements &rarr;",
     "ratedByGuests": "L&rsquo;avis<br>de nos clients",
-    "readGuestReviews": "Lire les avis clients &rarr;"
+    "readGuestReviews": "Lire les avis clients &rarr;",
+    "amenitiesLead": "Pas de spa, pas de minibar hors de prix, pas d’extras qui compliquent tout. Juste ce qu’il faut pour un vrai bon séjour &mdash; bien fait."
   },
   "about": {
     "eyebrow": "( Notre histoire )",
