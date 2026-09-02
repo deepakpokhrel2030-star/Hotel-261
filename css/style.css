@@ -5,8 +5,7 @@
   --paper:#faf7f2;
   --paper-2:#f0e9dd;
   --surface:#ffffff;
-  --header-bg:rgba(20,16,13,.32);
-  --header-bg-solid:rgba(250,247,242,.82);
+  --header-bg:rgba(250,247,242,.98);
   --menu-bg:rgba(250,247,242,.93);
   --header-edge:rgba(255,255,255,.55);
   --accent:#a1402c;
@@ -32,8 +31,7 @@
     --paper:#161310;
     --paper-2:#211d18;
     --surface:#28231d;
-    --header-bg:rgba(20,16,13,.32);
-    --header-bg-solid:rgba(22,19,16,.82);
+    --header-bg:rgba(22,19,16,.98);
     --menu-bg:rgba(22,19,16,.93);
     --header-edge:rgba(255,255,255,.14);
     --accent:#e0714c;
@@ -53,8 +51,7 @@
   --paper:#161310;
   --paper-2:#211d18;
   --surface:#28231d;
-  --header-bg:rgba(20,16,13,.32);
-  --header-bg-solid:rgba(22,19,16,.82);
+  --header-bg:rgba(22,19,16,.98);
   --menu-bg:rgba(22,19,16,.93);
   --header-edge:rgba(255,255,255,.14);
   --accent:#e0714c;
@@ -145,20 +142,18 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .main-nav a.active::after{ width:100%; }
 .menu-links a.active{ color:var(--accent); }
 
-/* ============ Header (floating glass pill, always-on) ============ */
+/* ============ Header (floating solid pill, always-on) ============ */
 .site-header{
   position:fixed; top:16px; left:16px; right:16px; z-index:300;
   max-width:1400px; margin-inline:auto;
   display:flex; flex-direction:column;
   background:var(--header-bg);
-  backdrop-filter:blur(28px) saturate(200%);
-  -webkit-backdrop-filter:blur(28px) saturate(200%);
   border:1px solid var(--header-edge);
   border-radius:18px;
   box-shadow:0 10px 34px rgba(var(--shadow-rgb),.14), inset 0 1px 0 var(--header-edge);
-  transition:box-shadow .3s ease, background .3s ease, top .3s ease, transform .4s var(--ease);
+  transition:box-shadow .3s ease, top .3s ease, transform .4s var(--ease);
 }
-.site-header.solid{ top:10px; background:var(--header-bg-solid); box-shadow:0 16px 44px rgba(var(--shadow-rgb),.2), inset 0 1px 0 var(--header-edge); }
+.site-header.solid{ top:10px; box-shadow:0 16px 44px rgba(var(--shadow-rgb),.2), inset 0 1px 0 var(--header-edge); }
 .site-header.nav-hidden{ transform:translateY(calc(-100% - 32px)); }
 .nav-row{ padding:16px 32px; display:flex; justify-content:center; transition:padding .25s ease; }
 .site-header.solid .nav-row{ padding:12px 32px; }
@@ -221,20 +216,6 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 :root[dir="rtl"] .lang-dropdown{ right:auto; left:0; }
 :root[dir="rtl"] .lang-dropdown button{ text-align:right; }
 
-/* Floating over the hero (not yet scrolled), the glass is at its most
-   transparent, so nav text/icons switch to white with a soft shadow to stay
-   readable against whatever photo is behind them. Once solid/scrolled, they
-   revert to the normal ink colors used everywhere else on the page. */
-.site-header:not(.solid) .main-nav{ color:rgba(255,255,255,.92); }
-.site-header:not(.solid) .main-nav a{ text-shadow:0 1px 3px rgba(0,0,0,.55), 0 1px 14px rgba(0,0,0,.4); }
-.site-header:not(.solid) .main-nav a:hover{ color:#fff; }
-.site-header:not(.solid) .theme-toggle{ border-color:rgba(255,255,255,.45); color:#fff; }
-.site-header:not(.solid) .theme-toggle:hover{ border-color:#fff; }
-.site-header:not(.solid) .lang-switch-toggle{ border-color:rgba(255,255,255,.45); color:#fff; }
-.site-header:not(.solid) .lang-switch-toggle:hover{ border-color:#fff; }
-.site-header:not(.solid) .menu-btn span{ background:#fff; }
-.site-header:not(.solid) .logo-img{ filter:drop-shadow(0 2px 8px rgba(0,0,0,.4)); }
-
 .menu-btn{ background:none; border:0; cursor:pointer; width:26px; height:18px; position:relative; }
 .menu-btn span{ position:absolute; left:0; right:0; height:2px; background:var(--ink); transition:transform .25s ease, opacity .25s ease; }
 .menu-btn span:first-child{ top:1px; }
@@ -242,7 +223,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .menu-btn.open span:first-child{ transform:translateY(7.5px) rotate(45deg); }
 .menu-btn.open span:last-child{ transform:translateY(-7.5px) rotate(-45deg); }
 
-/* slide-in menu panel (glass, matching the header) */
+/* slide-in menu panel */
 .menu-overlay{
   position:fixed; top:0; right:0; bottom:0; width:min(440px, 100vw); z-index:250;
   background:var(--menu-bg); color:var(--ink);
@@ -327,6 +308,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 /* ============ Search widget (Booking.com-style) ============ */
 .search-widget-wrap{ position:relative; z-index:20; max-width:1200px; margin:0 auto; padding:0 24px 50px; }
 .search-widget-wrap.overlap{ margin-top:-46px; }
+.hero-cta-bar .search-widget-wrap.overlap{ margin-top:-90px; }
 .search-widget{
   background:var(--surface); border-radius:14px; box-shadow:0 24px 56px rgba(var(--shadow-rgb),.2); border:1px solid var(--line);
   display:grid; grid-template-columns:1fr 1fr 1.2fr auto; align-items:stretch;
