@@ -6,7 +6,8 @@
     "gallery": "Galería",
     "amenities": "Servicios",
     "reviews": "Opiniones",
-    "location": "Ubicación"
+    "location": "Ubicación",
+    "checkBooking": "Consultar reserva"
   },
   "common": {
     "reserve": "Reservar",

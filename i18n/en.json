@@ -6,7 +6,8 @@
     "gallery": "Gallery",
     "amenities": "Amenities",
     "reviews": "Reviews",
-    "location": "Location"
+    "location": "Location",
+    "checkBooking": "Check Booking"
   },
   "common": {
     "reserve": "Reserve",

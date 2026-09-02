@@ -6,7 +6,8 @@
     "gallery": "Galerie",
     "amenities": "Services",
     "reviews": "Avis",
-    "location": "Adresse"
+    "location": "Adresse",
+    "checkBooking": "Suivre ma réservation"
   },
   "common": {
     "reserve": "Réserver",

@@ -6,7 +6,8 @@
     "gallery": "Galleria",
     "amenities": "Servizi",
     "reviews": "Recensioni",
-    "location": "Dove siamo"
+    "location": "Dove siamo",
+    "checkBooking": "Verifica prenotazione"
   },
   "common": {
     "reserve": "Prenota",
