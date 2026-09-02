@@ -645,6 +645,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
   if (!form || !resultBox) return;
 
   const emailInput = document.getElementById('fbEmail');
+  const phoneInput = document.getElementById('fbPhone');
   const refInput = document.getElementById('fbRef');
   const errorBox = document.getElementById('fbError');
   const submitBtn = document.getElementById('fbSubmit');
@@ -665,9 +666,10 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     resultBox.style.display = 'none';
 
     const email = emailInput.value.trim();
+    const phone = phoneInput.value.trim();
     const reference = refInput.value.trim();
-    if (!email) { setError('Please enter the email address you booked with.'); emailInput.focus(); return; }
     if (!reference) { setError('Please enter your booking reference.'); refInput.focus(); return; }
+    if (!email && !phone) { setError('Please enter the email address or phone number you booked with.'); emailInput.focus(); return; }
 
     submitBtn.disabled = true;
     submitBtn.textContent = 'Searching…';
@@ -675,7 +677,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     fetch('/api/find-booking', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, reference }),
+      body: JSON.stringify({ email, phone, reference }),
     })
       .then(res => res.json().then(data => ({ ok: res.ok, data })))
       .then(({ ok, data }) => {

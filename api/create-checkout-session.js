@@ -138,9 +138,9 @@ module.exports = async (req, res) => {
 
     await pool.query(
       `INSERT INTO hotel_bookings (
-        guest_name, email, room_type, room_label, check_in, check_out, guests, rooms, total_amount, status, stripe_session_id, notes, items
-      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, 'pending', $10, $11, $12);`,
-      [String(name).trim(), String(email || '').trim(), roomType, roomLabel, checkIn, checkOut, guestCount, totalRooms, Number(totalPounds.toFixed(2)), session.id, notesParts.join(' | '), JSON.stringify(cart)]
+        guest_name, email, phone, room_type, room_label, check_in, check_out, guests, rooms, total_amount, status, stripe_session_id, notes, items
+      ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, 'pending', $11, $12, $13);`,
+      [String(name).trim(), String(email || '').trim(), String(phone || '').trim(), roomType, roomLabel, checkIn, checkOut, guestCount, totalRooms, Number(totalPounds.toFixed(2)), session.id, notesParts.join(' | '), JSON.stringify(cart)]
     );
 
     return res.status(200).json({ url: session.url });
