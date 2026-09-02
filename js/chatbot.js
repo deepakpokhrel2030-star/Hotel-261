@@ -291,7 +291,7 @@
       if (badge) badge.style.display = 'none';
       if (!messages.children.length) {
         showTyping(function () {
-          addMessage('Hi! I\'m the Hotel 261 assistant 👋 I\'m happy to help with rooms &amp; prices, check-in times, parking, pets, booking &mdash; pretty much anything about your stay. For anything too specific, just call us on <a href="tel:+442087434411">' + PHONE + '</a>.', 'bot');
+          addMessage('Hi! I\'m the Hotel 261 assistant 👋 I\'m happy to help with rooms &amp; prices, check-in times, parking, pets, booking &mdash; pretty much anything about your stay. What would you like to know?', 'bot');
           renderQuickReplies(QUICK_REPLIES);
         });
       }
