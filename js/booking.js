@@ -118,6 +118,28 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
   const todayStr = toLocalISODate(new Date());
   checkInInput.min = todayStr;
 
+  function openPicker(input) {
+    try { input.showPicker(); } catch (err) { input.focus(); }
+  }
+
+  // Clicking anywhere in the field (not just the tiny native icon) opens the calendar.
+  [checkInInput, checkOutInput].forEach((input) => {
+    const field = input.closest('.sw-field');
+    if (!field) return;
+    field.addEventListener('click', (e) => {
+      if (e.target === input) return;
+      openPicker(input);
+    });
+  });
+
+  function openOccupancy() {
+    const widget = checkOutInput.closest('.search-widget');
+    const dropdown = widget && widget.querySelector('.guests-dropdown');
+    if (!dropdown) return;
+    document.querySelectorAll('.guests-dropdown.open').forEach((d) => { if (d !== dropdown) d.classList.remove('open'); });
+    dropdown.classList.add('open');
+  }
+
   function updateNights() {
     if (!nightsEl) return;
     const n = nightsBetween(checkInInput.value, checkOutInput.value);
@@ -140,8 +162,12 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       checkOutInput.value = nextStr;
     }
     updateNights();
+    // Move straight to check-out so the guest can pick a different night count if they want.
+    setTimeout(() => openPicker(checkOutInput), 50);
   });
-  checkOutInput.addEventListener('change', updateNights);
+  checkOutInput.addEventListener('change', () => { updateNights(); openOccupancy(); });
+  // Even if they leave the 1-night default untouched, move the flow on to Occupancy.
+  checkOutInput.addEventListener('blur', openOccupancy);
   updateNights();
 }
 
