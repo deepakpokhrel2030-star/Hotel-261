@@ -666,6 +666,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   background:var(--accent); color:#fff; text-align:center; padding:16px; border-radius:var(--radius);
   font-weight:600; font-size:.9rem; box-shadow:0 10px 30px rgba(0,0,0,.25); display:none;
 }
+.menu-overlay.open ~ .mobile-bar{ display:none !important; }
 
 /* ============ RTL support (Arabic) ============
    Flexbox/Grid row flow already mirrors automatically once dir="rtl" is set on
@@ -712,6 +713,13 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   .main-nav{ display:none; }
   .site-header{ top:10px; left:10px; right:10px; border-radius:16px; }
   .site-header.solid{ top:6px; }
+  /* The menu panel goes edge-to-edge on mobile, so the header (still a
+     small inset pill) needs to merge into it as one piece while open,
+     instead of floating disconnected on top of it. */
+  .menu-overlay.open ~ .site-header{
+    top:0; left:0; right:0; max-width:none; border-radius:0; border:0;
+    box-shadow:none; background:var(--menu-bg);
+  }
   .nav-row{ padding:14px 20px; }
   .site-header.solid .nav-row{ padding:11px 20px; }
   .form-row.two-col{ grid-template-columns:1fr; }
