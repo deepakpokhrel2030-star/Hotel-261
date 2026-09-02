@@ -282,6 +282,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 /* ============ Search widget (Booking.com-style) ============ */
 .search-widget-wrap{ position:relative; z-index:20; max-width:1200px; margin:0 auto; padding:0 24px 50px; }
 .search-widget-wrap.overlap{ margin-top:-46px; }
+.hero-inner .search-widget-wrap{ max-width:none; margin:32px 0 0; padding:0; }
 .search-widget{
   background:var(--surface); border-radius:14px; box-shadow:0 24px 56px rgba(var(--shadow-rgb),.2); border:1px solid var(--line);
   display:grid; grid-template-columns:1fr 1fr 1.2fr auto; align-items:stretch;
