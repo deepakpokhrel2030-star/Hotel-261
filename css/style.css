@@ -155,14 +155,14 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .site-header.solid .nav-row{ padding:12px 32px; }
 .header-inner{
   width:100%; max-width:1280px;
-  display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:24px;
+  display:flex; align-items:center; gap:44px;
 }
 .logo{ font-family:var(--ff-display); font-size:1.3rem; font-weight:700; color:var(--ink); letter-spacing:.01em; display:inline-flex; align-items:center; }
 .logo-img{ height:40px; width:auto; display:block; transition:height .25s ease; }
 .site-header.solid .logo-img{ height:36px; }
 .logo-dark{ display:none; }
 .main-nav{
-  justify-self:center; display:flex; align-items:center; gap:6px;
+  display:flex; align-items:center; gap:6px;
   font-size:.86rem; font-weight:500; color:var(--ink-soft);
 }
 .main-nav a{ position:relative; padding:8px 14px; transition:color .2s ease; }
@@ -173,7 +173,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 }
 .main-nav a:hover{ color:var(--ink); }
 .main-nav a:hover::after{ width:18px; }
-.header-right{ justify-self:end; display:flex; align-items:center; gap:16px; }
+.header-right{ margin-left:auto; display:flex; align-items:center; gap:16px; }
 .theme-toggle{
   background:none; border:1.5px solid var(--line); width:38px; height:38px; border-radius:50%;
   display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--ink);
