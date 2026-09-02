@@ -93,6 +93,12 @@ function initGuestsDropdown(root, onChange) {
     document.querySelectorAll('.guests-dropdown.open').forEach(d => { if (d !== dropdown) d.classList.remove('open'); });
     dropdown.classList.toggle('open');
   });
+  // Clicking anywhere else in the box (label, padding) opens it too, not just the toggle text.
+  field.addEventListener('click', (e) => {
+    if (e.target === toggle || dropdown.contains(e.target)) return;
+    document.querySelectorAll('.guests-dropdown.open').forEach(d => { if (d !== dropdown) d.classList.remove('open'); });
+    dropdown.classList.add('open');
+  });
   doneBtn.addEventListener('click', (e) => { e.stopPropagation(); dropdown.classList.remove('open'); });
   document.addEventListener('click', (e) => {
     if (!field.contains(e.target)) dropdown.classList.remove('open');
