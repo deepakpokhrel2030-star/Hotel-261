@@ -52,10 +52,9 @@ if (themeToggle) {
   });
 }
 
-/* ---------- Header solid-on-scroll + hide-on-scroll-down + scroll progress ---------- */
+/* ---------- Header solid-on-scroll + hide-on-scroll-down ---------- */
 const header = document.getElementById('header');
 if (header && getComputedStyle(header).position === 'fixed') {
-  const progressBar = document.getElementById('scrollProgress');
   const menuOverlayEl = document.getElementById('menuOverlay');
   let lastY = window.scrollY;
   const onScroll = () => {
@@ -71,12 +70,6 @@ if (header && getComputedStyle(header).position === 'fixed') {
       header.classList.remove('nav-hidden');
     }
     lastY = y;
-
-    if (progressBar) {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = max > 0 ? Math.min(100, (y / max) * 100) : 0;
-      progressBar.style.width = pct + '%';
-    }
   };
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
