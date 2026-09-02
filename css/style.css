@@ -607,8 +607,8 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   display:flex; justify-content:space-between; align-items:center; font-family:var(--ff-display);
   font-size:1.08rem; font-weight:600; color:var(--ink);
 }
-.acc-trigger span{ font-size:1.3rem; color:var(--accent); transition:transform .3s var(--ease); font-family:var(--ff-body); }
-.acc-item.open .acc-trigger span{ transform:rotate(45deg); }
+.acc-trigger .acc-icon{ font-size:1.3rem; color:var(--accent); transition:transform .3s var(--ease); font-family:var(--ff-body); flex:none; }
+.acc-item.open .acc-trigger .acc-icon{ transform:rotate(45deg); }
 .acc-panel{ max-height:0; overflow:hidden; transition:max-height .4s var(--ease); }
 .acc-panel-inner{ padding:0 4px 22px; color:var(--ink-soft); max-width:560px; }
 
