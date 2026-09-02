@@ -33,8 +33,12 @@
       answer: 'Quadruple Room &mdash; £120/night, sleeps 4.'
     },
     {
-      keywords: ['family room', 'family', 'group', 'five', '5 people'],
-      answer: 'Family Room &mdash; £120/night, sleeps up to 5. Useful for visiting family or small groups who want to stay together.'
+      keywords: ['family room', 'family', 'five', '5 people', 'kids', 'children', 'child'],
+      answer: 'Family Room &mdash; £120/night, sleeps up to 5 (two single beds and one double) &mdash; ideal for families or small groups. Children are very welcome; for anything specific like a cot, it\'s best to call reception on <a href="tel:+442087434411">' + PHONE + '</a> to check what we can arrange.'
+    },
+    {
+      keywords: ['group', 'multiple rooms', 'several rooms', 'more than one room', 'block booking'],
+      answer: 'Yes &mdash; on our <a href="/book">Book</a> page you can select more than one room, including several of the same type, to cover a larger party. For 10 or more rooms, please call us on <a href="tel:+442087434411">' + PHONE + '</a> so we can help directly.'
     },
     {
       keywords: ['check-in', 'check in', 'checkin', 'check-out', 'check out', 'checkout', 'arrival time', 'what time'],
@@ -75,6 +79,34 @@
     {
       keywords: ['wifi', 'wi-fi', 'internet'],
       answer: 'Free WiFi is available throughout the hotel and in every room.'
+    },
+    {
+      keywords: ['fridge', 'minibar', 'mini bar', 'kettle', 'tea', 'coffee', 'microwave'],
+      answer: 'Every room has a fridge and tea &amp; coffee making facilities, plus there\'s a shared guest microwave available too.'
+    },
+    {
+      keywords: ['housekeeping', 'clean', 'cleaning', 'towels', 'fresh towels'],
+      answer: 'Daily housekeeping keeps rooms fresh throughout your stay.'
+    },
+    {
+      keywords: ['star', 'stars', 'star rating', 'how big', 'how many rooms'],
+      answer: 'We\'re a family-run 2-star hotel with 7 different room types, from Single up to Family rooms.'
+    },
+    {
+      keywords: ['solo', 'travelling alone', 'traveling alone', 'one person', 'by myself'],
+      answer: 'We\'re popular with solo travellers &mdash; the hotel is quiet and comfortable, and our Single Room (£54/night) is built exactly for that.'
+    },
+    {
+      keywords: ['quiet', 'noise', 'noisy'],
+      answer: 'Guests consistently tell us the hotel is quiet and comfortable &mdash; it\'s one of the things solo travellers rate us highly for.'
+    },
+    {
+      keywords: ['nearby', 'attractions', 'things to do', 'westfield', 'wembley', 'apollo', 'qpr', 'shopping', 'bars', 'restaurants'],
+      answer: 'We\'re a short walk from Westfield London shopping centre and a handful of local bars and caf&eacute;s, and well placed for Wembley, the Hammersmith Apollo and Queens Park Rangers\' football stadium &mdash; just over 10 minutes on foot.'
+    },
+    {
+      keywords: ['availability', 'available', 'vacancy', 'vacant', 'free room', 'sold out', 'dates'],
+      answer: 'The best way to check availability is on our <a href="/book">Book</a> page &mdash; enter your dates and number of guests and we\'ll show you what fits.'
     },
     {
       keywords: ['cancel', 'cancellation', 'refund', 'change my booking'],
@@ -118,9 +150,19 @@
     }
   ];
 
-  var FALLBACK = 'I\'m not sure about that one &mdash; for anything I can\'t answer, please call reception on <a href="tel:+442087434411">' + PHONE + '</a>, or try one of these:';
+  var FALLBACK = 'That one\'s a bit too specific for me to answer &mdash; the team will be happy to help if you call reception on <a href="tel:+442087434411">' + PHONE + '</a>. In the meantime, here\'s what I can help with:';
 
   var QUICK_REPLIES = ['Room prices', 'Check-in times', 'Parking', 'How do I book?', 'Where are you located?'];
+
+  // Rotating friendly openers so replies don't feel robotic. Cycled in order
+  // (not random) so the same one never fires twice in a row.
+  var OPENERS = ['Happy to help!', 'Glad to help!', 'Sure thing!', 'Great question!', 'Of course!'];
+  var openerIndex = 0;
+  function nextOpener() {
+    var opener = OPENERS[openerIndex % OPENERS.length];
+    openerIndex++;
+    return opener;
+  }
 
   function normalize(text) {
     return text.toLowerCase().replace(/[^\w\s-]/g, ' ').replace(/\s+/g, ' ').trim();
@@ -150,13 +192,13 @@
     root.className = 'chatbot';
     root.innerHTML =
       '<button class="chatbot-toggle" id="chatbotToggle" type="button" aria-label="Chat with us" aria-expanded="false">' +
-        '<svg class="icon chatbot-icon-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>' +
+        '<svg class="icon chatbot-icon-chat" viewBox="0 0 24 24" fill="none"><path d="M12 3.5c-4.97 0-9 3.6-9 8.05 0 2.45 1.22 4.64 3.15 6.13-.1 1.14-.5 2.14-1.2 2.97a.4.4 0 0 0 .38.65c1.6-.32 2.94-.96 3.98-1.77.85.24 1.75.37 2.69.37 4.97 0 9-3.6 9-8.05s-4.03-8.05-9-8.05Z" fill="currentColor" stroke="none"/><circle cx="8.3" cy="11.6" r="1" fill="var(--accent-2)" stroke="none"/><circle cx="12" cy="11.6" r="1" fill="var(--accent-2)" stroke="none"/><circle cx="15.7" cy="11.6" r="1" fill="var(--accent-2)" stroke="none"/></svg>' +
         '<svg class="icon chatbot-icon-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
         '<span class="chatbot-badge" id="chatbotBadge"></span>' +
       '</button>' +
       '<div class="chatbot-panel" id="chatbotPanel">' +
         '<div class="chatbot-head">' +
-          '<div><p class="chatbot-title">Hotel 261 Assistant</p><p class="chatbot-sub">Usually replies instantly</p></div>' +
+          '<div><p class="chatbot-title">Hotel 261 Assistant</p><p class="chatbot-sub">Happy to help with your stay</p></div>' +
           '<button class="chatbot-close" id="chatbotClose" type="button" aria-label="Close chat">&times;</button>' +
         '</div>' +
         '<div class="chatbot-messages" id="chatbotMessages"></div>' +
@@ -233,7 +275,7 @@
       showTyping(function () {
         var answer = findAnswer(text);
         if (answer) {
-          addMessage(answer, 'bot');
+          addMessage(nextOpener() + ' ' + answer, 'bot');
         } else {
           addMessage(FALLBACK, 'bot');
           renderQuickReplies(QUICK_REPLIES);
@@ -249,7 +291,7 @@
       if (badge) badge.style.display = 'none';
       if (!messages.children.length) {
         showTyping(function () {
-          addMessage('Hi! I\'m the Hotel 261 assistant 👋 Ask me about rooms &amp; prices, check-in times, parking, or how to book &mdash; or call us anytime on <a href="tel:+442087434411">' + PHONE + '</a>.', 'bot');
+          addMessage('Hi! I\'m the Hotel 261 assistant 👋 I\'m happy to help with rooms &amp; prices, check-in times, parking, pets, booking &mdash; pretty much anything about your stay. Anything too specific, and I\'ll point you to reception on <a href="tel:+442087434411">' + PHONE + '</a>.', 'bot');
           renderQuickReplies(QUICK_REPLIES);
         });
       }

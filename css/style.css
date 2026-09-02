@@ -710,15 +710,28 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 /* ============ Chatbot ============ */
 .chatbot{ position:fixed; right:24px; bottom:24px; z-index:260; }
 .chatbot-toggle{
-  width:56px; height:56px; border-radius:50%; border:none; cursor:pointer;
+  position:relative; width:58px; height:58px; border-radius:50%; border:none; cursor:pointer;
   background:var(--accent-2); color:#fff; display:flex; align-items:center; justify-content:center;
   box-shadow:0 10px 30px rgba(var(--shadow-rgb),.25); transition:transform .25s var(--ease), background .2s;
 }
+.chatbot-toggle::before{
+  content:''; position:absolute; inset:0; border-radius:50%; background:var(--accent-2);
+  opacity:.55; animation:chatbotPulse 2.6s ease-out infinite; z-index:-1;
+}
 .chatbot-toggle:hover{ background:var(--accent-2-light); transform:translateY(-2px); }
-.chatbot-toggle svg{ width:24px; height:24px; fill:none; stroke:currentColor; stroke-width:1.8; }
+.chatbot-toggle.open::before{ animation:none; opacity:0; }
+.chatbot-toggle svg{ width:27px; height:27px; fill:none; stroke:currentColor; stroke-width:1.8; }
+.chatbot-toggle .chatbot-icon-close{ width:22px; height:22px; }
 .chatbot-toggle .chatbot-icon-close{ display:none; }
 .chatbot-toggle.open .chatbot-icon-chat{ display:none; }
 .chatbot-toggle.open .chatbot-icon-close{ display:block; }
+@keyframes chatbotPulse{
+  0%{ transform:scale(1); opacity:.5; }
+  100%{ transform:scale(1.6); opacity:0; }
+}
+@media (prefers-reduced-motion: reduce){
+  .chatbot-toggle::before{ animation:none; opacity:0; }
+}
 .chatbot-badge{
   position:absolute; top:-2px; right:-2px; width:12px; height:12px; border-radius:50%;
   background:var(--accent); border:2px solid var(--paper);
