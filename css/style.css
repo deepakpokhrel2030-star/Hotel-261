@@ -782,6 +782,18 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   /* Second About paragraph is supplementary (nearby landmarks) —
      drop it on mobile and keep just the opening paragraph. */
   .about-body p:nth-of-type(2){ display:none; }
+  /* Trimming the copy above left sections feeling sparse on a phone
+     screen — scale the remaining headlines/body text up instead of
+     leaving the extra room empty, so each section still reads as full. */
+  .hero-title{ font-size:2.75rem; }
+  section > h2{ font-size:2.3rem; }
+  /* .rooms-title and .cta-title carry their own font-size rules (more
+     specific than the bare "section > h2" above), so they need their
+     own mobile bump to actually pick up the larger size. */
+  .rooms-title, .cta-title{ font-size:2.3rem; }
+  .about-lead{ font-size:1.9rem; }
+  .about-body p{ font-size:1.15rem; line-height:1.65; }
+  .room-row-body h3{ font-size:1.75rem; }
   /* Logo + EN pill + theme toggle + Reserve + hamburger together don't
      fit a phone-width header — without flex-shrink:0 (added above) the
      logo would get crushed to a sliver trying to make room. Reserve is
