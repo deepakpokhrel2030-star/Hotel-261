@@ -38,6 +38,8 @@
     "increaseChildren": "زيادة عدد الأطفال",
     "decreaseRooms": "تقليل عدد الغرف",
     "increaseRooms": "زيادة عدد الغرف",
+    "decreaseNights": "تقليل عدد الليالي",
+    "increaseNights": "زيادة عدد الليالي",
     "adultWord": "بالغ",
     "adultsWord": "بالغين",
     "childWord": "طفل",

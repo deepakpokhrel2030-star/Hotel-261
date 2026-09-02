@@ -38,6 +38,8 @@
     "increaseChildren": "Aumenta il numero di bambini",
     "decreaseRooms": "Diminuisci il numero di camere",
     "increaseRooms": "Aumenta il numero di camere",
+    "decreaseNights": "Diminuisci il numero di notti",
+    "increaseNights": "Aumenta il numero di notti",
     "adultWord": "adulto",
     "adultsWord": "adulti",
     "childWord": "bambino",

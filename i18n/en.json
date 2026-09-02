@@ -38,6 +38,8 @@
     "increaseChildren": "Increase children",
     "decreaseRooms": "Decrease rooms",
     "increaseRooms": "Increase rooms",
+    "decreaseNights": "Decrease nights",
+    "increaseNights": "Increase nights",
     "adultWord": "adult",
     "adultsWord": "adults",
     "childWord": "child",

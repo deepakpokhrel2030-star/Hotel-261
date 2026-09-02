@@ -120,9 +120,12 @@ function initGuestsDropdown(root, onChange) {
   };
 }
 
-function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
+function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep) {
   const todayStr = toLocalISODate(new Date());
   checkInInput.min = todayStr;
+  const nightsText = nightsEl && nightsEl.querySelector('.sw-nights-text');
+  const nightsMinusBtn = nightsEl && nightsEl.querySelector('[data-step="-"]');
+  const nightsPlusBtn = nightsEl && nightsEl.querySelector('[data-step="+"]');
 
   function openPicker(input) {
     try { input.showPicker(); } catch (err) { input.focus(); }
@@ -150,12 +153,28 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     if (!nightsEl) return;
     const n = nightsBetween(checkInInput.value, checkOutInput.value);
     if (n > 0) {
-      nightsEl.textContent = n + (n === 1 ? ' night' : ' nights');
+      nightsText.textContent = n + (n === 1 ? ' night' : ' nights');
       nightsEl.classList.add('visible');
+      if (nightsMinusBtn) nightsMinusBtn.disabled = n <= 1;
     } else {
       nightsEl.classList.remove('visible');
     }
   }
+
+  // Nudge check-out a day at a time from the "X nights" pill, instead of
+  // making guests re-open the calendar just to change the length of stay.
+  function stepNights(delta) {
+    if (!checkInInput.value) return;
+    const current = nightsBetween(checkInInput.value, checkOutInput.value) || 1;
+    const next = Math.max(1, current + delta);
+    const nextCheckOut = new Date(checkInInput.value + 'T00:00:00');
+    nextCheckOut.setDate(nextCheckOut.getDate() + next);
+    checkOutInput.value = toLocalISODate(nextCheckOut);
+    updateNights();
+    if (onNightsStep) onNightsStep();
+  }
+  if (nightsMinusBtn) nightsMinusBtn.addEventListener('click', (e) => { e.stopPropagation(); stepNights(-1); });
+  if (nightsPlusBtn) nightsPlusBtn.addEventListener('click', (e) => { e.stopPropagation(); stepNights(1); });
 
   checkInInput.addEventListener('change', () => {
     if (!checkInInput.value) return;
@@ -207,7 +226,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
 
   const checkIn = widget.querySelector('#bsCheckIn');
   const checkOut = widget.querySelector('#bsCheckOut');
-  setDateConstraints(checkIn, checkOut, widget.querySelector('#bsNights'));
+  setDateConstraints(checkIn, checkOut, widget.querySelector('#bsNights'), renderRooms);
   const guestsCtrl = initGuestsDropdown(widget, renderRooms);
 
   const params = new URLSearchParams(window.location.search);
