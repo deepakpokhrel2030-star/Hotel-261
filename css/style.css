@@ -155,6 +155,17 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 }
 .site-header.solid{ top:10px; box-shadow:0 16px 44px rgba(var(--shadow-rgb),.2), inset 0 1px 0 var(--header-edge); }
 .site-header.nav-hidden{ transform:translateY(calc(-100% - 32px)); }
+/* When the menu panel is open, merge the header into it — same width,
+   position and background as the panel — instead of floating as a
+   separate rounded pill overlapping it. Mirrors .menu-overlay's own
+   width so the two always line up, at every viewport size. */
+.menu-overlay.open ~ .site-header{
+  top:0; right:0; left:auto; margin-inline:0; width:min(440px, 100vw); max-width:none;
+  border-radius:0; border:0; border-left:1px solid var(--header-edge);
+  box-shadow:none; background:var(--menu-bg);
+}
+.menu-overlay.open ~ .site-header.solid{ top:0; box-shadow:none; }
+.menu-overlay.open ~ .site-header .main-nav{ display:none; }
 .nav-row{ padding:16px 32px; display:flex; justify-content:center; transition:padding .25s ease; }
 .site-header.solid .nav-row{ padding:12px 32px; }
 .header-inner{
@@ -226,7 +237,11 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 /* slide-in menu panel */
 .menu-overlay{
   position:fixed; top:0; right:0; bottom:0; width:min(440px, 100vw); z-index:250;
-  background:var(--menu-bg); color:var(--ink);
+  background:
+    radial-gradient(560px circle at 100% 0%, rgba(161,64,44,.22), transparent 60%),
+    radial-gradient(480px circle at 0% 100%, rgba(61,92,77,.16), transparent 65%),
+    var(--menu-bg);
+  color:var(--ink);
   backdrop-filter:blur(28px) saturate(200%);
   -webkit-backdrop-filter:blur(28px) saturate(200%);
   border-left:1px solid var(--header-edge);
@@ -254,8 +269,13 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   font-family:var(--ff-body); font-size:.72rem; font-weight:700; letter-spacing:.06em;
   color:var(--accent); opacity:.75;
 }
+.menu-links a::after{
+  content:'\2192'; margin-left:auto; font-family:var(--ff-body); font-size:1.2rem; color:var(--accent);
+  opacity:0; transform:translateX(-8px); transition:opacity .25s ease, transform .25s ease;
+}
 .menu-overlay.open .menu-links a{ opacity:1; transform:translateX(0); }
 .menu-links a:hover{ color:var(--accent); padding-left:6px; }
+.menu-links a:hover::after{ opacity:1; transform:translateX(0); }
 .menu-foot{ margin-top:40px; display:flex; flex-direction:column; gap:8px; font-size:.88rem; color:var(--ink-soft); padding-top:24px; border-top:1px solid var(--line); }
 .menu-foot a{ color:var(--ink); font-weight:600; }
 
@@ -713,13 +733,6 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   .main-nav{ display:none; }
   .site-header{ top:10px; left:10px; right:10px; border-radius:16px; }
   .site-header.solid{ top:6px; }
-  /* The menu panel goes edge-to-edge on mobile, so the header (still a
-     small inset pill) needs to merge into it as one piece while open,
-     instead of floating disconnected on top of it. */
-  .menu-overlay.open ~ .site-header{
-    top:0; left:0; right:0; max-width:none; border-radius:0; border:0;
-    box-shadow:none; background:var(--menu-bg);
-  }
   .nav-row{ padding:14px 20px; }
   .site-header.solid .nav-row{ padding:11px 20px; }
   .form-row.two-col{ grid-template-columns:1fr; }
@@ -735,6 +748,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   .sw-field{ border-right:0; border-bottom:1px solid var(--line); }
   .guests-dropdown{ width:100%; left:0; right:0; }
   .menu-overlay{ width:100%; padding:0 32px; }
+  .menu-overlay.open ~ .site-header{ width:100%; border-left:0; }
 
   .rl-table{ border:0; background:none; }
   .rl-header{ display:none; }
