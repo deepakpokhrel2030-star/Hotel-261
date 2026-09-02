@@ -329,6 +329,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .rl-tip b{ color:var(--accent); }
 .rl-header{ display:grid; background:var(--ink); color:var(--paper); font-size:.76rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; }
 .rl-header > div{ padding:14px 16px; }
+.rl-header > div:nth-child(2){ text-align:center; }
 .rl-row{ display:grid; border-top:1px solid var(--line); transition:background .2s ease; }
 .rl-row:hover{ background:var(--paper-2); }
 .rl-row > div{ padding:18px 16px; border-right:1px solid var(--line); display:flex; flex-direction:column; justify-content:center; }
@@ -347,7 +348,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .rl-tags{ display:flex; flex-wrap:wrap; gap:6px; }
 .rl-tags span{ font-size:.64rem; border:1px solid var(--line); padding:4px 8px; border-radius:999px; color:var(--ink-soft); background:var(--paper); }
 
-.rl-guest-icons{ display:flex; gap:2px; color:var(--ink-soft); }
+.rl-guest-icons{ display:flex; justify-content:center; gap:2px; color:var(--ink-soft); }
 .rl-guest-icons .icon{ width:16px; height:16px; }
 .rl-guest-extra{ font-size:.78rem; color:var(--ink-soft); margin-left:4px; }
 
