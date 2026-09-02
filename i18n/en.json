@@ -104,7 +104,7 @@
     },
     "family": {
       "name": "Family Room",
-      "desc": "2 single beds &amp; 1 double bed &middot; sleeps up to 5. Our largest room, built for family stays."
+      "desc": "2 single beds &amp; 1 double bed &middot; sleeps up to 4. Our largest room, built for family stays."
     }
   },
   "stats": {
@@ -124,7 +124,7 @@
     },
     "family": {
       "title": "Family Rooms",
-      "desc": "Spacious family rooms sleeping up to five guests &mdash; two single beds and one double, ideal for families or small groups."
+      "desc": "Spacious family rooms sleeping up to four guests &mdash; two single beds and one double, ideal for families or small groups."
     },
     "heating": {
       "title": "Heating",
@@ -179,7 +179,7 @@
     "amenitiesTitle": "Everything you need,<br>nothing you don&rsquo;t.",
     "amenity1desc": "Throughout the hotel and in every room.",
     "amenity2desc": "On-site, from £15/day &mdash; rare for this part of London.",
-    "amenity3desc": "Sleeping up to five, without a squeeze.",
+    "amenity3desc": "Sleeping up to four, without a squeeze.",
     "amenity4desc": "5 minutes on foot, at Little Napoli.",
     "seeAllAmenities": "See all amenities &rarr;",
     "ratedByGuests": "Rated by<br>our guests",
@@ -200,7 +200,7 @@
     "g2": "<strong>On-site parking</strong> is available for £15/day, subject to availability &mdash; handy for a hotel this close to central London.",
     "g3": "<strong>Daily housekeeping</strong> keeps rooms fresh throughout your stay, and we&rsquo;ll happily store luggage on your day of departure.",
     "g4": "<strong>Ensuite bathrooms</strong> in every room, along with a flat-screen TV, satellite channels and free WiFi throughout the building.",
-    "g5": "<strong>Family rooms</strong> sleep up to five guests &mdash; useful for visiting family or small groups who want to stay together.",
+    "g5": "<strong>Family rooms</strong> sleep up to four guests &mdash; useful for visiting family or small groups who want to stay together.",
     "g6": "We&rsquo;re a smoke-free hotel with a designated outdoor smoking area, and quiet enough that solo travellers consistently rate us highly for comfort."
   },
   "rooms": {

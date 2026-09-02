@@ -104,7 +104,7 @@
     },
     "family": {
       "name": "Habitación Familiar",
-      "desc": "2 camas individuales y 1 de matrimonio &middot; hasta 5 personas. Nuestra habitación más grande, pensada para familias."
+      "desc": "2 camas individuales y 1 de matrimonio &middot; hasta 4 personas. Nuestra habitación más grande, pensada para familias."
     }
   },
   "stats": {
@@ -124,7 +124,7 @@
     },
     "family": {
       "title": "Habitaciones familiares",
-      "desc": "Amplias habitaciones familiares para hasta cinco huéspedes &mdash; dos camas individuales y una de matrimonio, ideales para familias o grupos pequeños."
+      "desc": "Amplias habitaciones familiares para hasta cuatro huéspedes &mdash; dos camas individuales y una de matrimonio, ideales para familias o grupos pequeños."
     },
     "heating": {
       "title": "Calefacción",
@@ -179,7 +179,7 @@
     "amenitiesTitle": "Todo lo que necesita,<br>nada de más.",
     "amenity1desc": "En todo el hotel y en cada habitación.",
     "amenity2desc": "En el propio hotel, desde 15&nbsp;£/día &mdash; algo poco habitual en esta zona de Londres.",
-    "amenity3desc": "Hasta cinco personas, sin agobios.",
+    "amenity3desc": "Hasta cuatro personas, sin agobios.",
     "amenity4desc": "A 5 minutos a pie, en Little Napoli.",
     "seeAllAmenities": "Ver todos los servicios &rarr;",
     "ratedByGuests": "Valorado por<br>nuestros huéspedes",
@@ -200,7 +200,7 @@
     "g2": "<strong>Aparcamiento en el hotel</strong> disponible por 15&nbsp;£/día, según disponibilidad &mdash; muy práctico para un hotel tan cerca del centro de Londres.",
     "g3": "<strong>Limpieza diaria</strong> que mantiene las habitaciones impecables durante toda su estancia, y guardamos con gusto su equipaje el día de salida.",
     "g4": "<strong>Baños privados</strong> en cada habitación, junto con TV de pantalla plana, canales de satélite y WiFi gratis en todo el edificio.",
-    "g5": "<strong>Habitaciones familiares</strong> para hasta cinco huéspedes &mdash; útiles para familiares de visita o grupos pequeños que quieran alojarse juntos.",
+    "g5": "<strong>Habitaciones familiares</strong> para hasta cuatro huéspedes &mdash; útiles para familiares de visita o grupos pequeños que quieran alojarse juntos.",
     "g6": "Somos un hotel libre de humo con una zona de fumadores exterior habilitada, y lo bastante tranquilo como para que los viajeros solos nos valoren constantemente muy bien en cuanto a comodidad."
   },
   "rooms": {

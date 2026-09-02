@@ -11,7 +11,7 @@ const ROOMS = {
   double:   { label: 'Double Room',                   price: 80,  maxGuests: 2 },
   triple:   { label: 'Triple Room',                   price: 95,  maxGuests: 3 },
   quad:     { label: 'Quadruple Room',                price: 120, maxGuests: 4 },
-  family:   { label: 'Family Room',                   price: 120, maxGuests: 5 },
+  family:   { label: 'Family Room',                   price: 120, maxGuests: 4 },
 };
 
 function nightsBetween(checkIn, checkOut) {

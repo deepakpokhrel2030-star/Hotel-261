@@ -104,7 +104,7 @@
     },
     "family": {
       "name": "Chambre Familiale",
-      "desc": "2 lits simples &amp; 1 lit double &middot; jusqu&rsquo;à 5 personnes. Notre plus grande chambre, pensée pour les familles."
+      "desc": "2 lits simples &amp; 1 lit double &middot; jusqu&rsquo;à 4 personnes. Notre plus grande chambre, pensée pour les familles."
     }
   },
   "stats": {
@@ -124,7 +124,7 @@
     },
     "family": {
       "title": "Chambres familiales",
-      "desc": "De vastes chambres familiales pour cinq personnes &mdash; deux lits simples et un double, idéales pour les familles ou petits groupes."
+      "desc": "De vastes chambres familiales pour quatre personnes &mdash; deux lits simples et un double, idéales pour les familles ou petits groupes."
     },
     "heating": {
       "title": "Chauffage",
@@ -179,7 +179,7 @@
     "amenitiesTitle": "Tout ce qu&rsquo;il vous faut,<br>rien de superflu.",
     "amenity1desc": "Dans tout l&rsquo;hôtel et dans chaque chambre.",
     "amenity2desc": "Sur place, à partir de 15&nbsp;£/jour &mdash; rare dans ce quartier de Londres.",
-    "amenity3desc": "Jusqu’à cinq personnes, sans être à l’étroit.",
+    "amenity3desc": "Jusqu’à quatre personnes, sans être à l’étroit.",
     "amenity4desc": "À 5 minutes à pied, chez Little Napoli.",
     "seeAllAmenities": "Voir tous les équipements &rarr;",
     "ratedByGuests": "L&rsquo;avis<br>de nos clients",
@@ -200,7 +200,7 @@
     "g2": "<strong>Parking sur place</strong> disponible pour 15&nbsp;£/jour, selon disponibilité &mdash; pratique pour un hôtel aussi proche du centre de Londres.",
     "g3": "<strong>Ménage quotidien</strong> pour des chambres impeccables tout au long de votre séjour, et nous conservons volontiers vos bagages le jour de votre départ.",
     "g4": "<strong>Salles de bain privées</strong> dans chaque chambre, avec TV écran plat, chaînes satellite et WiFi gratuit dans tout le bâtiment.",
-    "g5": "<strong>Chambres familiales</strong> pour cinq personnes &mdash; pratique pour la famille en visite ou les petits groupes qui souhaitent rester ensemble.",
+    "g5": "<strong>Chambres familiales</strong> pour quatre personnes &mdash; pratique pour la famille en visite ou les petits groupes qui souhaitent rester ensemble.",
     "g6": "Nous sommes un hôtel non-fumeur avec un espace fumeurs extérieur dédié, et suffisamment calme pour que les voyageurs solo nous notent régulièrement très bien pour le confort."
   },
   "rooms": {

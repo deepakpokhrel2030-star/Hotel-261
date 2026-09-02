@@ -104,7 +104,7 @@
     },
     "family": {
       "name": "Camera Famiglia",
-      "desc": "2 letti singoli e 1 matrimoniale &middot; fino a 5 persone. La nostra camera più grande, pensata per le famiglie."
+      "desc": "2 letti singoli e 1 matrimoniale &middot; fino a 4 persone. La nostra camera più grande, pensata per le famiglie."
     }
   },
   "stats": {
@@ -124,7 +124,7 @@
     },
     "family": {
       "title": "Camere famiglia",
-      "desc": "Ampie camere famiglia fino a cinque ospiti &mdash; due letti singoli e uno matrimoniale, ideali per famiglie o piccoli gruppi."
+      "desc": "Ampie camere famiglia fino a quattro ospiti &mdash; due letti singoli e uno matrimoniale, ideali per famiglie o piccoli gruppi."
     },
     "heating": {
       "title": "Riscaldamento",
@@ -179,7 +179,7 @@
     "amenitiesTitle": "Tutto ciò che serve,<br>niente di superfluo.",
     "amenity1desc": "In tutto l&rsquo;hotel e in ogni camera.",
     "amenity2desc": "In loco, da 15&nbsp;£/giorno &mdash; raro in questa zona di Londra.",
-    "amenity3desc": "Fino a cinque persone, senza stare stretti.",
+    "amenity3desc": "Fino a quattro persone, senza stare stretti.",
     "amenity4desc": "A 5 minuti a piedi, da Little Napoli.",
     "seeAllAmenities": "Vedi tutti i servizi &rarr;",
     "ratedByGuests": "Valutato dai<br>nostri ospiti",
@@ -200,7 +200,7 @@
     "g2": "<strong>Parcheggio in loco</strong> disponibile per 15&nbsp;£/giorno, in base alla disponibilità &mdash; comodo per un hotel così vicino al centro di Londra.",
     "g3": "<strong>Pulizia giornaliera</strong> per camere sempre fresche durante tutto il soggiorno, e siamo felici di custodire i bagagli il giorno della partenza.",
     "g4": "<strong>Bagni privati</strong> in ogni camera, insieme a TV a schermo piatto, canali satellitari e WiFi gratuito in tutto l&rsquo;edificio.",
-    "g5": "<strong>Camere famiglia</strong> fino a cinque ospiti &mdash; utili per parenti in visita o piccoli gruppi che vogliono restare insieme.",
+    "g5": "<strong>Camere famiglia</strong> fino a quattro ospiti &mdash; utili per parenti in visita o piccoli gruppi che vogliono restare insieme.",
     "g6": "Siamo un hotel non fumatori con un&rsquo;area fumatori esterna dedicata, e abbastanza tranquillo da far sì che i viaggiatori singoli ci valutino costantemente in modo eccellente per il comfort."
   },
   "rooms": {

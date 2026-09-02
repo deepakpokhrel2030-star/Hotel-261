@@ -10,7 +10,7 @@
     },
     {
       keywords: ['room', 'rooms', 'price', 'prices', 'cost', 'rate', 'rates', 'how much', 'cheapest'],
-      answer: 'We have 7 room types, from £54&ndash;£120 a night: Single (£54, sleeps 1), Twin (£75, sleeps 2), Double Room 1&ndash;2 Adults (£75, sleeps 2), Double (£80, sleeps 2), Triple (£95, sleeps 3), Quadruple (£120, sleeps 4) and Family (£120, sleeps up to 5). See full details on our <a href="/rooms">Rooms &amp; Rates</a> page.'
+      answer: 'We have 7 room types, from £54&ndash;£120 a night: Single (£54, sleeps 1), Twin (£75, sleeps 2), Double Room 1&ndash;2 Adults (£75, sleeps 2), Double (£80, sleeps 2), Triple (£95, sleeps 3), Quadruple (£120, sleeps 4) and Family (£120, sleeps up to 4). See full details on our <a href="/rooms">Rooms &amp; Rates</a> page.'
     },
     {
       keywords: ['single room', 'single'],
@@ -33,8 +33,8 @@
       answer: 'Quadruple Room &mdash; £120/night, sleeps 4.'
     },
     {
-      keywords: ['family room', 'family', 'five', '5 people', 'kids', 'children', 'child'],
-      answer: 'Family Room &mdash; £120/night, sleeps up to 5 (two single beds and one double) &mdash; ideal for families or small groups. Children are very welcome; for anything specific like a cot, it\'s best to call reception on <a href="tel:+442087434411">' + PHONE + '</a> to check what we can arrange.'
+      keywords: ['family room', 'family', 'four', '4 people', 'kids', 'children', 'child'],
+      answer: 'Family Room &mdash; £120/night, sleeps up to 4 (two single beds and one double) &mdash; ideal for families or small groups. Children are very welcome; for anything specific like a cot, it\'s best to call reception on <a href="tel:+442087434411">' + PHONE + '</a> to check what we can arrange.'
     },
     {
       keywords: ['group', 'multiple rooms', 'several rooms', 'more than one room', 'block booking'],
