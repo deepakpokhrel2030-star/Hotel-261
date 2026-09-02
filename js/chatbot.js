@@ -114,7 +114,7 @@
     },
     {
       keywords: ['cancel', 'cancellation', 'refund', 'change my booking'],
-      answer: 'Free cancellation up to 48 hours before check-in on bookings made directly with us &mdash; and no third-party booking fees when you book direct.'
+      answer: 'To change or cancel a booking, please call us on <a href="tel:+442087434411">' + PHONE + '</a> and we\'ll sort it out with you directly.'
     },
     {
       keywords: ['book', 'booking', 'reserve', 'reservation'],

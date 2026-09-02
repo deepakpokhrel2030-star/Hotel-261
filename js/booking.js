@@ -1,12 +1,12 @@
 /* ---------- Shared room data ---------- */
 const HOTEL_ROOMS = [
-  { id: 'single',   label: 'Single Room',                nights_label: '1 single bed · sleeps 1',       price: 54,  maxGuests: 1, img: 'images/site/single-room.jpg',     desc: 'A compact, quiet room for solo travellers.', rating: 4.8, reviews: 127, badge: 'Popular', perks: ['Ensuite bathroom', 'Flat-screen TV', 'Tea & coffee'] },
-  { id: 'twin',     label: 'Twin Room',                   nights_label: '2 single beds · sleeps 2',      price: 75,  maxGuests: 2, img: 'images/site/twin-room.jpg',       desc: 'A favourite with friends travelling together.', rating: 4.7, reviews: 96, badge: 'Best for friends', perks: ['Ensuite bathroom', 'Flat-screen TV', 'Tea & coffee'] },
-  { id: 'double12', label: 'Double Room', small: '(1–2 Adults)', nights_label: '1 double bed · sleeps 1–2', price: 75, maxGuests: 2, img: 'images/site/double-room-1-2.jpg', desc: 'Flexible whether you’re solo or a pair.', rating: 4.6, reviews: 84, badge: 'Top value', perks: ['Ensuite bathroom', 'Flat-screen TV', 'Tea & coffee'] },
-  { id: 'double',   label: 'Double Room',                 nights_label: '1 double bed · sleeps 2',        price: 80,  maxGuests: 2, img: 'images/site/double-room.jpg',     desc: 'Our classic double for couples and city breaks.', rating: 4.9, reviews: 214, badge: 'Guest favourite', perks: ['Ensuite bathroom', 'Flat-screen TV', 'Tea & coffee'] },
-  { id: 'triple',   label: 'Triple Room',                 nights_label: '3 single beds · sleeps 3',       price: 95,  maxGuests: 3, img: 'images/site/triple-room.jpg',     desc: 'Extra space for small groups.', rating: 4.7, reviews: 73, badge: 'Family pick', perks: ['Ensuite bathroom', 'Flat-screen TV', 'Tea & coffee'] },
-  { id: 'quad',     label: 'Quadruple Room',               nights_label: '2 double beds · sleeps 4',       price: 120, maxGuests: 4, img: 'images/site/quadruple-room.jpg',  desc: 'Roomy enough for two couples or a family of four.', rating: 4.8, reviews: 61, badge: 'Large family room', perks: ['Ensuite bathroom', 'Flat-screen TV', 'Tea & coffee'] },
-  { id: 'family',   label: 'Family Room',                 nights_label: '2 single beds & 1 double · sleeps 4', price: 120, maxGuests: 4, img: 'images/site/family-room.jpg', desc: 'Our largest room, built for family stays.', rating: 4.9, reviews: 118, badge: 'Very popular', perks: ['Ensuite bathroom', 'Flat-screen TV', 'Tea & coffee'] },
+  { id: 'single',   label: 'Single Room',                nights_label: '1 single bed · sleeps 1',       price: 54,  maxGuests: 1, img: 'images/site/single-room.jpg',     desc: 'A compact, quiet room for solo travellers.', badge: 'Popular', perks: ['Ensuite bathroom', 'Flat-screen TV', 'Tea & coffee'] },
+  { id: 'twin',     label: 'Twin Room',                   nights_label: '2 single beds · sleeps 2',      price: 75,  maxGuests: 2, img: 'images/site/twin-room.jpg',       desc: 'A favourite with friends travelling together.', badge: 'Best for friends', perks: ['Ensuite bathroom', 'Flat-screen TV', 'Tea & coffee'] },
+  { id: 'double12', label: 'Double Room', small: '(1–2 Adults)', nights_label: '1 double bed · sleeps 1–2', price: 75, maxGuests: 2, img: 'images/site/double-room-1-2.jpg', desc: 'Flexible whether you’re solo or a pair.', badge: 'Top value', perks: ['Ensuite bathroom', 'Flat-screen TV', 'Tea & coffee'] },
+  { id: 'double',   label: 'Double Room',                 nights_label: '1 double bed · sleeps 2',        price: 80,  maxGuests: 2, img: 'images/site/double-room.jpg',     desc: 'Our classic double for couples and city breaks.', badge: 'Guest favourite', perks: ['Ensuite bathroom', 'Flat-screen TV', 'Tea & coffee'] },
+  { id: 'triple',   label: 'Triple Room',                 nights_label: '3 single beds · sleeps 3',       price: 95,  maxGuests: 3, img: 'images/site/triple-room.jpg',     desc: 'Extra space for small groups.', badge: 'Family pick', perks: ['Ensuite bathroom', 'Flat-screen TV', 'Tea & coffee'] },
+  { id: 'quad',     label: 'Quadruple Room',               nights_label: '2 double beds · sleeps 4',       price: 120, maxGuests: 4, img: 'images/site/quadruple-room.jpg',  desc: 'Roomy enough for two couples or a family of four.', badge: 'Large family room', perks: ['Ensuite bathroom', 'Flat-screen TV', 'Tea & coffee'] },
+  { id: 'family',   label: 'Family Room',                 nights_label: '2 single beds & 1 double · sleeps 4', price: 120, maxGuests: 4, img: 'images/site/family-room.jpg', desc: 'Our largest room, built for family stays.', badge: 'Very popular', perks: ['Ensuite bathroom', 'Flat-screen TV', 'Tea & coffee'] },
 ];
 
 function toLocalISODate(date) {
@@ -274,7 +274,6 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       const nightsLabel = stay.nights > 0
         ? t('book.' + (stay.nights > 1 ? 'nightsTotalMany' : 'nightsTotalOne'), `${stay.nights} night${stay.nights > 1 ? 's' : ''} total`).replace('{n}', stay.nights)
         : '';
-      const reviewText = `${room.rating.toFixed(1)} · ${room.reviews} ${t('common.reviewsWord', 'reviews')}`;
       const tags = room.perks.map((perk) => `<span>${perk}</span>`).join('');
       const roomName = t('room.' + room.id + '.name', room.label);
       const roomSmall = room.small ? t('room.' + room.id + '.small', room.small) : '';
@@ -293,7 +292,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
           <div class="rl-info">
             <div class="rl-badge">${room.badge}</div>
             <h3>${roomName}${roomSmall ? ` <small>${roomSmall}</small>` : ''}</h3>
-            <p class="rl-meta">${roomDesc} &middot; ${reviewText}</p>
+            <p class="rl-meta">${roomDesc}</p>
             <div class="rl-tags">${tags}</div>
           </div>
         </div>
@@ -306,9 +305,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
         <div class="rl-col-choices" data-label="${t('book.yourChoices', 'Your choices')}">
           ${tooSmall
             ? `<p class="rl-note">${tooSmallNote}</p>`
-            : `<span class="summary-badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> <span>${t('book.freeCancellation', 'Free cancellation')}</span></span>
-               <p class="rl-choice-note">${t('book.policy2', 'Free cancellation up to 48 hours before check-in.')}</p>
-               <p class="rl-choice-note"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> ${t('book.payOnlineNote', 'Pay online — secure via Stripe')}</p>`}
+            : `<p class="rl-choice-note"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> ${t('book.payOnlineNote', 'Pay online — secure via Stripe')}</p>`}
         </div>
         <div class="rl-col-select" data-label="${t('book.selectRoomsCol', 'Select rooms')}">
           <select class="rl-qty" ${tooSmall ? 'disabled' : ''}>${qtyOptions}</select>
@@ -670,9 +667,6 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
   const refInput = document.getElementById('fbRef');
   const errorBox = document.getElementById('fbError');
   const submitBtn = document.getElementById('fbSubmit');
-  const cancelBox = document.getElementById('frCancelBox');
-  const cancelBtn = document.getElementById('frCancelBtn');
-  const cancelError = document.getElementById('frCancelError');
 
   const STATUS_LABELS = {
     pending: t('checkBooking.statusPending', 'Payment pending'),
@@ -680,16 +674,9 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     cancelled: t('checkBooking.statusCancelled', 'Cancelled'),
   };
 
-  let lookupContext = null;
-
   function setError(msg) {
     errorBox.textContent = msg;
     errorBox.classList.toggle('visible', !!msg);
-  }
-
-  function setCancelError(msg) {
-    cancelError.textContent = msg;
-    cancelError.classList.toggle('visible', !!msg);
   }
 
   submitBtn.addEventListener('click', () => {
@@ -724,11 +711,6 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
         document.getElementById('frTotal').textContent = '£' + Number(data.totalAmount).toLocaleString('en-GB');
         resultBox.style.display = 'block';
         resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-
-        lookupContext = { email, phone, reference, checkIn: data.checkIn };
-        setCancelError('');
-        const hoursUntilCheckIn = (new Date(data.checkIn + 'T14:00:00').getTime() - Date.now()) / 3600000;
-        cancelBox.style.display = (data.status === 'confirmed' && hoursUntilCheckIn >= 48) ? 'block' : 'none';
       })
       .catch(err => setError(err.message))
       .finally(() => {
@@ -736,32 +718,4 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
         submitBtn.textContent = 'Find My Booking';
       });
   });
-
-  if (cancelBtn) {
-    cancelBtn.addEventListener('click', () => {
-      if (!lookupContext) return;
-      if (!window.confirm('Cancel this booking? This can\'t be undone online — you\'ll need to call us to rebook.')) return;
-
-      setCancelError('');
-      cancelBtn.disabled = true;
-      cancelBtn.textContent = 'Cancelling…';
-
-      fetch('/api/cancel-booking', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(lookupContext),
-      })
-        .then(res => res.json().then(data => ({ ok: res.ok, data })))
-        .then(({ ok, data }) => {
-          if (!ok) throw new Error((data && data.error) || 'Something went wrong cancelling your booking.');
-          document.getElementById('frStatus').textContent = STATUS_LABELS.cancelled;
-          cancelBox.style.display = 'none';
-        })
-        .catch(err => setCancelError(err.message))
-        .finally(() => {
-          cancelBtn.disabled = false;
-          cancelBtn.textContent = t('checkBooking.cancelBtn', 'Cancel This Booking');
-        });
-    });
-  }
 })();
