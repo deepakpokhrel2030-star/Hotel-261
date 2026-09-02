@@ -327,7 +327,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 }
 .hero-media img.fading{ opacity:0; }
 @keyframes heroZoom{ to{ transform:scale(1); } }
-.hero-scrim{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,16,13,.35) 0%, rgba(20,16,13,.05) 30%, rgba(20,16,13,.75) 100%); }
+.hero-scrim{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,16,13,.5) 0%, rgba(20,16,13,.42) 50%, rgba(20,16,13,.62) 100%); }
 .hero-inner{ position:relative; z-index:2; width:100%; max-width:1240px; margin:0 auto; padding:130px 32px 0; color:#fff; display:flex; flex-direction:column; }
 .hero:not(.hero--page) .hero-inner{ padding-bottom:130px; justify-content:center; }
 .hero-eyebrow{ text-transform:uppercase; letter-spacing:.14em; font-size:.76rem; color:#fff; margin-bottom:14px; font-weight:600; opacity:.9; }
@@ -354,12 +354,10 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .hero--page .hero-inner{ padding-top:92px; padding-bottom:0; }
 .hero--page .hero-title{ font-size:clamp(2rem,4.6vw,3rem); }
 .hero--page .hero-media img{ object-position:center 50%; }
-/* The default scrim is nearly transparent around its 30% mark (tuned for a
-   top-aligned title on the tall homepage hero) — with the title centered in
-   this much shorter band, that's exactly where the text now sits, so it
-   needs its own stronger, more even darkening to stay readable. */
-.hero--page .hero-scrim{ background:linear-gradient(180deg, rgba(20,16,13,.5) 0%, rgba(20,16,13,.42) 50%, rgba(20,16,13,.6) 100%); }
-.hero--page .hero-title, .hero--page .hero-eyebrow{ text-shadow:0 1px 12px rgba(0,0,0,.35); }
+/* Text-shadow on top of the scrim for extra insurance against
+   whichever photo happens to be behind it — the scrim alone can
+   still be borderline over a bright patch of sky or wall. */
+.hero-title, .hero-eyebrow, .hero-sub{ text-shadow:0 1px 12px rgba(0,0,0,.4); }
 
 /* ============ Search widget (Booking.com-style) ============ */
 .search-widget-wrap{ position:relative; z-index:20; max-width:1200px; margin:0 auto; padding:0 24px 50px; }
@@ -768,6 +766,11 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   section{ padding:64px 20px; }
   .main-nav{ display:none; }
   .menu-btn{ display:block; }
+  /* The hero's own "Reserve Online" / "Call to Book" buttons duplicated
+     the persistent "Reserve Now" bar that's already on screen the whole
+     time on mobile — drop them there rather than showing "Reserve"
+     twice (plus a phone-call option that's no longer the priority). */
+  .hero-cta{ display:none; }
   /* Logo + EN pill + theme toggle + Reserve + hamburger together don't
      fit a phone-width header — without flex-shrink:0 (added above) the
      logo would get crushed to a sliver trying to make room. Reserve is
