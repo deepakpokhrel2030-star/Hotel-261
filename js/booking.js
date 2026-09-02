@@ -363,7 +363,12 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
   const coLastName = document.getElementById('coLastName');
   const coEmail = document.getElementById('coEmail');
   const coPhone = document.getElementById('coPhone');
+  const coAddress = document.getElementById('coAddress');
+  const coCity = document.getElementById('coCity');
+  const coPostcode = document.getElementById('coPostcode');
+  const coCountry = document.getElementById('coCountry');
   const coRequests = document.getElementById('coRequests');
+  const coArrivalTime = document.getElementById('coArrivalTime');
   const coDetailsError = document.getElementById('coDetailsError');
   const coPaymentError = document.getElementById('coPaymentError');
   const coContinueBtn = document.getElementById('coContinueBtn');
@@ -387,7 +392,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
       errorEl.style.display = msg ? 'block' : 'none';
     }
   }
-  [coFirstName, coLastName, coEmail, coPhone].forEach((input) => {
+  [coFirstName, coLastName, coEmail, coPhone, coAddress, coCity].forEach((input) => {
     input.addEventListener('input', () => setFieldError(input, ''));
   });
 
@@ -477,14 +482,18 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     const lastName = coLastName.value.trim();
     const email = coEmail.value.trim();
     const phone = coPhone.value.trim();
+    const address = coAddress.value.trim();
+    const city = coCity.value.trim();
 
-    [coFirstName, coLastName, coEmail, coPhone].forEach((input) => setFieldError(input, ''));
+    [coFirstName, coLastName, coEmail, coPhone, coAddress, coCity].forEach((input) => setFieldError(input, ''));
 
     let firstInvalid = null;
     if (!firstName) { setFieldError(coFirstName, t('book.errFirstName', 'Please enter your first name.')); firstInvalid = firstInvalid || coFirstName; }
     if (!lastName) { setFieldError(coLastName, t('book.errLastName', 'Please enter your last name.')); firstInvalid = firstInvalid || coLastName; }
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setFieldError(coEmail, t('book.errEmail', 'Please enter a valid email address.')); firstInvalid = firstInvalid || coEmail; }
     if (!phone) { setFieldError(coPhone, t('book.errPhone', 'Please enter a phone number, in case we need to reach you.')); firstInvalid = firstInvalid || coPhone; }
+    if (!address) { setFieldError(coAddress, t('book.errAddress', 'Please enter your address.')); firstInvalid = firstInvalid || coAddress; }
+    if (!city) { setFieldError(coCity, t('book.errCity', 'Please enter your city.')); firstInvalid = firstInvalid || coCity; }
 
     if (firstInvalid) { firstInvalid.focus(); return; }
     showPaymentStep();
@@ -498,6 +507,13 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     const email = coEmail.value.trim();
     const phone = coPhone.value.trim();
     const specialRequests = coRequests.value.trim();
+    const address = coAddress.value.trim();
+    const city = coCity.value.trim();
+    const postcode = coPostcode.value.trim();
+    const country = coCountry.value;
+    const arrivalTime = coArrivalTime.value;
+    const bookingFor = document.querySelector('input[name="coBookingFor"]:checked').value;
+    const travelPurpose = document.querySelector('input[name="coTravelPurpose"]:checked').value;
 
     coPayBtn.disabled = true;
     coPayLabel.textContent = 'Redirecting…';
@@ -511,6 +527,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
         checkIn: activeStay.checkIn, checkOut: activeStay.checkOut,
         guests: activeStay.guests, adults: activeStay.adults, children: activeStay.children,
         name, email, phone, specialRequests,
+        address, city, postcode, country, arrivalTime, bookingFor, travelPurpose,
       }),
     })
       .then(res => res.json().then(data => ({ ok: res.ok, data })))

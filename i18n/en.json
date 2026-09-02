@@ -13,7 +13,9 @@
     "reviewsWord": "reviews",
     "toggleDarkMode": "Toggle dark mode",
     "toggleMenu": "Toggle menu",
-    "callToBookBar": "Call to book &mdash; 020 8743 4411"
+    "callToBookBar": "Call to book &mdash; 020 8743 4411",
+    "yes": "Yes",
+    "no": "No"
   },
   "search": {
     "checkin": "Check-in",
@@ -343,7 +345,23 @@
     "tooSmall": "Sleeps up to {max} — too small for {guests} guests",
     "errCapacity": "Your selected rooms sleep up to {max} — please select more space for {guests} guests.",
     "tipLabel": "Tip:",
-    "multiRoomTip": "A Single Room sleeps 1 person. If there are 2 of you, just select 2 Single Rooms — the same goes for any room type."
+    "multiRoomTip": "A Single Room sleeps 1 person. If there are 2 of you, just select 2 Single Rooms — the same goes for any room type.",
+    "address": "Address",
+    "addressPlaceholder": "123 Example Street",
+    "city": "City",
+    "cityPlaceholder": "London",
+    "postcode": "Postcode",
+    "country": "Country/region",
+    "errAddress": "Please enter your address.",
+    "errCity": "Please enter your city.",
+    "arrivalTime": "Estimated arrival time",
+    "pleaseSelect": "Please select",
+    "afterLateCheckin": "After 23:30 (please call ahead)",
+    "arrivalTimeNote": "Your room will be ready for check-in between 14:00 and 23:30.",
+    "bookingForLabel": "Who are you booking for?",
+    "bookingForMain": "I am the main guest",
+    "bookingForOther": "Booking is for someone else",
+    "travelPurposeLabel": "Are you travelling for work?"
   },
   "success": {
     "confirming": "Confirming your booking&hellip;",

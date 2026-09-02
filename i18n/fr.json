@@ -13,7 +13,9 @@
     "reviewsWord": "avis",
     "toggleDarkMode": "Activer le mode sombre",
     "toggleMenu": "Ouvrir le menu",
-    "callToBookBar": "Appelez pour réserver &mdash; 020 8743 4411"
+    "callToBookBar": "Appelez pour réserver &mdash; 020 8743 4411",
+    "yes": "Oui",
+    "no": "Non"
   },
   "search": {
     "checkin": "Arrivée",
@@ -343,7 +345,23 @@
     "tooSmall": "Accueille jusqu’à {max} personne(s) — trop petit pour {guests} voyageurs",
     "errCapacity": "Vos chambres sélectionnées accueillent jusqu’à {max} personne(s) — veuillez choisir plus d’espace pour {guests} voyageurs.",
     "tipLabel": "Astuce :",
-    "multiRoomTip": "Une chambre simple accueille 1 personne. Si vous êtes 2, sélectionnez simplement 2 chambres simples — la même logique s’applique à tous les types de chambres."
+    "multiRoomTip": "Une chambre simple accueille 1 personne. Si vous êtes 2, sélectionnez simplement 2 chambres simples — la même logique s’applique à tous les types de chambres.",
+    "address": "Adresse",
+    "addressPlaceholder": "123 rue Exemple",
+    "city": "Ville",
+    "cityPlaceholder": "Londres",
+    "postcode": "Code postal",
+    "country": "Pays/région",
+    "errAddress": "Veuillez saisir votre adresse.",
+    "errCity": "Veuillez saisir votre ville.",
+    "arrivalTime": "Heure d’arrivée estimée",
+    "pleaseSelect": "Veuillez choisir",
+    "afterLateCheckin": "Après 23h30 (merci d’appeler à l’avance)",
+    "arrivalTimeNote": "Votre chambre sera prête pour l’arrivée entre 14h00 et 23h30.",
+    "bookingForLabel": "Pour qui réservez-vous ?",
+    "bookingForMain": "Je suis le client principal",
+    "bookingForOther": "La réservation est pour quelqu’un d’autre",
+    "travelPurposeLabel": "Voyagez-vous pour affaires ?"
   },
   "success": {
     "confirming": "Confirmation de votre réservation&hellip;",
