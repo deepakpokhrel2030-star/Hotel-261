@@ -116,7 +116,7 @@
         </div>
         <div class="sw-field sw-guests-field">
           <label><svg class="icon" viewBox="0 0 24 24"><circle cx="8.5" cy="8" r="3"/><path d="M2.5 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15 20a5 5 0 0 1 7-4.6"/></svg> <span data-i18n="search.occupancyLabel">Occupancy</span></label>
-          <button type="button" class="sw-guests-toggle">2 adults &middot; 0 children</button>
+          <button type="button" class="sw-guests-toggle">2 adults &middot; 0 children &middot; 1 room</button>
           <div class="guests-dropdown">
             <div class="stepper-row">
               <span data-i18n="search.adults">Adults</span>
@@ -132,6 +132,14 @@
                 <button type="button" data-step="-" aria-label="Decrease children" data-i18n-attr="aria-label:search.decreaseChildren">&minus;</button>
                 <b>0</b>
                 <button type="button" data-step="+" aria-label="Increase children" data-i18n-attr="aria-label:search.increaseChildren">&plus;</button>
+              </div>
+            </div>
+            <div class="stepper-row">
+              <span data-i18n="search.rooms">Rooms</span>
+              <div class="stepper" data-type="rooms">
+                <button type="button" data-step="-" aria-label="Decrease rooms" data-i18n-attr="aria-label:search.decreaseRooms">&minus;</button>
+                <b>1</b>
+                <button type="button" data-step="+" aria-label="Increase rooms" data-i18n-attr="aria-label:search.increaseRooms">&plus;</button>
               </div>
             </div>
             <button type="button" class="btn btn-outline guests-done" data-i18n="search.done">Done</button>

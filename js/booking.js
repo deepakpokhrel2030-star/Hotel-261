@@ -162,6 +162,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
     const occ = occupancyCtrl.get();
     params.set('adults', occ.adults);
     params.set('children', occ.children);
+    params.set('rooms', occ.rooms);
     window.location.href = '/book?' + params.toString();
   });
 })();
@@ -180,10 +181,11 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl) {
   const params = new URLSearchParams(window.location.search);
   if (params.get('checkin')) checkIn.value = params.get('checkin');
   if (params.get('checkout')) checkOut.value = params.get('checkout');
-  if (params.get('adults') || params.get('children')) {
+  if (params.get('adults') || params.get('children') || params.get('rooms')) {
     guestsCtrl.set({
       adults: parseInt(params.get('adults'), 10) || 2,
       children: parseInt(params.get('children'), 10) || 0,
+      rooms: parseInt(params.get('rooms'), 10) || 1,
     });
   } else if (params.get('guests')) {
     // legacy links from before the adults/children picker existed
