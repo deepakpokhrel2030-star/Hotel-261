@@ -140,7 +140,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 /* ============ Nav active state ============ */
 .main-nav a.active{ color:var(--accent); }
 .main-nav a.active::after{ width:100%; }
-.menu-links a.active{ color:var(--accent); }
+.menu-links a.active{ color:var(--accent); background:rgba(161,64,44,.1); }
 
 /* ============ Header (floating solid pill, always-on) ============ */
 .site-header{
@@ -166,6 +166,14 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 }
 .menu-overlay.open ~ .site-header.solid{ top:0; box-shadow:none; }
 .menu-overlay.open ~ .site-header .main-nav{ display:none; }
+/* The 440px panel is only wide enough for the logo + close button —
+   cramming the language switcher, theme toggle and Reserve pill in
+   too was squeezing the logo down to nothing. They're one click away
+   behind the close button, so hide them while the panel is open. */
+.menu-overlay.open ~ .site-header .lang-switch,
+.menu-overlay.open ~ .site-header .theme-toggle,
+.menu-overlay.open ~ .site-header .btn.btn-pill{ display:none; }
+.menu-overlay.open ~ .site-header .logo-img{ flex-shrink:0; }
 .nav-row{ padding:16px 32px; display:flex; justify-content:center; transition:padding .25s ease; }
 .site-header.solid .nav-row{ padding:12px 32px; }
 .header-inner{
@@ -255,13 +263,13 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   background:linear-gradient(180deg, var(--accent) 0%, var(--accent-light) 35%, var(--accent-2-light) 68%, var(--accent-2) 100%);
 }
 .menu-overlay.open{ transform:translateX(0); visibility:visible; transition:transform .45s var(--ease), visibility 0s linear 0s; }
-.menu-links{ display:flex; flex-direction:column; gap:2px; counter-reset:menuidx; }
+.menu-links{ display:flex; flex-direction:column; gap:6px; counter-reset:menuidx; }
 .menu-links a{
   position:relative; display:flex; align-items:baseline; gap:16px;
-  font-family:var(--ff-display); font-size:1.7rem; font-weight:600; padding:12px 0;
-  border-bottom:1px solid var(--line);
+  font-family:var(--ff-display); font-size:1.7rem; font-weight:600; padding:14px 16px;
+  margin:0 -16px; border-radius:12px;
   opacity:0; transform:translateX(16px);
-  transition:opacity .4s var(--ease), transform .4s var(--ease), color .2s ease, padding-left .3s var(--ease);
+  transition:opacity .4s var(--ease), transform .4s var(--ease), color .2s ease, background .25s ease;
   transition-delay:calc(var(--i) * 45ms);
 }
 .menu-links a::before{
@@ -274,7 +282,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   opacity:0; transform:translateX(-8px); transition:opacity .25s ease, transform .25s ease;
 }
 .menu-overlay.open .menu-links a{ opacity:1; transform:translateX(0); }
-.menu-links a:hover{ color:var(--accent); padding-left:6px; }
+.menu-links a:hover{ color:var(--accent); background:rgba(161,64,44,.1); }
 .menu-links a:hover::after{ opacity:1; transform:translateX(0); }
 .menu-foot{ margin-top:40px; display:flex; flex-direction:column; gap:8px; font-size:.88rem; color:var(--ink-soft); padding-top:24px; border-top:1px solid var(--line); }
 .menu-foot a{ color:var(--ink); font-weight:600; }
