@@ -135,16 +135,83 @@
     <div class="container">
       <div id="loginView" class="panel login-box">
         <h1>Hotel 261 Admin</h1>
-        <p>Use the admin password configured in the backend environment.</p>
+
         <form id="loginForm">
+          <p>Sign in with your admin email and password.</p>
           <div>
+            <label for="loginEmail">Email</label>
+            <input id="loginEmail" name="email" type="email" placeholder="reception@hotel261.com" autocomplete="username" required />
+          </div>
+          <div style="margin-top: 12px;">
             <label for="adminPassword">Password</label>
-            <input id="adminPassword" name="password" type="password" placeholder="Enter admin password" required />
+            <input id="adminPassword" name="password" type="password" placeholder="Enter admin password" autocomplete="current-password" required />
           </div>
           <div style="margin-top: 18px;">
-            <button type="submit">Open dashboard</button>
+            <button type="submit">Continue</button>
           </div>
+          <p style="margin-top: 14px; margin-bottom: 0; font-size: 0.9rem;">
+            <a href="#" id="forgotPasswordLink">Forgot password?</a>
+          </p>
           <div id="loginError" class="error hidden"></div>
+        </form>
+
+        <form id="codeForm" class="hidden">
+          <p>We&rsquo;ve emailed a 6-digit code to <strong id="codeEmailLabel"></strong>. Enter it below to finish signing in.</p>
+          <div>
+            <label for="loginCode">Verification code</label>
+            <input id="loginCode" name="code" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="123456" autocomplete="one-time-code" required />
+          </div>
+          <div style="margin-top: 14px; display: flex; align-items: center; gap: 8px;">
+            <input id="rememberDevice" type="checkbox" style="width: auto;" />
+            <label for="rememberDevice" style="margin-bottom: 0; font-weight: 400;">Remember this device for 45 days</label>
+          </div>
+          <div style="margin-top: 18px;">
+            <button type="submit">Verify &amp; sign in</button>
+          </div>
+          <p style="margin-top: 14px; margin-bottom: 0; font-size: 0.9rem;">
+            <a href="#" id="resendCodeLink">Resend code</a> &middot;
+            <a href="#" id="backToLoginFromCode">Back</a>
+          </p>
+          <div id="codeError" class="error hidden"></div>
+        </form>
+
+        <form id="forgotForm" class="hidden">
+          <p>Enter your admin email and we&rsquo;ll send a code to reset your password.</p>
+          <div>
+            <label for="forgotEmail">Email</label>
+            <input id="forgotEmail" name="email" type="email" placeholder="reception@hotel261.com" autocomplete="username" required />
+          </div>
+          <div style="margin-top: 18px;">
+            <button type="submit">Send reset code</button>
+          </div>
+          <p style="margin-top: 14px; margin-bottom: 0; font-size: 0.9rem;">
+            <a href="#" id="backToLoginFromForgot">Back to sign in</a>
+          </p>
+          <div id="forgotError" class="error hidden"></div>
+        </form>
+
+        <form id="resetForm" class="hidden">
+          <p>Enter the code we emailed you and choose a new password.</p>
+          <div>
+            <label for="resetCode">Verification code</label>
+            <input id="resetCode" name="code" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="123456" autocomplete="one-time-code" required />
+          </div>
+          <div style="margin-top: 12px;">
+            <label for="newPassword">New password</label>
+            <input id="newPassword" name="newPassword" type="password" placeholder="At least 8 characters" autocomplete="new-password" minlength="8" required />
+          </div>
+          <div style="margin-top: 12px;">
+            <label for="confirmPassword">Confirm new password</label>
+            <input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" minlength="8" required />
+          </div>
+          <div style="margin-top: 18px;">
+            <button type="submit">Reset password</button>
+          </div>
+          <p style="margin-top: 14px; margin-bottom: 0; font-size: 0.9rem;">
+            <a href="#" id="backToLoginFromReset">Back to sign in</a>
+          </p>
+          <div id="resetError" class="error hidden"></div>
+          <div id="resetSuccess" class="success hidden"></div>
         </form>
       </div>
 
@@ -283,7 +350,16 @@
       const loginView = document.getElementById('loginView');
       const dashboardView = document.getElementById('dashboardView');
       const loginForm = document.getElementById('loginForm');
+      const codeForm = document.getElementById('codeForm');
+      const forgotForm = document.getElementById('forgotForm');
+      const resetForm = document.getElementById('resetForm');
       const bookingForm = document.getElementById('bookingForm');
+
+      // Holds the in-flight login/reset attempt between steps — never the
+      // code or password itself, just the opaque token the server issued
+      // to tie "here's a code" to "here's the code back".
+      let pendingLoginChallenge = null; // { challengeToken, email, password }
+      let pendingResetChallenge = null; // { challengeToken, email }
 
       function setAuthToken(token) {
         if (token) localStorage.setItem(ADMIN_SECRET_KEY, token);
@@ -297,6 +373,14 @@
       function renderLogin(show) {
         loginView.classList.toggle('hidden', !show);
         dashboardView.classList.toggle('hidden', show);
+        if (show) showAuthStep('login');
+      }
+
+      function showAuthStep(step) {
+        loginForm.classList.toggle('hidden', step !== 'login');
+        codeForm.classList.toggle('hidden', step !== 'code');
+        forgotForm.classList.toggle('hidden', step !== 'forgot');
+        resetForm.classList.toggle('hidden', step !== 'reset');
       }
 
       function authHeaders() {
@@ -316,6 +400,7 @@
         const response = await fetch(url, {
           ...options,
           headers: requestHeaders,
+          credentials: 'same-origin', // send/receive the admin_device cookie
         });
 
         const data = await response.json().catch(() => ({}));
@@ -327,20 +412,149 @@
         return data;
       }
 
-      async function login(event) {
-        event.preventDefault();
-        const password = document.getElementById('adminPassword').value;
-        const errorBox = document.getElementById('loginError');
+      async function requestLoginCode(email, password, errorBox) {
+        const data = await apiFetch('/api/admin/login', {
+          method: 'POST',
+          body: JSON.stringify({ email, password }),
+        });
 
-        try {
-          const data = await apiFetch('/api/admin/login', {
-            method: 'POST',
-            body: JSON.stringify({ password }),
-          });
-
+        if (!data.needsCode) {
+          // This device is already remembered — straight in, no code needed.
           setAuthToken(data.token);
           renderLogin(false);
           await loadDashboard();
+          return;
+        }
+
+        pendingLoginChallenge = { challengeToken: data.challengeToken, email, password };
+        document.getElementById('codeEmailLabel').textContent = email;
+        document.getElementById('loginCode').value = '';
+        document.getElementById('rememberDevice').checked = false;
+        errorBox.classList.add('hidden');
+        showAuthStep('code');
+      }
+
+      async function login(event) {
+        event.preventDefault();
+        const email = document.getElementById('loginEmail').value.trim();
+        const password = document.getElementById('adminPassword').value;
+        const errorBox = document.getElementById('loginError');
+        errorBox.classList.add('hidden');
+
+        try {
+          await requestLoginCode(email, password, errorBox);
+        } catch (error) {
+          errorBox.textContent = error.message;
+          errorBox.classList.remove('hidden');
+        }
+      }
+
+      async function submitCode(event) {
+        event.preventDefault();
+        const errorBox = document.getElementById('codeError');
+        errorBox.classList.add('hidden');
+
+        if (!pendingLoginChallenge) {
+          showAuthStep('login');
+          return;
+        }
+
+        try {
+          const data = await apiFetch('/api/admin/verify-2fa', {
+            method: 'POST',
+            body: JSON.stringify({
+              challengeToken: pendingLoginChallenge.challengeToken,
+              code: document.getElementById('loginCode').value.trim(),
+              remember: document.getElementById('rememberDevice').checked,
+            }),
+          });
+
+          pendingLoginChallenge = null;
+          setAuthToken(data.token);
+          renderLogin(false);
+          await loadDashboard();
+        } catch (error) {
+          errorBox.textContent = error.message;
+          errorBox.classList.remove('hidden');
+        }
+      }
+
+      async function resendCode(event) {
+        event.preventDefault();
+        const errorBox = document.getElementById('codeError');
+        errorBox.classList.add('hidden');
+
+        if (!pendingLoginChallenge) return;
+
+        try {
+          await requestLoginCode(pendingLoginChallenge.email, pendingLoginChallenge.password, errorBox);
+        } catch (error) {
+          errorBox.textContent = error.message;
+          errorBox.classList.remove('hidden');
+        }
+      }
+
+      async function submitForgot(event) {
+        event.preventDefault();
+        const errorBox = document.getElementById('forgotError');
+        errorBox.classList.add('hidden');
+        const email = document.getElementById('forgotEmail').value.trim();
+
+        try {
+          const data = await apiFetch('/api/admin/request-password-reset', {
+            method: 'POST',
+            body: JSON.stringify({ email }),
+          });
+
+          pendingResetChallenge = { challengeToken: data.challengeToken, email };
+          resetForm.querySelector('#resetError').classList.add('hidden');
+          resetForm.querySelector('#resetSuccess').classList.add('hidden');
+          document.getElementById('resetCode').value = '';
+          document.getElementById('newPassword').value = '';
+          document.getElementById('confirmPassword').value = '';
+          showAuthStep('reset');
+        } catch (error) {
+          errorBox.textContent = error.message;
+          errorBox.classList.remove('hidden');
+        }
+      }
+
+      async function submitReset(event) {
+        event.preventDefault();
+        const errorBox = document.getElementById('resetError');
+        const successBox = document.getElementById('resetSuccess');
+        errorBox.classList.add('hidden');
+        successBox.classList.add('hidden');
+
+        const newPassword = document.getElementById('newPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        if (newPassword !== confirmPassword) {
+          errorBox.textContent = 'Passwords do not match.';
+          errorBox.classList.remove('hidden');
+          return;
+        }
+
+        if (!pendingResetChallenge) {
+          showAuthStep('login');
+          return;
+        }
+
+        try {
+          await apiFetch('/api/admin/reset-password', {
+            method: 'POST',
+            body: JSON.stringify({
+              challengeToken: pendingResetChallenge.challengeToken,
+              code: document.getElementById('resetCode').value.trim(),
+              newPassword,
+            }),
+          });
+
+          document.getElementById('loginEmail').value = pendingResetChallenge.email;
+          pendingResetChallenge = null;
+          successBox.textContent = 'Password updated. Please sign in with your new password.';
+          successBox.classList.remove('hidden');
+          setTimeout(() => showAuthStep('login'), 1500);
         } catch (error) {
           errorBox.textContent = error.message;
           errorBox.classList.remove('hidden');
@@ -462,12 +676,48 @@
         }
       }
 
-      function logout() {
+      async function logout() {
+        const token = getAuthToken();
         setAuthToken('');
         renderLogin(true);
+        if (token) {
+          try {
+            await fetch('/api/admin/logout', {
+              method: 'POST',
+              headers: { Authorization: `Bearer ${token}` },
+              credentials: 'same-origin',
+            });
+          } catch (error) {
+            // Already logged out client-side; the session row will just expire on its own.
+          }
+        }
       }
 
       document.getElementById('loginForm').addEventListener('submit', login);
+      document.getElementById('codeForm').addEventListener('submit', submitCode);
+      document.getElementById('forgotForm').addEventListener('submit', submitForgot);
+      document.getElementById('resetForm').addEventListener('submit', submitReset);
+      document.getElementById('resendCodeLink').addEventListener('click', resendCode);
+      document.getElementById('forgotPasswordLink').addEventListener('click', (event) => {
+        event.preventDefault();
+        document.getElementById('forgotEmail').value = document.getElementById('loginEmail').value;
+        document.getElementById('forgotError').classList.add('hidden');
+        showAuthStep('forgot');
+      });
+      document.getElementById('backToLoginFromCode').addEventListener('click', (event) => {
+        event.preventDefault();
+        pendingLoginChallenge = null;
+        showAuthStep('login');
+      });
+      document.getElementById('backToLoginFromForgot').addEventListener('click', (event) => {
+        event.preventDefault();
+        showAuthStep('login');
+      });
+      document.getElementById('backToLoginFromReset').addEventListener('click', (event) => {
+        event.preventDefault();
+        pendingResetChallenge = null;
+        showAuthStep('login');
+      });
       document.getElementById('logoutBtn').addEventListener('click', logout);
       document.getElementById('refreshBtn').addEventListener('click', loadDashboard);
       document.getElementById('bookingForm').addEventListener('submit', handleBookingSubmit);
