@@ -55,7 +55,7 @@
   "cta": {
     "eyebrow": "( Quand vous serez prêt )",
     "title": "Votre séjour<br>commence ici.",
-    "callBtn": "Appelez le 020 8743 4411",
+    "contactBtn": "Contactez-nous",
     "viewRoomsBtn": "Voir les chambres et tarifs",
     "bookDirectBtn": "Réserver en direct"
   },
@@ -67,7 +67,10 @@
     "googleReview": "Laissez un avis sur Google",
     "bookDirect": "Réserver en direct",
     "checkBooking": "Suivre ma réservation",
-    "rights": "Tous droits réservés."
+    "rights": "Tous droits réservés.",
+    "tagline": "Un hôtel indépendant et familial à Shepherd&rsquo;s Bush, dans l&rsquo;ouest de Londres.",
+    "contactInfo": "Téléphone et itinéraire",
+    "directNote": "Réservation directe &mdash; sans majoration d&rsquo;agence."
   },
   "tag": {
     "ensuite": "Salle de bain privée",
@@ -168,7 +171,6 @@
     "title3": "fait pour se reposer.",
     "heroSub": "Tenu par une famille locale, pas une chaîne &mdash; chambres avec salle de bain privée, WiFi gratuit et parking privé, à deux pas de Westfield London.",
     "reserveOnlineBtn": "Réserver en ligne",
-    "callToBookBtn": "Appeler pour réserver",
     "aboutLabel": "À propos de l&rsquo;hôtel",
     "aboutP1": "Niché dans une rue calme de Shepherd&rsquo;s Bush, nous accueillons nos clients dans l&rsquo;Ouest de Londres avec de grandes chambres, un parking sur place et un service sincèrement chaleureux.",
     "aboutP2": "Nous sommes à deux pas de Westfield London, de plusieurs bars et cafés du quartier, et bien placés pour Wembley, le Hammersmith Apollo et le stade des Queens Park Rangers.",
@@ -210,7 +212,7 @@
     "eyebrowLabel": "Chambres &amp; Tarifs",
     "title1": "Sept chambres.",
     "title2": "Un séjour <em>facile.</em>",
-    "intro": "Chaque chambre comprend une salle de bain privée, une TV écran plat, des chaînes satellite et le WiFi gratuit. Réservez en ligne en toute sécurité ci-dessous, ou appelez-nous directement au 020 8743 4411."
+    "intro": "Chaque chambre comprend une salle de bain privée, une TV écran plat, des chaînes satellite et le WiFi gratuit. Réservez en ligne en toute sécurité ci-dessous, ou retrouvez nos coordonnées sur la page Localisation."
   },
   "amenities": {
     "eyebrow": "( Services )",
@@ -296,7 +298,7 @@
     "heroTitle": "Réservez votre <em>chambre.</em>",
     "availableRooms": "Chambres disponibles",
     "availableRoomsSub": "Choisissez vos dates et le nombre de voyageurs ci-dessus, puis réservez la chambre qui vous convient. Le paiement est traité en toute sécurité par Stripe &mdash; nous ne voyons ni ne conservons jamais vos coordonnées bancaires.",
-    "preferPhone": "Vous préférez réserver par téléphone&nbsp;?",
+    "preferContact": "Vous préférez parler à quelqu&rsquo;un directement&nbsp;?",
     "alreadyBooked": "Déjà réservé&nbsp;?",
     "checkStatusLink": "Suivez l&rsquo;état de votre réservation",
     "completeBooking": "Finaliser votre réservation",
@@ -385,7 +387,7 @@
     "receiptSent": "Un reçu a été envoyé à votre adresse e-mail. Voici les détails de votre réservation&nbsp;:",
     "bookingRef": "Référence de réservation",
     "paid": "Payé",
-    "idNotice": "Munissez-vous d&rsquo;une pièce d&rsquo;identité officielle avec photo à l&rsquo;arrivée (14h00&ndash;23h30). Conservez votre référence de réservation ci-dessus &mdash; vous pouvez retrouver votre séjour à tout moment sur <a class=\"text-link\" href=\"/check-booking\">Suivre ma réservation</a>. Des questions&nbsp;? Appelez-nous au <a class=\"text-link\" href=\"tel:+442087434411\">020 8743 4411</a>.",
+    "idNotice": "Munissez-vous d&rsquo;une pièce d&rsquo;identité officielle avec photo à l&rsquo;arrivée (14h00&ndash;23h30). Conservez votre référence de réservation ci-dessus &mdash; vous pouvez retrouver votre séjour à tout moment sur <a class=\"text-link\" href=\"/check-booking\">Suivre ma réservation</a>. Des questions&nbsp;? <a class=\"text-link\" href=\"/location\">Contactez-nous</a>.",
     "wentWrong": "( Un problème est survenu )",
     "couldNotConfirm": "Nous n&rsquo;avons pas pu confirmer cette réservation."
   },

@@ -43,7 +43,7 @@
   </nav>
   <a href="/book" class="btn btn-primary menu-cta" data-i18n="common.reserve">Reserve</a>
   <div class="menu-foot">
-    <a href="tel:+442087434411">020 8743 4411</a>
+    <a href="mailto:reception@hotel261.com">reception@hotel261.com</a>
     <span>261&ndash;263 Uxbridge Road, London W12 9DS</span>
   </div>
 </div>
@@ -212,8 +212,8 @@
   <p class="cta-eyebrow reveal"><span data-i18n="cta.eyebrow">( Ready when you are )</span></p>
   <h2 class="cta-title reveal" data-i18n-html="cta.title">Your stay<br>starts here.</h2>
   <div class="cta-actions reveal">
-    <a href="tel:+442087434411" class="btn btn-primary btn-lg magnetic" data-i18n="cta.callBtn">Call 020 8743 4411</a>
-    <a href="/book" class="btn btn-outline-light btn-lg magnetic" data-i18n="cta.bookDirectBtn">Book Direct</a>
+    <a href="/book" class="btn btn-primary btn-lg magnetic" data-i18n="cta.bookDirectBtn">Book Direct</a>
+    <a href="/location" class="btn btn-outline-light btn-lg magnetic" data-i18n="cta.contactBtn">Contact Us</a>
   </div>
   <div class="trust-row on-dark reveal">
     <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l9 9-8 8-9-9V4h7Z"/><circle cx="8" cy="8" r="1.3" fill="currentColor" stroke="none"/></svg> <span data-i18n="trust.bestRate">Best rate, booked direct</span></span>
@@ -226,12 +226,16 @@
 
 <footer class="site-footer">
   <div class="footer-top">
-    <a href="/" class="logo"><img src="/images/site/logo.png" alt="Hotel 261" class="logo-img logo-light"><img src="/images/site/logo-dark.png" alt="Hotel 261" class="logo-img logo-dark"></a>
+    <div class="footer-brand">
+      <a href="/" class="logo"><img src="/images/site/logo.png" alt="Hotel 261" class="logo-img logo-light"><img src="/images/site/logo-dark.png" alt="Hotel 261" class="logo-img logo-dark"></a>
+      <p class="footer-tagline" data-i18n="footer.tagline">An independent, family-run hotel in Shepherd&rsquo;s Bush, West London.</p>
+    </div>
     <div class="footer-cols">
       <div>
         <h5 data-i18n="footer.visit">Visit</h5>
-        <p>261&ndash;263 Uxbridge Road<br>Shepherd&rsquo;s Bush, London W12 9DS</p>
-        <a href="tel:+442087434411">020 8743 4411</a>
+        <p class="footer-line"><svg class="icon" viewBox="0 0 24 24"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg> <span>261&ndash;263 Uxbridge Road<br>Shepherd&rsquo;s Bush, London W12 9DS</span></p>
+        <a class="footer-line" href="mailto:reception@hotel261.com"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> reception@hotel261.com</a>
+        <a class="footer-line" href="/location"><svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92Z"/></svg> <span data-i18n="footer.contactInfo">Phone &amp; directions</span></a>
       </div>
       <div>
         <h5 data-i18n="footer.explore">Explore</h5>
@@ -252,6 +256,7 @@
   </div>
   <div class="footer-bottom">
     <p>&copy; <span id="year"></span> Hotel 261. <span data-i18n="footer.rights">All rights reserved.</span></p>
+    <p class="footer-note" data-i18n="footer.directNote">Booked direct &mdash; no agency mark-up.</p>
   </div>
 </footer>
 

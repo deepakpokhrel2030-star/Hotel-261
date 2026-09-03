@@ -55,7 +55,7 @@
   "cta": {
     "eyebrow": "( Cuando esté listo )",
     "title": "Su estancia<br>empieza aquí.",
-    "callBtn": "Llame al 020 8743 4411",
+    "contactBtn": "Contáctenos",
     "viewRoomsBtn": "Ver habitaciones y tarifas",
     "bookDirectBtn": "Reservar directamente"
   },
@@ -67,7 +67,10 @@
     "googleReview": "Déjenos una opinión en Google",
     "bookDirect": "Reservar directamente",
     "checkBooking": "Consultar reserva",
-    "rights": "Todos los derechos reservados."
+    "rights": "Todos los derechos reservados.",
+    "tagline": "Un hotel independiente y familiar en Shepherd&rsquo;s Bush, al oeste de Londres.",
+    "contactInfo": "Teléfono e indicaciones",
+    "directNote": "Reserva directa &mdash; sin recargo de agencia."
   },
   "tag": {
     "ensuite": "Baño privado",
@@ -168,7 +171,6 @@
     "title3": "hecho para descansar.",
     "heroSub": "Gestionado por una familia local, no una cadena &mdash; habitaciones con baño privado, WiFi gratis y aparcamiento privado, a poca distancia de Westfield London.",
     "reserveOnlineBtn": "Reservar en línea",
-    "callToBookBtn": "Llamar para reservar",
     "aboutLabel": "Sobre el hotel",
     "aboutP1": "Situado en una tranquila calle de Shepherd&rsquo;s Bush, recibimos a nuestros huéspedes en el Oeste de Londres con habitaciones amplias, aparcamiento en el hotel y un trato genuinamente cercano.",
     "aboutP2": "Estamos a un corto paseo de Westfield London, de varios bares y cafés de la zona, y bien situados para Wembley, el Hammersmith Apollo y el estadio de los Queens Park Rangers.",
@@ -210,7 +212,7 @@
     "eyebrowLabel": "Habitaciones y Tarifas",
     "title1": "Siete habitaciones.",
     "title2": "Una estancia <em>fácil.</em>",
-    "intro": "Todas las habitaciones incluyen baño privado, TV de pantalla plana, canales de satélite y WiFi gratis. Reserve online de forma segura a continuación, o llámenos directamente al 020 8743 4411."
+    "intro": "Todas las habitaciones incluyen baño privado, TV de pantalla plana, canales de satélite y WiFi gratis. Reserve online de forma segura a continuación, o encuentre nuestros datos de contacto en la página de Ubicación."
   },
   "amenities": {
     "eyebrow": "( Servicios )",
@@ -296,7 +298,7 @@
     "heroTitle": "Reserve su <em>habitación.</em>",
     "availableRooms": "Habitaciones disponibles",
     "availableRoomsSub": "Elija sus fechas y número de huéspedes arriba, y reserve la habitación que más le convenga. El pago se procesa de forma segura con Stripe &mdash; nunca vemos ni almacenamos los datos de su tarjeta.",
-    "preferPhone": "¿Prefiere reservar por teléfono?",
+    "preferContact": "¿Prefiere hablar directamente con alguien?",
     "alreadyBooked": "¿Ya tiene una reserva?",
     "checkStatusLink": "Consulte el estado de su reserva",
     "completeBooking": "Complete su reserva",
@@ -385,7 +387,7 @@
     "receiptSent": "Se ha enviado un recibo a su correo electrónico. Estos son los detalles de su reserva:",
     "bookingRef": "Referencia de reserva",
     "paid": "Pagado",
-    "idNotice": "Traiga una identificación oficial con fotografía en el check-in (14:00&ndash;23:30). Guarde la referencia de su reserva &mdash; puede consultar su estancia en cualquier momento en <a class=\"text-link\" href=\"/check-booking\">Consultar reserva</a>. ¿Preguntas? Llámenos al <a class=\"text-link\" href=\"tel:+442087434411\">020 8743 4411</a>.",
+    "idNotice": "Traiga una identificación oficial con fotografía en el check-in (14:00&ndash;23:30). Guarde la referencia de su reserva &mdash; puede consultar su estancia en cualquier momento en <a class=\"text-link\" href=\"/check-booking\">Consultar reserva</a>. ¿Preguntas? <a class=\"text-link\" href=\"/location\">Contáctenos</a>.",
     "wentWrong": "( Algo ha ido mal )",
     "couldNotConfirm": "No hemos podido confirmar esa reserva."
   },

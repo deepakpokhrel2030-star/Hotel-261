@@ -55,7 +55,7 @@
   "cta": {
     "eyebrow": "( Ready when you are )",
     "title": "Your stay<br>starts here.",
-    "callBtn": "Call 020 8743 4411",
+    "contactBtn": "Contact Us",
     "viewRoomsBtn": "View Rooms &amp; Rates",
     "bookDirectBtn": "Book Direct"
   },
@@ -67,7 +67,10 @@
     "googleReview": "Review us on Google",
     "bookDirect": "Book Direct",
     "checkBooking": "Check Booking",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "tagline": "An independent, family-run hotel in Shepherd&rsquo;s Bush, West London.",
+    "contactInfo": "Phone &amp; directions",
+    "directNote": "Booked direct &mdash; no agency mark-up."
   },
   "tag": {
     "ensuite": "Ensuite",
@@ -168,7 +171,6 @@
     "title3": "made for resting.",
     "heroSub": "Run by a local family, not a chain &mdash; ensuite rooms, free WiFi and private parking, a short walk from Westfield London.",
     "reserveOnlineBtn": "Reserve Online",
-    "callToBookBtn": "Call to Book",
     "aboutLabel": "About the Hotel",
     "aboutP1": "Tucked into a quiet stretch of Shepherd&rsquo;s Bush, we&rsquo;ve been welcoming guests to West London with large rooms, on-site parking and genuinely friendly service.",
     "aboutP2": "We&rsquo;re a short walk from Westfield London, a handful of local bars and cafés, and well placed for Wembley, the Hammersmith Apollo and Queens Park Rangers&rsquo; stadium.",
@@ -210,7 +212,7 @@
     "eyebrowLabel": "Rooms &amp; Rates",
     "title1": "Seven rooms.",
     "title2": "One easy <em>stay.</em>",
-    "intro": "Every room includes an ensuite bathroom, flat-screen TV, satellite channels and free WiFi. Book securely online below, or call us directly on 020 8743 4411."
+    "intro": "Every room includes an ensuite bathroom, flat-screen TV, satellite channels and free WiFi. Book securely online below, or find our contact details on the Location page."
   },
   "amenities": {
     "eyebrow": "( Amenities )",
@@ -296,7 +298,7 @@
     "heroTitle": "Reserve your <em>room.</em>",
     "availableRooms": "Available Rooms",
     "availableRoomsSub": "Choose your dates and guests above, then reserve the room that suits you. Payment is processed securely by Stripe &mdash; we never see or store your card details.",
-    "preferPhone": "Prefer to book by phone instead?",
+    "preferContact": "Prefer to speak to someone directly?",
     "alreadyBooked": "Already booked?",
     "checkStatusLink": "Check your booking status",
     "completeBooking": "Complete Your Booking",
@@ -385,7 +387,7 @@
     "receiptSent": "A receipt has been sent to your email. Here are your booking details:",
     "bookingRef": "Booking reference",
     "paid": "Paid",
-    "idNotice": "Please bring a government-issued photo ID at check-in (14:00&ndash;23:30). Save your booking reference above &mdash; you can look up your stay any time at <a class=\"text-link\" href=\"/check-booking\">Check Booking</a>. Questions? Call us on <a class=\"text-link\" href=\"tel:+442087434411\">020 8743 4411</a>.",
+    "idNotice": "Please bring a government-issued photo ID at check-in (14:00&ndash;23:30). Save your booking reference above &mdash; you can look up your stay any time at <a class=\"text-link\" href=\"/check-booking\">Check Booking</a>. Questions? <a class=\"text-link\" href=\"/location\">Contact us</a>.",
     "wentWrong": "( Something went wrong )",
     "couldNotConfirm": "We couldn&rsquo;t confirm that booking."
   },
