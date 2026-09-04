@@ -59,9 +59,9 @@
   <div id="resultPaid" style="display:none;">
     <p class="cta-eyebrow" style="color:var(--accent);" data-i18n="success.confirmed">( Booking Confirmed )</p>
     <h1 style="font-size:clamp(2.2rem,5vw,3.4rem); margin-bottom:20px;"><span data-i18n="success.thankYou">Thank you</span><span id="resultName"></span>.<br><span data-i18n="success.seeYouSoon">We&rsquo;ll see you soon.</span></h1>
-    <p style="color:var(--ink-soft); max-width:520px; margin-bottom:40px;" data-i18n="success.receiptSent">A receipt has been sent to your email. Here are your booking details:</p>
+    <p style="color:var(--ink-soft); max-width:520px; margin:0 auto 40px;" data-i18n="success.receiptSent">A receipt has been sent to your email. Here are your booking details:</p>
 
-    <div class="booking-summary" style="max-width:480px;">
+    <div class="booking-summary" style="max-width:480px; margin-left:auto; margin-right:auto;">
       <div class="summary-row"><span data-i18n="success.bookingRef">Booking reference</span><b id="rRef">&mdash;</b></div>
       <div class="summary-row"><span data-i18n="book.room">Room</span><b id="rRoom">&mdash;</b></div>
       <div class="summary-row"><span data-i18n="search.checkin">Check-in</span><b id="rCheckIn" dir="ltr">&mdash;</b></div>
@@ -72,13 +72,13 @@
       <div class="summary-total"><span data-i18n="success.paid">Paid</span><b id="rTotal">&mdash;</b></div>
     </div>
 
-    <p style="color:var(--ink-soft); max-width:520px; margin-top:30px;" data-i18n-html="success.idNotice">Please bring a government-issued photo ID at check-in (14:00&ndash;23:30). Save your booking reference above &mdash; you can look up your stay any time at <a class="text-link" href="/check-booking">Check Booking</a>. Questions? <a class="text-link" href="/location">Contact us</a>.</p>
+    <p style="color:var(--ink-soft); max-width:520px; margin:30px auto 0;" data-i18n-html="success.idNotice">Please bring a government-issued photo ID at check-in (14:00&ndash;23:30). Save your booking reference above &mdash; you can look up your stay any time at <a class="text-link" href="/check-booking">Check Booking</a>. Questions? <a class="text-link" href="/location">Contact us</a>.</p>
   </div>
 
   <div id="resultError" style="display:none;">
     <p class="cta-eyebrow" data-i18n="success.wentWrong">( Something went wrong )</p>
     <h1 style="font-size:clamp(2rem,4.5vw,3rem); margin-bottom:20px;" data-i18n="success.couldNotConfirm">We couldn&rsquo;t confirm that booking.</h1>
-    <p style="color:var(--ink-soft); max-width:520px; margin-bottom:30px;" id="resultErrorMsg">If you were charged, don&rsquo;t worry &mdash; get in touch and we&rsquo;ll sort it out right away.</p>
+    <p style="color:var(--ink-soft); max-width:520px; margin:0 auto 30px;" id="resultErrorMsg">If you were charged, don&rsquo;t worry &mdash; get in touch and we&rsquo;ll sort it out right away.</p>
     <a href="/location" class="btn btn-primary magnetic" data-i18n="cta.contactBtn">Contact Us</a>
   </div>
 </section>
