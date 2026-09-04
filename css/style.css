@@ -113,6 +113,14 @@ section{ padding:90px 24px; max-width:1240px; margin:0 auto; position:relative; 
 .section-num{ font-family:var(--ff-body); font-size:.78rem; font-weight:700; color:var(--accent); }
 .section-label{ text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; font-weight:600; color:var(--ink-soft); }
 section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
+.section-sub{ font-size:1.08rem; font-weight:500; line-height:1.65; color:var(--ink-soft); }
+/* Used on the simpler "utility" pages (Book, Rooms, Gallery, Check
+   Booking) where the section-head + intro line sit above a full-width
+   tool rather than a two-column layout — centering them as one block
+   reads better than a narrow line of text stranded on the left. */
+.section-intro{ text-align:center; }
+.section-intro .section-head{ justify-content:center; }
+.section-intro .section-sub{ max-width:700px; margin-left:auto; margin-right:auto; }
 
 /* ============ Buttons ============ */
 .btn{
