@@ -360,7 +360,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .hero-title, .hero-eyebrow, .hero-sub{ text-shadow:0 1px 12px rgba(0,0,0,.4); }
 
 /* ============ Search widget (Booking.com-style) ============ */
-.search-widget-wrap{ position:relative; z-index:20; max-width:1200px; margin:0 auto; padding:0 24px 50px; }
+.search-widget-wrap{ position:relative; z-index:20; max-width:1240px; margin:0 auto; padding:0 24px 50px; }
 .search-widget-wrap.overlap{ margin-top:-46px; }
 .hero-cta-bar .search-widget-wrap.overlap{ margin-top:-112px; }
 .search-widget{
