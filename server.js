@@ -36,9 +36,26 @@ app.patch('/api/admin/bookings/:id/status', (req, res) => {
   return require('./api/admin/bookings/[id]/status')(req, res);
 });
 
-app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'admin.html'));
-});
+// Mirrors vercel.json's rewrites, so clean URLs work the same in local dev as in production.
+const CLEAN_URL_PAGES = {
+  '/': 'index.html',
+  '/admin': 'admin.html',
+  '/about': 'about.html',
+  '/rooms': 'rooms.html',
+  '/gallery': 'gallery.html',
+  '/amenities': 'amenities.html',
+  '/reviews': 'reviews.html',
+  '/location': 'location.html',
+  '/book': 'book.html',
+  '/booking-success': 'booking-success.html',
+  '/check-booking': 'check-booking.html',
+};
+
+for (const [route, file] of Object.entries(CLEAN_URL_PAGES)) {
+  app.get(route, (req, res) => {
+    res.sendFile(path.join(__dirname, 'pages', file));
+  });
+}
 
 app.get('/health', (req, res) => {
   res.json({ ok: true, server: 'running' });
