@@ -1,4 +1,4 @@
-const { pool } = require('../lib/db');
+const { pool } = require('../backend/lib/db');
 
 // Compares phone numbers by their last 9 digits so "07911 123456",
 // "+44 7911 123456" and "447911123456" are all recognised as the same

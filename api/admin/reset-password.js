@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
-const { pool } = require('../../lib/db');
-const { verifyChallenge, invalidateDevicesAndSessions } = require('../../lib/admin-auth');
+const { pool } = require('../../backend/lib/db');
+const { verifyChallenge, invalidateDevicesAndSessions } = require('../../backend/lib/admin-auth');
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {

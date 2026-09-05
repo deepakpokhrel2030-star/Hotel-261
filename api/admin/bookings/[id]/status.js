@@ -1,5 +1,5 @@
-const { pool } = require('../../../../lib/db');
-const { requireAdmin } = require('../../../../lib/admin');
+const { pool } = require('../../../../backend/lib/db');
+const { requireAdmin } = require('../../../../backend/lib/admin');
 
 module.exports = async (req, res) => {
   if (req.method !== 'PATCH') {

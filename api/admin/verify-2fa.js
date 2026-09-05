@@ -1,5 +1,5 @@
-const { serializeCookie } = require('../../lib/cookies');
-const { verifyChallenge, createSession, trustDevice, DEVICE_TTL_DAYS } = require('../../lib/admin-auth');
+const { serializeCookie } = require('../../backend/lib/cookies');
+const { verifyChallenge, createSession, trustDevice, DEVICE_TTL_DAYS } = require('../../backend/lib/admin-auth');
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {

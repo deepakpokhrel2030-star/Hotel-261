@@ -1,5 +1,5 @@
 const Stripe = require('stripe');
-const { pool } = require('../lib/db');
+const { pool } = require('../backend/lib/db');
 
 module.exports = async (req, res) => {
   if (req.method !== 'GET') {

@@ -1,5 +1,5 @@
-const { getAdminToken } = require('../../lib/admin');
-const { deleteSession } = require('../../lib/admin-auth');
+const { getAdminToken } = require('../../backend/lib/admin');
+const { deleteSession } = require('../../backend/lib/admin-auth');
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {

@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs');
-const { pool } = require('../../lib/db');
-const { parseCookies } = require('../../lib/cookies');
-const { createChallenge, sendChallengeEmail, createSession, findTrustedDevice } = require('../../lib/admin-auth');
+const { pool } = require('../../backend/lib/db');
+const { parseCookies } = require('../../backend/lib/cookies');
+const { createChallenge, sendChallengeEmail, createSession, findTrustedDevice } = require('../../backend/lib/admin-auth');
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {

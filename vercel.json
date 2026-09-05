@@ -14,7 +14,9 @@
     { "source": "/css/:path*", "destination": "/frontend/css/:path*" },
     { "source": "/js/:path*", "destination": "/frontend/js/:path*" },
     { "source": "/images/:path*", "destination": "/frontend/images/:path*" },
-    { "source": "/i18n/:path*", "destination": "/frontend/i18n/:path*" }
+    { "source": "/i18n/:path*", "destination": "/frontend/i18n/:path*" },
+    { "source": "/robots.txt", "destination": "/frontend/robots.txt" },
+    { "source": "/sitemap.xml", "destination": "/frontend/sitemap.xml" }
   ],
   "redirects": [
     { "source": "/index.html", "destination": "/", "statusCode": 308 },

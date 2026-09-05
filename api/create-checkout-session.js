@@ -1,5 +1,5 @@
 const Stripe = require('stripe');
-const { pool } = require('../lib/db');
+const { pool } = require('../backend/lib/db');
 
 const BREAKFAST_PRICE_PER_PERSON_PER_NIGHT = 12;
 

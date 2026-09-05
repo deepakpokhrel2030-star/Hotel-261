@@ -1,6 +1,6 @@
-const { pool } = require('../../lib/db');
-const { randomToken } = require('../../lib/crypto-helpers');
-const { createChallenge, sendChallengeEmail } = require('../../lib/admin-auth');
+const { pool } = require('../../backend/lib/db');
+const { randomToken } = require('../../backend/lib/crypto-helpers');
+const { createChallenge, sendChallengeEmail } = require('../../backend/lib/admin-auth');
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
