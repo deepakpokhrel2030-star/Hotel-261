@@ -1,16 +1,20 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/pages/index.html" },
-    { "source": "/admin", "destination": "/pages/admin.html" },
-    { "source": "/about", "destination": "/pages/about.html" },
-    { "source": "/rooms", "destination": "/pages/rooms.html" },
-    { "source": "/gallery", "destination": "/pages/gallery.html" },
-    { "source": "/amenities", "destination": "/pages/amenities.html" },
-    { "source": "/reviews", "destination": "/pages/reviews.html" },
-    { "source": "/location", "destination": "/pages/location.html" },
-    { "source": "/book", "destination": "/pages/book.html" },
-    { "source": "/booking-success", "destination": "/pages/booking-success.html" },
-    { "source": "/check-booking", "destination": "/pages/check-booking.html" }
+    { "source": "/", "destination": "/frontend/pages/index.html" },
+    { "source": "/admin", "destination": "/frontend/pages/admin.html" },
+    { "source": "/about", "destination": "/frontend/pages/about.html" },
+    { "source": "/rooms", "destination": "/frontend/pages/rooms.html" },
+    { "source": "/gallery", "destination": "/frontend/pages/gallery.html" },
+    { "source": "/amenities", "destination": "/frontend/pages/amenities.html" },
+    { "source": "/reviews", "destination": "/frontend/pages/reviews.html" },
+    { "source": "/location", "destination": "/frontend/pages/location.html" },
+    { "source": "/book", "destination": "/frontend/pages/book.html" },
+    { "source": "/booking-success", "destination": "/frontend/pages/booking-success.html" },
+    { "source": "/check-booking", "destination": "/frontend/pages/check-booking.html" },
+    { "source": "/css/:path*", "destination": "/frontend/css/:path*" },
+    { "source": "/js/:path*", "destination": "/frontend/js/:path*" },
+    { "source": "/images/:path*", "destination": "/frontend/images/:path*" },
+    { "source": "/i18n/:path*", "destination": "/frontend/i18n/:path*" }
   ],
   "redirects": [
     { "source": "/index.html", "destination": "/", "statusCode": 308 },

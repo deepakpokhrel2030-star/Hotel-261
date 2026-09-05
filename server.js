@@ -9,7 +9,16 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname)));
+
+// Mirrors vercel.json's per-folder rewrites for the frontend assets, and
+// keeps the rest of the repo (server.js, package.json, .env, etc.) from
+// being served as static files the way a single blanket static root would.
+app.use('/css', express.static(path.join(__dirname, 'frontend', 'css')));
+app.use('/js', express.static(path.join(__dirname, 'frontend', 'js')));
+app.use('/images', express.static(path.join(__dirname, 'frontend', 'images')));
+app.use('/i18n', express.static(path.join(__dirname, 'frontend', 'i18n')));
+app.get('/robots.txt', (req, res) => res.sendFile(path.join(__dirname, 'robots.txt')));
+app.get('/sitemap.xml', (req, res) => res.sendFile(path.join(__dirname, 'sitemap.xml')));
 
 app.post('/api/create-checkout-session', require('./api/create-checkout-session'));
 app.get('/api/verify-session', require('./api/verify-session'));
@@ -53,7 +62,7 @@ const CLEAN_URL_PAGES = {
 
 for (const [route, file] of Object.entries(CLEAN_URL_PAGES)) {
   app.get(route, (req, res) => {
-    res.sendFile(path.join(__dirname, 'pages', file));
+    res.sendFile(path.join(__dirname, 'frontend', 'pages', file));
   });
 }
 
