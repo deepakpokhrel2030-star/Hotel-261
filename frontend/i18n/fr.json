@@ -401,6 +401,7 @@
     "phoneNumber": "Num&eacute;ro de t&eacute;l&eacute;phone",
     "findBtn": "Trouver ma réservation",
     "refHint": "Votre référence de réservation figurait sur votre page de confirmation et vous a été envoyée par e-mail avec votre reçu Stripe.",
+    "noDetails": "Vous n&rsquo;avez pas ces informations&nbsp;? Appelez-nous au <a class=\"text-link\" href=\"tel:+442087434411\">020 8743 4411</a> et nous la retrouverons pour vous.",
     "yourBooking": "Votre réservation",
     "status": "Statut",
     "needChange": "Besoin de modifier ou d&rsquo;annuler votre réservation&nbsp;?",

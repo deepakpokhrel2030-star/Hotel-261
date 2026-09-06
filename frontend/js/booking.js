@@ -722,6 +722,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
 (function () {
   const form = document.getElementById('findBookingForm');
   const resultBox = document.getElementById('fbResult');
+  const grid = document.getElementById('checkBookingGrid');
   if (!form || !resultBox) return;
 
   const emailInput = document.getElementById('fbEmail');
@@ -744,6 +745,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
   submitBtn.addEventListener('click', () => {
     setError('');
     resultBox.style.display = 'none';
+    if (grid) grid.classList.add('booking-grid--single');
 
     const email = emailInput.value.trim();
     const phone = phoneInput.value.trim();
@@ -772,6 +774,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
         document.getElementById('frRooms').textContent = data.rooms || '1';
         document.getElementById('frTotal').textContent = '£' + Number(data.totalAmount).toLocaleString('en-GB');
         resultBox.style.display = 'block';
+        if (grid) grid.classList.remove('booking-grid--single');
         resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       })
       .catch(err => setError(err.message))

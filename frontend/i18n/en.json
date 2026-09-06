@@ -401,6 +401,7 @@
     "phoneNumber": "Phone number",
     "findBtn": "Find My Booking",
     "refHint": "Your booking reference was shown on your confirmation page and emailed to you by Stripe with your receipt.",
+    "noDetails": "Don&rsquo;t have these details? Call us on <a class=\"text-link\" href=\"tel:+442087434411\">020 8743 4411</a> and we&rsquo;ll look it up for you.",
     "yourBooking": "Your booking",
     "status": "Status",
     "needChange": "Need to change or cancel your booking?",

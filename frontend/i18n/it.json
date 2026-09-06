@@ -401,6 +401,7 @@
     "phoneNumber": "Numero di telefono",
     "findBtn": "Trova la mia prenotazione",
     "refHint": "Il codice della tua prenotazione è stato mostrato nella pagina di conferma e inviato via email insieme alla ricevuta Stripe.",
+    "noDetails": "Non hai questi dati? Chiamaci al <a class=\"text-link\" href=\"tel:+442087434411\">020 8743 4411</a> e la cercheremo per te.",
     "yourBooking": "La tua prenotazione",
     "status": "Stato",
     "needChange": "Devi modificare o cancellare la tua prenotazione?",

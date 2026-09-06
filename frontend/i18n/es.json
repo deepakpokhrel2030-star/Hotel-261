@@ -401,6 +401,7 @@
     "phoneNumber": "N&uacute;mero de tel&eacute;fono",
     "findBtn": "Buscar mi reserva",
     "refHint": "Su referencia de reserva se mostró en la página de confirmación y se le envió por correo electrónico junto con su recibo de Stripe.",
+    "noDetails": "¿No tiene estos datos? Llámenos al <a class=\"text-link\" href=\"tel:+442087434411\">020 8743 4411</a> y la buscaremos por usted.",
     "yourBooking": "Su reserva",
     "status": "Estado",
     "needChange": "¿Necesita modificar o cancelar su reserva?",

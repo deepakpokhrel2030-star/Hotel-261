@@ -614,6 +614,11 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 
 /* ============ Booking ============ */
 .booking-grid{ display:grid; grid-template-columns:1.3fr .9fr; gap:56px; align-items:start; }
+/* Before a booking is found, the result column is empty — the form
+   card ends up pinned to the left with a lopsided gap next to it, so
+   center it as a standalone card instead until there's a result to
+   show alongside it. */
+.booking-grid.booking-grid--single{ grid-template-columns:1fr; max-width:620px; margin-left:auto; margin-right:auto; }
 .booking-form{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:36px; }
 .form-row{ margin-bottom:20px; }
 .form-row.two-col{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
