@@ -9,6 +9,52 @@ const HOTEL_ROOMS = [
   { id: 'family',   label: 'Family Room',                 nights_label: '2 single beds & 1 double · sleeps 4', price: 120, maxGuests: 4, img: 'images/site/family-room.jpg', desc: 'Our largest room, built for family stays.', badge: 'Very popular', perks: ['Ensuite bathroom', 'Flat-screen TV', 'Tea & coffee'] },
 ];
 
+const LITTLE_HOTELIER_BOOKING_URL = 'https://direct-book.com/properties/hotel261';
+const LITTLE_HOTELIER_CURRENCY = 'GBP';
+
+function distributeOccupancy(adults, children, rooms) {
+  const roomCount = Math.max(1, Math.min(10, parseInt(rooms, 10) || 1));
+  let adultsLeft = Math.max(1, parseInt(adults, 10) || 1);
+  let childrenLeft = Math.max(0, parseInt(children, 10) || 0);
+  const items = [];
+
+  for (let i = 0; i < roomCount; i++) {
+    const roomsRemaining = roomCount - i;
+    const adultsForRoom = Math.max(roomsRemaining === adultsLeft ? 1 : 0, Math.ceil(adultsLeft / roomsRemaining));
+    const childrenForRoom = Math.ceil(childrenLeft / roomsRemaining);
+    items.push({
+      adults: Math.max(1, adultsForRoom),
+      children: Math.max(0, childrenForRoom),
+      infants: 0,
+    });
+    adultsLeft = Math.max(0, adultsLeft - adultsForRoom);
+    childrenLeft = Math.max(0, childrenLeft - childrenForRoom);
+  }
+
+  return items;
+}
+
+function littleHotelierBookingUrl(stay) {
+  const url = new URL(LITTLE_HOTELIER_BOOKING_URL);
+  url.searchParams.set('locale', 'en');
+  url.searchParams.set('currency', LITTLE_HOTELIER_CURRENCY);
+  if (stay.checkIn) url.searchParams.set('checkInDate', stay.checkIn);
+  if (stay.checkOut) url.searchParams.set('checkOutDate', stay.checkOut);
+  url.searchParams.set('trackPage', 'no');
+
+  distributeOccupancy(stay.adults, stay.children, stay.rooms).forEach((item, index) => {
+    url.searchParams.set(`items[${index}][adults]`, item.adults);
+    url.searchParams.set(`items[${index}][children]`, item.children);
+    url.searchParams.set(`items[${index}][infants]`, item.infants);
+  });
+
+  return url.toString();
+}
+
+function openLittleHotelierBooking(stay) {
+  window.location.href = littleHotelierBookingUrl(stay);
+}
+
 function toLocalISODate(date) {
   const y = date.getFullYear();
   const m = String(date.getMonth() + 1).padStart(2, '0');
@@ -207,14 +253,14 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
 
   widget.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
-    const params = new URLSearchParams();
-    if (checkIn.value) params.set('checkin', checkIn.value);
-    if (checkOut.value) params.set('checkout', checkOut.value);
     const occ = occupancyCtrl.get();
-    params.set('adults', occ.adults);
-    params.set('children', occ.children);
-    params.set('rooms', occ.rooms);
-    window.location.href = '/book?' + params.toString();
+    openLittleHotelierBooking({
+      checkIn: checkIn.value,
+      checkOut: checkOut.value,
+      adults: occ.adults,
+      children: occ.children,
+      rooms: occ.rooms,
+    });
   });
 })();
 
@@ -226,8 +272,8 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
 
   const checkIn = widget.querySelector('#bsCheckIn');
   const checkOut = widget.querySelector('#bsCheckOut');
-  setDateConstraints(checkIn, checkOut, widget.querySelector('#bsNights'), renderRooms);
-  const guestsCtrl = initGuestsDropdown(widget, renderRooms);
+  setDateConstraints(checkIn, checkOut, widget.querySelector('#bsNights'), directBookingPrompt);
+  const guestsCtrl = initGuestsDropdown(widget, directBookingPrompt);
 
   const params = new URLSearchParams(window.location.search);
   if (params.get('checkin')) checkIn.value = params.get('checkin');
@@ -247,8 +293,13 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
 
   widget.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
-    renderRooms();
-    roomListEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const stay = currentStay();
+    if (!stay.checkIn || !stay.checkOut) {
+      directBookingPrompt();
+      roomListEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+    openLittleHotelierBooking(stay);
   });
 
   function currentStay() {
@@ -256,6 +307,19 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
     const nights = nightsBetween(ci, co);
     return { checkIn: ci, checkOut: co, nights, ...guestsCtrl.get() };
   }
+
+  function directBookingPrompt() {
+    roomListEl.innerHTML = `
+      <div class="rl-empty">
+        <p>Choose your dates and guests above, then check live rates and availability in our secure booking engine.</p>
+      </div>
+    `;
+    const reservePanel = document.querySelector('.rl-reserve-all');
+    if (reservePanel) reservePanel.style.display = 'none';
+  }
+
+  directBookingPrompt();
+  return;
 
   /* ---------- Several room types can be picked at once: each row has its own
      quantity selector, and clicking ANY row's "I'll Reserve" reads every
@@ -366,7 +430,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
           ${nightsLabel ? `<span class="rl-total-note">£${totalForRoom.toLocaleString('en-GB')} &middot; ${nightsLabel}</span>` : ''}
         </div>
         <div class="rl-col-choices" data-label="${t('book.yourChoices', 'Your choices')}">
-          <p class="rl-choice-note"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> ${t('book.payOnlineNote', 'Pay online — secure via Stripe')}</p>
+          <p class="rl-choice-note"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> ${t('book.payOnlineNote', 'Secure PMS-backed booking')}</p>
           <p class="rl-choice-note">${t('book.nonRefundable', 'Non-refundable')}</p>
         </div>
         <div class="rl-col-select" data-label="${t('book.selectRoomsCol', 'Select rooms')}">

@@ -62,7 +62,7 @@
     },
     {
       keywords: ['pay', 'payment', 'card', 'credit card', 'debit card', 'cash'],
-      answer: 'Cash is accepted on site. Online bookings can be paid in advance or on arrival, depending on the rate you choose &mdash; and our online checkout is secured by Stripe, so we never see or store your card details.'
+      answer: 'Cash is accepted on site. Online bookings are handled through our secure booking engine, with payment options shown before you confirm.'
     },
     {
       keywords: ['pet', 'pets', 'dog', 'cat', 'animal'],
