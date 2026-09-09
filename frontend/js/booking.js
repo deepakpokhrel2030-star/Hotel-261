@@ -35,20 +35,25 @@ function distributeOccupancy(adults, children, rooms) {
 }
 
 function littleHotelierBookingUrl(stay) {
-  const url = new URL(LITTLE_HOTELIER_BOOKING_URL);
-  url.searchParams.set('locale', 'en');
-  url.searchParams.set('currency', LITTLE_HOTELIER_CURRENCY);
-  if (stay.checkIn) url.searchParams.set('checkInDate', stay.checkIn);
-  if (stay.checkOut) url.searchParams.set('checkOutDate', stay.checkOut);
-  url.searchParams.set('trackPage', 'no');
+  const params = [
+    ['locale', 'en'],
+    ['currency', LITTLE_HOTELIER_CURRENCY],
+  ];
+  if (stay.checkIn) params.push(['checkInDate', stay.checkIn]);
+  if (stay.checkOut) params.push(['checkOutDate', stay.checkOut]);
+  params.push(['trackPage', 'yes']);
 
   distributeOccupancy(stay.adults, stay.children, stay.rooms).forEach((item, index) => {
-    url.searchParams.set(`items[${index}][adults]`, item.adults);
-    url.searchParams.set(`items[${index}][children]`, item.children);
-    url.searchParams.set(`items[${index}][infants]`, item.infants);
+    params.push([`items[${index}][adults]`, item.adults]);
+    params.push([`items[${index}][children]`, item.children]);
+    params.push([`items[${index}][infants]`, item.infants]);
   });
 
-  return url.toString();
+  const query = params
+    .map(([key, value]) => `${key}=${encodeURIComponent(String(value))}`)
+    .join('&');
+
+  return `${LITTLE_HOTELIER_BOOKING_URL}?${query}`;
 }
 
 function openLittleHotelierBooking(stay) {
