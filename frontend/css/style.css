@@ -454,6 +454,45 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .stepper b{ width:18px; text-align:center; font-weight:600; }
 .guests-done{ width:100%; margin-top:16px; }
 
+/* ============ Little Hotelier direct booking handoff ============ */
+.direct-booking-section{ padding-top:14px; }
+.direct-booking-panel{
+  max-width:1120px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1.45fr) minmax(320px,.75fr);
+  gap:28px; align-items:stretch;
+}
+.direct-booking-copy{
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+  padding:38px; min-height:330px; display:flex; flex-direction:column; justify-content:center;
+}
+.direct-booking-copy h2{
+  font-family:var(--ff-display); font-size:clamp(1.9rem,3.5vw,3rem); line-height:1.04;
+  font-weight:700; max-width:620px; margin:18px 0 14px;
+}
+.direct-booking-copy p{ color:var(--ink-soft); font-size:1rem; line-height:1.7; max-width:620px; }
+.direct-booking-features{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:28px; }
+.direct-booking-features span{
+  min-height:64px; border:1px solid var(--line); border-radius:8px; background:var(--paper-2);
+  display:flex; align-items:center; gap:10px; padding:12px; color:var(--ink); font-size:.84rem; font-weight:600;
+}
+.direct-booking-features .icon{ width:18px; height:18px; flex:none; color:var(--accent); }
+.direct-booking-card{
+  background:var(--ink); color:var(--paper); border-radius:var(--radius); padding:28px;
+  display:flex; flex-direction:column; justify-content:space-between; min-height:330px; box-shadow:0 24px 56px rgba(var(--shadow-rgb),.18);
+}
+.direct-booking-card-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:22px; }
+.direct-booking-card-head span{ color:rgba(255,255,255,.72); font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; }
+.direct-booking-card-head b{ color:#fff; font-size:.82rem; border:1px solid rgba(255,255,255,.22); border-radius:999px; padding:5px 9px; }
+.direct-booking-summary{ display:grid; gap:0; margin:0 0 24px; }
+.direct-booking-summary div{ display:flex; align-items:center; justify-content:space-between; gap:18px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,.14); }
+.direct-booking-summary dt{ color:rgba(255,255,255,.66); font-size:.82rem; }
+.direct-booking-summary dd{ color:#fff; margin:0; font-weight:700; text-align:right; }
+.direct-booking-btn{ width:100%; justify-content:center; }
+.direct-booking-card p{ color:rgba(255,255,255,.7); font-size:.78rem; line-height:1.5; margin:16px 0 0; text-align:center; }
+.direct-booking-help{
+  max-width:1120px; margin:22px auto 0; display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
+  gap:9px; color:var(--ink-soft); font-size:.9rem;
+}
+
 /* ============ Room list (Booking.com-style availability table) ============ */
 .rl-layout{ display:grid; grid-template-columns:1fr 200px; gap:24px; align-items:start; margin-top:26px; }
 .rl-cols{ grid-template-columns:minmax(280px,2.2fr) 92px 130px minmax(170px,1.3fr) 140px; }
@@ -782,6 +821,8 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 @media (max-width:1000px){
   .about-grid, .reviews-grid, .location-grid, .booking-grid{ grid-template-columns:1fr; }
   .booking-summary{ position:static; }
+  .direct-booking-panel{ grid-template-columns:1fr; }
+  .direct-booking-copy{ min-height:0; }
   .rl-layout{ grid-template-columns:1fr; }
   .rl-reserve-all{ position:static; }
   .room-row, .room-row.reverse{ grid-template-columns:1fr; }
@@ -856,6 +897,11 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   .cta{ padding-top:70px; padding-bottom:90px; }
   .search-widget{ grid-template-columns:1fr; }
   .search-widget-wrap.overlap{ margin-top:-20px; }
+  .direct-booking-section{ padding-top:0; }
+  .direct-booking-copy, .direct-booking-card{ padding:24px; }
+  .direct-booking-features{ grid-template-columns:1fr; }
+  .direct-booking-features span{ min-height:0; }
+  .direct-booking-summary div{ align-items:flex-start; }
   .sw-field{ border-right:0; border-bottom:1px solid var(--line); }
   /* The "X nights" badge is absolutely positioned below the check-out
      field — fine when Occupancy sits beside it, but once fields stack

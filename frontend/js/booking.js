@@ -272,6 +272,11 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
 
   const checkIn = widget.querySelector('#bsCheckIn');
   const checkOut = widget.querySelector('#bsCheckOut');
+  const directBookingBtn = document.getElementById('directBookingBtn');
+  const dbCheckIn = document.getElementById('dbCheckIn');
+  const dbCheckOut = document.getElementById('dbCheckOut');
+  const dbNights = document.getElementById('dbNights');
+  const dbOccupancy = document.getElementById('dbOccupancy');
   setDateConstraints(checkIn, checkOut, widget.querySelector('#bsNights'), directBookingPrompt);
   const guestsCtrl = initGuestsDropdown(widget, directBookingPrompt);
 
@@ -309,13 +314,22 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
   }
 
   function directBookingPrompt() {
-    roomListEl.innerHTML = `
-      <div class="rl-empty">
-        <p>Choose your dates and guests above, then check live rates and availability in our secure booking engine.</p>
-      </div>
-    `;
+    const stay = currentStay();
+    if (dbCheckIn) dbCheckIn.textContent = stay.checkIn ? fmtDateShort(stay.checkIn) : 'Select date';
+    if (dbCheckOut) dbCheckOut.textContent = stay.checkOut ? fmtDateShort(stay.checkOut) : 'Select date';
+    if (dbNights) dbNights.textContent = stay.nights > 0 ? stay.nights + (stay.nights === 1 ? ' night' : ' nights') : 'Choose dates';
+    if (dbOccupancy) {
+      const roomWord = stay.rooms === 1 ? t('search.roomWord', 'room') : t('search.roomsWord', 'rooms');
+      dbOccupancy.textContent = `${occupancyText(stay)} · ${stay.rooms} ${roomWord}`;
+    }
     const reservePanel = document.querySelector('.rl-reserve-all');
     if (reservePanel) reservePanel.style.display = 'none';
+  }
+
+  if (directBookingBtn) {
+    directBookingBtn.addEventListener('click', () => {
+      openLittleHotelierBooking(currentStay());
+    });
   }
 
   directBookingPrompt();
