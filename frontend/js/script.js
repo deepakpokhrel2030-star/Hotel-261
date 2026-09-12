@@ -286,6 +286,72 @@ if (bentoGrid) {
   }
 }
 
+/* ---------- Rooms page: per-room photo lightbox ---------- */
+const roomGalleryEls = Array.from(document.querySelectorAll('.room-gallery[data-room-gallery]'));
+if (roomGalleryEls.length) {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lbClose = document.getElementById('lightboxClose');
+  const lbPrev = document.getElementById('lightboxPrev');
+  const lbNext = document.getElementById('lightboxNext');
+
+  if (lightbox && lightboxImg) {
+    let roomFiles = [];
+    let roomIndex = 0;
+
+    function openRoomLightbox(files, index) {
+      roomFiles = files;
+      roomIndex = Math.max(0, Math.min(index, roomFiles.length - 1));
+      lightboxImg.src = roomFiles[roomIndex];
+      lightboxImg.alt = 'Hotel 261 room photo ' + (roomIndex + 1);
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeRoomLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function showRoomDelta(delta) {
+      if (!roomFiles.length) return;
+      roomIndex = (roomIndex + delta + roomFiles.length) % roomFiles.length;
+      lightboxImg.src = roomFiles[roomIndex];
+      lightboxImg.alt = 'Hotel 261 room photo ' + (roomIndex + 1);
+    }
+
+    roomGalleryEls.forEach((gallery) => {
+      const files = gallery.dataset.roomGallery.split('|').filter(Boolean);
+      gallery.setAttribute('role', 'button');
+      gallery.setAttribute('tabindex', '0');
+      gallery.setAttribute('aria-label', 'Open room photos');
+
+      gallery.addEventListener('click', (e) => {
+        const img = e.target.closest('img');
+        const index = img ? Math.max(0, files.indexOf(img.getAttribute('src'))) : 0;
+        openRoomLightbox(files, index);
+      });
+      gallery.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openRoomLightbox(files, 0);
+        }
+      });
+    });
+
+    if (lbClose) lbClose.addEventListener('click', closeRoomLightbox);
+    if (lbPrev) lbPrev.addEventListener('click', () => showRoomDelta(-1));
+    if (lbNext) lbNext.addEventListener('click', () => showRoomDelta(1));
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeRoomLightbox(); });
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('active') || !roomFiles.length) return;
+      if (e.key === 'Escape') closeRoomLightbox();
+      if (e.key === 'ArrowLeft') showRoomDelta(-1);
+      if (e.key === 'ArrowRight') showRoomDelta(1);
+    });
+  }
+}
+
 /* ---------- Magnetic buttons (desktop pointer only) ---------- */
 if (window.matchMedia('(pointer:fine)').matches) {
   document.querySelectorAll('.magnetic').forEach(btn => {
@@ -297,29 +363,4 @@ if (window.matchMedia('(pointer:fine)').matches) {
     });
     btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
   });
-}
-
-/* ---------- Hero image rotation (homepage only, via data-images) ---------- */
-const heroImg = document.getElementById('heroImg');
-if (heroImg && heroImg.dataset.images) {
-  let heroSlides;
-  try {
-    heroSlides = JSON.parse(heroImg.dataset.images);
-  } catch (e) {
-    heroSlides = null;
-  }
-  if (heroSlides && heroSlides.length > 1) {
-    // Preload the other slides so the crossfade doesn't stall on a slow network.
-    heroSlides.slice(1).forEach((slide) => { new Image().src = slide.src; });
-    let heroIndex = 0;
-    setInterval(() => {
-      heroImg.classList.add('fading');
-      setTimeout(() => {
-        heroIndex = (heroIndex + 1) % heroSlides.length;
-        heroImg.src = heroSlides[heroIndex].src;
-        heroImg.alt = heroSlides[heroIndex].alt;
-        heroImg.classList.remove('fading');
-      }, 800);
-    }, 6000);
-  }
 }

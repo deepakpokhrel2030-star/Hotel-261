@@ -330,12 +330,11 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .hero-media{ position:absolute; inset:-4%; }
 .hero-media img{
   width:100%; height:100%; object-fit:cover; object-position:center 40%;
-  transform:scale(1.06); animation:heroZoom 26s ease-out forwards; will-change:transform;
-  opacity:1; transition:opacity .8s ease, object-position .8s ease;
+  transform:scale(1.04); animation:heroZoom 18s ease-in-out infinite alternate; will-change:transform;
+  opacity:1; transition:object-position .8s ease;
   filter:saturate(1.1) contrast(1.05);
 }
-.hero-media img.fading{ opacity:0; }
-@keyframes heroZoom{ to{ transform:scale(1); } }
+@keyframes heroZoom{ to{ transform:scale(1.1); } }
 .hero-scrim{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,16,13,.5) 0%, rgba(20,16,13,.42) 50%, rgba(20,16,13,.62) 100%); }
 .hero-inner{ position:relative; z-index:2; width:100%; max-width:1240px; margin:0 auto; padding:130px 32px 0; color:#fff; display:flex; flex-direction:column; }
 .hero:not(.hero--page) .hero-inner{ padding-bottom:130px; justify-content:center; }
@@ -582,7 +581,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .room-row-media{ aspect-ratio:4/3; overflow:hidden; border-radius:var(--radius); }
 .room-row-media img{ width:100%; height:100%; object-fit:cover; transition:transform .5s var(--ease); }
 .room-row:hover .room-row-media > img{ transform:scale(1.04); }
-.room-gallery{ position:relative; background:var(--line); }
+.room-gallery{ position:relative; background:var(--line); cursor:pointer; }
 .room-gallery-main{ display:block; }
 .room-gallery-strip{
   position:absolute;
@@ -596,6 +595,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   background:rgba(12,16,20,.72);
   border:1px solid rgba(255,255,255,.22);
   backdrop-filter:blur(10px);
+  z-index:2;
 }
 .room-gallery-strip img{
   width:62px;
@@ -614,6 +614,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   color:#111827;
   font-weight:800;
   font-size:.9rem;
+  cursor:pointer;
 }
 .room-index{ font-family:var(--ff-body); font-weight:700; color:var(--accent); font-size:.82rem; letter-spacing:.06em; }
 .room-row-body h3{ font-size:clamp(1.4rem,2vw,1.8rem); margin:8px 0 12px; font-weight:700; }
