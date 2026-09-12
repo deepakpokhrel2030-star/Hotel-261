@@ -328,14 +328,6 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .hero{ position:relative; height:100vh; height:100svh; min-height:640px; display:flex; align-items:flex-start; overflow:hidden; padding:0; max-width:none; }
 .hero:not(.hero--page){ align-items:stretch; }
 .hero-media{ position:absolute; inset:0; }
-.hero-media--building::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:url("../images/site/hero-building-hd.jpg") center / cover no-repeat;
-  filter:blur(18px) saturate(1.05);
-  transform:scale(1.1);
-}
 .hero-media img{
   width:100%; height:100%; object-fit:cover; object-position:center 40%;
   transform:scale(1.04); animation:heroZoom 18s ease-in-out infinite alternate; will-change:transform;
@@ -343,11 +335,8 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   filter:saturate(1.1) contrast(1.05);
 }
 .hero-media--building img{
-  position:relative;
-  object-fit:contain;
-  object-position:center bottom;
-  padding:88px 3vw 122px;
-  box-sizing:border-box;
+  object-fit:cover;
+  object-position:center 42%;
   filter:saturate(1.08) contrast(1.04);
 }
 @keyframes heroZoom{ to{ transform:scale(1.1); } }
@@ -915,10 +904,8 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   .hero-title{ font-size:2.75rem; }
   .hero{ min-height:100svh; }
   .hero-media--building img{
-    object-position:center bottom;
-    padding:82px 0 96px;
+    object-position:center 45%;
   }
-  .hero-media--building::before{ filter:blur(14px) saturate(1.05); }
   section > h2{ font-size:2.3rem; }
   /* .rooms-title and .cta-title carry their own font-size rules (more
      specific than the bare "section > h2" above), so they need their
