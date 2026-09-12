@@ -581,7 +581,40 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .room-row.reverse .room-row-body{ order:1; }
 .room-row-media{ aspect-ratio:4/3; overflow:hidden; border-radius:var(--radius); }
 .room-row-media img{ width:100%; height:100%; object-fit:cover; transition:transform .5s var(--ease); }
-.room-row:hover .room-row-media img{ transform:scale(1.04); }
+.room-row:hover .room-row-media > img{ transform:scale(1.04); }
+.room-gallery{ position:relative; background:var(--line); }
+.room-gallery-main{ display:block; }
+.room-gallery-strip{
+  position:absolute;
+  right:12px;
+  bottom:12px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:8px;
+  border-radius:8px;
+  background:rgba(12,16,20,.72);
+  border:1px solid rgba(255,255,255,.22);
+  backdrop-filter:blur(10px);
+}
+.room-gallery-strip img{
+  width:62px;
+  height:46px;
+  border-radius:5px;
+  object-fit:cover;
+  border:1px solid rgba(255,255,255,.35);
+}
+.room-photo-more{
+  display:grid;
+  place-items:center;
+  min-width:46px;
+  height:46px;
+  border-radius:5px;
+  background:rgba(255,255,255,.92);
+  color:#111827;
+  font-weight:800;
+  font-size:.9rem;
+}
 .room-index{ font-family:var(--ff-body); font-weight:700; color:var(--accent); font-size:.82rem; letter-spacing:.06em; }
 .room-row-body h3{ font-size:clamp(1.4rem,2vw,1.8rem); margin:8px 0 12px; font-weight:700; }
 .room-row-body h3 small{ font-family:var(--ff-body); font-weight:400; font-size:.55em; color:var(--ink-soft); }
@@ -871,6 +904,9 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   .about-lead{ font-size:1.9rem; }
   .about-body p{ font-size:1.15rem; line-height:1.65; }
   .room-row-body h3{ font-size:1.75rem; }
+  .room-gallery-strip{ right:8px; bottom:8px; gap:6px; padding:6px; }
+  .room-gallery-strip img{ width:48px; height:38px; }
+  .room-photo-more{ min-width:38px; height:38px; font-size:.78rem; }
   /* Logo + EN pill + theme toggle + Reserve + hamburger together don't
      fit a phone-width header — without flex-shrink:0 (added above) the
      logo would get crushed to a sliver trying to make room. Reserve is
