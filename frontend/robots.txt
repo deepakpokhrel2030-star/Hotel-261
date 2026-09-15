@@ -3,4 +3,4 @@ Allow: /
 Disallow: /booking-success.html
 Disallow: /api/
 
-Sitemap: https://hotel-261.vercel.app/sitemap.xml
+Sitemap: https://www.hotel261.com/sitemap.xml
