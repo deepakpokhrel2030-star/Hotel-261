@@ -44,11 +44,7 @@ app.post('/api/admin/reset-password', require('../api/admin/reset-password'));
 app.post('/api/admin/logout', require('../api/admin/logout'));
 app.get('/api/admin/summary', require('../api/admin/summary'));
 app.all('/api/admin/bookings', require('../api/admin/bookings'));
-app.get('/api/admin/contact-messages', require('../api/admin/contact-messages'));
-app.patch('/api/admin/contact-messages/:id/status', (req, res) => {
-  req.query = { ...req.query, id: req.params.id };
-  return require('../api/admin/contact-messages/[id]/status')(req, res);
-});
+app.all('/api/admin/contact-messages', require('../api/admin/contact-messages'));
 app.patch('/api/admin/bookings/:id/status', (req, res) => {
   req.query = { ...req.query, id: req.params.id };
   return require('../api/admin/bookings/[id]/status')(req, res);

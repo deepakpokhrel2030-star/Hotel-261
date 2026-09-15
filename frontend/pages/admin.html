@@ -777,7 +777,7 @@
 
         document.querySelectorAll('.message-status').forEach((select) => {
           select.addEventListener('change', async (event) => {
-            await apiFetch(`/api/admin/contact-messages/${event.target.dataset.messageId}/status`, {
+            await apiFetch(`/api/admin/contact-messages?id=${event.target.dataset.messageId}`, {
               method: 'PATCH',
               headers: authHeaders(),
               body: JSON.stringify({ status: event.target.value }),
