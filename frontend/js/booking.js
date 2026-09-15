@@ -449,7 +449,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
           ${nightsLabel ? `<span class="rl-total-note">£${totalForRoom.toLocaleString('en-GB')} &middot; ${nightsLabel}</span>` : ''}
         </div>
         <div class="rl-col-choices" data-label="${t('book.yourChoices', 'Your choices')}">
-          <p class="rl-choice-note"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> ${t('book.payOnlineNote', 'Secure PMS-backed booking')}</p>
+          <p class="rl-choice-note"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> ${t('book.payOnlineNote', 'Secure online booking')}</p>
           <p class="rl-choice-note">${t('book.nonRefundable', 'Non-refundable')}</p>
         </div>
         <div class="rl-col-select" data-label="${t('book.selectRoomsCol', 'Select rooms')}">

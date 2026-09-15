@@ -49,7 +49,7 @@
   },
   "trust": {
     "bestRate": "Best rate, booked direct",
-    "securePayment": "Secure PMS-backed booking",
+    "securePayment": "Secure online booking",
     "instantConfirmation": "Instant confirmation"
   },
   "cta": {
@@ -347,7 +347,7 @@
     "todaysPrice": "Today&rsquo;s price",
     "yourChoices": "Your choices",
     "selectRoomsCol": "Select rooms",
-    "payOnlineNote": "Secure PMS-backed booking",
+    "payOnlineNote": "Secure online booking",
     "wontBeCharged": "You won&rsquo;t be charged yet",
     "errNoRoomsSelected": "Please choose how many of at least one room type you need.",
     "chooseDatesPrompt": "Choose your check-in and check-out dates above to see available rooms and prices.",
