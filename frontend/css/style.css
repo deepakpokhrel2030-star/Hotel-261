@@ -1209,7 +1209,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 }
 .footer-cols > div{ min-width:0; }
 .footer-cols h5{ display:flex; align-items:center; gap:10px; margin-bottom:20px; color:#fff; }
-.footer-cols h5::before{ content:''; width:22px; height:2px; background:var(--accent-light); flex:none; }
+.footer-cols h5::before{ display:none; }
 .footer-cols a, .footer-cols p{ line-height:1.6; margin-bottom:13px; }
 .footer-cols > div:first-child .footer-line:first-of-type{ margin-bottom:16px; }
 .footer-cols > div:first-child a[href^="mailto:"]{ color:#fff; font-weight:600; }
