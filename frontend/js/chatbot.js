@@ -94,7 +94,7 @@
     },
     {
       keywords: ['star', 'stars', 'star rating', 'how big', 'how many rooms'],
-      answer: 'We\'re a family-run 2-star hotel with 7 different room types, from Single up to Family rooms.'
+      answer: 'Hotel 261 is a straightforward 2-star hotel with 7 room types, from Single rooms through to Family rooms. You can book direct on the official website.'
     },
     {
       keywords: ['solo', 'travelling alone', 'traveling alone', 'one person', 'by myself'],
