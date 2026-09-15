@@ -215,11 +215,16 @@ if (bentoGrid) {
   const limit = parseInt(bentoGrid.dataset.limit || String(allGalleryFiles.length), 10);
   const files = allGalleryFiles.slice(0, limit);
   const bentoPattern = ['g-big', 'g-norm', 'g-tall', 'g-norm', 'g-wide', 'g-norm', 'g-norm', 'g-tall', 'g-wide', 'g-norm', 'g-norm', 'g-big'];
+  const galleryAltText = [
+    'Hotel 261 exterior on Uxbridge Road',
+    'Family room at Hotel 261',
+    ...Array(Math.max(0, files.length - 2)).fill('Guest room interior at Hotel 261'),
+  ];
 
   files.forEach((src, i) => {
     const img = document.createElement('img');
     img.src = src;
-    img.alt = 'Hotel 261 photo ' + (i + 1);
+    img.alt = galleryAltText[i] || 'Hotel 261 guest room and hotel interior';
     img.loading = 'lazy';
     img.className = bentoPattern[i % bentoPattern.length];
     img.dataset.index = i;

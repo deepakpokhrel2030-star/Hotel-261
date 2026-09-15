@@ -220,9 +220,9 @@
     "title2": "nothing you <em>don&rsquo;t.</em>"
   },
   "gallery": {
-    "eyebrow": "( Photo Gallery )",
-    "heroTitle": "A closer <em>look.</em>",
-    "intro": "Every photo below is from Hotel 261 &mdash; rooms, bathrooms and the building itself. Click any photo to view it full size.",
+    "eyebrow": "( Hotel 261 / Gallery )",
+    "heroTitle": "Rooms, bathrooms &amp; the <em>hotel.</em>",
+    "intro": "See Hotel 261 before you arrive, from guest rooms and bathrooms to the building on Uxbridge Road. Select any image to view it full size.",
     "close": "Close",
     "previous": "Previous",
     "next": "Next"

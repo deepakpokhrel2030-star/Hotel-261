@@ -186,6 +186,10 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
   [checkInInput, checkOutInput].forEach((input) => {
     const field = input.closest('.sw-field');
     if (!field) return;
+    const syncDateState = () => field.classList.toggle('has-date', Boolean(input.value));
+    syncDateState();
+    input.addEventListener('input', syncDateState);
+    input.addEventListener('change', syncDateState);
     field.addEventListener('click', (e) => {
       if (e.target === input) return;
       openPicker(input);
