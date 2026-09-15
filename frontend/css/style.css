@@ -1226,3 +1226,14 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   .footer-cols > div:first-child .footer-line{ max-width:340px; }
   .footer-bottom{ align-items:flex-start; flex-direction:column; gap:8px; }
 }
+
+/* Header finish */
+.logo{ border-right:0; padding-right:10px; }
+.header-right::before{ display:none; }
+.main-nav{ gap:4px; }
+.main-nav a{ padding-inline:12px; }
+
+@media (max-width:760px){
+  .main-nav{ gap:0; }
+  .main-nav a{ padding-inline:9px; }
+}

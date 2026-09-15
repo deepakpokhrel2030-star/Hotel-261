@@ -1,10 +1,10 @@
 /* ---------- Hotel 261 i18n engine ----------
-   Static multi-page site, no build step — translations live in /i18n/<lang>.json
+   Static multi-page site, no build step, translations live in /i18n/<lang>.json
    as a nested object. Elements opt in with:
      data-i18n="path.to.key"        -> sets textContent
      data-i18n-html="path.to.key"   -> sets innerHTML (for entries containing <em>/<strong>/<br> etc.)
      data-i18n-attr="title:path.to.key|placeholder:other.key" -> sets element attributes
-   The English text already in the HTML is the fallback/default — if a translation
+   The English text already in the HTML is the fallback/default, if a translation
    is missing for a key, or the file fails to load, the page still reads correctly.
 */
 (function () {
@@ -38,19 +38,19 @@
   var state = { lang: 'en', dict: null, ready: Promise.resolve() };
   var requestSeq = 0;
 
-  // Switching language doesn't just apply a new dict — switching BACK to
+  // Switching language doesn't just apply a new dict, switching BACK to
   // English (or hitting a key a given language is missing) needs to restore
   // the original English markup, not leave stale text from whatever language
   // was applied previously. So the first time any element is touched, its
   // original English innerHTML/attribute value is snapshotted into a data-*
-  // attribute, and that snapshot — not a no-op — is what "no translation
+  // attribute, and that snapshot, not a no-op, is what "no translation
   // available" falls back to from then on.
   function applyDom(dict) {
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       if (!el.hasAttribute('data-i18n-src')) el.setAttribute('data-i18n-src', el.innerHTML);
       var val = getPath(dict, el.getAttribute('data-i18n'));
       // innerHTML (not textContent): translation values use HTML entities
-      // (&rsquo;, &mdash;, etc.) for the site's typography. All values come
+      // (&rsquo;, , , etc.) for the site's typography. All values come
       // from our own JSON files, never user input, so this is safe.
       el.innerHTML = (typeof val === 'string') ? val : el.getAttribute('data-i18n-src');
     });
@@ -94,7 +94,7 @@
       return Promise.resolve();
     }
     // 'no-cache' (not 'force-cache'): always revalidate with the server rather
-    // than trusting a stale cached copy indefinitely — these translation files
+    // than trusting a stale cached copy indefinitely, these translation files
     // do get updated, and a stale copy would silently show old/missing text.
     return fetch('/i18n/' + lang + '.json', { cache: 'no-cache' })
       .then(function (res) { if (!res.ok) throw new Error('missing translation file'); return res.json(); })

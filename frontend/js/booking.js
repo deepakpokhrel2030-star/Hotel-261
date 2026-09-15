@@ -77,13 +77,13 @@ function t(key, fallback) {
   return val !== undefined ? val : fallback;
 }
 function formatBookingRef(id) {
-  if (!id) return '—';
+  if (!id) return '-';
   return 'H261-' + String(id).padStart(6, '0');
 }
 function fmtDateShort(d) {
-  if (!d) return '—';
+  if (!d) return '-';
   const dt = new Date(d + 'T00:00:00');
-  if (isNaN(dt.getTime())) return '—';
+  if (isNaN(dt.getTime())) return '-';
   return dt.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 }
 
@@ -346,7 +346,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
 
   /* ---------- Several room types can be picked at once: each row has its own
      quantity selector, and clicking ANY row's "I'll Reserve" reads every
-     row's selector and books the whole set in one go — no separate cart step. ---------- */
+     row's selector and books the whole set in one go, no separate cart step. ---------- */
   function lineTotalFor(entry, stay) {
     const nights = stay.nights || 0;
     return (nights > 0 ? entry.room.price * nights : entry.room.price) * entry.qty;
@@ -389,7 +389,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
       if (reservePanel) reservePanel.style.display = 'none';
       return;
     }
-    // With just 1 room, that one room has to sleep everyone by itself — e.g.
+    // With just 1 room, that one room has to sleep everyone by itself, e.g.
     // 4 adults in 1 room only fits Quad/Family. With 2+ rooms, any type can
     // be part of a mixed combo (e.g. 1 Single + 1 Family for 5 guests), so
     // nothing is filtered out of the list itself.
@@ -490,7 +490,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
     }
     const totalCapacity = items.reduce((sum, item) => sum + item.room.maxGuests * item.qty, 0);
     if (totalCapacity < stay.guests) {
-      reserveAllError.textContent = t('book.errCapacity', 'Your selected rooms sleep up to {max} — please select more space for {guests} guests.')
+      reserveAllError.textContent = t('book.errCapacity', 'Your selected rooms sleep up to {max}, please select more space for {guests} guests.')
         .replace('{max}', totalCapacity).replace('{guests}', stay.guests);
       reserveAllError.classList.add('visible');
       return;
@@ -609,7 +609,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
 
     document.getElementById('csCheckIn').textContent = fmtDateShort(stay.checkIn);
     document.getElementById('csCheckOut').textContent = fmtDateShort(stay.checkOut);
-    document.getElementById('csNights').textContent = nights || '—';
+    document.getElementById('csNights').textContent = nights || '-';
     document.getElementById('csGuests').textContent = occupancyText(stay);
     document.getElementById('csRooms').textContent = totalRooms + ' ' + (totalRooms === 1 ? t('search.roomWord', 'room') : t('search.roomsWord', 'rooms'));
     document.getElementById('csTotal').textContent = '£' + totalPrice.toLocaleString('en-GB');
@@ -732,7 +732,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
       .catch(err => {
         setError(coPaymentError, err.message);
         coPayBtn.disabled = false;
-        coPayLabel.textContent = 'Pay Securely — ';
+        coPayLabel.textContent = 'Pay Securely: ';
         coPayAmount.style.display = '';
       });
   });
@@ -789,11 +789,11 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
       }
       document.getElementById('resultName').textContent = data.guestName ? ', ' + data.guestName.split(' ')[0] : '';
       document.getElementById('rRef').textContent = formatBookingRef(data.bookingRef);
-      document.getElementById('rRoom').textContent = data.roomLabel || '—';
+      document.getElementById('rRoom').textContent = data.roomLabel || '-';
       document.getElementById('rCheckIn').textContent = fmtDateShort(data.checkIn);
       document.getElementById('rCheckOut').textContent = fmtDateShort(data.checkOut);
-      document.getElementById('rNights').textContent = data.nights || '—';
-      document.getElementById('rGuests').textContent = data.guests || '—';
+      document.getElementById('rNights').textContent = data.nights || '-';
+      document.getElementById('rGuests').textContent = data.guests || '-';
       document.getElementById('rRooms').textContent = data.rooms || '1';
       const amount = (data.amountTotal / 100).toLocaleString('en-GB', { style: 'currency', currency: (data.currency || 'gbp').toUpperCase() });
       document.getElementById('rTotal').textContent = amount;
@@ -854,10 +854,10 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
 
         document.getElementById('frRef').textContent = formatBookingRef(data.bookingRef);
         document.getElementById('frStatus').textContent = STATUS_LABELS[data.status] || data.status;
-        document.getElementById('frRoom').textContent = data.roomLabel || '—';
+        document.getElementById('frRoom').textContent = data.roomLabel || '-';
         document.getElementById('frCheckIn').textContent = fmtDateShort(data.checkIn);
         document.getElementById('frCheckOut').textContent = fmtDateShort(data.checkOut);
-        document.getElementById('frGuests').textContent = data.guests || '—';
+        document.getElementById('frGuests').textContent = data.guests || '-';
         document.getElementById('frRooms').textContent = data.rooms || '1';
         document.getElementById('frTotal').textContent = '£' + Number(data.totalAmount).toLocaleString('en-GB');
         resultBox.style.display = 'block';

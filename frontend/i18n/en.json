@@ -70,7 +70,7 @@
     "rights": "All rights reserved.",
     "tagline": "Official website for Hotel 261 in Shepherd&rsquo;s Bush, West London.",
     "contactInfo": "Phone &amp; directions",
-    "directNote": "Booked direct &mdash; no agency mark-up."
+    "directNote": "Booked direct. No agency mark-up."
   },
   "tag": {
     "ensuite": "Ensuite",
@@ -84,7 +84,7 @@
     "checkAvailability": "Check availability",
     "single": {
       "name": "Single Room",
-      "desc": "1 single bed &middot; sleeps 1. A compact, quiet room for solo travellers &mdash; everything you need, nothing you don&rsquo;t."
+      "desc": "1 single bed &middot; sleeps 1. A compact, quiet room for solo travellers, everything you need, nothing you don&rsquo;t."
     },
     "twin": {
       "name": "Twin Room",
@@ -129,7 +129,7 @@
     },
     "family": {
       "title": "Family Rooms",
-      "desc": "Spacious family rooms sleeping up to four guests &mdash; two single beds and one double, ideal for families or small groups."
+      "desc": "Spacious family rooms sleeping up to four guests, two single beds and one double, ideal for families or small groups."
     },
     "heating": {
       "title": "Heating",
@@ -137,11 +137,11 @@
     },
     "housekeeping": {
       "title": "Daily Housekeeping",
-      "desc": "Rooms are serviced daily. Bed linen and towels are refreshed on the morning of every fifth day of your stay &mdash; just leave used towels on the floor."
+      "desc": "Rooms are serviced daily. Bed linen and towels are refreshed on the morning of every fifth day of your stay, just leave used towels on the floor."
     },
     "luggage": {
       "title": "Luggage Storage",
-      "desc": "Drop off or store your bags on arrival or on your day of departure &mdash; departure-day storage is same-day only."
+      "desc": "Drop off or store your bags on arrival or on your day of departure, departure-day storage is same-day only."
     },
     "breakfast": {
       "title": "Breakfast Nearby",
@@ -182,7 +182,7 @@
     "viewFullGallery": "View Full Gallery",
     "amenitiesTitle": "Useful basics, clearly included.",
     "amenity1desc": "Throughout the hotel and in every room.",
-    "amenity2desc": "On-site, from £15/day &mdash; rare for this part of London.",
+    "amenity2desc": "On-site, from £15/day, rare for this part of London.",
     "amenity3desc": "Sleeping up to four, without a squeeze.",
     "amenity4desc": "5 minutes on foot, at Little Napoli.",
     "seeAllAmenities": "See all amenities",
@@ -196,15 +196,15 @@
     "whoWeAre": "Who We Are",
     "lead": "A practical West London base with the essentials handled clearly.",
     "p1": "Tucked into a quiet stretch of Shepherd&rsquo;s Bush, Hotel 261 has been welcoming guests to West London with large rooms, on-site parking and genuinely friendly service. Every room comes with satellite TV, tea &amp; coffee making facilities and a fridge, with a shared guest microwave available too.",
-    "p2": "We&rsquo;re a short walk from Westfield London shopping centre, a handful of West London bars and cafés, and well placed for Wembley, the Hammersmith Apollo and Queens Park Rangers&rsquo; football stadium &mdash; just over 10 minutes on foot. Shepherd&rsquo;s Bush Market Underground station (Circle &amp; Hammersmith &amp; City lines) is a 15 minute walk away.",
-    "p3": "Hotel 261 is a straightforward 2-star hotel, popular with solo travellers and short stays &mdash; simple, comfortable and fairly priced for West London.",
+    "p2": "We&rsquo;re a short walk from Westfield London shopping centre, a handful of West London bars and cafés, and well placed for Wembley, the Hammersmith Apollo and Queens Park Rangers&rsquo; football stadium, just over 10 minutes on foot. Shepherd&rsquo;s Bush Market Underground station (Circle &amp; Hammersmith &amp; City lines) is a 15 minute walk away.",
+    "p3": "Hotel 261 is a straightforward 2-star hotel, popular with solo travellers and short stays, simple, comfortable and fairly priced for West London.",
     "exploreRooms": "Explore our rooms",
     "whatGuestsGet": "What Guests Get",
     "g1": "<strong>Full English or Italian breakfast</strong> is available a five-minute walk away at Little Napoli, with vouchers arranged through reception.",
-    "g2": "<strong>On-site parking</strong> is available for £15/day, subject to availability &mdash; handy for a hotel this close to central London.",
+    "g2": "<strong>On-site parking</strong> is available for £15/day, subject to availability, handy for a hotel this close to central London.",
     "g3": "<strong>Daily housekeeping</strong> keeps rooms fresh throughout your stay, and we&rsquo;ll happily store luggage on your day of departure.",
     "g4": "<strong>Ensuite bathrooms</strong> in every room, along with a flat-screen TV, satellite channels and free WiFi throughout the building.",
-    "g5": "<strong>Family rooms</strong> sleep up to four guests &mdash; useful for visiting family or small groups who want to stay together.",
+    "g5": "<strong>Family rooms</strong> sleep up to four guests, useful for visiting family or small groups who want to stay together.",
     "g6": "We&rsquo;re a smoke-free hotel with a designated outdoor smoking area, and quiet enough that solo travellers consistently rate us highly for comfort."
   },
   "rooms": {
@@ -234,7 +234,7 @@
     "scoreCaption": "Based on 367 verified Google reviews",
     "scoreHighlight": "Guests most often mention good value for money, friendly and helpful staff, and easy access to public transport.",
     "t1": "&ldquo;One of the best hotels I have stayed at. Very clean and big room, and the staff was very helpful and friendly.&rdquo;",
-    "t2": "&ldquo;Great location for exploring West London &mdash; close to Westfield, the tube and plenty of places to eat. Good value for a short stay.&rdquo;",
+    "t2": "&ldquo;Great location for exploring West London, close to Westfield, the tube and plenty of places to eat. Good value for a short stay.&rdquo;",
     "t3": "&ldquo;Friendly, helpful staff and a quiet spot to rest your head. Exactly what we needed for a one-night stopover.&rdquo;",
     "t4": "&ldquo;Simple, clean and exactly what was described. Staff went out of their way to help with a late check-in.&rdquo;",
     "verifiedGuest": "Verified Guest &middot; Google Reviews",
@@ -283,7 +283,7 @@
     "q2": "ID &amp; Deposit",
     "a2": "A government-issued photo ID is required at check-in (digital or scanned IDs are not accepted). A £20 cash or ID deposit is required for room keys.",
     "q3": "Breakfast",
-    "a3": "Full English or Italian breakfast served 08:00&ndash;11:30 at Little Napoli, a 5-minute walk away. Ask reception for a voucher &mdash; and enjoy 15% off all other meals there too.",
+    "a3": "Full English or Italian breakfast served 08:00&ndash;11:30 at Little Napoli, a 5-minute walk away. Ask reception for a voucher, and enjoy 15% off all other meals there too.",
     "q4": "Parking",
     "a4": "Limited on-site parking, £15/day from 14:00 on arrival to 11:00 on departure. Contact us ahead to reserve a space, as availability is limited.",
     "q5": "Payment",
@@ -311,7 +311,7 @@
     "phoneNumber": "Phone number",
     "specialRequests": "Special requests",
     "addOns": "Add-ons",
-    "breakfastAddOn": "Add breakfast &mdash; £12 per person, per night",
+    "breakfastAddOn": "Add breakfast, £12 per person, per night",
     "breakfast": "Breakfast",
     "specialRequestsPlaceholder": "Late arrival, high floor, accessible room&hellip;",
     "optional": "(optional)",
@@ -319,12 +319,12 @@
     "backToDetails": "Back to your details",
     "paymentDesc": "You&rsquo;ll be redirected to our secure booking engine to confirm your stay.",
     "encryption": "256-bit encryption",
-    "paySecurely": "Pay Securely &mdash;&nbsp;",
+    "paySecurely": "Pay Securely , &nbsp;",
     "yourStay": "Your stay",
     "room": "Room",
     "nights": "Nights",
     "total": "Total",
-    "policy1": "Pay now, direct to the hotel &mdash; no third-party booking fees.",
+    "policy1": "Pay now, direct to the hotel, no third-party booking fees.",
     "nonRefundable": "Non-refundable",
     "nonRefundableNote": "This booking is non-refundable.",
     "reserveBtn": "I&rsquo;ll Reserve",
@@ -335,7 +335,7 @@
     "firstNamePlaceholder": "Jane",
     "lastName": "Last name",
     "lastNamePlaceholder": "Smith",
-    "privacyNote": "Your details are only used to manage this booking &mdash; we never sell or share them.",
+    "privacyNote": "Your details are only used to manage this booking, we never sell or share them.",
     "nightWord": "night",
     "nightsWord": "nights",
     "errFirstName": "Please enter your first name.",
@@ -352,9 +352,9 @@
     "errNoRoomsSelected": "Please choose how many of at least one room type you need.",
     "chooseDatesPrompt": "Choose your check-in and check-out dates above to see available rooms and prices.",
     "noRoomsForParty": "No rooms fit {guests} guests in {rooms} room(s). Please select more rooms.",
-    "errCapacity": "Your selected rooms sleep up to {max} — please select more space for {guests} guests.",
+    "errCapacity": "Your selected rooms sleep up to {max}, please select more space for {guests} guests.",
     "tipLabel": "Tip:",
-    "multiRoomTip": "A Single Room sleeps 1 person. If there are 2 of you, just select 2 Single Rooms — the same goes for any room type.",
+    "multiRoomTip": "A Single Room sleeps 1 person. If there are 2 of you, just select 2 Single Rooms, the same goes for any room type.",
     "address": "Address",
     "addressPlaceholder": "123 Example Street",
     "city": "City",
@@ -387,7 +387,7 @@
     "receiptSent": "A receipt has been sent to your email. Here are your booking details:",
     "bookingRef": "Booking reference",
     "paid": "Paid",
-    "idNotice": "Please bring a government-issued photo ID at check-in (14:00&ndash;23:30). Save your booking reference above &mdash; you can look up your stay any time at <a class=\"text-link\" href=\"/check-booking\">Check Booking</a>. Questions? <a class=\"text-link\" href=\"/location\">Contact us</a>.",
+    "idNotice": "Please bring a government-issued photo ID at check-in (14:00&ndash;23:30). Save your booking reference above, you can look up your stay any time at <a class=\"text-link\" href=\"/check-booking\">Check Booking</a>. Questions? <a class=\"text-link\" href=\"/location\">Contact us</a>.",
     "wentWrong": "( Something went wrong )",
     "couldNotConfirm": "We couldn&rsquo;t confirm that booking."
   },

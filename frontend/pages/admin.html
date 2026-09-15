@@ -445,7 +445,7 @@
       const resetForm = document.getElementById('resetForm');
       const bookingForm = document.getElementById('bookingForm');
 
-      // Holds the in-flight login/reset attempt between steps — never the
+      // Holds the in-flight login/reset attempt between steps, never the
       // code or password itself, just the opaque token the server issued
       // to tie "here's a code" to "here's the code back".
       let pendingLoginChallenge = null; // { challengeToken, email, password }
@@ -509,7 +509,7 @@
         });
 
         if (!data.needsCode) {
-          // This device is already remembered — straight in, no code needed.
+          // This device is already remembered, straight in, no code needed.
           setAuthToken(data.token);
           renderLogin(false);
           await loadDashboard();
@@ -671,7 +671,7 @@
         for (const booking of bookings) {
           const row = document.createElement('tr');
           const ref = 'H261-' + String(booking.id).padStart(6, '0');
-          const bookedDate = booking.created_at ? new Date(booking.created_at).toLocaleDateString('en-GB') : '—';
+          const bookedDate = booking.created_at ? new Date(booking.created_at).toLocaleDateString('en-GB') : '-';
           row.innerHTML = `
             <td><code>${ref}</code></td>
             <td>

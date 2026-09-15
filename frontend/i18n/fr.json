@@ -70,7 +70,7 @@
     "rights": "Tous droits réservés.",
     "tagline": "Site officiel de l&rsquo;Hotel 261 à Shepherd&rsquo;s Bush, dans l&rsquo;ouest de Londres.",
     "contactInfo": "Téléphone et itinéraire",
-    "directNote": "Réservation directe &mdash; sans majoration d&rsquo;agence."
+    "directNote": "Réservation directe, sans majoration d&rsquo;agence."
   },
   "tag": {
     "ensuite": "Salle de bain privée",
@@ -84,7 +84,7 @@
     "checkAvailability": "Vérifier les disponibilités",
     "single": {
       "name": "Chambre Simple",
-      "desc": "1 lit simple &middot; 1 personne. Une chambre compacte et calme pour les voyageurs solo &mdash; l&rsquo;essentiel, sans superflu."
+      "desc": "1 lit simple &middot; 1 personne. Une chambre compacte et calme pour les voyageurs solo, l&rsquo;essentiel, sans superflu."
     },
     "twin": {
       "name": "Chambre Twin",
@@ -129,7 +129,7 @@
     },
     "family": {
       "title": "Chambres familiales",
-      "desc": "De vastes chambres familiales pour quatre personnes &mdash; deux lits simples et un double, idéales pour les familles ou petits groupes."
+      "desc": "De vastes chambres familiales pour quatre personnes, deux lits simples et un double, idéales pour les familles ou petits groupes."
     },
     "heating": {
       "title": "Chauffage",
@@ -137,11 +137,11 @@
     },
     "housekeeping": {
       "title": "Ménage quotidien",
-      "desc": "Les chambres sont nettoyées chaque jour. Le linge de lit et les serviettes sont changés le matin tous les cinq jours &mdash; laissez simplement les serviettes usagées au sol."
+      "desc": "Les chambres sont nettoyées chaque jour. Le linge de lit et les serviettes sont changés le matin tous les cinq jours, laissez simplement les serviettes usagées au sol."
     },
     "luggage": {
       "title": "Consigne à bagages",
-      "desc": "Déposez ou récupérez vos bagages à l&rsquo;arrivée ou le jour de votre départ &mdash; la consigne le jour du départ est valable pour la journée même uniquement."
+      "desc": "Déposez ou récupérez vos bagages à l&rsquo;arrivée ou le jour de votre départ, la consigne le jour du départ est valable pour la journée même uniquement."
     },
     "breakfast": {
       "title": "Petit-déjeuner à proximité",
@@ -182,29 +182,29 @@
     "viewFullGallery": "Voir toute la galerie",
     "amenitiesTitle": "Tout ce qu&rsquo;il vous faut,<br>rien de superflu.",
     "amenity1desc": "Dans tout l&rsquo;hôtel et dans chaque chambre.",
-    "amenity2desc": "Sur place, à partir de 15&nbsp;£/jour &mdash; rare dans ce quartier de Londres.",
+    "amenity2desc": "Sur place, à partir de 15&nbsp;£/jour, rare dans ce quartier de Londres.",
     "amenity3desc": "Jusqu’à quatre personnes, sans être à l’étroit.",
     "amenity4desc": "À 5 minutes à pied, chez Little Napoli.",
     "seeAllAmenities": "Voir tous les équipements",
     "ratedByGuests": "L&rsquo;avis<br>de nos clients",
     "readGuestReviews": "Lire les avis clients",
-    "amenitiesLead": "Pas de spa, pas de minibar hors de prix, pas d’extras qui compliquent tout. Juste ce qu’il faut pour un vrai bon séjour &mdash; bien fait."
+    "amenitiesLead": "Pas de spa, pas de minibar hors de prix, pas d’extras qui compliquent tout. Juste ce qu’il faut pour un vrai bon séjour, bien fait."
   },
   "about": {
     "eyebrow": "( Notre histoire )",
     "heroTitle": "À propos d&rsquo;<em>Hotel 261</em>",
     "whoWeAre": "Qui sommes-nous",
-    "lead": "Simple, confortable, et tenu par des gens qui vivent réellement ici &mdash; voilà toute l&rsquo;idée derrière Hotel 261.",
+    "lead": "Simple, confortable, et tenu par des gens qui vivent réellement ici, voilà toute l&rsquo;idée derrière Hotel 261.",
     "p1": "Niché dans une rue calme de Shepherd&rsquo;s Bush, Hotel 261 accueille ses clients dans l&rsquo;Ouest de Londres avec de grandes chambres, un parking sur place et un service sincèrement chaleureux. Chaque chambre dispose d&rsquo;une TV satellite, de quoi préparer thé et café, et d&rsquo;un réfrigérateur, avec un four à micro-ondes partagé également disponible.",
-    "p2": "Nous sommes à deux pas du centre commercial Westfield London, de plusieurs bars et cafés de l&rsquo;Ouest de Londres, et bien placés pour Wembley, le Hammersmith Apollo et le stade de football des Queens Park Rangers &mdash; à un peu plus de 10 minutes à pied. La station de métro Shepherd&rsquo;s Bush Market (lignes Circle et Hammersmith &amp; City) est à 15 minutes à pied.",
-    "p3": "Hotel 261 est un hôtel 2 étoiles simple, apprécié des voyageurs solo et des courts séjours &mdash; pratique, confortable et à un prix adapté à l&rsquo;ouest de Londres.",
+    "p2": "Nous sommes à deux pas du centre commercial Westfield London, de plusieurs bars et cafés de l&rsquo;Ouest de Londres, et bien placés pour Wembley, le Hammersmith Apollo et le stade de football des Queens Park Rangers, à un peu plus de 10 minutes à pied. La station de métro Shepherd&rsquo;s Bush Market (lignes Circle et Hammersmith &amp; City) est à 15 minutes à pied.",
+    "p3": "Hotel 261 est un hôtel 2 étoiles simple, apprécié des voyageurs solo et des courts séjours, pratique, confortable et à un prix adapté à l&rsquo;ouest de Londres.",
     "exploreRooms": "Découvrez nos chambres",
     "whatGuestsGet": "Ce que nos clients apprécient",
     "g1": "<strong>Petit-déjeuner anglais ou italien</strong> disponible à cinq minutes à pied au Little Napoli, avec des bons organisés à la réception.",
-    "g2": "<strong>Parking sur place</strong> disponible pour 15&nbsp;£/jour, selon disponibilité &mdash; pratique pour un hôtel aussi proche du centre de Londres.",
+    "g2": "<strong>Parking sur place</strong> disponible pour 15&nbsp;£/jour, selon disponibilité, pratique pour un hôtel aussi proche du centre de Londres.",
     "g3": "<strong>Ménage quotidien</strong> pour des chambres impeccables tout au long de votre séjour, et nous conservons volontiers vos bagages le jour de votre départ.",
     "g4": "<strong>Salles de bain privées</strong> dans chaque chambre, avec TV écran plat, chaînes satellite et WiFi gratuit dans tout le bâtiment.",
-    "g5": "<strong>Chambres familiales</strong> pour quatre personnes &mdash; pratique pour la famille en visite ou les petits groupes qui souhaitent rester ensemble.",
+    "g5": "<strong>Chambres familiales</strong> pour quatre personnes, pratique pour la famille en visite ou les petits groupes qui souhaitent rester ensemble.",
     "g6": "Nous sommes un hôtel non-fumeur avec un espace fumeurs extérieur dédié, et suffisamment calme pour que les voyageurs solo nous notent régulièrement très bien pour le confort."
   },
   "rooms": {
@@ -222,7 +222,7 @@
   "gallery": {
     "eyebrow": "( Galerie Photo )",
     "heroTitle": "Un aperçu en <em>images.</em>",
-    "intro": "Chaque photo ci-dessous provient de Hotel 261 &mdash; chambres, salles de bain et le bâtiment lui-même. Cliquez sur une photo pour l&rsquo;afficher en plein écran.",
+    "intro": "Chaque photo ci-dessous provient de Hotel 261, chambres, salles de bain et le bâtiment lui-même. Cliquez sur une photo pour l&rsquo;afficher en plein écran.",
     "close": "Fermer",
     "previous": "Précédent",
     "next": "Suivant"
@@ -234,7 +234,7 @@
     "scoreCaption": "Basé sur 367 avis Google vérifiés",
     "scoreHighlight": "Les clients mentionnent le plus souvent un bon rapport qualité-prix, un personnel amical et serviable, et un accès facile aux transports en commun.",
     "t1": "&ldquo;L&rsquo;un des meilleurs hôtels où j&rsquo;ai séjourné. Chambre très propre et grande, et le personnel était très serviable et amical.&rdquo;",
-    "t2": "&ldquo;Excellent emplacement pour explorer l&rsquo;Ouest de Londres &mdash; proche de Westfield, du métro et de nombreux restaurants. Bon rapport qualité-prix pour un court séjour.&rdquo;",
+    "t2": "&ldquo;Excellent emplacement pour explorer l&rsquo;Ouest de Londres, proche de Westfield, du métro et de nombreux restaurants. Bon rapport qualité-prix pour un court séjour.&rdquo;",
     "t3": "&ldquo;Personnel amical et serviable, et un endroit calme pour se reposer. Exactement ce qu&rsquo;il nous fallait pour une escale d&rsquo;une nuit.&rdquo;",
     "t4": "&ldquo;Simple, propre et conforme à la description. Le personnel s&rsquo;est donné du mal pour nous aider avec une arrivée tardive.&rdquo;",
     "verifiedGuest": "Client vérifié &middot; Avis Google",
@@ -283,7 +283,7 @@
     "q2": "Pièce d&rsquo;identité &amp; caution",
     "a2": "Une pièce d&rsquo;identité officielle avec photo est requise à l&rsquo;arrivée (les copies numériques ou scannées ne sont pas acceptées). Une caution de 20&nbsp;£ en espèces ou une pièce d&rsquo;identité est demandée pour les clés de chambre.",
     "q3": "Petit-déjeuner",
-    "a3": "Petit-déjeuner anglais ou italien servi de 08h00 à 11h30 au Little Napoli, à 5 minutes à pied. Demandez un bon à la réception &mdash; et profitez de 15&nbsp;% de réduction sur les autres repas.",
+    "a3": "Petit-déjeuner anglais ou italien servi de 08h00 à 11h30 au Little Napoli, à 5 minutes à pied. Demandez un bon à la réception, et profitez de 15&nbsp;% de réduction sur les autres repas.",
     "q4": "Parking",
     "a4": "Parking sur place limité, 15&nbsp;£/jour de 14h00 à l&rsquo;arrivée à 11h00 au départ. Contactez-nous à l&rsquo;avance pour réserver une place, la disponibilité étant limitée.",
     "q5": "Paiement",
@@ -311,7 +311,7 @@
     "phoneNumber": "Numéro de téléphone",
     "specialRequests": "Demandes particulières",
     "addOns": "Options",
-    "breakfastAddOn": "Ajouter le petit-d&eacute;jeuner &mdash; 12&nbsp;£ par personne, par nuit",
+    "breakfastAddOn": "Ajouter le petit-d&eacute;jeuner, 12&nbsp;£ par personne, par nuit",
     "breakfast": "Petit-d&eacute;jeuner",
     "specialRequestsPlaceholder": "Arrivée tardive, étage élevé, chambre accessible&hellip;",
     "optional": "(facultatif)",
@@ -319,12 +319,12 @@
     "backToDetails": "Retour à vos informations",
     "paymentDesc": "Vous serez redirigé vers notre moteur de réservation sécurisé pour confirmer votre séjour.",
     "encryption": "Chiffrement 256 bits",
-    "paySecurely": "Payer en toute sécurité &mdash;&nbsp;",
+    "paySecurely": "Payer en toute sécurité , &nbsp;",
     "yourStay": "Votre séjour",
     "room": "Chambre",
     "nights": "Nuits",
     "total": "Total",
-    "policy1": "Payez directement à l&rsquo;hôtel &mdash; aucuns frais d&rsquo;intermédiaire.",
+    "policy1": "Payez directement à l&rsquo;hôtel, aucuns frais d&rsquo;intermédiaire.",
     "nonRefundable": "Non remboursable",
     "nonRefundableNote": "Cette r&eacute;servation n&rsquo;est pas remboursable.",
     "reserveBtn": "Je réserve",
@@ -335,7 +335,7 @@
     "firstNamePlaceholder": "Jeanne",
     "lastName": "Nom",
     "lastNamePlaceholder": "Dupont",
-    "privacyNote": "Vos informations ne servent qu&rsquo;à gérer cette réservation &mdash; nous ne les vendons ni ne les partageons jamais.",
+    "privacyNote": "Vos informations ne servent qu&rsquo;à gérer cette réservation, nous ne les vendons ni ne les partageons jamais.",
     "nightWord": "nuit",
     "nightsWord": "nuits",
     "errFirstName": "Veuillez indiquer votre prénom.",
@@ -352,9 +352,9 @@
     "errNoRoomsSelected": "Veuillez indiquer le nombre souhaité pour au moins un type de chambre.",
     "chooseDatesPrompt": "Choisissez vos dates d’arrivée et de départ ci-dessus pour voir les chambres disponibles et leurs prix.",
     "noRoomsForParty": "Aucune chambre ne peut accueillir {guests} personnes en {rooms} chambre(s). Veuillez sélectionner plus de chambres.",
-    "errCapacity": "Vos chambres sélectionnées accueillent jusqu’à {max} personne(s) — veuillez choisir plus d’espace pour {guests} voyageurs.",
+    "errCapacity": "Vos chambres sélectionnées accueillent jusqu’à {max} personne(s), veuillez choisir plus d’espace pour {guests} voyageurs.",
     "tipLabel": "Astuce :",
-    "multiRoomTip": "Une chambre simple accueille 1 personne. Si vous êtes 2, sélectionnez simplement 2 chambres simples — la même logique s’applique à tous les types de chambres.",
+    "multiRoomTip": "Une chambre simple accueille 1 personne. Si vous êtes 2, sélectionnez simplement 2 chambres simples, la même logique s’applique à tous les types de chambres.",
     "address": "Adresse",
     "addressPlaceholder": "123 rue Exemple",
     "city": "Ville",
@@ -387,7 +387,7 @@
     "receiptSent": "Un reçu a été envoyé à votre adresse e-mail. Voici les détails de votre réservation&nbsp;:",
     "bookingRef": "Référence de réservation",
     "paid": "Payé",
-    "idNotice": "Munissez-vous d&rsquo;une pièce d&rsquo;identité officielle avec photo à l&rsquo;arrivée (14h00&ndash;23h30). Conservez votre référence de réservation ci-dessus &mdash; vous pouvez retrouver votre séjour à tout moment sur <a class=\"text-link\" href=\"/check-booking\">Suivre ma réservation</a>. Des questions&nbsp;? <a class=\"text-link\" href=\"/location\">Contactez-nous</a>.",
+    "idNotice": "Munissez-vous d&rsquo;une pièce d&rsquo;identité officielle avec photo à l&rsquo;arrivée (14h00&ndash;23h30). Conservez votre référence de réservation ci-dessus, vous pouvez retrouver votre séjour à tout moment sur <a class=\"text-link\" href=\"/check-booking\">Suivre ma réservation</a>. Des questions&nbsp;? <a class=\"text-link\" href=\"/location\">Contactez-nous</a>.",
     "wentWrong": "( Un problème est survenu )",
     "couldNotConfirm": "Nous n&rsquo;avons pas pu confirmer cette réservation."
   },

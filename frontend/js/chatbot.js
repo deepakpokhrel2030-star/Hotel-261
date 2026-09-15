@@ -2,7 +2,7 @@
   var PHONE = '020 8743 4411';
 
   // Every answer here is sourced from the site's own content (rooms, FAQ,
-  // location pages) — nothing is invented. Keep this in sync if those facts change.
+  // location pages), nothing is invented. Keep this in sync if those facts change.
   var KB = [
     {
       keywords: ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening'],
@@ -14,31 +14,31 @@
     },
     {
       keywords: ['single room', 'single'],
-      answer: 'Single Room &mdash; £54/night, sleeps 1. Ensuite bathroom, free WiFi, flat-screen TV and tea &amp; coffee facilities.'
+      answer: 'Single Room, £54/night, sleeps 1. Ensuite bathroom, free WiFi, flat-screen TV and tea &amp; coffee facilities.'
     },
     {
       keywords: ['twin room', 'twin'],
-      answer: 'Twin Room &mdash; £75/night, sleeps 2 in two single beds. A favourite with friends travelling together.'
+      answer: 'Twin Room, £75/night, sleeps 2 in two single beds. A favourite with friends travelling together.'
     },
     {
       keywords: ['double room', 'double'],
-      answer: 'We have two double options: Double Room (1&ndash;2 Adults) at £75/night, and our classic Double Room at £80/night &mdash; both sleep 2.'
+      answer: 'We have two double options: Double Room (1&ndash;2 Adults) at £75/night, and our classic Double Room at £80/night, both sleep 2.'
     },
     {
       keywords: ['triple'],
-      answer: 'Triple Room &mdash; £95/night, sleeps 3.'
+      answer: 'Triple Room, £95/night, sleeps 3.'
     },
     {
       keywords: ['quad', 'quadruple'],
-      answer: 'Quadruple Room &mdash; £120/night, sleeps 4.'
+      answer: 'Quadruple Room, £120/night, sleeps 4.'
     },
     {
       keywords: ['family room', 'family', 'four', '4 people', 'kids', 'children', 'child'],
-      answer: 'Family Room &mdash; £120/night, sleeps up to 4 (two single beds and one double) &mdash; ideal for families or small groups. Children are very welcome; for anything specific like a cot, it\'s best to call reception on <a href="tel:+442087434411">' + PHONE + '</a> to check what we can arrange.'
+      answer: 'Family Room, £120/night, sleeps up to 4 (two single beds and one double), ideal for families or small groups. Children are very welcome; for anything specific like a cot, it\'s best to call reception on <a href="tel:+442087434411">' + PHONE + '</a> to check what we can arrange.'
     },
     {
       keywords: ['group', 'multiple rooms', 'several rooms', 'more than one room', 'block booking'],
-      answer: 'Yes &mdash; on our <a href="/book">Book</a> page you can select more than one room, including several of the same type, to cover a larger party. For 10 or more rooms, please call us on <a href="tel:+442087434411">' + PHONE + '</a> so we can help directly.'
+      answer: 'Yes, on our <a href="/book">Book</a> page you can select more than one room, including several of the same type, to cover a larger party. For 10 or more rooms, please call us on <a href="tel:+442087434411">' + PHONE + '</a> so we can help directly.'
     },
     {
       keywords: ['check-in', 'check in', 'checkin', 'check-out', 'check out', 'checkout', 'arrival time', 'what time', 'late arrival', 'early arrival'],
@@ -46,7 +46,7 @@
     },
     {
       keywords: ['reception hours', 'front desk', 'opening hours', 'open 24', '24 hour', '24/7', 'reception open'],
-      answer: 'Reception is staffed 8am&ndash;11:30pm daily. It\'s not a 24-hour desk, which is also why check-in has to happen by 23:30 &mdash; the hotel is closed overnight.'
+      answer: 'Reception is staffed 8am&ndash;11:30pm daily. It\'s not a 24-hour desk, which is also why check-in has to happen by 23:30, the hotel is closed overnight.'
     },
     {
       keywords: ['id', 'identification', 'deposit', 'passport', 'photo id', 'identity'],
@@ -54,7 +54,7 @@
     },
     {
       keywords: ['breakfast', 'food', 'eat', 'restaurant', 'dinner', 'lunch'],
-      answer: 'Full English or Italian breakfast is served 08:00&ndash;11:30 at Little Napoli, a 5-minute walk away. Ask reception for a voucher &mdash; you\'ll also get 15% off all other meals there.'
+      answer: 'Full English or Italian breakfast is served 08:00&ndash;11:30 at Little Napoli, a 5-minute walk away. Ask reception for a voucher, you\'ll also get 15% off all other meals there.'
     },
     {
       keywords: ['parking', 'park', 'car', 'car park', 'garage'],
@@ -70,7 +70,7 @@
     },
     {
       keywords: ['smoke', 'smoking', 'cigarette', 'vape', 'vaping'],
-      answer: 'We\'re a smoke-free hotel &mdash; that includes vaping too. There\'s a designated outdoor smoking area away from the entrance.'
+      answer: 'We\'re a smoke-free hotel, that includes vaping too. There\'s a designated outdoor smoking area away from the entrance.'
     },
     {
       keywords: ['luggage', 'bag', 'bags', 'suitcase'],
@@ -98,19 +98,19 @@
     },
     {
       keywords: ['solo', 'travelling alone', 'traveling alone', 'one person', 'by myself'],
-      answer: 'We\'re popular with solo travellers &mdash; the hotel is quiet and comfortable, and our Single Room (£54/night) is built exactly for that.'
+      answer: 'We\'re popular with solo travellers, the hotel is quiet and comfortable, and our Single Room (£54/night) is built exactly for that.'
     },
     {
       keywords: ['quiet', 'noise', 'noisy'],
-      answer: 'Guests consistently tell us the hotel is quiet and comfortable &mdash; it\'s one of the things solo travellers rate us highly for.'
+      answer: 'Guests consistently tell us the hotel is quiet and comfortable, it\'s one of the things solo travellers rate us highly for.'
     },
     {
       keywords: ['nearby', 'attractions', 'things to do', 'westfield', 'wembley', 'apollo', 'qpr', 'shopping', 'bars', 'restaurants', 'stadium', 'gig', 'concert'],
-      answer: 'Westfield London shopping centre is about a mile away, and we\'re well placed for Queens Park Rangers\' stadium (10&ndash;14 minutes on foot), the Hammersmith Apollo, and Wembley &mdash; plus a handful of local bars and caf&eacute;s nearby.'
+      answer: 'Westfield London shopping centre is about a mile away, and we\'re well placed for Queens Park Rangers\' stadium (10&ndash;14 minutes on foot), the Hammersmith Apollo, and Wembley, plus a handful of local bars and caf&eacute;s nearby.'
     },
     {
       keywords: ['availability', 'available', 'vacancy', 'vacant', 'free room', 'sold out', 'dates'],
-      answer: 'The best way to check availability is on our <a href="/book">Book</a> page &mdash; enter your dates and number of guests and we\'ll show you what fits.'
+      answer: 'The best way to check availability is on our <a href="/book">Book</a> page, enter your dates and number of guests and we\'ll show you what fits.'
     },
     {
       keywords: ['cancel', 'cancellation', 'refund', 'change my booking'],
@@ -118,11 +118,11 @@
     },
     {
       keywords: ['book', 'booking', 'reserve', 'reservation'],
-      answer: 'You can book directly on our <a href="/book">Book</a> page &mdash; choose your dates and rooms, then pay securely online. Or call us on <a href="tel:+442087434411">' + PHONE + '</a> to book by phone.'
+      answer: 'You can book directly on our <a href="/book">Book</a> page, choose your dates and rooms, then pay securely online. Or call us on <a href="tel:+442087434411">' + PHONE + '</a> to book by phone.'
     },
     {
       keywords: ['where', 'location', 'address', 'directions', 'find you'],
-      answer: 'We\'re at 261&ndash;263 Uxbridge Road, Shepherd\'s Bush, London W12 9DS &mdash; a short walk from Westfield London, and about 15 minutes on foot from Shepherd\'s Bush Market Underground station. See the <a href="/location">Location</a> page for a map.'
+      answer: 'We\'re at 261&ndash;263 Uxbridge Road, Shepherd\'s Bush, London W12 9DS, a short walk from Westfield London, and about 15 minutes on foot from Shepherd\'s Bush Market Underground station. See the <a href="/location">Location</a> page for a map.'
     },
     {
       keywords: ['tube', 'underground', 'station', 'train', 'transport'],
@@ -150,11 +150,11 @@
     },
     {
       keywords: ['bye', 'goodbye', 'see you'],
-      answer: 'Thanks for stopping by &mdash; have a great day! Call ' + PHONE + ' anytime if you need us.'
+      answer: 'Thanks for stopping by, have a great day! Call ' + PHONE + ' anytime if you need us.'
     }
   ];
 
-  var FALLBACK = 'That one\'s a bit too specific for me to answer &mdash; the team will be happy to help if you call reception on <a href="tel:+442087434411">' + PHONE + '</a>. In the meantime, here\'s what I can help with:';
+  var FALLBACK = 'That one\'s a bit too specific for me to answer, the team will be happy to help if you call reception on <a href="tel:+442087434411">' + PHONE + '</a>. In the meantime, here\'s what I can help with:';
 
   var QUICK_REPLIES = ['Room prices', 'Check-in times', 'Parking', 'How do I book?', 'Where are you located?'];
 
@@ -299,7 +299,7 @@
       if (badge) badge.style.display = 'none';
       if (!messages.children.length) {
         showTyping(function () {
-          addMessage('Hi! I\'m the Hotel 261 assistant 👋 I\'m happy to help with rooms &amp; prices, check-in times, parking, pets, booking &mdash; pretty much anything about your stay. What would you like to know?', 'bot');
+          addMessage('Hi! I\'m the Hotel 261 assistant 👋 I\'m happy to help with rooms &amp; prices, check-in times, parking, pets, booking, pretty much anything about your stay. What would you like to know?', 'bot');
           renderQuickReplies(QUICK_REPLIES);
         });
       }
