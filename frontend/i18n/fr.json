@@ -6,9 +6,7 @@
     "gallery": "Galerie",
     "amenities": "Services",
     "reviews": "Avis",
-    "location": "Adresse",
-    "checkBooking": "Suivre ma réservation"
-  },
+    "location": "Adresse"  },
   "common": {
     "reserve": "Réserver",
     "reviewsWord": "avis",
@@ -66,7 +64,6 @@
     "locationInfo": "Adresse et infos",
     "googleReview": "Laissez un avis sur Google",
     "bookDirect": "Réserver en direct",
-    "checkBooking": "Suivre ma réservation",
     "rights": "Tous droits réservés.",
     "tagline": "Site officiel de l&rsquo;Hotel 261 à Shepherd&rsquo;s Bush, dans l&rsquo;ouest de Londres.",
     "contactInfo": "Téléphone et itinéraire",
@@ -387,26 +384,7 @@
     "receiptSent": "Un reçu a été envoyé à votre adresse e-mail. Voici les détails de votre réservation&nbsp;:",
     "bookingRef": "Référence de réservation",
     "paid": "Payé",
-    "idNotice": "Munissez-vous d&rsquo;une pièce d&rsquo;identité officielle avec photo à l&rsquo;arrivée (14h00&ndash;23h30). Conservez votre référence de réservation ci-dessus, vous pouvez retrouver votre séjour à tout moment sur <a class=\"text-link\" href=\"/check-booking\">Suivre ma réservation</a>. Des questions&nbsp;? <a class=\"text-link\" href=\"/location\">Contactez-nous</a>.",
+    "idNotice": "Munissez-vous d&rsquo;une pièce d&rsquo;identité officielle avec photo à l&rsquo;arrivée (14h00&ndash;23h30). Conservez votre référence de réservation ci-dessus, vous pouvez retrouver votre séjour à tout moment sur <a class=\"text-link\" href=\"/location\">Suivre ma réservation</a>. Des questions&nbsp;? <a class=\"text-link\" href=\"/location\">Contactez-nous</a>.",
     "wentWrong": "( Un problème est survenu )",
     "couldNotConfirm": "Nous n&rsquo;avons pas pu confirmer cette réservation."
-  },
-  "checkBooking": {
-    "eyebrow": "( Gérer votre séjour )",
-    "heroTitle": "Suivez votre <em>réservation.</em>",
-    "findReservation": "Retrouver votre réservation",
-    "intro": "Saisissez votre r&eacute;f&eacute;rence de r&eacute;servation et l&rsquo;adresse e-mail ou le num&eacute;ro de t&eacute;l&eacute;phone de votre confirmation pour v&eacute;rifier le statut de votre r&eacute;servation.",
-    "emailAddress": "Adresse e-mail",
-    "or": "ou",
-    "phoneNumber": "Num&eacute;ro de t&eacute;l&eacute;phone",
-    "findBtn": "Trouver ma réservation",
-    "refHint": "Votre référence de réservation figurait sur votre page de confirmation et vous a été envoyée par e-mail après confirmation.",
-    "noDetails": "Vous n&rsquo;avez pas ces informations&nbsp;? Appelez-nous au <a class=\"text-link\" href=\"tel:+442087434411\">020 8743 4411</a> et nous la retrouverons pour vous.",
-    "yourBooking": "Votre réservation",
-    "status": "Statut",
-    "needChange": "Besoin de modifier ou d&rsquo;annuler votre réservation&nbsp;?",
-    "statusPending": "Paiement en attente",
-    "statusConfirmed": "Confirmée",
-    "statusCancelled": "Annulée"
-  }
-}
+  }}

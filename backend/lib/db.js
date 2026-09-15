@@ -60,8 +60,7 @@ async function initDatabase() {
   `);
 
   // Added so guests can look up a booking by phone number as well as email
-  // on the Check Booking page. NULL for bookings made before this existed -
-  // those can still be found by email.
+  // NULL for bookings made before this existed; retained for existing records.
   await pool.query(`
     ALTER TABLE hotel_bookings ADD COLUMN IF NOT EXISTS phone TEXT;
   `);

@@ -6,9 +6,7 @@
     "gallery": "Galleria",
     "amenities": "Servizi",
     "reviews": "Recensioni",
-    "location": "Dove siamo",
-    "checkBooking": "Verifica prenotazione"
-  },
+    "location": "Dove siamo"  },
   "common": {
     "reserve": "Prenota",
     "reviewsWord": "recensioni",
@@ -66,7 +64,6 @@
     "locationInfo": "Dove siamo e informazioni",
     "googleReview": "Lasciaci una recensione su Google",
     "bookDirect": "Prenota direttamente",
-    "checkBooking": "Verifica prenotazione",
     "rights": "Tutti i diritti riservati.",
     "tagline": "Sito ufficiale di Hotel 261 a Shepherd&rsquo;s Bush, nella zona ovest di Londra.",
     "contactInfo": "Telefono e indicazioni",
@@ -387,26 +384,7 @@
     "receiptSent": "Una ricevuta è stata inviata alla tua email. Ecco i dettagli della tua prenotazione:",
     "bookingRef": "Codice prenotazione",
     "paid": "Pagato",
-    "idNotice": "Ricordati di portare un documento d&rsquo;identità ufficiale con foto al check-in (14:00&ndash;23:30). Conserva il codice della tua prenotazione qui sopra, puoi consultare il tuo soggiorno in qualsiasi momento su <a class=\"text-link\" href=\"/check-booking\">Verifica prenotazione</a>. Domande? <a class=\"text-link\" href=\"/location\">Contattaci</a>.",
+    "idNotice": "Ricordati di portare un documento d&rsquo;identità ufficiale con foto al check-in (14:00&ndash;23:30). Conserva il codice della tua prenotazione qui sopra, puoi consultare il tuo soggiorno in qualsiasi momento su <a class=\"text-link\" href=\"/location\">Verifica prenotazione</a>. Domande? <a class=\"text-link\" href=\"/location\">Contattaci</a>.",
     "wentWrong": "( Qualcosa è andato storto )",
     "couldNotConfirm": "Non siamo riusciti a confermare questa prenotazione."
-  },
-  "checkBooking": {
-    "eyebrow": "( Gestisci il tuo soggiorno )",
-    "heroTitle": "Verifica la tua <em>prenotazione.</em>",
-    "findReservation": "Trova la tua prenotazione",
-    "intro": "Inserisci il tuo numero di riferimento della prenotazione e l&rsquo;indirizzo email o il numero di telefono della tua conferma per controllare lo stato della prenotazione.",
-    "emailAddress": "Indirizzo email",
-    "or": "o",
-    "phoneNumber": "Numero di telefono",
-    "findBtn": "Trova la mia prenotazione",
-    "refHint": "Il codice della tua prenotazione è stato mostrato nella pagina di conferma e inviato via email dopo la conferma.",
-    "noDetails": "Non hai questi dati? Chiamaci al <a class=\"text-link\" href=\"tel:+442087434411\">020 8743 4411</a> e la cercheremo per te.",
-    "yourBooking": "La tua prenotazione",
-    "status": "Stato",
-    "needChange": "Devi modificare o cancellare la tua prenotazione?",
-    "statusPending": "Pagamento in sospeso",
-    "statusConfirmed": "Confermata",
-    "statusCancelled": "Annullata"
-  }
-}
+  }}

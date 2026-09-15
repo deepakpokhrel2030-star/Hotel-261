@@ -26,7 +26,6 @@ app.get('/sitemap.xml', (req, res) => res.sendFile(path.join(FRONTEND_DIR, 'site
 // functions there, not inside backend/), so it's reached via ../api from here.
 app.post('/api/create-checkout-session', require('../api/create-checkout-session'));
 app.get('/api/verify-session', require('../api/verify-session'));
-app.post('/api/find-booking', require('../api/find-booking'));
 app.post('/api/contact', require('../api/contact'));
 
 app.get('/api/health', async (req, res) => {
@@ -67,7 +66,6 @@ const CLEAN_URL_PAGES = {
   '/location': 'location.html',
   '/book': 'book.html',
   '/booking-success': 'booking-success.html',
-  '/check-booking': 'check-booking.html',
 };
 
 for (const [route, file] of Object.entries(CLEAN_URL_PAGES)) {

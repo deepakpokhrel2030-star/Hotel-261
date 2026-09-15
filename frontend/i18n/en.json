@@ -7,9 +7,7 @@
     "amenities": "Amenities",
     "reviews": "Reviews",
     "location": "Location",
-    "contact": "Contact",
-    "checkBooking": "Check Booking"
-  },
+    "contact": "Contact"  },
   "common": {
     "reserve": "Reserve",
     "reviewsWord": "reviews",
@@ -68,7 +66,6 @@
     "googleReview": "Review us on Google",
     "bookDirect": "Book Direct",
     "contact": "Contact",
-    "checkBooking": "Check Booking",
     "rights": "All rights reserved.",
     "tagline": "Official website for Hotel 261 in Shepherd&rsquo;s Bush, West London.",
     "contactInfo": "Phone &amp; directions",
@@ -389,26 +386,7 @@
     "receiptSent": "A receipt has been sent to your email. Here are your booking details:",
     "bookingRef": "Booking reference",
     "paid": "Paid",
-    "idNotice": "Please bring a government-issued photo ID at check-in (14:00&ndash;23:30). Save your booking reference above, you can look up your stay any time at <a class=\"text-link\" href=\"/check-booking\">Check Booking</a>. Questions? <a class=\"text-link\" href=\"/location\">Contact us</a>.",
+    "idNotice": "Please bring a government-issued photo ID at check-in (14:00&ndash;23:30). Save your booking reference above, you can look up your stay any time at <a class=\"text-link\" href=\"/location\">Contact reception</a>. Questions? <a class=\"text-link\" href=\"/location\">Contact us</a>.",
     "wentWrong": "( Something went wrong )",
     "couldNotConfirm": "We couldn&rsquo;t confirm that booking."
-  },
-  "checkBooking": {
-    "eyebrow": "( Manage Your Stay )",
-    "heroTitle": "Check your <em>booking.</em>",
-    "findReservation": "Find Your Reservation",
-    "intro": "Enter your booking reference and either the email address or phone number from your confirmation to check your booking&rsquo;s status.",
-    "emailAddress": "Email address",
-    "or": "or",
-    "phoneNumber": "Phone number",
-    "findBtn": "Find My Booking",
-    "refHint": "Your booking reference was shown on your booking confirmation page and emailed to you after confirmation.",
-    "noDetails": "Don&rsquo;t have these details? Call us on <a class=\"text-link\" href=\"tel:+442087434411\">020 8743 4411</a> and we&rsquo;ll look it up for you.",
-    "yourBooking": "Your booking",
-    "status": "Status",
-    "needChange": "Need to change or cancel your booking?",
-    "statusPending": "Payment pending",
-    "statusConfirmed": "Confirmed",
-    "statusCancelled": "Cancelled"
-  }
-}
+  }}
