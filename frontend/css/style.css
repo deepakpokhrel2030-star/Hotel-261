@@ -1144,6 +1144,23 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .review-cta{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 .cta{ border-top:1px solid rgba(255,255,255,.08); }
 .site-footer{ padding-top:64px; }
+.site-footer{
+  background:#151719;
+  color:#f6f7f5;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.site-footer .logo{ color:#f6f7f5; }
+.site-footer .logo-light{ display:none; }
+.site-footer .logo-dark{ display:block; }
+.site-footer .footer-tagline,
+.site-footer .footer-cols a,
+.site-footer .footer-cols p,
+.site-footer .footer-bottom{ color:rgba(246,247,245,.68); }
+.site-footer .footer-cols h5{ color:rgba(246,247,245,.48); }
+.site-footer .footer-cols a:hover{ color:var(--accent-light); }
+.site-footer .footer-line .icon{ color:var(--accent-light); }
+.site-footer .footer-top,
+.site-footer .footer-bottom{ border-color:rgba(255,255,255,.13); }
 .chatbot-panel{ border-radius:8px; }
 .chatbot-msg, .chatbot-typing{ border-radius:8px; }
 .chatbot-chip{ border-radius:5px; }
