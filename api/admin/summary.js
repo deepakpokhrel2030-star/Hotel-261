@@ -1,4 +1,4 @@
-const { pool } = require('../../backend/lib/db');
+const { pool, ensureContactMessagesTable } = require('../../backend/lib/db');
 const { requireAdmin } = require('../../backend/lib/admin');
 
 module.exports = async (req, res) => {
@@ -9,6 +9,7 @@ module.exports = async (req, res) => {
 
   return requireAdmin(req, res, async () => {
     try {
+      await ensureContactMessagesTable();
       const summary = await pool.query(`
         SELECT
           COUNT(*)::int AS total_bookings,

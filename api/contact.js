@@ -1,4 +1,4 @@
-const { pool } = require('../backend/lib/db');
+const { pool, ensureContactMessagesTable } = require('../backend/lib/db');
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -23,6 +23,7 @@ module.exports = async (req, res) => {
   if (message.length < 10 || message.length > 5000) return res.status(400).json({ error: 'Please enter a message between 10 and 5,000 characters.' });
 
   try {
+    await ensureContactMessagesTable();
     const result = await pool.query(
       `INSERT INTO hotel_contact_messages (name, email, phone, subject, message)
        VALUES ($1, $2, $3, $4, $5)

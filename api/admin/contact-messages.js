@@ -1,10 +1,11 @@
-const { pool } = require('../../backend/lib/db');
+const { pool, ensureContactMessagesTable } = require('../../backend/lib/db');
 const { requireAdmin } = require('../../backend/lib/admin');
 
 module.exports = async (req, res) => {
   return requireAdmin(req, res, async () => {
     if (req.method === 'GET') {
       try {
+        await ensureContactMessagesTable();
         const result = await pool.query(`
           SELECT id, name, email, phone, subject, message, status, created_at, updated_at
           FROM hotel_contact_messages
@@ -26,6 +27,7 @@ module.exports = async (req, res) => {
       }
 
       try {
+        await ensureContactMessagesTable();
         const result = await pool.query(
           `UPDATE hotel_contact_messages SET status = $1, updated_at = NOW() WHERE id = $2 RETURNING *;`,
           [status, id]
