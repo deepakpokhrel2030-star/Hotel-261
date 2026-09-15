@@ -380,15 +380,12 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 /* ============ Page banner (interior pages) - must stay after .hero to win the cascade ============ */
 .hero--page{
   height:clamp(270px, 34vh, 360px); min-height:0; max-height:none; align-items:stretch;
-  background:var(--paper-2); border-bottom:2px solid #ed1c24;
+  background:var(--paper-2); border-bottom:1px solid var(--line);
 }
 .hero--page .hero-media,
 .hero--page .hero-scrim{ display:none; }
-.hero--page::before{
-  content:''; position:absolute; left:32px; top:50%; width:2px; height:96px;
-  background:#ed1c24; transform:translateY(-28%);
-}
-.hero--page .hero-inner{ justify-content:center; padding-top:102px; padding-bottom:34px; }
+.hero--page::before{ display:none; }
+.hero--page .hero-inner{ justify-content:center; align-items:center; text-align:center; padding-top:102px; padding-bottom:34px; }
 .hero--page .hero-title{ font-size:clamp(2rem,4.6vw,3rem); }
 .hero--page .hero-inner{ color:var(--ink); }
 .hero--page .hero-eyebrow,
@@ -1245,6 +1242,5 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   .main-nav a{ padding-inline:9px; }
 
   .hero--page{ height:250px; }
-  .hero--page::before{ left:20px; height:72px; }
   .hero--page .hero-inner{ padding:92px 28px 24px; }
 }
