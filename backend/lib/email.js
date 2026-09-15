@@ -1,4 +1,4 @@
-// Thin wrapper around the Resend HTTP API (no SDK needed — it's one POST request).
+// Thin wrapper around the Resend HTTP API (no SDK needed - it's one POST request).
 // Falls back to logging the message when RESEND_API_KEY isn't set yet, so the
 // 2FA/reset flow can still be built and tested locally before that's configured.
 async function sendEmail({ to, subject, html, text }) {

@@ -28,7 +28,7 @@ module.exports = async (req, res) => {
   const passwordHash = await bcrypt.hash(newPassword, 10);
   await pool.query('UPDATE admin_users SET password_hash = $1, updated_at = NOW() WHERE email = $2', [passwordHash, result.email]);
 
-  // A password reset should force every device — trusted or not — to sign
+  // A password reset should force every device - trusted or not - to sign
   // in again from scratch.
   await invalidateDevicesAndSessions(result.email);
 

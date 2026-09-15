@@ -18,7 +18,7 @@ module.exports = async (req, res) => {
   const { email, phone, reference } = req.body || {};
   const cleanEmail = String(email || '').trim().toLowerCase();
   const cleanPhone = String(phone || '').trim();
-  // References look like "H261-000123" — take the trailing run of digits, not
+  // References look like "H261-000123" - take the trailing run of digits, not
   // every digit in the string, so the "261" in the brand prefix isn't swept in too.
   const refMatch = String(reference || '').trim().match(/(\d+)\s*$/);
   const bookingId = refMatch ? parseInt(refMatch[1], 10) : NaN;

@@ -51,7 +51,7 @@ module.exports = async (req, res) => {
     const nights = nightsBetween(checkIn, checkOut);
     if (nights < 1 || nights > 30) return res.status(400).json({ error: 'Stay must be between 1 and 30 nights.' });
 
-    // Re-derive every line from the authoritative ROOMS table — never trust a
+    // Re-derive every line from the authoritative ROOMS table - never trust a
     // price or label the client sent.
     let totalRooms = 0;
     let totalCapacity = 0;
@@ -71,7 +71,7 @@ module.exports = async (req, res) => {
 
     const guestCount = parseInt(guests, 10) || 1;
     if (guestCount < 1 || guestCount > totalCapacity) {
-      return res.status(400).json({ error: `Your selected rooms sleep up to ${totalCapacity} guest(s) — please add another room or reduce your party size.` });
+      return res.status(400).json({ error: `Your selected rooms sleep up to ${totalCapacity} guest(s) - please add another room or reduce your party size.` });
     }
 
     if (!name || !String(name).trim()) return res.status(400).json({ error: 'Please enter your full name.' });
@@ -98,7 +98,7 @@ module.exports = async (req, res) => {
           currency: 'gbp',
           unit_amount: Math.round(item.nightlyPrice * nights * 100),
           product_data: {
-            name: `Hotel 261 — ${item.roomLabel}`,
+            name: `Hotel 261 - ${item.roomLabel}`,
             description: `${nights} night${nights > 1 ? 's' : ''} · ${checkIn} to ${checkOut}${item.quantity > 1 ? ` · ${item.quantity} rooms` : ''}`,
           },
         },
@@ -108,7 +108,7 @@ module.exports = async (req, res) => {
           currency: 'gbp',
           unit_amount: Math.round(BREAKFAST_PRICE_PER_PERSON_PER_NIGHT * 100),
           product_data: {
-            name: 'Hotel 261 — Breakfast',
+            name: 'Hotel 261 - Breakfast',
             description: `£${BREAKFAST_PRICE_PER_PERSON_PER_NIGHT} per person per night · ${guestCount} guest${guestCount > 1 ? 's' : ''} · ${nights} night${nights > 1 ? 's' : ''}`,
           },
         },
@@ -139,10 +139,10 @@ module.exports = async (req, res) => {
       .filter(Boolean).join(', ');
     const notesParts = [`Phone: ${String(phone).trim()}`, `Address: ${addressLine}`];
     if (arrivalTime) notesParts.push(`Estimated arrival: ${String(arrivalTime).slice(0, 40)}`);
-    if (bookingFor === 'someone_else') notesParts.push(`Booking is for someone else — main guest: ${String(mainGuestName).trim().slice(0, 200)}`);
+    if (bookingFor === 'someone_else') notesParts.push(`Booking is for someone else - main guest: ${String(mainGuestName).trim().slice(0, 200)}`);
     if (travelPurpose === 'yes') {
       let businessLine = 'Travelling for work';
-      if (companyName && String(companyName).trim()) businessLine += ` — ${String(companyName).trim().slice(0, 200)}`;
+      if (companyName && String(companyName).trim()) businessLine += ` - ${String(companyName).trim().slice(0, 200)}`;
       if (vatNumber && String(vatNumber).trim()) businessLine += ` (VAT: ${String(vatNumber).trim().slice(0, 40)})`;
       notesParts.push(businessLine);
     }

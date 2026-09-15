@@ -117,7 +117,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .section-sub{ font-size:1.08rem; font-weight:500; line-height:1.65; color:var(--ink-soft); }
 /* Used on the simpler "utility" pages (Book, Rooms, Gallery, Check
    Booking) where the section-head + intro line sit above a full-width
-   tool rather than a two-column layout — centering them as one block
+   tool rather than a two-column layout - centering them as one block
    reads better than a narrow line of text stranded on the left. */
 .section-intro{ text-align:center; }
 .section-intro .section-head{ justify-content:center; }
@@ -151,7 +151,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .text-link{ font-weight:600; font-size:.92rem; color:var(--accent); border-bottom:1px solid transparent; padding-bottom:2px; transition:border-color .2s ease; }
 .text-link:hover{ border-color:var(--accent); }
 /* CTA-style text-links get a small pill/box treatment (border, fill
-   on hover) instead of reading as plain underlined text — plain
+   on hover) instead of reading as plain underlined text - plain
    .text-link usages like a phone number are untouched. */
 .text-link.link-arrow{
   display:inline-flex; align-items:center; gap:8px;
@@ -285,7 +285,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 :root[dir="rtl"] .lang-dropdown button{ text-align:right; }
 
 /* On desktop every link is already visible in .main-nav, so a
-   hamburger opening the same links again is pure redundancy — only
+   hamburger opening the same links again is pure redundancy - only
    show it where .main-nav is actually hidden (mobile, see below). */
 .menu-btn{ display:none; background:none; border:0; cursor:pointer; width:26px; height:18px; position:relative; }
 .menu-btn span{ position:absolute; left:0; right:0; height:2px; background:var(--ink); transition:transform .25s ease, opacity .25s ease; }
@@ -377,7 +377,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .trust-row.on-dark .icon{ color:var(--accent-light); }
 .hero-inner .trust-row{ justify-content:flex-start; border-top:0; padding-top:0; margin-top:28px; }
 
-/* ============ Page banner (interior pages) — must stay after .hero to win the cascade ============ */
+/* ============ Page banner (interior pages) - must stay after .hero to win the cascade ============ */
 .hero--page{
   height:clamp(320px, 42vh, 440px); min-height:0; max-height:none; align-items:stretch;
   background:var(--ink);
@@ -390,7 +390,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .hero--page .hero-title{ font-size:clamp(2rem,4.6vw,3rem); }
 .hero--page .hero-media img{ object-position:center 50%; }
 /* Text-shadow on top of the scrim for extra insurance against
-   whichever photo happens to be behind it — the scrim alone can
+   whichever photo happens to be behind it - the scrim alone can
    still be borderline over a bright patch of sky or wall. */
 .hero-title, .hero-eyebrow, .hero-sub{ text-shadow:0 1px 12px rgba(0,0,0,.4); }
 
@@ -411,7 +411,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .sw-field label{ display:flex; align-items:center; gap:6px; font-size:.74rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft); margin-bottom:6px; }
 .sw-field label .icon{ width:15px; height:15px; color:var(--accent); }
 .sw-field input[type="date"]{
-  /* No appearance:none here — on iOS Safari it silently breaks the
+  /* No appearance:none here - on iOS Safari it silently breaks the
      native date picker (the field stops responding to taps). border/
      background/padding resets below already give the flat look we want
      without needing to strip the input's native appearance. */
@@ -420,7 +420,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 }
 .sw-field input[type="date"]:focus{ outline:none; }
 /* Chrome/Safari render the date value in an internal shadow tree that doesn't
-   reliably inherit font styles from the input itself — style those parts
+   reliably inherit font styles from the input itself - style those parts
    directly so "dd/mm/yyyy" matches the rest of the widget instead of falling
    back to the OS UI font. */
 .sw-field input[type="date"]::-webkit-datetime-edit{ font-family:var(--ff-body); font-size:1.08rem; font-weight:600; color:var(--ink); padding:0; display:flex; align-items:center; }
@@ -734,7 +734,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 
 /* ============ Booking ============ */
 .booking-grid{ display:grid; grid-template-columns:1.3fr .9fr; gap:56px; align-items:start; }
-/* Before a booking is found, the result column is empty — the form
+/* Before a booking is found, the result column is empty - the form
    card ends up pinned to the left with a lopsided gap next to it, so
    center it as a standalone card instead until there's a result to
    show alongside it. */
@@ -880,7 +880,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 
 /* ============ RTL support (Arabic) ============
    Flexbox/Grid row flow already mirrors automatically once dir="rtl" is set on
-   <html> — these overrides only cover physical left/right properties that don't
+   <html> - these overrides only cover physical left/right properties that don't
    flip on their own (fixed/absolute positioning, one-sided borders, text-align:left). */
 :root[dir="rtl"] .menu-overlay{ right:auto; left:0; box-shadow:20px 0 60px rgba(var(--shadow-rgb),.18); transform:translateX(-100%); }
 :root[dir="rtl"] .menu-overlay.open{ transform:translateX(0); }
@@ -935,22 +935,22 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   section{ padding:64px 20px; }
   /* The hero's own "Reserve Online" / "Call to Book" buttons duplicated
      the persistent "Reserve Now" bar that's already on screen the whole
-     time on mobile — drop them there rather than showing "Reserve"
+     time on mobile - drop them there rather than showing "Reserve"
      twice (plus a phone-call option that's no longer the priority). */
   .hero-cta{ display:none; }
   .hero-sub{ display:none; }
   /* The homepage's three room "teaser" cards each repeated a full
-     description plus the same three tags (Ensuite/TV/WiFi) — on
+     description plus the same three tags (Ensuite/TV/WiFi) - on
      mobile that's a lot of near-identical text before you even reach
      the full listing at /rooms, which is what these link to anyway.
-     Scoped to #rooms (homepage only) — the actual /rooms page keeps
+     Scoped to #rooms (homepage only) - the actual /rooms page keeps
      its descriptions and tags, since that's where people compare. */
   #rooms .room-desc, #rooms .room-tags{ display:none; }
-  /* Second About paragraph is supplementary (nearby landmarks) —
+  /* Second About paragraph is supplementary (nearby landmarks) -
      drop it on mobile and keep just the opening paragraph. */
   .about-body p:nth-of-type(2){ display:none; }
   /* Trimming the copy above left sections feeling sparse on a phone
-     screen — scale the remaining headlines/body text up instead of
+     screen - scale the remaining headlines/body text up instead of
      leaving the extra room empty, so each section still reads as full. */
   .hero{ height:100svh; min-height:640px; }
   .hero:not(.hero--page) .hero-inner{ padding:126px 22px 108px; justify-content:center; }
@@ -976,7 +976,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   .room-gallery-strip img{ width:48px; height:38px; }
   .room-photo-more{ min-width:38px; height:38px; font-size:.78rem; }
   /* Logo + EN pill + theme toggle + Reserve + hamburger together don't
-     fit a phone-width header — without flex-shrink:0 (added above) the
+     fit a phone-width header - without flex-shrink:0 (added above) the
      logo would get crushed to a sliver trying to make room. Reserve is
      redundant with the persistent "Call to book" mobile bar, and the
      language switcher only needs its icon here, not the "EN" label. */

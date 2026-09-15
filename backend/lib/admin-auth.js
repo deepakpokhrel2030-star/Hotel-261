@@ -7,7 +7,7 @@ const CODE_MAX_ATTEMPTS = 5;
 const SESSION_TTL_DAYS = 45;
 const DEVICE_TTL_DAYS = 45;
 
-// A "challenge" is one in-flight 6-digit-code exchange — either finishing a
+// A "challenge" is one in-flight 6-digit-code exchange - either finishing a
 // login (purpose 'login') or authorizing a password change (purpose 'reset').
 async function createChallenge(email, purpose) {
   const code = randomCode(6);
@@ -25,8 +25,8 @@ async function createChallenge(email, purpose) {
 
 async function sendChallengeEmail(email, code, purpose) {
   const subject = purpose === 'reset'
-    ? 'Hotel 261 admin — password reset code'
-    : 'Hotel 261 admin — verification code';
+    ? 'Hotel 261 admin - password reset code'
+    : 'Hotel 261 admin - verification code';
   const intro = purpose === 'reset'
     ? 'Use this code to reset your admin password:'
     : 'Use this code to finish signing in to the Hotel 261 admin dashboard:';

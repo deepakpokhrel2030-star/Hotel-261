@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
     challengeToken = created.challengeToken;
     await sendChallengeEmail(email, created.code, 'reset');
   } else {
-    // Don't let a missing account show up as a different response shape —
+    // Don't let a missing account show up as a different response shape -
     // hand back a token that will just never match a real challenge.
     challengeToken = randomToken(24);
   }
