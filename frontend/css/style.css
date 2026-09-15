@@ -380,7 +380,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 /* ============ Page banner (interior pages) - must stay after .hero to win the cascade ============ */
 .hero--page{
   height:clamp(270px, 34vh, 360px); min-height:0; max-height:none; align-items:stretch;
-  background:#08090b; border-bottom:2px solid #ed1c24;
+  background:var(--paper-2); border-bottom:2px solid #ed1c24;
 }
 .hero--page .hero-media,
 .hero--page .hero-scrim{ display:none; }
@@ -390,6 +390,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 }
 .hero--page .hero-inner{ justify-content:center; padding-top:102px; padding-bottom:34px; }
 .hero--page .hero-title{ font-size:clamp(2rem,4.6vw,3rem); }
+.hero--page .hero-inner{ color:var(--ink); }
 .hero--page .hero-eyebrow,
 .hero--page .hero-title,
 .hero--page .hero-sub{ text-shadow:none; }
