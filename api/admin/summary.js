@@ -25,9 +25,16 @@ module.exports = async (req, res) => {
         WHERE check_in >= CURRENT_DATE AND status IN ('pending', 'confirmed');
       `);
 
+      const messages = await pool.query(`
+        SELECT COUNT(*)::int AS new_messages
+        FROM hotel_contact_messages
+        WHERE status = 'new';
+      `);
+
       return res.status(200).json({
         ...summary.rows[0],
         upcoming: upcoming.rows[0]?.upcoming || 0,
+        new_messages: messages.rows[0]?.new_messages || 0,
       });
     } catch (error) {
       console.error('admin summary error:', error);

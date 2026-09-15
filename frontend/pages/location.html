@@ -39,7 +39,7 @@
     <a href="/amenities" style="--i:4" data-i18n="nav.amenities"><svg class="icon menu-icon" viewBox="0 0 24 24"><path d="M12 4v6M12 14v6M4 12h6M14 12h6"/></svg>Amenities</a>
     <a href="/reviews" style="--i:5" data-i18n="nav.reviews"><svg class="icon menu-icon" viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2L6.6 19l1.3-6-4.6-4.1 6.1-.6L12 3Z"/></svg>Reviews</a>
     <a href="/location" class="active" style="--i:6" data-i18n="nav.location"><svg class="icon menu-icon" viewBox="0 0 24 24"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>Location</a>
-    <a href="/check-booking" style="--i:7" data-i18n="nav.checkBooking"><svg class="icon menu-icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M9 15l2 2 4-4"/></svg>Check Booking</a>
+    <a href="/location" style="--i:7" data-i18n="nav.contact"><svg class="icon menu-icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Contact</a>
   </nav>
   <a href="/book" class="btn btn-primary menu-cta" data-i18n="common.reserve">Reserve</a>
   <div class="menu-foot">
@@ -60,7 +60,7 @@
       <a href="/amenities" data-i18n="nav.amenities">Amenities</a>
       <a href="/reviews" data-i18n="nav.reviews">Reviews</a>
       <a href="/location" class="active" data-i18n="nav.location">Location</a>
-      <a href="/check-booking" data-i18n="nav.checkBooking">Check Booking</a>
+      <a href="/location" data-i18n="nav.contact">Contact</a>
     </nav>
     <div class="header-right">
       <div class="lang-switch" id="langSwitch">
@@ -137,11 +137,47 @@
       </div>
     </div>
   </div>
+  <form class="contact-form reveal" id="contactForm" novalidate>
+    <div class="section-head contact-form-head">
+      <span class="section-num">02</span>
+      <span class="section-label">Send a message</span>
+    </div>
+    <div class="contact-form-grid">
+      <div class="form-row">
+        <label for="contactName">Name</label>
+        <input id="contactName" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="form-row">
+        <label for="contactEmail">Email</label>
+        <input id="contactEmail" name="email" type="email" autocomplete="email" required>
+      </div>
+      <div class="form-row">
+        <label for="contactPhone">Phone <span>(optional)</span></label>
+        <input id="contactPhone" name="phone" type="tel" autocomplete="tel">
+      </div>
+      <div class="form-row">
+        <label for="contactSubject">Subject <span>(optional)</span></label>
+        <input id="contactSubject" name="subject" type="text" maxlength="160">
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="contactMessage">Message</label>
+      <textarea id="contactMessage" name="message" rows="5" minlength="10" maxlength="5000" required></textarea>
+    </div>
+    <div class="contact-trap" aria-hidden="true">
+      <label for="contactWebsite">Website</label>
+      <input id="contactWebsite" name="website" type="text" tabindex="-1" autocomplete="off">
+    </div>
+    <div class="contact-form-actions">
+      <button class="btn btn-primary" type="submit">Send message</button>
+      <p class="form-note" id="contactFormMessage" role="status"></p>
+    </div>
+  </form>
 </section>
 
 <section class="info" style="padding-top:0;">
   <div class="section-head">
-    <span class="section-num">02</span>
+    <span class="section-num">03</span>
     <span class="section-label" data-i18n="location.goodToKnow">Good to Know</span>
   </div>
   <h2 class="reveal" data-i18n="location.houseRules">House rules</h2>
@@ -205,7 +241,7 @@
         <a href="/location"><span data-i18n="footer.locationInfo">Location &amp; Info</span></a>
         <a href="https://www.google.com/maps/place/Hotel261/@51.5066159,-0.2470289,17z/data=!3m1!4b1!4m9!3m8!1s0x48760e2fab56d229:0x4f2c86709ba2f56!5m2!4m1!1i2!8m2!3d51.5066126!4d-0.244454!16s%2Fg%2F12mkw93y2" target="_blank" rel="noopener"><span data-i18n="footer.googleReview">Review us on Google</span></a>
         <a href="/book"><span data-i18n="footer.bookDirect">Book Direct</span></a>
-        <a href="/check-booking"><span data-i18n="footer.checkBooking">Check Booking</span></a>
+        <a href="/location"><span data-i18n="footer.contact">Contact</span></a>
       </div>
     </div>
   </div>
@@ -222,5 +258,30 @@
 <script src="js/i18n.js"></script>
 <script src="js/script.js"></script>
 <script src="js/chatbot.js"></script>
+<script>
+  const contactForm = document.getElementById('contactForm');
+  const contactFormMessage = document.getElementById('contactFormMessage');
+  contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    contactFormMessage.textContent = 'Sending...';
+    contactFormMessage.className = 'form-note';
+    const formData = new FormData(contactForm);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(formData.entries())),
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || 'We could not send your message.');
+      contactForm.reset();
+      contactFormMessage.textContent = 'Thanks. Your message has been sent to reception.';
+      contactFormMessage.classList.add('success-text');
+    } catch (error) {
+      contactFormMessage.textContent = error.message;
+      contactFormMessage.classList.add('error-text');
+    }
+  });
+</script>
 </body>
 </html>

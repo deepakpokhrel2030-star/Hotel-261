@@ -66,6 +66,25 @@ async function initDatabase() {
     ALTER TABLE hotel_bookings ADD COLUMN IF NOT EXISTS phone TEXT;
   `);
 
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS hotel_contact_messages (
+      id SERIAL PRIMARY KEY,
+      name TEXT NOT NULL,
+      email TEXT NOT NULL,
+      phone TEXT,
+      subject TEXT,
+      message TEXT NOT NULL,
+      status TEXT NOT NULL DEFAULT 'new' CHECK (status IN ('new', 'read', 'replied', 'archived')),
+      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    );
+  `);
+
+  await pool.query(`
+    CREATE INDEX IF NOT EXISTS idx_hotel_contact_messages_status ON hotel_contact_messages(status);
+    CREATE INDEX IF NOT EXISTS idx_hotel_contact_messages_created_at ON hotel_contact_messages(created_at);
+  `);
+
   // Admin auth: password-protected + emailed 2FA codes + remembered devices.
   // The password now lives here (hashed), not in an env var, so it can
   // actually be changed via the "forgot password" flow.

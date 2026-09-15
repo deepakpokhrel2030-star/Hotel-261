@@ -27,6 +27,7 @@ app.get('/sitemap.xml', (req, res) => res.sendFile(path.join(FRONTEND_DIR, 'site
 app.post('/api/create-checkout-session', require('../api/create-checkout-session'));
 app.get('/api/verify-session', require('../api/verify-session'));
 app.post('/api/find-booking', require('../api/find-booking'));
+app.post('/api/contact', require('../api/contact'));
 
 app.get('/api/health', async (req, res) => {
   try {
@@ -44,6 +45,11 @@ app.post('/api/admin/reset-password', require('../api/admin/reset-password'));
 app.post('/api/admin/logout', require('../api/admin/logout'));
 app.get('/api/admin/summary', require('../api/admin/summary'));
 app.all('/api/admin/bookings', require('../api/admin/bookings'));
+app.get('/api/admin/contact-messages', require('../api/admin/contact-messages'));
+app.patch('/api/admin/contact-messages/:id/status', (req, res) => {
+  req.query = { ...req.query, id: req.params.id };
+  return require('../api/admin/contact-messages/[id]/status')(req, res);
+});
 app.patch('/api/admin/bookings/:id/status', (req, res) => {
   req.query = { ...req.query, id: req.params.id };
   return require('../api/admin/bookings/[id]/status')(req, res);
