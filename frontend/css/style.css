@@ -1232,12 +1232,28 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 }
 
 /* Header finish */
-.logo{ border-right:0; padding-right:10px; }
+.site-header{
+  top:0; left:0; right:0; max-width:none; border-radius:0;
+  border-width:0 0 1px; box-shadow:0 8px 24px rgba(var(--shadow-rgb),.08);
+}
+.site-header.solid{ top:0; box-shadow:0 8px 24px rgba(var(--shadow-rgb),.12); }
+.nav-row{ padding:12px 24px; }
+.site-header.solid .nav-row{ padding:10px 24px; }
+.header-inner{ max-width:1280px; }
+.logo{ border-right:0; padding-right:0; }
 .header-right::before{ display:none; }
-.main-nav{ gap:4px; }
-.main-nav a{ padding-inline:12px; }
+.main-nav{ gap:2px; }
+.main-nav a{ padding:9px 12px; border-color:transparent; }
+.main-nav a:hover,
+.main-nav a.active{ background:transparent; border-color:transparent; box-shadow:none; }
+.main-nav a:hover{ color:var(--accent); }
+.main-nav a.active{ color:var(--accent); }
+.btn.btn-pill{ box-shadow:none; }
+.btn.btn-pill:hover{ box-shadow:0 6px 14px rgba(161,64,44,.2); }
 
 @media (max-width:760px){
+  .nav-row{ padding:12px 20px; }
+  .site-header.solid .nav-row{ padding:10px 20px; }
   .main-nav{ gap:0; }
   .main-nav a{ padding-inline:9px; }
 
