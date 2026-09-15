@@ -1,6 +1,13 @@
 const { pool, ensureContactMessagesTable } = require('../backend/lib/db');
+const { sendEmail } = require('../backend/lib/email');
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (character) => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+  }[character]));
+}
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
@@ -30,6 +37,28 @@ module.exports = async (req, res) => {
        RETURNING id, created_at;`,
       [name, email, phone || null, subject || null, message]
     );
+
+    const emailSubject = `Website enquiry${subject ? `: ${subject}` : ''}`;
+    const emailText = [
+      `Name: ${name}`,
+      `Email: ${email}`,
+      phone ? `Phone: ${phone}` : '',
+      subject ? `Subject: ${subject}` : '',
+      '',
+      message,
+    ].filter(Boolean).join('\n');
+
+    try {
+      await sendEmail({
+        to: 'reception@hotel261.com',
+        replyTo: email,
+        subject: emailSubject,
+        text: emailText,
+        html: `<p><strong>Name:</strong> ${escapeHtml(name)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p>${phone ? `<p><strong>Phone:</strong> ${escapeHtml(phone)}</p>` : ''}${subject ? `<p><strong>Subject:</strong> ${escapeHtml(subject)}</p>` : ''}<p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>`,
+      });
+    } catch (emailError) {
+      console.error('contact notification email error:', emailError);
+    }
 
     return res.status(201).json({ ok: true, messageId: result.rows[0].id });
   } catch (error) {
