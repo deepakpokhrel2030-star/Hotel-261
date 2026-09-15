@@ -1110,3 +1110,59 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 @media (max-width:600px){
   .chatbot-panel{ width:calc(100vw - 32px); }
 }
+
+/* ============ Sitewide finish ============ */
+/* Keep the shared pages on one visual rhythm. The content stays page-specific;
+   these rules only unify spacing, surfaces, and interaction weight. */
+.about[style*="padding-top"],
+.rooms[style*="padding-top"],
+.gallery[style*="padding-top"],
+.reviews[style*="padding-top"],
+.location[style*="padding-top"]{
+  padding-top:76px !important;
+}
+.amenities[style*="padding-top"]{ padding-top:70px !important; }
+.section-head{ padding-bottom:14px; border-bottom:1px solid var(--line); }
+.section-label{ color:var(--ink); }
+.text-link.link-arrow{ border-radius:5px; }
+.btn{ border-radius:5px; }
+.room-row,
+.booking-form,
+.testimonial-slider,
+.location-map,
+.direct-booking-copy,
+.direct-booking-card{
+  border-radius:8px;
+  box-shadow:0 10px 28px rgba(var(--shadow-rgb),.07);
+}
+.room-row{ transition:transform .25s var(--ease), box-shadow .25s ease; }
+.room-row:hover{ transform:translateY(-3px); box-shadow:0 16px 34px rgba(var(--shadow-rgb),.12); }
+.room-tags span{ border-radius:4px; }
+.booking-form{ box-shadow:0 12px 32px rgba(var(--shadow-rgb),.08); }
+.booking-summary{ border:1px solid var(--line); box-shadow:0 12px 32px rgba(var(--shadow-rgb),.06); }
+.location-map{ box-shadow:0 14px 36px rgba(var(--shadow-rgb),.1); }
+.review-cta{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.cta{ border-top:1px solid rgba(255,255,255,.08); }
+.site-footer{ padding-top:64px; }
+.chatbot-panel{ border-radius:8px; }
+.chatbot-msg, .chatbot-typing{ border-radius:8px; }
+.chatbot-chip{ border-radius:5px; }
+.chatbot-form input{ border-radius:6px; }
+
+@media (max-width:760px){
+  .about[style*="padding-top"],
+  .rooms[style*="padding-top"],
+  .gallery[style*="padding-top"],
+  .reviews[style*="padding-top"],
+  .location[style*="padding-top"],
+  .amenities[style*="padding-top"]{
+    padding-top:56px !important;
+  }
+  .section-head{ margin-bottom:24px; padding-bottom:12px; }
+  .room-row:hover{ transform:none; }
+  .direct-booking-copy,
+  .direct-booking-card,
+  .booking-form,
+  .testimonial-slider{ box-shadow:0 8px 22px rgba(var(--shadow-rgb),.07); }
+  .site-footer{ padding-top:48px; }
+}
