@@ -926,7 +926,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   .menu-btn{ display:block; }
   .site-header .btn.btn-pill{ display:none; }
   .header-inner{ display:flex; gap:20px; }
-  .header-right{ gap:12px; }
+  .header-right{ margin-left:auto; gap:12px; }
   .header-right::before{ display:none; }
 }
 
