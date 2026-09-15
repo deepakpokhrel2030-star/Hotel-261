@@ -379,8 +379,15 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .hero-inner .trust-row{ justify-content:flex-start; border-top:0; padding-top:0; margin-top:28px; }
 
 /* ============ Page banner (interior pages) — must stay after .hero to win the cascade ============ */
-.hero--page{ height:clamp(260px, 34vh, 380px); min-height:0; max-height:none; align-items:center; }
-.hero--page .hero-inner{ padding-top:92px; padding-bottom:0; }
+.hero--page{
+  height:clamp(320px, 42vh, 440px); min-height:0; max-height:none; align-items:stretch;
+  background:var(--ink);
+}
+.hero--page .hero-media{ left:28%; }
+.hero--page .hero-scrim{
+  background:linear-gradient(90deg, var(--ink) 0%, var(--ink) 24%, rgba(18,20,23,.94) 34%, rgba(18,20,23,.22) 70%, rgba(18,20,23,.42) 100%);
+}
+.hero--page .hero-inner{ justify-content:flex-end; padding-top:108px; padding-bottom:52px; }
 .hero--page .hero-title{ font-size:clamp(2rem,4.6vw,3rem); }
 .hero--page .hero-media img{ object-position:center 50%; }
 /* Text-shadow on top of the scrim for extra insurance against
@@ -950,6 +957,11 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
   .hero-media--building img{
     object-position:center 45%;
   }
+  .hero--page{ height:clamp(320px,52svh,410px); min-height:0; }
+  .hero--page .hero-media{ left:0; }
+  .hero--page .hero-scrim{ background:linear-gradient(90deg, rgba(18,20,23,.82) 0%, rgba(18,20,23,.5) 58%, rgba(18,20,23,.2) 100%); }
+  .hero--page .hero-inner{ padding:96px 22px 36px; justify-content:flex-end; }
+  .hero--page .hero-title{ font-size:clamp(2rem,9vw,2.7rem); max-width:17ch; }
   section > h2{ font-size:2.3rem; }
   /* .rooms-title and .cta-title carry their own font-size rules (more
      specific than the bare "section > h2" above), so they need their
@@ -966,9 +978,13 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
      logo would get crushed to a sliver trying to make room. Reserve is
      redundant with the persistent "Call to book" mobile bar, and the
      language switcher only needs its icon here, not the "EN" label. */
-  .lang-switch-toggle{ width:38px; padding:0; justify-content:center; }
+  .logo{ padding-right:10px; }
+  .logo-img, .site-header.solid .logo-img{ height:29px; }
+  .lang-switch-toggle{ width:34px; height:34px; padding:0; justify-content:center; }
   .lang-switch-toggle #langCurrent{ display:none; }
-  .header-right{ gap:10px; }
+  .theme-toggle{ width:34px; height:34px; }
+  .header-right{ gap:8px; }
+  .header-inner{ gap:10px; }
   .site-header{ top:0; left:0; right:0; border-radius:0; }
   .site-header.solid{ top:0; }
   .nav-row{ padding:14px 20px; }
