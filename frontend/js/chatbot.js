@@ -199,8 +199,8 @@
     var root = document.createElement('div');
     root.className = 'chatbot';
     root.innerHTML =
-      '<button class="chatbot-toggle" id="chatbotToggle" type="button" aria-label="Chat with us" aria-expanded="false">' +
-        '<svg class="icon chatbot-icon-chat" viewBox="0 0 24 24" fill="none"><path d="M12 3.5c-4.97 0-9 3.6-9 8.05 0 2.45 1.22 4.64 3.15 6.13-.1 1.14-.5 2.14-1.2 2.97a.4.4 0 0 0 .38.65c1.6-.32 2.94-.96 3.98-1.77.85.24 1.75.37 2.69.37 4.97 0 9-3.6 9-8.05s-4.03-8.05-9-8.05Z" fill="currentColor" stroke="none"/><circle cx="8.3" cy="11.6" r="1" fill="var(--accent-2)" stroke="none"/><circle cx="12" cy="11.6" r="1" fill="var(--accent-2)" stroke="none"/><circle cx="15.7" cy="11.6" r="1" fill="var(--accent-2)" stroke="none"/></svg>' +
+      '<button class="chatbot-toggle" id="chatbotToggle" type="button" aria-label="Ask Hotel 261" title="Ask Hotel 261" aria-expanded="false">' +
+        '<svg class="icon chatbot-icon-chat" viewBox="0 0 24 24" fill="none"><path d="M12 2.8l1.8 6.1L20 11l-6.2 2.1L12 19.2l-1.8-6.1L4 11l6.2-2.1L12 2.8Z"/><path d="M19.1 16.1l.7 2.2 2.2.7-2.2.7-.7 2.2-.7-2.2-2.2-.7 2.2-.7.7-2.2Z"/></svg>' +
         '<svg class="icon chatbot-icon-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
         '<span class="chatbot-badge" id="chatbotBadge"></span>' +
       '</button>' +

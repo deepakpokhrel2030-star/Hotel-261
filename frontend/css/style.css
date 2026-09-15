@@ -1050,16 +1050,25 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .chatbot{ position:fixed; right:24px; bottom:24px; z-index:260; }
 .chatbot-toggle{
   position:relative; width:58px; height:58px; border-radius:50%; border:none; cursor:pointer;
-  background:var(--accent-2); color:#fff; display:flex; align-items:center; justify-content:center;
-  box-shadow:0 10px 30px rgba(var(--shadow-rgb),.25); transition:transform .25s var(--ease), background .2s;
+  background:var(--surface); color:var(--accent); border:1px solid var(--accent);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 10px 30px rgba(var(--shadow-rgb),.2); transition:transform .25s var(--ease), background .2s, color .2s;
 }
 .chatbot-toggle::before{
-  content:''; position:absolute; inset:0; border-radius:50%; background:var(--accent-2);
-  opacity:.55; animation:chatbotPulse 2.6s ease-out infinite; z-index:-1;
+  content:''; position:absolute; inset:-3px; border-radius:50%; background:var(--accent);
+  opacity:.16; animation:chatbotPulse 2.6s ease-out infinite; z-index:-1;
 }
-.chatbot-toggle:hover{ background:var(--accent-2-light); transform:translateY(-2px); }
+.chatbot-toggle::after{
+  content:'Ask Hotel 261'; position:absolute; right:calc(100% + 10px); top:50%;
+  transform:translateY(-50%) translateX(4px); padding:6px 9px; border-radius:5px;
+  background:var(--ink); color:#fff; font:600 .72rem/1 var(--ff-body); white-space:nowrap;
+  opacity:0; pointer-events:none; transition:opacity .2s ease, transform .2s ease;
+}
+.chatbot-toggle:hover{ background:var(--accent); color:#fff; transform:translateY(-2px); }
+.chatbot-toggle:hover::after{ opacity:1; transform:translateY(-50%) translateX(0); }
 .chatbot-toggle.open::before{ animation:none; opacity:0; }
-.chatbot-toggle svg{ width:27px; height:27px; fill:none; stroke:currentColor; stroke-width:1.8; }
+.chatbot-toggle.open{ background:var(--ink); color:#fff; border-color:var(--ink); }
+.chatbot-toggle svg{ width:28px; height:28px; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
 .chatbot-toggle .chatbot-icon-close{ width:22px; height:22px; }
 .chatbot-toggle .chatbot-icon-close{ display:none; }
 .chatbot-toggle.open .chatbot-icon-chat{ display:none; }
