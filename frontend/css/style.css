@@ -1836,3 +1836,38 @@ body{ background:#f7f5f0; }
     width:100%;
   }
 }
+
+/* Homepage gallery preview: keep the six-image "A closer look" block tight.
+   The full gallery page uses a larger mosaic; the homepage preview should read
+   as one clean panel with no masonry gaps. */
+#gallery .bento{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-auto-rows:auto;
+  gap:12px;
+  column-count:initial;
+}
+#gallery .bento img,
+#gallery .bento .g-big,
+#gallery .bento .g-wide,
+#gallery .bento .g-tall,
+#gallery .bento .g-norm{
+  grid-column:span 1;
+  grid-row:span 1;
+}
+#gallery .bento img{
+  width:100%;
+  height:auto;
+  aspect-ratio:4 / 3;
+  object-fit:cover;
+  margin:0;
+  border-radius:8px;
+  box-shadow:0 10px 24px rgba(var(--shadow-rgb),.08);
+}
+
+@media (max-width:760px){
+  #gallery .bento{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+  }
+}
