@@ -2088,3 +2088,606 @@ body{ background:#f7f5f0; }
     border-color:var(--line);
   }
 }
+
+/* Full dark-mode surface sweep. Keep this last so every late light polish rule
+   still switches when the visitor selects dark mode or their OS requests it. */
+:root[data-theme="dark"] section,
+:root[data-theme="dark"] .hero-cta-bar,
+:root[data-theme="dark"] .amenities-home,
+:root[data-theme="dark"] .amenities,
+:root[data-theme="dark"] .location,
+:root[data-theme="dark"] .review-cta,
+:root[data-theme="dark"] .direct-booking-section{
+  background:var(--paper);
+  color:var(--ink);
+}
+:root[data-theme="dark"] .rooms,
+:root[data-theme="dark"] .cta,
+:root[data-theme="dark"] .site-footer{
+  background:var(--paper-2);
+}
+:root[data-theme="dark"] .search-widget,
+:root[data-theme="dark"] .room-row,
+:root[data-theme="dark"] .direct-booking-copy,
+:root[data-theme="dark"] .rl-table,
+:root[data-theme="dark"] .rl-reserve-all,
+:root[data-theme="dark"] .rl-row,
+:root[data-theme="dark"] .rl-empty,
+:root[data-theme="dark"] .reserve-panel-inner,
+:root[data-theme="dark"] .booking-form,
+:root[data-theme="dark"] .booking-summary,
+:root[data-theme="dark"] .summary-item-thumb,
+:root[data-theme="dark"] .testimonial-slider,
+:root[data-theme="dark"] .location-map,
+:root[data-theme="dark"] .accordion,
+:root[data-theme="dark"] .contact-form,
+:root[data-theme="dark"] .chatbot-panel,
+:root[data-theme="dark"] .chatbot-form,
+:root[data-theme="dark"] .guests-dropdown,
+:root[data-theme="dark"] .lang-dropdown,
+:root[data-theme="dark"] .mobile-bar{
+  background:var(--surface);
+  color:var(--ink);
+  border-color:var(--line);
+}
+:root[data-theme="dark"] .sw-field,
+:root[data-theme="dark"] .room-tags span,
+:root[data-theme="dark"] .rl-tags span,
+:root[data-theme="dark"] .direct-booking-features span,
+:root[data-theme="dark"] .amenity-row .icon-badge,
+:root[data-theme="dark"] .chatbot-msg.bot,
+:root[data-theme="dark"] .chatbot-chip,
+:root[data-theme="dark"] .chatbot-typing,
+:root[data-theme="dark"] .rl-tip,
+:root[data-theme="dark"] .summary-policies,
+:root[data-theme="dark"] .summary-alt{
+  background:var(--paper-2);
+  color:var(--ink);
+  border-color:var(--line);
+}
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] textarea,
+:root[data-theme="dark"] select,
+:root[data-theme="dark"] .form-row input,
+:root[data-theme="dark"] .form-row select,
+:root[data-theme="dark"] .contact-form input,
+:root[data-theme="dark"] .contact-form textarea,
+:root[data-theme="dark"] .chatbot-form input{
+  background:var(--paper);
+  color:var(--ink);
+  border-color:var(--line);
+}
+:root[data-theme="dark"] .section-label,
+:root[data-theme="dark"] .section-sub,
+:root[data-theme="dark"] .room-desc,
+:root[data-theme="dark"] .room-price small,
+:root[data-theme="dark"] .amenities-home-lead,
+:root[data-theme="dark"] .amenity-checklist span,
+:root[data-theme="dark"] .amenity-row p,
+:root[data-theme="dark"] .score-caption,
+:root[data-theme="dark"] .review-cta-sub,
+:root[data-theme="dark"] .form-note,
+:root[data-theme="dark"] .rl-meta,
+:root[data-theme="dark"] .rl-per,
+:root[data-theme="dark"] .rl-total-note,
+:root[data-theme="dark"] .summary-row span,
+:root[data-theme="dark"] .summary-total span,
+:root[data-theme="dark"] .summary-breakdown-row,
+:root[data-theme="dark"] .summary-item-info span,
+:root[data-theme="dark"] .checkout-step,
+:root[data-theme="dark"] .checkout-step i,
+:root[data-theme="dark"] .checkout-back,
+:root[data-theme="dark"] .location-list li small,
+:root[data-theme="dark"] .acc-panel-inner,
+:root[data-theme="dark"] .footer-note{
+  color:var(--ink-soft);
+}
+:root[data-theme="dark"] h1,
+:root[data-theme="dark"] h2,
+:root[data-theme="dark"] h3,
+:root[data-theme="dark"] h4,
+:root[data-theme="dark"] .about-lead,
+:root[data-theme="dark"] .room-price,
+:root[data-theme="dark"] .rl-amount,
+:root[data-theme="dark"] .summary-total b,
+:root[data-theme="dark"] .checkout-step.active,
+:root[data-theme="dark"] .testimonial p,
+:root[data-theme="dark"] .location-list li,
+:root[data-theme="dark"] .acc-trigger{
+  color:var(--ink);
+}
+:root[data-theme="dark"] .main-nav a.active{
+  color:#fff;
+}
+:root[data-theme="dark"] .main-nav a:hover{
+  background:rgba(224,113,76,.14);
+  color:var(--accent-light);
+}
+:root[data-theme="dark"] .menu-links a:hover,
+:root[data-theme="dark"] .menu-links a.active,
+:root[data-theme="dark"] .btn-primary,
+:root[data-theme="dark"] .sw-submit,
+:root[data-theme="dark"] .mobile-bar,
+:root[data-theme="dark"] .chatbot-send,
+:root[data-theme="dark"] .chatbot-msg.user{
+  color:#fff;
+}
+:root[data-theme="dark"] .btn-outline:hover,
+:root[data-theme="dark"] .text-link.link-arrow:hover{
+  background:var(--ink);
+  color:var(--paper);
+  border-color:var(--ink);
+}
+:root[data-theme="dark"] .direct-booking-card{
+  background:#0f1113;
+  color:#f3eee7;
+}
+:root[data-theme="dark"] .direct-booking-card p,
+:root[data-theme="dark"] .direct-booking-card-head span,
+:root[data-theme="dark"] .direct-booking-summary dt{
+  color:rgba(243,238,231,.7);
+}
+:root[data-theme="dark"] .direct-booking-card-head b,
+:root[data-theme="dark"] .direct-booking-summary dd{
+  color:#fff;
+}
+:root[data-theme="dark"] .logo-light{ display:none !important; }
+:root[data-theme="dark"] .logo-dark{ display:block !important; }
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) section,
+  :root:not([data-theme="light"]) .hero-cta-bar,
+  :root:not([data-theme="light"]) .amenities-home,
+  :root:not([data-theme="light"]) .amenities,
+  :root:not([data-theme="light"]) .location,
+  :root:not([data-theme="light"]) .review-cta,
+  :root:not([data-theme="light"]) .direct-booking-section{
+    background:var(--paper);
+    color:var(--ink);
+  }
+  :root:not([data-theme="light"]) .rooms,
+  :root:not([data-theme="light"]) .cta,
+  :root:not([data-theme="light"]) .site-footer{
+    background:var(--paper-2);
+  }
+  :root:not([data-theme="light"]) .search-widget,
+  :root:not([data-theme="light"]) .room-row,
+  :root:not([data-theme="light"]) .direct-booking-copy,
+  :root:not([data-theme="light"]) .rl-table,
+  :root:not([data-theme="light"]) .rl-reserve-all,
+  :root:not([data-theme="light"]) .rl-row,
+  :root:not([data-theme="light"]) .rl-empty,
+  :root:not([data-theme="light"]) .reserve-panel-inner,
+  :root:not([data-theme="light"]) .booking-form,
+  :root:not([data-theme="light"]) .booking-summary,
+  :root:not([data-theme="light"]) .summary-item-thumb,
+  :root:not([data-theme="light"]) .testimonial-slider,
+  :root:not([data-theme="light"]) .location-map,
+  :root:not([data-theme="light"]) .accordion,
+  :root:not([data-theme="light"]) .contact-form,
+  :root:not([data-theme="light"]) .chatbot-panel,
+  :root:not([data-theme="light"]) .chatbot-form,
+  :root:not([data-theme="light"]) .guests-dropdown,
+  :root:not([data-theme="light"]) .lang-dropdown,
+  :root:not([data-theme="light"]) .mobile-bar{
+    background:var(--surface);
+    color:var(--ink);
+    border-color:var(--line);
+  }
+  :root:not([data-theme="light"]) .sw-field,
+  :root:not([data-theme="light"]) .room-tags span,
+  :root:not([data-theme="light"]) .rl-tags span,
+  :root:not([data-theme="light"]) .direct-booking-features span,
+  :root:not([data-theme="light"]) .amenity-row .icon-badge,
+  :root:not([data-theme="light"]) .chatbot-msg.bot,
+  :root:not([data-theme="light"]) .chatbot-chip,
+  :root:not([data-theme="light"]) .chatbot-typing,
+  :root:not([data-theme="light"]) .rl-tip,
+  :root:not([data-theme="light"]) .summary-policies,
+  :root:not([data-theme="light"]) .summary-alt{
+    background:var(--paper-2);
+    color:var(--ink);
+    border-color:var(--line);
+  }
+  :root:not([data-theme="light"]) input,
+  :root:not([data-theme="light"]) textarea,
+  :root:not([data-theme="light"]) select,
+  :root:not([data-theme="light"]) .form-row input,
+  :root:not([data-theme="light"]) .form-row select,
+  :root:not([data-theme="light"]) .contact-form input,
+  :root:not([data-theme="light"]) .contact-form textarea,
+  :root:not([data-theme="light"]) .chatbot-form input{
+    background:var(--paper);
+    color:var(--ink);
+    border-color:var(--line);
+  }
+  :root:not([data-theme="light"]) .section-label,
+  :root:not([data-theme="light"]) .section-sub,
+  :root:not([data-theme="light"]) .room-desc,
+  :root:not([data-theme="light"]) .room-price small,
+  :root:not([data-theme="light"]) .amenities-home-lead,
+  :root:not([data-theme="light"]) .amenity-checklist span,
+  :root:not([data-theme="light"]) .amenity-row p,
+  :root:not([data-theme="light"]) .score-caption,
+  :root:not([data-theme="light"]) .review-cta-sub,
+  :root:not([data-theme="light"]) .form-note,
+  :root:not([data-theme="light"]) .rl-meta,
+  :root:not([data-theme="light"]) .rl-per,
+  :root:not([data-theme="light"]) .rl-total-note,
+  :root:not([data-theme="light"]) .summary-row span,
+  :root:not([data-theme="light"]) .summary-total span,
+  :root:not([data-theme="light"]) .summary-breakdown-row,
+  :root:not([data-theme="light"]) .summary-item-info span,
+  :root:not([data-theme="light"]) .checkout-step,
+  :root:not([data-theme="light"]) .checkout-step i,
+  :root:not([data-theme="light"]) .checkout-back,
+  :root:not([data-theme="light"]) .location-list li small,
+  :root:not([data-theme="light"]) .acc-panel-inner,
+  :root:not([data-theme="light"]) .footer-note{
+    color:var(--ink-soft);
+  }
+  :root:not([data-theme="light"]) h1,
+  :root:not([data-theme="light"]) h2,
+  :root:not([data-theme="light"]) h3,
+  :root:not([data-theme="light"]) h4,
+  :root:not([data-theme="light"]) .about-lead,
+  :root:not([data-theme="light"]) .room-price,
+  :root:not([data-theme="light"]) .rl-amount,
+  :root:not([data-theme="light"]) .summary-total b,
+  :root:not([data-theme="light"]) .checkout-step.active,
+  :root:not([data-theme="light"]) .testimonial p,
+  :root:not([data-theme="light"]) .location-list li,
+  :root:not([data-theme="light"]) .acc-trigger{
+    color:var(--ink);
+  }
+  :root:not([data-theme="light"]) .main-nav a.active{
+    color:#fff;
+  }
+  :root:not([data-theme="light"]) .main-nav a:hover{
+    background:rgba(224,113,76,.14);
+    color:var(--accent-light);
+  }
+  :root:not([data-theme="light"]) .menu-links a:hover,
+  :root:not([data-theme="light"]) .menu-links a.active,
+  :root:not([data-theme="light"]) .btn-primary,
+  :root:not([data-theme="light"]) .sw-submit,
+  :root:not([data-theme="light"]) .mobile-bar,
+  :root:not([data-theme="light"]) .chatbot-send,
+  :root:not([data-theme="light"]) .chatbot-msg.user{
+    color:#fff;
+  }
+  :root:not([data-theme="light"]) .btn-outline:hover,
+  :root:not([data-theme="light"]) .text-link.link-arrow:hover{
+    background:var(--ink);
+    color:var(--paper);
+    border-color:var(--ink);
+  }
+  :root:not([data-theme="light"]) .direct-booking-card{
+    background:#0f1113;
+    color:#f3eee7;
+  }
+  :root:not([data-theme="light"]) .direct-booking-card p,
+  :root:not([data-theme="light"]) .direct-booking-card-head span,
+  :root:not([data-theme="light"]) .direct-booking-summary dt{
+    color:rgba(243,238,231,.7);
+  }
+  :root:not([data-theme="light"]) .direct-booking-card-head b,
+  :root:not([data-theme="light"]) .direct-booking-summary dd{
+    color:#fff;
+  }
+  :root:not([data-theme="light"]) .logo-light{ display:none !important; }
+  :root:not([data-theme="light"]) .logo-dark{ display:block !important; }
+}
+
+/* ============ Mobile polish pass ============ */
+@media (max-width:760px){
+  body{
+    font-size:15px;
+  }
+  section{
+    padding-left:18px;
+    padding-right:18px;
+  }
+  .site-header{
+    border-radius:0;
+    box-shadow:0 8px 22px rgba(var(--shadow-rgb),.12);
+  }
+  .nav-row,
+  .site-header.solid .nav-row{
+    padding:10px 14px;
+  }
+  .header-inner{
+    min-height:42px;
+  }
+  .logo-img,
+  .site-header.solid .logo-img{
+    height:36px;
+    max-width:132px;
+    object-fit:contain;
+  }
+  .lang-switch-toggle,
+  .theme-toggle,
+  .menu-btn{
+    width:36px;
+    height:36px;
+  }
+  .theme-toggle .icon,
+  .lang-switch-toggle .icon{
+    width:16px;
+    height:16px;
+  }
+  .hero{
+    min-height:590px;
+  }
+  .hero:not(.hero--page) .hero-inner{
+    padding:112px 20px 94px;
+  }
+  .hero-title{
+    font-size:2rem;
+    line-height:1.08;
+  }
+  .hero-eyebrow{
+    font-size:.68rem;
+    margin-bottom:10px;
+  }
+  .hero-inner .trust-row{
+    gap:10px;
+    margin-top:22px;
+  }
+  .trust-row .trust-item{
+    font-size:.78rem;
+  }
+  .hero-cta-bar{
+    padding-top:16px;
+  }
+  .hero-cta-bar .search-widget-wrap.overlap,
+  .search-widget-wrap.overlap{
+    margin-top:0;
+  }
+  .search-widget-wrap{
+    padding:0 14px 28px;
+  }
+  .search-widget{
+    border-radius:10px;
+    padding:8px;
+    gap:6px;
+  }
+  .sw-field{
+    padding:13px 14px;
+    min-height:72px;
+  }
+  .sw-field label{
+    font-size:.68rem;
+    margin-bottom:5px;
+  }
+  .sw-field input[type="date"],
+  .sw-field input[type="date"]::-webkit-datetime-edit,
+  .sw-guests-toggle{
+    font-size:1rem;
+  }
+  .date-placeholder{
+    left:14px;
+    top:39px;
+    font-size:1rem;
+  }
+  .sw-submit{
+    min-height:48px;
+    font-size:.95rem;
+  }
+  .hero--page{
+    height:auto;
+    min-height:194px;
+  }
+  .hero--page .hero-inner{
+    padding:80px 18px 26px;
+  }
+  .hero--page .hero-title{
+    max-width:100%;
+    font-size:clamp(1.72rem,7vw,2.18rem);
+  }
+  .hero--page .hero-eyebrow{
+    white-space:normal;
+  }
+  section > h2,
+  .rooms-title,
+  .cta-title{
+    font-size:1.9rem;
+    line-height:1.14;
+  }
+  .section-head{
+    align-items:center;
+    margin-bottom:18px;
+  }
+  .section-sub,
+  .section-intro .section-sub{
+    font-size:.98rem;
+    line-height:1.65;
+  }
+  .about-grid,
+  .reviews-grid,
+  .location-grid,
+  .booking-grid{
+    padding:18px;
+  }
+  .stats-row{
+    margin-top:34px;
+  }
+  .stat{
+    padding-top:18px;
+  }
+  .stat-num{
+    font-size:2rem;
+  }
+  .room-rows{
+    gap:16px;
+  }
+  .room-row{
+    border-radius:10px;
+  }
+  .room-row-media{
+    aspect-ratio:16 / 11;
+  }
+  .room-row-body{
+    padding:18px;
+  }
+  .room-row-body h3{
+    font-size:1.36rem;
+    margin-top:4px;
+  }
+  .room-desc{
+    font-size:.92rem;
+    margin-bottom:14px;
+  }
+  .room-tags{
+    gap:6px;
+    margin-bottom:18px;
+  }
+  .room-tags span{
+    font-size:.66rem;
+    padding:5px 8px;
+  }
+  .room-row-foot{
+    padding-top:14px;
+  }
+  .room-price{
+    font-size:1.2rem;
+  }
+  #gallery .bento,
+  .gallery:not(#gallery) .bento{
+    border-radius:8px;
+  }
+  #gallery .bento,
+  .gallery:not(#gallery) .bento{
+    grid-template-columns:1fr 1fr;
+  }
+  #gallery .bento img,
+  .gallery:not(#gallery) .bento img{
+    aspect-ratio:1 / 1;
+  }
+  .amenities-home-grid{
+    gap:24px;
+  }
+  .amenities-home-media{
+    aspect-ratio:4 / 3;
+  }
+  .amenity-checklist{
+    gap:16px;
+  }
+  .amenity-checklist li{
+    gap:12px;
+  }
+  .amenities-list{
+    padding:2px 18px;
+  }
+  .amenity-row{
+    gap:10px;
+  }
+  .testimonial-slider{
+    padding:24px 18px;
+    min-height:0;
+  }
+  .testimonial p{
+    font-size:1.05rem;
+  }
+  .score-bar{
+    grid-template-columns:88px 1fr 28px;
+    gap:10px;
+  }
+  .booking-form,
+  .booking-summary,
+  .contact-form,
+  .direct-booking-copy,
+  .direct-booking-card{
+    padding:20px;
+    border-radius:10px;
+  }
+  .form-row{
+    margin-bottom:16px;
+  }
+  .form-row input,
+  .form-row select,
+  .contact-form input,
+  .contact-form textarea{
+    min-height:46px;
+    font-size:16px;
+  }
+  .checkout-steps{
+    max-width:100%;
+  }
+  .checkout-step{
+    font-size:.76rem;
+  }
+  .checkout-step i{
+    width:28px;
+    height:28px;
+  }
+  .location-list li{
+    gap:12px;
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .location-map iframe{
+    height:320px;
+  }
+  .contact-form{
+    margin-top:32px;
+  }
+  .contact-form-actions .btn{
+    width:100%;
+  }
+  .cta{
+    padding:46px 18px 82px;
+  }
+  .cta-actions{
+    gap:10px;
+  }
+  .site-footer{
+    padding:0 18px;
+  }
+  .footer-top{
+    padding:38px 0 28px;
+    gap:26px;
+  }
+  .footer-brand{
+    max-width:none;
+    padding-bottom:22px;
+  }
+  .footer-tagline{
+    max-width:100%;
+    margin-top:16px;
+  }
+  .footer-cols{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+  .footer-cols h5{
+    margin-bottom:10px;
+  }
+  .footer-line{
+    gap:10px;
+  }
+  .footer-bottom{
+    padding:18px 0 86px;
+  }
+  .mobile-bar{
+    left:12px;
+    right:12px;
+    bottom:12px;
+    padding:14px;
+    border-radius:10px;
+  }
+  .chatbot{
+    right:14px;
+    bottom:78px;
+  }
+  .chatbot-toggle{
+    width:52px;
+    height:52px;
+  }
+  .chatbot-panel{
+    right:-2px;
+    bottom:64px;
+    height:min(500px, 68vh);
+    max-width:calc(100vw - 24px);
+  }
+}
