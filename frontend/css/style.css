@@ -402,6 +402,7 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .search-widget-wrap{ position:relative; z-index:20; max-width:1180px; margin:0 auto; padding:0 24px 44px; }
 .search-widget-wrap.overlap{ margin-top:-46px; }
 .hero-cta-bar .search-widget-wrap.overlap{ margin-top:-112px; }
+.book-search-wrap.overlap{ margin-top:26px; padding-bottom:52px; }
 .search-widget{
   background:var(--surface); border-radius:8px; box-shadow:0 18px 36px rgba(var(--shadow-rgb),.14); border:1px solid var(--line);
   display:grid; grid-template-columns:1fr 1fr 1.2fr auto; align-items:stretch;
@@ -2510,6 +2511,10 @@ body{ background:#f7f5f0; }
   }
   .hero--page .hero-inner{
     padding:80px 18px 26px;
+  }
+  .book-search-wrap.overlap{
+    margin-top:18px;
+    padding:0 14px 30px;
   }
   .hero--page .hero-title{
     max-width:100%;
