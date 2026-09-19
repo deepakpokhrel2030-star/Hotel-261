@@ -1915,3 +1915,176 @@ body{ background:#f7f5f0; }
     grid-template-columns:repeat(2,minmax(0,1fr));
   }
 }
+
+/* ============ Dark mode visibility repair ============ */
+:root[data-theme="dark"] body{
+  background:var(--paper);
+  color:var(--ink);
+}
+:root[data-theme="dark"] .logo-light{ display:none !important; }
+:root[data-theme="dark"] .logo-dark{ display:block !important; }
+:root[data-theme="dark"] .site-header{
+  background:rgba(22,19,16,.96);
+  border-bottom-color:rgba(255,255,255,.12);
+}
+:root[data-theme="dark"] .lang-switch-toggle,
+:root[data-theme="dark"] .theme-toggle,
+:root[data-theme="dark"] .menu-btn,
+:root[data-theme="dark"] .menu-links a,
+:root[data-theme="dark"] .sw-field,
+:root[data-theme="dark"] .stats-row,
+:root[data-theme="dark"] .amenities-list,
+:root[data-theme="dark"] .review-cta,
+:root[data-theme="dark"] .booking-form,
+:root[data-theme="dark"] .booking-summary,
+:root[data-theme="dark"] .testimonial-slider,
+:root[data-theme="dark"] .contact-form,
+:root[data-theme="dark"] .about-grid,
+:root[data-theme="dark"] .reviews-grid,
+:root[data-theme="dark"] .location-grid,
+:root[data-theme="dark"] .booking-grid{
+  background:var(--surface);
+  color:var(--ink);
+  border-color:var(--line);
+}
+:root[data-theme="dark"] .menu-overlay,
+:root[data-theme="dark"] .hero--page,
+:root[data-theme="dark"] .rooms,
+:root[data-theme="dark"] .cta,
+:root[data-theme="dark"] .site-footer{
+  background:var(--paper-2);
+  color:var(--ink);
+  border-color:var(--line);
+}
+:root[data-theme="dark"] .hero--page{
+  background:linear-gradient(135deg, rgba(224,113,76,.12), rgba(111,147,130,.13)), var(--paper);
+}
+:root[data-theme="dark"] .hero--page .hero-eyebrow{
+  background:rgba(255,255,255,.06);
+  border-color:rgba(255,255,255,.14);
+}
+:root[data-theme="dark"] .section-intro .section-sub,
+:root[data-theme="dark"] .about-body p:last-child,
+:root[data-theme="dark"] .score-highlight,
+:root[data-theme="dark"] .location-address,
+:root[data-theme="dark"] .footer-tagline,
+:root[data-theme="dark"] .site-footer .footer-cols a,
+:root[data-theme="dark"] .site-footer .footer-cols p,
+:root[data-theme="dark"] .site-footer .footer-bottom,
+:root[data-theme="dark"] .testimonial footer{
+  color:var(--ink-soft);
+}
+:root[data-theme="dark"] .testimonial p,
+:root[data-theme="dark"] .footer-cols h5,
+:root[data-theme="dark"] .site-footer .footer-cols h5{
+  color:var(--ink);
+}
+:root[data-theme="dark"] .sw-field:hover,
+:root[data-theme="dark"] .sw-field:focus-within{
+  background:var(--paper-2);
+}
+:root[data-theme="dark"] .btn-pill{
+  background:var(--accent);
+  border-color:var(--accent);
+}
+:root[data-theme="dark"] .cta .btn-outline-light{
+  color:var(--ink);
+  border-color:var(--line);
+}
+:root[data-theme="dark"] .cta .btn-outline-light:hover{
+  background:var(--ink);
+  color:var(--paper);
+}
+:root[data-theme="dark"] .room-row-media{ background:var(--paper-2); }
+:root[data-theme="dark"] .footer-brand,
+:root[data-theme="dark"] .footer-top,
+:root[data-theme="dark"] .footer-bottom{
+  border-color:var(--line);
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) body{
+    background:var(--paper);
+    color:var(--ink);
+  }
+  :root:not([data-theme="light"]) .logo-light{ display:none !important; }
+  :root:not([data-theme="light"]) .logo-dark{ display:block !important; }
+  :root:not([data-theme="light"]) .site-header{
+    background:rgba(22,19,16,.96);
+    border-bottom-color:rgba(255,255,255,.12);
+  }
+  :root:not([data-theme="light"]) .lang-switch-toggle,
+  :root:not([data-theme="light"]) .theme-toggle,
+  :root:not([data-theme="light"]) .menu-btn,
+  :root:not([data-theme="light"]) .menu-links a,
+  :root:not([data-theme="light"]) .sw-field,
+  :root:not([data-theme="light"]) .stats-row,
+  :root:not([data-theme="light"]) .amenities-list,
+  :root:not([data-theme="light"]) .review-cta,
+  :root:not([data-theme="light"]) .booking-form,
+  :root:not([data-theme="light"]) .booking-summary,
+  :root:not([data-theme="light"]) .testimonial-slider,
+  :root:not([data-theme="light"]) .contact-form,
+  :root:not([data-theme="light"]) .about-grid,
+  :root:not([data-theme="light"]) .reviews-grid,
+  :root:not([data-theme="light"]) .location-grid,
+  :root:not([data-theme="light"]) .booking-grid{
+    background:var(--surface);
+    color:var(--ink);
+    border-color:var(--line);
+  }
+  :root:not([data-theme="light"]) .menu-overlay,
+  :root:not([data-theme="light"]) .hero--page,
+  :root:not([data-theme="light"]) .rooms,
+  :root:not([data-theme="light"]) .cta,
+  :root:not([data-theme="light"]) .site-footer{
+    background:var(--paper-2);
+    color:var(--ink);
+    border-color:var(--line);
+  }
+  :root:not([data-theme="light"]) .hero--page{
+    background:linear-gradient(135deg, rgba(224,113,76,.12), rgba(111,147,130,.13)), var(--paper);
+  }
+  :root:not([data-theme="light"]) .hero--page .hero-eyebrow{
+    background:rgba(255,255,255,.06);
+    border-color:rgba(255,255,255,.14);
+  }
+  :root:not([data-theme="light"]) .section-intro .section-sub,
+  :root:not([data-theme="light"]) .about-body p:last-child,
+  :root:not([data-theme="light"]) .score-highlight,
+  :root:not([data-theme="light"]) .location-address,
+  :root:not([data-theme="light"]) .footer-tagline,
+  :root:not([data-theme="light"]) .site-footer .footer-cols a,
+  :root:not([data-theme="light"]) .site-footer .footer-cols p,
+  :root:not([data-theme="light"]) .site-footer .footer-bottom,
+  :root:not([data-theme="light"]) .testimonial footer{
+    color:var(--ink-soft);
+  }
+  :root:not([data-theme="light"]) .testimonial p,
+  :root:not([data-theme="light"]) .footer-cols h5,
+  :root:not([data-theme="light"]) .site-footer .footer-cols h5{
+    color:var(--ink);
+  }
+  :root:not([data-theme="light"]) .sw-field:hover,
+  :root:not([data-theme="light"]) .sw-field:focus-within{
+    background:var(--paper-2);
+  }
+  :root:not([data-theme="light"]) .btn-pill{
+    background:var(--accent);
+    border-color:var(--accent);
+  }
+  :root:not([data-theme="light"]) .cta .btn-outline-light{
+    color:var(--ink);
+    border-color:var(--line);
+  }
+  :root:not([data-theme="light"]) .cta .btn-outline-light:hover{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  :root:not([data-theme="light"]) .room-row-media{ background:var(--paper-2); }
+  :root:not([data-theme="light"]) .footer-brand,
+  :root:not([data-theme="light"]) .footer-top,
+  :root:not([data-theme="light"]) .footer-bottom{
+    border-color:var(--line);
+  }
+}
