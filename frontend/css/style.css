@@ -712,6 +712,13 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .amenity-row .icon{ width:18px; height:18px; color:var(--accent); }
 .amenity-row h4{ font-family:var(--ff-display); font-weight:700; font-size:1.05rem; }
 .amenity-row p{ color:var(--ink-soft); max-width:520px; }
+.amenities .amenities-list{
+  max-width:980px;
+}
+.amenities .amenity-row{
+  grid-template-columns:44px minmax(170px,220px) minmax(0,520px);
+  justify-content:center;
+}
 
 /* ============ Reviews ============ */
 .reviews-grid{ display:grid; grid-template-columns:.9fr 1.1fr; gap:56px; }
@@ -1838,6 +1845,15 @@ body{ background:#f7f5f0; }
   }
   .amenity-row{
     padding:18px 0;
+  }
+  .amenities .amenity-row{
+    grid-template-columns:1fr;
+    justify-items:center;
+    text-align:center;
+  }
+  .amenities .amenity-row p{
+    margin-left:auto;
+    margin-right:auto;
   }
   .cta{
     padding:52px 20px 76px;
