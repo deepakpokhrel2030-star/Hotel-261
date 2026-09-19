@@ -840,6 +840,20 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 .acc-panel{ max-height:0; overflow:hidden; transition:max-height .4s var(--ease); }
 .acc-panel-inner{ padding:0 4px 22px; color:var(--ink-soft); max-width:560px; }
 
+.info{
+  text-align:center;
+}
+.info .section-head{
+  justify-content:center;
+}
+.info .accordion{
+  margin:28px auto 0;
+  text-align:left;
+}
+.info > h2{
+  text-align:center;
+}
+
 /* ============ CTA ============ */
 .cta{ background:#202327; color:#fff; text-align:center; padding-top:68px; padding-bottom:72px; max-width:none; }
 .cta-eyebrow{ font-family:var(--ff-body); font-weight:600; letter-spacing:.06em; color:var(--accent-light); opacity:1; margin-bottom:14px; text-transform:uppercase; font-size:.78rem; }
