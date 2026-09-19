@@ -53,7 +53,7 @@
   },
   "cta": {
     "eyebrow": "Book direct",
-    "title": "Check dates for Hotel 261.",
+    "title": "Book your West London stay.",
     "contactBtn": "Contact Reception",
     "viewRoomsBtn": "View Rooms &amp; Rates",
     "bookDirectBtn": "Book Direct"
@@ -69,7 +69,7 @@
     "rights": "All rights reserved.",
     "tagline": "Official website for Hotel 261 in Shepherd&rsquo;s Bush, West London.",
     "contactInfo": "Phone &amp; directions",
-    "directNote": "Booked direct. No agency mark-up."
+    "directNote": "Official direct booking website."
   },
   "tag": {
     "ensuite": "Ensuite",
@@ -83,7 +83,7 @@
     "checkAvailability": "Check availability",
     "single": {
       "name": "Single Room",
-      "desc": "1 single bed &middot; sleeps 1. A compact, quiet room for solo travellers, everything you need, nothing you don&rsquo;t."
+      "desc": "1 single bed &middot; sleeps 1. A compact, quiet room for solo travellers, with the essentials kept clear and comfortable."
     },
     "twin": {
       "name": "Twin Room",
@@ -96,7 +96,7 @@
     },
     "double": {
       "name": "Double Room",
-      "desc": "1 double bed &middot; sleeps 2. Our classic double, warm and well kept for couples and city breaks."
+      "desc": "1 double bed &middot; sleeps 2. Our classic double room, well kept for couples, work trips and city breaks."
     },
     "triple": {
       "name": "Triple Room",
@@ -179,7 +179,7 @@
     "viewAll7": "View All 7 Rooms &amp; Rates",
     "closerLook": "A closer look",
     "viewFullGallery": "View Full Gallery",
-    "amenitiesTitle": "Useful basics, clearly included.",
+    "amenitiesTitle": "Useful essentials, clearly included.",
     "amenity1desc": "Throughout the hotel and in every room.",
     "amenity2desc": "On-site, from £15/day, rare for this part of London.",
     "amenity3desc": "Sleeping up to four, without a squeeze.",
@@ -190,13 +190,13 @@
     "amenitiesLead": "Every stay includes the room essentials guests ask for most, with parking and breakfast options explained before you arrive."
   },
   "about": {
-    "eyebrow": "( Our Story )",
+    "eyebrow": "Our Story",
     "heroTitle": "About <em>Hotel 261</em>",
     "whoWeAre": "Who We Are",
     "lead": "A practical West London base with the essentials handled clearly.",
     "p1": "Tucked into a quiet stretch of Shepherd&rsquo;s Bush, Hotel 261 has been welcoming guests to West London with large rooms, on-site parking and genuinely friendly service. Every room comes with satellite TV, tea &amp; coffee making facilities and a fridge, with a shared guest microwave available too.",
     "p2": "We&rsquo;re a short walk from Westfield London shopping centre, a handful of West London bars and cafés, and well placed for Wembley, the Hammersmith Apollo and Queens Park Rangers&rsquo; football stadium, just over 10 minutes on foot. Shepherd&rsquo;s Bush Market Underground station (Circle &amp; Hammersmith &amp; City lines) is a 15 minute walk away.",
-    "p3": "Hotel 261 is a straightforward 2-star hotel, popular with solo travellers and short stays, simple, comfortable and fairly priced for West London.",
+    "p3": "Hotel 261 is a straightforward 2-star hotel for practical West London stays, with clear rates, comfortable rooms and a location that keeps travel simple.",
     "exploreRooms": "Explore our rooms",
     "whatGuestsGet": "What Guests Get",
     "g1": "<strong>Full English or Italian breakfast</strong> is available a five-minute walk away at Little Napoli, with vouchers arranged through reception.",
@@ -207,27 +207,27 @@
     "g6": "We&rsquo;re a smoke-free hotel with a designated outdoor smoking area, and quiet enough that solo travellers consistently rate us highly for comfort."
   },
   "rooms": {
-    "eyebrow": "( Rooms &amp; Rates )",
+    "eyebrow": "Rooms &amp; Rates",
     "eyebrowLabel": "Rooms &amp; Rates",
-    "title1": "Seven rooms.",
-    "title2": "One easy <em>stay.</em>",
+    "title1": "Seven room types.",
+    "title2": "Simple direct <em>rates.</em>",
     "intro": "Every room includes an ensuite bathroom, flat-screen TV, satellite channels and free WiFi. Book securely online below, or find our contact details on the Location page."
   },
   "amenities": {
-    "eyebrow": "( Amenities )",
-    "title1": "Everything you need,",
-    "title2": "nothing you <em>don&rsquo;t.</em>"
+    "eyebrow": "Amenities",
+    "title1": "The essentials,",
+    "title2": "ready for your <em>stay.</em>"
   },
   "gallery": {
-    "eyebrow": "( Hotel 261 / Gallery )",
-    "heroTitle": "Rooms, bathrooms &amp; the <em>hotel.</em>",
-    "intro": "See Hotel 261 before you arrive, from guest rooms and bathrooms to the building on Uxbridge Road. Select any image to view it full size.",
+    "eyebrow": "Photo Gallery",
+    "heroTitle": "See the rooms before <em>you book.</em>",
+    "intro": "Browse official Hotel 261 images, including guest rooms, bathrooms and the building on Uxbridge Road. Select any image to view it full size.",
     "close": "Close",
     "previous": "Previous",
     "next": "Next"
   },
   "reviews": {
-    "eyebrow": "( Guest Reviews )",
+    "eyebrow": "Guest Reviews",
     "title1": "Rated by",
     "title2": "our <em>guests.</em>",
     "scoreCaption": "Based on 367 verified Google reviews",
@@ -239,13 +239,13 @@
     "verifiedGuest": "Verified Guest &middot; Google Reviews",
     "previousReview": "Previous review",
     "nextReview": "Next review",
-    "enjoyedStay": "( Enjoyed your stay? )",
+    "enjoyedStay": "Enjoyed your stay?",
     "tellOthers": "Tell others what you thought.",
     "ctaSub": "A quick review on Google helps other travellers find us, and helps us know what we&rsquo;re doing right.",
     "leaveReview": "Leave a Review on Google"
   },
   "location": {
-    "eyebrow": "( Location &amp; Contact )",
+    "eyebrow": "Location &amp; Contact",
     "title1": "Find us in",
     "title2": "Shepherd&rsquo;s <em>Bush.</em>",
     "heading": "Shepherd&rsquo;s Bush,<br>West London",
@@ -293,7 +293,7 @@
     "a7": "Luggage can be stored on arrival or departure day (departure storage is same-day only). Bicycles are not permitted inside the hotel; they may be chained outside by the car park at your own risk."
   },
   "book": {
-    "eyebrow": "( Book Direct )",
+    "eyebrow": "Book Direct",
     "heroTitle": "Reserve your <em>room.</em>",
     "availableRooms": "Book Direct",
     "availableRoomsSub": "Choose your dates and guests above, then continue to our secure booking engine for live rates, availability, and confirmation.",
@@ -318,7 +318,7 @@
     "backToDetails": "Back to your details",
     "paymentDesc": "You&rsquo;ll be redirected to our secure booking engine to confirm your stay.",
     "encryption": "256-bit encryption",
-    "paySecurely": "Pay Securely , &nbsp;",
+    "paySecurely": "Pay securely",
     "yourStay": "Your stay",
     "room": "Room",
     "nights": "Nights",
@@ -326,7 +326,7 @@
     "policy1": "Pay now, direct to the hotel, no third-party booking fees.",
     "nonRefundable": "Non-refundable",
     "nonRefundableNote": "This booking is non-refundable.",
-    "reserveBtn": "I&rsquo;ll Reserve",
+    "reserveBtn": "Reserve Now",
     "nightsTotalOne": "{n} night total",
     "nightsTotalMany": "{n} nights total",
     "perNightPhrase": "per night",
@@ -380,13 +380,13 @@
   },
   "success": {
     "confirming": "Confirming your booking&hellip;",
-    "confirmed": "( Booking Confirmed )",
+    "confirmed": "Booking Confirmed",
     "thankYou": "Thank you",
     "seeYouSoon": "We&rsquo;ll see you soon.",
     "receiptSent": "A receipt has been sent to your email. Here are your booking details:",
     "bookingRef": "Booking reference",
     "paid": "Paid",
     "idNotice": "Please bring a government-issued photo ID at check-in (14:00&ndash;23:30). Save your booking reference above, you can look up your stay any time at <a class=\"text-link\" href=\"/location\">Contact reception</a>. Questions? <a class=\"text-link\" href=\"/location\">Contact us</a>.",
-    "wentWrong": "( Something went wrong )",
+    "wentWrong": "Something went wrong",
     "couldNotConfirm": "We couldn&rsquo;t confirm that booking."
   }}

@@ -1667,3 +1667,172 @@ body{ background:#f7f5f0; }
     padding-bottom:88px;
   }
 }
+
+/* ============ Editorial detail polish ============ */
+.hero--page .hero-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:max-content;
+  max-width:100%;
+  margin-left:auto;
+  margin-right:auto;
+  padding:7px 12px;
+  border:1px solid rgba(47,103,87,.18);
+  border-radius:999px;
+  background:rgba(255,255,255,.58);
+  color:var(--accent-2);
+  box-shadow:0 8px 18px rgba(var(--shadow-rgb),.04);
+}
+.hero--page .hero-title{
+  font-weight:700;
+  letter-spacing:0;
+}
+.section-intro{
+  max-width:820px !important;
+  margin-bottom:36px;
+}
+.section-intro .section-sub{
+  padding:0 12px;
+}
+.about-grid,
+.reviews-grid,
+.location-grid,
+.booking-grid{
+  background:rgba(255,255,255,.38);
+  border:1px solid rgba(32,35,39,.08);
+  border-radius:10px;
+  padding:32px;
+}
+.about-grid{
+  align-items:center;
+}
+.about-lead{
+  color:var(--ink);
+}
+.about-body p:last-child,
+.score-highlight,
+.location-address{
+  color:#555d66;
+}
+.stats-row{
+  background:#fff;
+  border:1px solid rgba(32,35,39,.08);
+  border-radius:10px;
+  padding:0 24px 26px;
+}
+.stat{
+  padding-top:26px;
+}
+.amenities-list{
+  background:#fff;
+  border:1px solid rgba(32,35,39,.08);
+  border-radius:10px;
+  padding:6px 26px;
+}
+.amenity-row:last-child{
+  border-bottom:0;
+}
+.testimonial-slider,
+.booking-form,
+.booking-summary,
+.contact-form,
+.location-map{
+  border-color:rgba(32,35,39,.1);
+}
+.testimonial p{
+  color:#25282c;
+}
+.review-cta{
+  background:#fff;
+}
+.review-cta .eyebrow{
+  color:var(--accent-2);
+  font-weight:800;
+}
+.cta{
+  padding-top:58px;
+  padding-bottom:62px;
+}
+.cta-title{
+  max-width:720px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.footer-cols a{
+  width:max-content;
+  max-width:100%;
+  padding:2px 0;
+}
+.footer-bottom{
+  border-top-style:solid;
+}
+
+@media (max-width:1000px){
+  .about-grid,
+  .reviews-grid,
+  .location-grid,
+  .booking-grid{
+    padding:26px;
+  }
+  .stats-row{
+    padding:0 20px 22px;
+  }
+}
+
+@media (max-width:760px){
+  .hero--page .hero-eyebrow{
+    font-size:.66rem;
+    padding:6px 10px;
+    margin-bottom:12px;
+  }
+  .section-intro{
+    margin-bottom:28px;
+  }
+  .section-intro .section-sub{
+    padding:0;
+    text-align:left;
+  }
+  .about-grid,
+  .reviews-grid,
+  .location-grid,
+  .booking-grid{
+    padding:22px;
+    border-radius:8px;
+  }
+  .stats-row,
+  .amenities-list{
+    border-radius:8px;
+  }
+  .stats-row{
+    grid-template-columns:1fr;
+    padding:0 20px 22px;
+  }
+  .stat,
+  .stat:nth-child(3){
+    border-left:0;
+    padding-left:0;
+    border-top:1px solid var(--line);
+  }
+  .stat:first-child{
+    border-top:0;
+  }
+  .amenities-list{
+    padding:4px 20px;
+  }
+  .amenity-row{
+    padding:18px 0;
+  }
+  .cta{
+    padding:52px 20px 76px;
+  }
+  .cta-title{
+    font-size:2rem;
+  }
+  .cta-actions .btn{
+    width:100%;
+  }
+  .footer-cols a{
+    width:100%;
+  }
+}
