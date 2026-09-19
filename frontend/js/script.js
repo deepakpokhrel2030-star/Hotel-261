@@ -292,7 +292,7 @@ if (roomGalleryEls.length) {
       roomFiles = files;
       roomIndex = Math.max(0, Math.min(index, roomFiles.length - 1));
       lightboxImg.src = roomFiles[roomIndex];
-      lightboxImg.alt = 'Hotel 261 room photo ' + (roomIndex + 1);
+      lightboxImg.alt = 'Hotel 261 room image ' + (roomIndex + 1);
       lightbox.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
@@ -306,7 +306,7 @@ if (roomGalleryEls.length) {
       if (!roomFiles.length) return;
       roomIndex = (roomIndex + delta + roomFiles.length) % roomFiles.length;
       lightboxImg.src = roomFiles[roomIndex];
-      lightboxImg.alt = 'Hotel 261 room photo ' + (roomIndex + 1);
+      lightboxImg.alt = 'Hotel 261 room image ' + (roomIndex + 1);
     }
 
     roomGalleryEls.forEach((gallery) => {
