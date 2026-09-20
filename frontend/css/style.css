@@ -2823,13 +2823,6 @@ body{ background:#f7f5f0; }
   line-height:1.2;
   text-shadow:none;
 }
-.hero--page .page-kicker::before{
-  content:"";
-  width:34px;
-  height:2px;
-  background:currentColor;
-  opacity:.7;
-}
 .hero--page .hero-title{
   max-width:860px;
   font-size:clamp(2rem, 3.7vw, 3.15rem);
@@ -2903,9 +2896,6 @@ body{ background:#f7f5f0; }
   .hero--page .page-kicker{
     margin-bottom:9px;
     font-size:.68rem;
-  }
-  .hero--page .page-kicker::before{
-    width:24px;
   }
   .hero--page .hero-title{
     max-width:100%;
