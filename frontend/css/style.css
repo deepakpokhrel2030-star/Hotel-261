@@ -2726,3 +2726,59 @@ body{ background:#f7f5f0; }
     max-width:calc(100vw - 24px);
   }
 }
+
+/* Final CTA/footer separation */
+.cta{
+  background:#203f36;
+  color:#fff;
+  border-top:0;
+  border-bottom:1px solid rgba(255,255,255,.14);
+}
+.cta-eyebrow{
+  color:#f0a184;
+}
+.cta-title{
+  color:#fff;
+}
+.cta .btn-outline-light{
+  color:#fff;
+  border-color:rgba(255,255,255,.42);
+}
+.cta .btn-outline-light:hover{
+  color:#203f36;
+  background:#fff;
+  border-color:#fff;
+}
+.cta .trust-row.on-dark{
+  border-top-color:rgba(255,255,255,.18);
+}
+.cta .trust-row.on-dark .trust-item{
+  color:rgba(255,255,255,.82);
+}
+.cta .trust-row.on-dark .icon{
+  color:#f0a184;
+}
+:root[data-theme="dark"] .cta,
+:root:not([data-theme="light"]) .cta{
+  background:#14231f;
+  color:#fff;
+}
+:root[data-theme="dark"] .cta-title,
+:root:not([data-theme="light"]) .cta-title{
+  color:#fff;
+}
+:root[data-theme="dark"] .cta .btn-outline-light,
+:root:not([data-theme="light"]) .cta .btn-outline-light{
+  color:#fff;
+  border-color:rgba(255,255,255,.42);
+}
+:root[data-theme="dark"] .cta .btn-outline-light:hover,
+:root:not([data-theme="light"]) .cta .btn-outline-light:hover{
+  color:#14231f;
+  background:#fff;
+  border-color:#fff;
+}
+:root[data-theme="dark"] .cta .trust-row.on-dark .trust-item,
+:root:not([data-theme="light"]) .cta .trust-row.on-dark .trust-item{
+  color:rgba(255,255,255,.82);
+}
