@@ -11,8 +11,8 @@
   --accent:#8f3f2b;
   --accent-dark:#6f2f22;
   --accent-light:#c86f54;
-  --accent-2:#2f6757;
-  --accent-2-light:#4e8876;
+  --accent-2:#a85a3f;
+  --accent-2-light:#d78668;
   --line:rgba(var(--shadow-rgb),.13);
   --line-light:rgba(var(--shadow-rgb),.13);
   --shadow-rgb:30,27,23;
@@ -37,8 +37,8 @@
     --accent:#e0714c;
     --accent-dark:#c65a37;
     --accent-light:#f0a184;
-    --accent-2:#6f9382;
-    --accent-2-light:#8fac9d;
+    --accent-2:#d78668;
+    --accent-2-light:#f0a184;
     --line:rgba(255,255,255,.12);
     --line-light:rgba(255,255,255,.12);
     --shadow-rgb:0,0,0;
@@ -57,8 +57,8 @@
   --accent:#e0714c;
   --accent-dark:#c65a37;
   --accent-light:#f0a184;
-  --accent-2:#6f9382;
-  --accent-2-light:#8fac9d;
+  --accent-2:#d78668;
+  --accent-2-light:#f0a184;
   --line:rgba(255,255,255,.12);
   --line-light:rgba(255,255,255,.12);
   --shadow-rgb:0,0,0;
@@ -2729,7 +2729,7 @@ body{ background:#f7f5f0; }
 
 /* Final CTA/footer separation */
 .cta{
-  background:#203f36;
+  background:#5f261d;
   color:#fff;
   border-top:0;
   border-bottom:1px solid rgba(255,255,255,.14);
@@ -2745,7 +2745,7 @@ body{ background:#f7f5f0; }
   border-color:rgba(255,255,255,.42);
 }
 .cta .btn-outline-light:hover{
-  color:#203f36;
+  color:#5f261d;
   background:#fff;
   border-color:#fff;
 }
@@ -2760,7 +2760,7 @@ body{ background:#f7f5f0; }
 }
 :root[data-theme="dark"] .cta,
 :root:not([data-theme="light"]) .cta{
-  background:#14231f;
+  background:#2a1612;
   color:#fff;
 }
 :root[data-theme="dark"] .cta-title,
@@ -2774,7 +2774,7 @@ body{ background:#f7f5f0; }
 }
 :root[data-theme="dark"] .cta .btn-outline-light:hover,
 :root:not([data-theme="light"]) .cta .btn-outline-light:hover{
-  color:#14231f;
+  color:#2a1612;
   background:#fff;
   border-color:#fff;
 }
