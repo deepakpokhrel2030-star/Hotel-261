@@ -47,14 +47,14 @@
     "roomsWord": "rooms"
   },
   "trust": {
-    "bestRate": "Best rate, booked direct",
+    "bestRate": "Best rates on our official website",
     "securePayment": "Secure online booking",
     "instantConfirmation": "Instant confirmation"
   },
   "cta": {
     "eyebrow": "Book direct",
-    "title": "Book your West London stay.",
-    "contactBtn": "Contact Reception",
+    "title": "Book directly on our official website for the best rates.",
+    "contactBtn": "Location &amp; Directions",
     "viewRoomsBtn": "View Rooms &amp; Rates",
     "bookDirectBtn": "Book Direct"
   },
@@ -168,7 +168,7 @@
     "title1": "Hotel 261",
     "title2": "rooms near <em>Westfield London</em>",
     "title3": "and Shepherd&rsquo;s Bush Market.",
-    "heroSub": "Official Hotel 261 website for direct bookings, ensuite rooms, free WiFi and limited private parking.",
+    "heroSub": "Book directly on the official Hotel 261 website for our best available rates, secure booking and instant confirmation.",
     "reserveOnlineBtn": "Reserve Online",
     "aboutLabel": "About the Hotel",
     "aboutP1": "Tucked into a quiet stretch of Shepherd&rsquo;s Bush, we&rsquo;ve been welcoming guests to West London with large rooms, on-site parking and genuinely friendly service.",
@@ -267,7 +267,15 @@
     },
     "openMaps": "Open in Google Maps",
     "contactBooking": "Contact &amp; Booking",
-    "contactLead": "Call reception directly for the best rate, or check live availability online.",
+    "contactLead": "Book directly on the official Hotel 261 website for our best available rates, secure online booking and instant confirmation.",
+    "gettingHere": "How to Get Here",
+    "gettingHereTitle": "Getting to Hotel 261 is straightforward.",
+    "byTube": "By Underground",
+    "byTubeText": "From Shepherd&rsquo;s Bush Market station, walk west along Uxbridge Road for about 15 minutes. Hotel 261 is at 261&ndash;263 Uxbridge Road.",
+    "byCar": "By Car or Taxi",
+    "byCarText": "Use postcode W12 9DS for navigation. The entrance is on Uxbridge Road. Limited on-site parking costs £15 per day and should be reserved with reception in advance.",
+    "liveDirections": "Live Directions",
+    "liveDirectionsText": "Open Google Maps for live walking, driving and public transport directions from your current location.",
     "phoneLabel": "Phone:",
     "addressLabel": "Address:",
     "hoursLabel": "Reception hours:",
