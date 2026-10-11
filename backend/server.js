@@ -62,6 +62,7 @@ const CLEAN_URL_PAGES = {
   '/location': 'location.html',
   '/book': 'book.html',
   '/booking-success': 'booking-success.html',
+  '/policies': 'policies.html',
 };
 
 for (const [route, file] of Object.entries(CLEAN_URL_PAGES)) {

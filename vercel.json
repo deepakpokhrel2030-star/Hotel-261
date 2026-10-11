@@ -10,6 +10,7 @@
     { "source": "/location", "destination": "/frontend/pages/location.html" },
     { "source": "/book", "destination": "/frontend/pages/book.html" },
     { "source": "/booking-success", "destination": "/frontend/pages/booking-success.html" },
+    { "source": "/policies", "destination": "/frontend/pages/policies.html" },
     { "source": "/css/:path*", "destination": "/frontend/css/:path*" },
     { "source": "/js/:path*", "destination": "/frontend/js/:path*" },
     { "source": "/images/:path*", "destination": "/frontend/images/:path*" },
@@ -27,6 +28,7 @@
     { "source": "/reviews.html", "destination": "/reviews", "statusCode": 308 },
     { "source": "/location.html", "destination": "/location", "statusCode": 308 },
     { "source": "/book.html", "destination": "/book", "statusCode": 308 },
-    { "source": "/booking-success.html", "destination": "/booking-success", "statusCode": 308 }
+    { "source": "/booking-success.html", "destination": "/booking-success", "statusCode": 308 },
+    { "source": "/policies.html", "destination": "/policies", "statusCode": 308 }
   ]
 }
