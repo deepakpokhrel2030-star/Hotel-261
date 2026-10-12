@@ -7,8 +7,8 @@ if (siteHeader && !siteHeader.querySelector('.promo-strip')) {
   const promoStrip = document.createElement('a');
   promoStrip.className = 'promo-strip';
   promoStrip.href = '/book';
-  promoStrip.setAttribute('aria-label', 'Book direct and save 10%. Use promo code BOOKDIRECT10.');
-  promoStrip.innerHTML = '<strong>Save 10% when you book direct</strong><span>Use promo code <b>BOOKDIRECT10</b></span><span class="promo-strip-cta">Book now</span>';
+  promoStrip.setAttribute('aria-label', 'Book direct and save 15%. Use promo code BOOKDIRECT15.');
+  promoStrip.innerHTML = '<strong>Save 15% when you book direct</strong><span>Use promo code <b>BOOKDIRECT15</b></span><span class="promo-strip-cta">Book now</span>';
   siteHeader.prepend(promoStrip);
 }
 
