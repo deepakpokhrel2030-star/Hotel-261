@@ -286,7 +286,7 @@
   },
   "faq": {
     "q1": "Check-in &amp; Check-out",
-    "a1": "Check-in from 14:00&ndash;23:30. Check-out 08:00&ndash;11:00. Please arrive by 23:30 as the hotel is closed overnight. Early check-in cannot be guaranteed, but if your room is ready we&rsquo;ll accommodate you.",
+    "a1": "Check-in from 14:00&ndash;23:00. Check-out 08:00&ndash;11:00. Please arrive by 23:00 as the hotel is closed overnight. Early check-in cannot be guaranteed, but if your room is ready we&rsquo;ll accommodate you.",
     "q2": "ID &amp; Deposit",
     "a2": "A government-issued photo ID is required at check-in (digital or scanned IDs are not accepted). A £20 cash or ID deposit is required for room keys.",
     "q3": "Breakfast",
@@ -372,8 +372,8 @@
     "errCity": "Please enter your city.",
     "arrivalTime": "Estimated arrival time",
     "pleaseSelect": "Please select",
-    "afterLateCheckin": "After 23:30 (please call ahead)",
-    "arrivalTimeNote": "Your room will be ready for check-in between 14:00 and 23:30.",
+    "afterLateCheckin": "After 23:00 (please call ahead)",
+    "arrivalTimeNote": "Your room will be ready for check-in between 14:00 and 23:00.",
     "bookingForLabel": "Who are you booking for?",
     "bookingForMain": "I am the main guest",
     "bookingForOther": "Booking is for someone else",
@@ -394,7 +394,7 @@
     "receiptSent": "A receipt has been sent to your email. Here are your booking details:",
     "bookingRef": "Booking reference",
     "paid": "Paid",
-    "idNotice": "Please bring a government-issued photo ID at check-in (14:00&ndash;23:30). Save your booking reference above, you can look up your stay any time at <a class=\"text-link\" href=\"/location\">Contact reception</a>. Questions? <a class=\"text-link\" href=\"/location\">Contact us</a>.",
+    "idNotice": "Please bring a government-issued photo ID at check-in (14:00&ndash;23:00). Save your booking reference above, you can look up your stay any time at <a class=\"text-link\" href=\"/location\">Contact reception</a>. Questions? <a class=\"text-link\" href=\"/location\">Contact us</a>.",
     "wentWrong": "Something went wrong",
     "couldNotConfirm": "We couldn&rsquo;t confirm that booking."
   }}

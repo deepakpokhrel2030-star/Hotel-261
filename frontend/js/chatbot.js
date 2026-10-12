@@ -42,11 +42,11 @@
     },
     {
       keywords: ['check-in', 'check in', 'checkin', 'check-out', 'check out', 'checkout', 'arrival time', 'what time', 'late arrival', 'early arrival'],
-      answer: 'Check-in is from 14:00&ndash;23:30, and check-out is 08:00&ndash;11:00. Please arrive by 23:30 as the hotel is closed overnight. Early check-in can\'t be guaranteed, but we\'ll accommodate you if your room is ready.'
+      answer: 'Check-in is from 14:00&ndash;23:00, and check-out is 08:00&ndash;11:00. Please arrive by 23:00 as the hotel is closed overnight. Early check-in can\'t be guaranteed, but we\'ll accommodate you if your room is ready.'
     },
     {
       keywords: ['reception hours', 'front desk', 'opening hours', 'open 24', '24 hour', '24/7', 'reception open'],
-      answer: 'Reception is staffed 8am&ndash;11:30pm daily. It\'s not a 24-hour desk, which is also why check-in has to happen by 23:30, the hotel is closed overnight.'
+      answer: 'Reception is staffed 8am&ndash;11:30pm daily. It\'s not a 24-hour desk, and check-in must be completed by 23:00 because the hotel is closed overnight.'
     },
     {
       keywords: ['id', 'identification', 'deposit', 'passport', 'photo id', 'identity'],

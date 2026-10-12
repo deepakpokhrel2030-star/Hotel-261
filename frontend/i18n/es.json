@@ -276,7 +276,7 @@
   },
   "faq": {
     "q1": "Entrada y salida",
-    "a1": "Entrada de 14:00 a 23:30. Salida de 08:00 a 11:00. Por favor, llegue antes de las 23:30, ya que el hotel permanece cerrado durante la noche. La entrada anticipada no puede garantizarse, pero le acomodaremos si su habitación está lista.",
+    "a1": "Entrada de 14:00 a 23:00. Salida de 08:00 a 11:00. Por favor, llegue antes de las 23:00, ya que el hotel permanece cerrado durante la noche. La entrada anticipada no puede garantizarse, pero le acomodaremos si su habitación está lista.",
     "q2": "Identificación y depósito",
     "a2": "Se requiere una identificación oficial con fotografía en el momento del check-in (no se aceptan identificaciones digitales o escaneadas). Se solicita un depósito de 20&nbsp;£ en efectivo o una identificación para las llaves de la habitación.",
     "q3": "Desayuno",
@@ -362,8 +362,8 @@
     "errCity": "Introduce tu ciudad.",
     "arrivalTime": "Hora estimada de llegada",
     "pleaseSelect": "Selecciona una opción",
-    "afterLateCheckin": "Después de las 23:30 (llama con antelación)",
-    "arrivalTimeNote": "Tu habitación estará lista para el check-in entre las 14:00 y las 23:30.",
+    "afterLateCheckin": "Después de las 23:00 (llama con antelación)",
+    "arrivalTimeNote": "Tu habitación estará lista para el check-in entre las 14:00 y las 23:00.",
     "bookingForLabel": "¿Para quién es la reserva?",
     "bookingForMain": "Soy el huésped principal",
     "bookingForOther": "La reserva es para otra persona",
@@ -384,7 +384,7 @@
     "receiptSent": "Se ha enviado un recibo a su correo electrónico. Estos son los detalles de su reserva:",
     "bookingRef": "Referencia de reserva",
     "paid": "Pagado",
-    "idNotice": "Traiga una identificación oficial con fotografía en el check-in (14:00&ndash;23:30). Guarde la referencia de su reserva, puede consultar su estancia en cualquier momento en <a class=\"text-link\" href=\"/location\">Consultar reserva</a>. ¿Preguntas? <a class=\"text-link\" href=\"/location\">Contáctenos</a>.",
+    "idNotice": "Traiga una identificación oficial con fotografía en el check-in (14:00&ndash;23:00). Guarde la referencia de su reserva, puede consultar su estancia en cualquier momento en <a class=\"text-link\" href=\"/location\">Consultar reserva</a>. ¿Preguntas? <a class=\"text-link\" href=\"/location\">Contáctenos</a>.",
     "wentWrong": "( Algo ha ido mal )",
     "couldNotConfirm": "No hemos podido confirmar esa reserva."
   }}

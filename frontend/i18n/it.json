@@ -276,7 +276,7 @@
   },
   "faq": {
     "q1": "Check-in &amp; Check-out",
-    "a1": "Check-in dalle 14:00 alle 23:30. Check-out dalle 08:00 alle 11:00. Vi preghiamo di arrivare entro le 23:30 poiché l&rsquo;hotel resta chiuso di notte. Il check-in anticipato non può essere garantito, ma se la vostra camera è pronta faremo il possibile per accogliervi.",
+    "a1": "Check-in dalle 14:00 alle 23:00. Check-out dalle 08:00 alle 11:00. Vi preghiamo di arrivare entro le 23:00 poiché l&rsquo;hotel resta chiuso di notte. Il check-in anticipato non può essere garantito, ma se la vostra camera è pronta faremo il possibile per accogliervi.",
     "q2": "Documento &amp; Cauzione",
     "a2": "È richiesto un documento d&rsquo;identità ufficiale con foto al check-in (non sono accettati documenti digitali o scansionati). È richiesta una cauzione di 20&nbsp;£ in contanti o un documento per le chiavi della camera.",
     "q3": "Colazione",
@@ -362,8 +362,8 @@
     "errCity": "Inserisci la tua città.",
     "arrivalTime": "Orario di arrivo stimato",
     "pleaseSelect": "Seleziona",
-    "afterLateCheckin": "Dopo le 23:30 (si prega di chiamare in anticipo)",
-    "arrivalTimeNote": "La camera sarà pronta per il check-in tra le 14:00 e le 23:30.",
+    "afterLateCheckin": "Dopo le 23:00 (si prega di chiamare in anticipo)",
+    "arrivalTimeNote": "La camera sarà pronta per il check-in tra le 14:00 e le 23:00.",
     "bookingForLabel": "Per chi stai prenotando?",
     "bookingForMain": "Sono l’ospite principale",
     "bookingForOther": "La prenotazione è per qualcun altro",
@@ -384,7 +384,7 @@
     "receiptSent": "Una ricevuta è stata inviata alla tua email. Ecco i dettagli della tua prenotazione:",
     "bookingRef": "Codice prenotazione",
     "paid": "Pagato",
-    "idNotice": "Ricordati di portare un documento d&rsquo;identità ufficiale con foto al check-in (14:00&ndash;23:30). Conserva il codice della tua prenotazione qui sopra, puoi consultare il tuo soggiorno in qualsiasi momento su <a class=\"text-link\" href=\"/location\">Verifica prenotazione</a>. Domande? <a class=\"text-link\" href=\"/location\">Contattaci</a>.",
+    "idNotice": "Ricordati di portare un documento d&rsquo;identità ufficiale con foto al check-in (14:00&ndash;23:00). Conserva il codice della tua prenotazione qui sopra, puoi consultare il tuo soggiorno in qualsiasi momento su <a class=\"text-link\" href=\"/location\">Verifica prenotazione</a>. Domande? <a class=\"text-link\" href=\"/location\">Contattaci</a>.",
     "wentWrong": "( Qualcosa è andato storto )",
     "couldNotConfirm": "Non siamo riusciti a confermare questa prenotazione."
   }}
