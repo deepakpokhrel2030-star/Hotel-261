@@ -142,7 +142,7 @@
     },
     "breakfast": {
       "title": "Colazione nelle vicinanze",
-      "desc": "Colazione all&rsquo;inglese o all&rsquo;italiana servita dalle 8:00 alle 11:30 da Little Napoli, a cinque minuti a piedi. Chiedete un buono alla reception e godetevi il 15% di sconto su tutti gli altri pasti."
+      "desc": "Colazione all&rsquo;inglese o all&rsquo;italiana servita dalle 8:00 alle 11:30 in un ristorante vicino, a cinque minuti a piedi. Chiedete un buono alla reception e godetevi il 15% di sconto su tutti gli altri pasti."
     },
     "smokeFree": {
       "title": "Hotel non fumatori",
@@ -181,7 +181,7 @@
     "amenity1desc": "In tutto l&rsquo;hotel e in ogni camera.",
     "amenity2desc": "In loco, da 15&nbsp;£/giorno, raro in questa zona di Londra.",
     "amenity3desc": "Fino a quattro persone, senza stare stretti.",
-    "amenity4desc": "A 5 minuti a piedi, da Little Napoli.",
+    "amenity4desc": "A 5 minuti a piedi.",
     "seeAllAmenities": "Vedi tutti i servizi",
     "ratedByGuests": "Valutato dai<br>nostri ospiti",
     "readGuestReviews": "Leggi le recensioni degli ospiti",
@@ -197,7 +197,7 @@
     "p3": "Hotel 261 è un hotel 2 stelle semplice, apprezzato dai viaggiatori singoli e per i soggiorni brevi, pratico, confortevole e con prezzi adatti a Londra Ovest.",
     "exploreRooms": "Scopri le nostre camere",
     "whatGuestsGet": "Cosa trovano i nostri ospiti",
-    "g1": "<strong>Colazione all&rsquo;inglese o all&rsquo;italiana</strong> disponibile a cinque minuti a piedi da Little Napoli, con buoni organizzati tramite la reception.",
+    "g1": "<strong>Colazione all&rsquo;inglese o all&rsquo;italiana</strong> disponibile in un ristorante vicino, a cinque minuti a piedi, con buoni organizzati tramite la reception.",
     "g2": "<strong>Parcheggio in loco</strong> disponibile per 15&nbsp;£/giorno, in base alla disponibilità, comodo per un hotel così vicino al centro di Londra.",
     "g3": "<strong>Pulizia giornaliera</strong> per camere sempre fresche durante tutto il soggiorno, e siamo felici di custodire i bagagli il giorno della partenza.",
     "g4": "<strong>Bagni privati</strong> in ogni camera, insieme a TV a schermo piatto, canali satellitari e WiFi gratuito in tutto l&rsquo;edificio.",
@@ -280,7 +280,7 @@
     "q2": "Documento &amp; Cauzione",
     "a2": "È richiesto un documento d&rsquo;identità ufficiale con foto al check-in (non sono accettati documenti digitali o scansionati). È richiesta una cauzione di 20&nbsp;£ in contanti o un documento per le chiavi della camera.",
     "q3": "Colazione",
-    "a3": "Colazione all&rsquo;inglese o all&rsquo;italiana servita dalle 08:00 alle 11:30 da Little Napoli, a 5 minuti a piedi. Chiedete un buono alla reception, e godetevi il 15% di sconto su tutti gli altri pasti.",
+    "a3": "Colazione all&rsquo;inglese o all&rsquo;italiana servita dalle 08:00 alle 11:30 in un ristorante vicino, a 5 minuti a piedi. Chiedete un buono alla reception, e godetevi il 15% di sconto su tutti gli altri pasti.",
     "q4": "Parcheggio",
     "a4": "Parcheggio interno limitato, 15&nbsp;£/giorno dalle 14:00 all&rsquo;arrivo alle 11:00 alla partenza. Contattateci in anticipo per prenotare un posto, essendo la disponibilità limitata.",
     "q5": "Pagamento",

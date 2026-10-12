@@ -142,7 +142,7 @@
     },
     "breakfast": {
       "title": "Desayuno cerca",
-      "desc": "Desayuno inglés o italiano servido de 8:00 a 11:30 en Little Napoli, a cinco minutos andando. Pida un vale en recepción y disfrute de un 15&nbsp;% de descuento en el resto de comidas."
+      "desc": "Desayuno inglés o italiano servido de 8:00 a 11:30 en un restaurante cercano, a cinco minutos andando. Pida un vale en recepción y disfrute de un 15&nbsp;% de descuento en el resto de comidas."
     },
     "smokeFree": {
       "title": "Hotel libre de humo",
@@ -181,7 +181,7 @@
     "amenity1desc": "En todo el hotel y en cada habitación.",
     "amenity2desc": "En el propio hotel, desde 15&nbsp;£/día, algo poco habitual en esta zona de Londres.",
     "amenity3desc": "Hasta cuatro personas, sin agobios.",
-    "amenity4desc": "A 5 minutos a pie, en Little Napoli.",
+    "amenity4desc": "A 5 minutos a pie.",
     "seeAllAmenities": "Ver todos los servicios",
     "ratedByGuests": "Valorado por<br>nuestros huéspedes",
     "readGuestReviews": "Leer opiniones de huéspedes",
@@ -197,7 +197,7 @@
     "p3": "Hotel 261 es un hotel de 2 estrellas sencillo, popular entre viajeros solos y estancias cortas, cómodo, práctico y con precios adecuados para el oeste de Londres.",
     "exploreRooms": "Explore nuestras habitaciones",
     "whatGuestsGet": "Lo que ofrecemos a nuestros huéspedes",
-    "g1": "<strong>Desayuno inglés o italiano</strong> disponible a cinco minutos andando en Little Napoli, con vales gestionados en recepción.",
+    "g1": "<strong>Desayuno inglés o italiano</strong> disponible en un restaurante cercano, a cinco minutos andando, con vales gestionados en recepción.",
     "g2": "<strong>Aparcamiento en el hotel</strong> disponible por 15&nbsp;£/día, según disponibilidad, muy práctico para un hotel tan cerca del centro de Londres.",
     "g3": "<strong>Limpieza diaria</strong> que mantiene las habitaciones impecables durante toda su estancia, y guardamos con gusto su equipaje el día de salida.",
     "g4": "<strong>Baños privados</strong> en cada habitación, junto con TV de pantalla plana, canales de satélite y WiFi gratis en todo el edificio.",
@@ -280,7 +280,7 @@
     "q2": "Identificación y depósito",
     "a2": "Se requiere una identificación oficial con fotografía en el momento del check-in (no se aceptan identificaciones digitales o escaneadas). Se solicita un depósito de 20&nbsp;£ en efectivo o una identificación para las llaves de la habitación.",
     "q3": "Desayuno",
-    "a3": "Desayuno inglés o italiano servido de 08:00 a 11:30 en Little Napoli, a 5 minutos andando. Pida un vale en recepción, y disfrute de un 15&nbsp;% de descuento en el resto de comidas.",
+    "a3": "Desayuno inglés o italiano servido de 08:00 a 11:30 en un restaurante cercano, a 5 minutos andando. Pida un vale en recepción, y disfrute de un 15&nbsp;% de descuento en el resto de comidas.",
     "q4": "Aparcamiento",
     "a4": "Aparcamiento limitado en el hotel, 15&nbsp;£/día de 14:00 a la llegada a 11:00 a la salida. Contáctenos con antelación para reservar plaza, ya que la disponibilidad es limitada.",
     "q5": "Pago",

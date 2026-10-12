@@ -142,7 +142,7 @@
     },
     "breakfast": {
       "title": "Petit-déjeuner à proximité",
-      "desc": "Petit-déjeuner anglais ou italien servi de 8h à 11h30 au Little Napoli, à cinq minutes à pied. Demandez un bon à la réception, et profitez de 15&nbsp;% de réduction sur les autres repas."
+      "desc": "Petit-déjeuner anglais ou italien servi de 8h à 11h30 dans un restaurant voisin, à cinq minutes à pied. Demandez un bon à la réception, et profitez de 15&nbsp;% de réduction sur les autres repas."
     },
     "smokeFree": {
       "title": "Hôtel non-fumeur",
@@ -181,7 +181,7 @@
     "amenity1desc": "Dans tout l&rsquo;hôtel et dans chaque chambre.",
     "amenity2desc": "Sur place, à partir de 15&nbsp;£/jour, rare dans ce quartier de Londres.",
     "amenity3desc": "Jusqu’à quatre personnes, sans être à l’étroit.",
-    "amenity4desc": "À 5 minutes à pied, chez Little Napoli.",
+    "amenity4desc": "À 5 minutes à pied.",
     "seeAllAmenities": "Voir tous les équipements",
     "ratedByGuests": "L&rsquo;avis<br>de nos clients",
     "readGuestReviews": "Lire les avis clients",
@@ -197,7 +197,7 @@
     "p3": "Hotel 261 est un hôtel 2 étoiles simple, apprécié des voyageurs solo et des courts séjours, pratique, confortable et à un prix adapté à l&rsquo;ouest de Londres.",
     "exploreRooms": "Découvrez nos chambres",
     "whatGuestsGet": "Ce que nos clients apprécient",
-    "g1": "<strong>Petit-déjeuner anglais ou italien</strong> disponible à cinq minutes à pied au Little Napoli, avec des bons organisés à la réception.",
+    "g1": "<strong>Petit-déjeuner anglais ou italien</strong> disponible dans un restaurant voisin, à cinq minutes à pied, avec des bons organisés à la réception.",
     "g2": "<strong>Parking sur place</strong> disponible pour 15&nbsp;£/jour, selon disponibilité, pratique pour un hôtel aussi proche du centre de Londres.",
     "g3": "<strong>Ménage quotidien</strong> pour des chambres impeccables tout au long de votre séjour, et nous conservons volontiers vos bagages le jour de votre départ.",
     "g4": "<strong>Salles de bain privées</strong> dans chaque chambre, avec TV écran plat, chaînes satellite et WiFi gratuit dans tout le bâtiment.",
@@ -280,7 +280,7 @@
     "q2": "Pièce d&rsquo;identité &amp; caution",
     "a2": "Une pièce d&rsquo;identité officielle avec photo est requise à l&rsquo;arrivée (les copies numériques ou scannées ne sont pas acceptées). Une caution de 20&nbsp;£ en espèces ou une pièce d&rsquo;identité est demandée pour les clés de chambre.",
     "q3": "Petit-déjeuner",
-    "a3": "Petit-déjeuner anglais ou italien servi de 08h00 à 11h30 au Little Napoli, à 5 minutes à pied. Demandez un bon à la réception, et profitez de 15&nbsp;% de réduction sur les autres repas.",
+    "a3": "Petit-déjeuner anglais ou italien servi de 08h00 à 11h30 dans un restaurant voisin, à 5 minutes à pied. Demandez un bon à la réception, et profitez de 15&nbsp;% de réduction sur les autres repas.",
     "q4": "Parking",
     "a4": "Parking sur place limité, 15&nbsp;£/jour de 14h00 à l&rsquo;arrivée à 11h00 au départ. Contactez-nous à l&rsquo;avance pour réserver une place, la disponibilité étant limitée.",
     "q5": "Paiement",

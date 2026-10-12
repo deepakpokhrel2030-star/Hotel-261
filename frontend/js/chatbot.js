@@ -54,7 +54,7 @@
     },
     {
       keywords: ['breakfast', 'food', 'eat', 'restaurant', 'dinner', 'lunch'],
-      answer: 'Full English or Italian breakfast is served 08:00&ndash;11:30 at Little Napoli, a 5-minute walk away. Ask reception for a voucher, you\'ll also get 15% off all other meals there.'
+      answer: 'Full English or Italian breakfast is served 08:00&ndash;11:30 at a nearby restaurant, a 5-minute walk away. Ask reception for a voucher, you\'ll also get 15% off all other meals there.'
     },
     {
       keywords: ['parking', 'park', 'car', 'car park', 'garage'],

@@ -144,7 +144,7 @@
     },
     "breakfast": {
       "title": "Breakfast Nearby",
-      "desc": "Full English or Italian breakfast is served 8am&ndash;11:30am at Little Napoli, a five-minute walk away. Ask reception for a voucher, and enjoy 15% off all other meals there too."
+      "desc": "Full English or Italian breakfast is served 8am&ndash;11:30am at a nearby restaurant, a five-minute walk away. Ask reception for a voucher, and enjoy 15% off all other meals there too."
     },
     "smokeFree": {
       "title": "Smoke-Free Hotel",
@@ -183,7 +183,7 @@
     "amenity1desc": "Throughout the hotel and in every room.",
     "amenity2desc": "On-site, from £15/day, rare for this part of London.",
     "amenity3desc": "Sleeping up to four, without a squeeze.",
-    "amenity4desc": "5 minutes on foot, at Little Napoli.",
+    "amenity4desc": "5 minutes away on foot.",
     "seeAllAmenities": "See all amenities",
     "ratedByGuests": "Rated by<br>our guests",
     "readGuestReviews": "Read guest reviews",
@@ -199,7 +199,7 @@
     "p3": "Hotel 261 is a straightforward 2-star hotel for practical West London stays, with clear rates, comfortable rooms and a location that keeps travel simple.",
     "exploreRooms": "Explore our rooms",
     "whatGuestsGet": "What Guests Get",
-    "g1": "<strong>Full English or Italian breakfast</strong> is available a five-minute walk away at Little Napoli, with vouchers arranged through reception.",
+    "g1": "<strong>Full English or Italian breakfast</strong> is available at a nearby restaurant, a five-minute walk away, with vouchers arranged through reception.",
     "g2": "<strong>On-site parking</strong> is available for £15/day, subject to availability, handy for a hotel this close to central London.",
     "g3": "<strong>Daily housekeeping</strong> keeps rooms fresh throughout your stay, and we&rsquo;ll happily store luggage on your day of departure.",
     "g4": "<strong>Ensuite bathrooms</strong> in every room, along with a flat-screen TV, satellite channels and free WiFi throughout the building.",
@@ -290,7 +290,7 @@
     "q2": "ID &amp; Deposit",
     "a2": "A government-issued photo ID is required at check-in (digital or scanned IDs are not accepted). A £20 cash or ID deposit is required for room keys.",
     "q3": "Breakfast",
-    "a3": "Full English or Italian breakfast served 08:00&ndash;11:30 at Little Napoli, a 5-minute walk away. Ask reception for a voucher, and enjoy 15% off all other meals there too.",
+    "a3": "Full English or Italian breakfast served 08:00&ndash;11:30 at a nearby restaurant, a 5-minute walk away. Ask reception for a voucher, and enjoy 15% off all other meals there too.",
     "q4": "Parking",
     "a4": "Limited on-site parking, £15/day from 14:00 on arrival to 11:00 on departure. Contact us ahead to reserve a space, as availability is limited.",
     "q5": "Payment",
