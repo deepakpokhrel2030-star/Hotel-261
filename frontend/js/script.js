@@ -1,6 +1,17 @@
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+/* ---------- Direct booking promotion ---------- */
+const siteHeader = document.getElementById('header');
+if (siteHeader && !siteHeader.querySelector('.promo-strip')) {
+  const promoStrip = document.createElement('a');
+  promoStrip.className = 'promo-strip';
+  promoStrip.href = '/book';
+  promoStrip.setAttribute('aria-label', 'Book direct and save 10%. Use promo code BOOKDIRECT10.');
+  promoStrip.innerHTML = '<strong>Save 10% when you book direct</strong><span>Use promo code <b>BOOKDIRECT10</b></span><span class="promo-strip-cta">Book now</span>';
+  siteHeader.prepend(promoStrip);
+}
+
 /* ---------- Language switcher ---------- */
 const langToggle = document.getElementById('langToggle');
 const langDropdown = document.getElementById('langDropdown');

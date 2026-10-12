@@ -489,6 +489,25 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 
 /* ============ Little Hotelier direct booking handoff ============ */
 .direct-booking-section{ padding-top:14px; }
+.promo-strip{
+  min-height:38px; padding:7px 24px; display:flex; align-items:center; justify-content:center; gap:18px;
+  background:linear-gradient(90deg,#8f111d,#b31c29); color:#fff; text-decoration:none;
+  font-size:.78rem; letter-spacing:.02em; text-align:center;
+}
+.promo-strip strong{ font-size:.82rem; }
+.promo-strip b{ display:inline-block; margin-left:4px; padding:3px 8px; border:1px dashed rgba(255,255,255,.7); border-radius:4px; letter-spacing:.08em; }
+.promo-strip-cta{ font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+.direct-promo-card{
+  display:flex; align-items:center; gap:18px; margin:24px 0 4px; padding:18px 20px;
+  border:1px solid rgba(179,28,41,.24); border-radius:14px; background:rgba(179,28,41,.06);
+}
+.direct-promo-saving{
+  flex:none; padding:10px 12px; border-radius:9px; background:#b31c29; color:#fff;
+  font-size:.82rem; font-weight:800; letter-spacing:.08em;
+}
+.direct-promo-card strong{ color:var(--ink); font-size:1rem; }
+.direct-promo-card p{ margin:4px 0 0; font-size:.88rem; line-height:1.45; }
+.direct-promo-card b{ color:#a41724; letter-spacing:.06em; }
 .direct-booking-panel{
   max-width:1120px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1.45fr) minmax(320px,.75fr);
   gap:28px; align-items:stretch;
@@ -963,6 +982,10 @@ section > h2{ font-size:clamp(1.9rem,3.6vw,2.7rem); }
 }
 
 @media (max-width:760px){
+  .promo-strip{ min-height:44px; padding:7px 12px; gap:8px; flex-wrap:wrap; font-size:.7rem; line-height:1.2; }
+  .promo-strip strong{ width:100%; font-size:.76rem; }
+  .promo-strip-cta{ display:none; }
+  .direct-promo-card{ align-items:flex-start; gap:12px; padding:16px; }
   section{ padding:64px 20px; }
   /* The hero's own "Reserve Online" / "Call to Book" buttons duplicated
      the persistent "Reserve Now" bar that's already on screen the whole
