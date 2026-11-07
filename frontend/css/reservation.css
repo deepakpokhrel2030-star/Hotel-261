@@ -63,3 +63,19 @@ section.reservation-layout{padding-top:16px;padding-bottom:20px}.reserve-card{pa
 @media(min-width:2400px){.reserve-card{padding:44px;gap:32px}.reserve-promo-heading,.reserve-preference>label{height:40px;line-height:40px}.reserve-promo-heading label{line-height:40px}.reserve-search{margin-top:47px;min-height:88px}.reservation-page .reserve-promo-controls input,.reserve-promo-controls button{min-height:86px}}
 .reserve-promo-heading summary{min-height:26px;padding:3px 9px;border:1px solid var(--line);border-radius:5px;background:var(--surface);text-decoration:none;color:var(--ink);font-weight:600}
 .reserve-promo-heading summary:hover{background:var(--paper-2);border-color:var(--accent)}
+/* Stronger booking typography, with offers beside the code and Apply. */
+.reservation-page label{font-weight:700;font-size:.8rem}
+.reservation-page input,.reservation-page select{font-weight:600}
+.reservation-page label span{font-weight:500}
+.reserve-promo-heading{justify-content:flex-start}
+.reserve-promo-controls{overflow:visible;background:transparent;border:0;border-radius:0;gap:8px;align-items:stretch}
+.reservation-page .reserve-promo-controls input{border:1px solid var(--line);border-radius:7px;background:var(--paper);font-weight:600}
+.reserve-promo-controls>button{border:1px solid var(--line);border-radius:7px;background:var(--paper-2);font-weight:700;padding-inline:14px}
+.reserve-promo-controls>details{position:relative;flex-shrink:0;font-family:var(--ff-body);font-size:.75rem}
+.reserve-promo-controls>details>summary{display:flex;height:100%;min-height:50px;align-items:center;justify-content:center;gap:6px;padding:10px 12px;list-style:none;cursor:pointer;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--ink);font-weight:700;white-space:nowrap}
+.reserve-promo-controls>details>summary::-webkit-details-marker{display:none}
+.reserve-promo-controls>details>summary:hover,.reserve-promo-controls>details[open]>summary{border-color:var(--accent);background:var(--paper-2);color:var(--accent)}
+.reserve-search{font-weight:700}
+#promoCopyStatus{font-weight:600}
+@media(max-width:760px){.reserve-promo-entry{grid-column:1/-1}.reserve-search{grid-column:1/-1;grid-row:6;margin-top:0}.reserve-search .reserve-label-short{display:none}.reserve-search .reserve-label-long{display:inline}.reserve-promo-controls>details>summary{min-height:46px;font-size:.72rem}.reservation-page label{font-size:.75rem}}
+@media(min-width:2400px){.reserve-promo-controls>details>summary{min-height:88px;padding-inline:24px}}
