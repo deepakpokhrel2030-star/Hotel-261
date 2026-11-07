@@ -247,3 +247,4 @@ html { overflow-x: clip; }
 .home-promo-controls select{width:110px;font-size:.76rem}
 }
 @media(min-width:2400px){.hero:not(.hero--page) .hero-inner{padding-top:calc(var(--header-height) + 60px);padding-bottom:100px}.hero:not(.hero--page) .hero-title{font-size:3.6rem;max-width:2100px}.hero:not(.hero--page) .hero-sub{max-width:1400px}.home-promo-controls select{width:170px;min-height:70px}.hero-cta-bar .search-widget-wrap.overlap{margin-top:-30px}}
+#heroSearchWidget .date-placeholder{display:none}

@@ -267,6 +267,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
     if (promoOffer) promoOffer.addEventListener('change', () => {
       if (!promoOffer.value) return;
       promoInput.value = promoOffer.value;
+      promoOffer.value = '';
       promoInput.dispatchEvent(new Event('input', { bubbles: true }));
       promoInput.focus();
     });
