@@ -26,6 +26,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="/css/responsive.css">
+<link rel="stylesheet" href="/css/reservation.css">
 </head>
 <body>
 
@@ -88,312 +89,53 @@
   </div>
 </header>
 
-<main>
-
-<section class="hero hero--page">
-  <div class="hero-scrim"></div>
-  <div class="hero-inner">
-    <p class="page-kicker load-in" style="--i:0">Official direct booking</p>
-    <h1 class="hero-title">
-      <span class="line load-in" style="--i:1" data-i18n-html="book.heroTitle">Book direct with Hotel 261</span>
-    </h1>
-    <p class="hero-sub load-in" style="--i:2">Check your dates, choose a room and reserve securely through the official website.</p>
-  </div>
-</section>
-
-<div class="search-widget-wrap overlap book-search-wrap">
-  <div class="search-widget" id="bookSearchWidget">
-    <form>
-      <div style="display:contents;">
-        <div class="sw-field">
-          <label><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> <span data-i18n="search.checkin">Check-in</span></label>
-          <input type="date" id="bsCheckIn" required>
-          <span class="date-placeholder" aria-hidden="true">dd/mm/yyyy</span>
-        </div>
-        <div class="sw-field">
-          <label><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> <span data-i18n="search.checkout">Check-out</span></label>
-          <input type="date" id="bsCheckOut" required>
-          <span class="date-placeholder" aria-hidden="true">dd/mm/yyyy</span>
-          <div class="sw-nights" id="bsNights">
-            <button type="button" class="sw-nights-btn" data-step="-" aria-label="Decrease nights" data-i18n-attr="aria-label:search.decreaseNights">&minus;</button>
-            <span class="sw-nights-text"></span>
-            <button type="button" class="sw-nights-btn" data-step="+" aria-label="Increase nights" data-i18n-attr="aria-label:search.increaseNights">&plus;</button>
-          </div>
-        </div>
-        <div class="sw-field sw-guests-field">
-          <label><svg class="icon" viewBox="0 0 24 24"><circle cx="8.5" cy="8" r="3"/><path d="M2.5 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.4"/><path d="M15 20a5 5 0 0 1 7-4.6"/></svg> <span data-i18n="search.occupancyLabel">Occupancy</span></label>
-          <button type="button" class="sw-guests-toggle">2 adults &middot; 0 children &middot; 1 room</button>
-          <div class="guests-dropdown">
-            <div class="stepper-row">
-              <span data-i18n="search.adults">Adults</span>
-              <div class="stepper" data-type="adults">
-                <button type="button" data-step="-" aria-label="Decrease adults" data-i18n-attr="aria-label:search.decreaseAdults">&minus;</button>
-                <b>2</b>
-                <button type="button" data-step="+" aria-label="Increase adults" data-i18n-attr="aria-label:search.increaseAdults">&plus;</button>
-              </div>
-            </div>
-            <div class="stepper-row">
-              <span data-i18n="search.children">Children</span>
-              <div class="stepper" data-type="children">
-                <button type="button" data-step="-" aria-label="Decrease children" data-i18n-attr="aria-label:search.decreaseChildren">&minus;</button>
-                <b>0</b>
-                <button type="button" data-step="+" aria-label="Increase children" data-i18n-attr="aria-label:search.increaseChildren">&plus;</button>
-              </div>
-            </div>
-            <div class="stepper-row">
-              <span data-i18n="search.rooms">Rooms</span>
-              <div class="stepper" data-type="rooms">
-                <button type="button" data-step="-" aria-label="Decrease rooms" data-i18n-attr="aria-label:search.decreaseRooms">&minus;</button>
-                <b>1</b>
-                <button type="button" data-step="+" aria-label="Increase rooms" data-i18n-attr="aria-label:search.increaseRooms">&plus;</button>
-              </div>
-            </div>
-            <button type="button" class="btn btn-outline guests-done" data-i18n="search.done">Done</button>
-          </div>
-        </div>
-        <button type="submit" class="sw-submit" data-i18n="search.checkAvailability">Check Availability</button>
-      </div>
-    </form>
-  </div>
+<main class="reservation-page">
+<section class="hero hero--page reservation-intro"><div class="hero-inner">
+<p class="page-kicker">YOUR WEST LONDON STAY</p><h1 class="hero-title">A good stay starts here.</h1>
+<p class="hero-sub">Choose your dates and find your room at Hotel 261, Shepherd’s Bush.</p>
+<ol class="reservation-steps" aria-label="Booking steps"><li aria-current="step"><b>1</b> Plan your stay</li><li><b>2</b> Choose a live rate</li><li><b>3</b> Pay &amp; confirm</li></ol>
+</div></section>
+<section class="reservation-layout" aria-label="Plan your reservation">
+<div class="reservation-content">
+<form id="reservationForm" class="reserve-card" novalidate>
+<div class="reserve-card-heading"><span class="reserve-eyebrow">LET’S MAKE IT A DATE</span><h2>Your stay, your way.</h2><p>Check live availability for your dates. All prices are in GBP.</p></div>
+<div id="reservationError" class="reservation-error" role="alert" hidden></div>
+<div class="reserve-fields">
+<div><label for="reserveCheckIn">Check-in</label><input type="date" id="reserveCheckIn" name="checkin" required><small>From 14:00</small></div>
+<div><label for="reserveCheckOut">Check-out</label><input type="date" id="reserveCheckOut" name="checkout" required><small>Before 11:00</small></div>
 </div>
-
-<section class="booking direct-booking-section" id="roomsSection">
-  <div class="direct-booking-panel">
-    <div class="direct-booking-copy">
-      <div class="section-head">
-        <span class="section-num">01</span>
-        <span class="section-label" data-i18n="book.availableRooms">Book Direct</span>
-      </div>
-      <h2>Live rates from Hotel 261</h2>
-      <p data-i18n="book.availableRoomsSub">Choose your dates and guests above, then continue to our secure booking engine for live rates, availability, and confirmation.</p>
-      <div class="direct-promo-card" role="note" aria-label="Direct booking discount">
-        <span class="direct-promo-saving">15% OFF</span>
-        <div>
-          <strong>Save 15% on your direct booking</strong>
-          <p>Enter promo code <b>BOOKDIRECT15</b> in the secure booking engine.</p>
-        </div>
-      </div>
-      <div class="direct-booking-features">
-        <span><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l9 9-8 8-9-9V4h7Z"/><circle cx="8" cy="8" r="1.3" fill="currentColor" stroke="none"/></svg> <span data-i18n="trust.bestRate">Best rate, booked direct</span></span>
-        <span><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> <span data-i18n="trust.securePayment">Secure online booking</span></span>
-        <span><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> <span data-i18n="trust.instantConfirmation">Instant confirmation</span></span>
-      </div>
-    </div>
-
-    <aside class="direct-booking-card">
-      <div class="direct-booking-card-head">
-        <span>Selected stay</span>
-        <b>GBP</b>
-      </div>
-      <dl class="direct-booking-summary" id="directBookingSummary">
-        <div><dt>Check-in</dt><dd id="dbCheckIn">, </dd></div>
-        <div><dt>Check-out</dt><dd id="dbCheckOut">, </dd></div>
-        <div><dt>Nights</dt><dd id="dbNights">, </dd></div>
-        <div><dt>Occupancy</dt><dd id="dbOccupancy">, </dd></div>
-      </dl>
-      <button type="button" class="btn btn-primary direct-booking-btn" id="directBookingBtn">Continue to Secure Booking</button>
-      <p>Rates and availability are confirmed by Little Hotelier before payment.</p>
-      <p>Before booking, please review our <a class="text-link" href="/policies#terms">booking terms</a> and <a class="text-link" href="/policies#privacy">privacy notice</a>. The cancellation rules shown with your selected rate will apply.</p>
-    </aside>
-  </div>
-
-  <div class="direct-booking-help">
-    <span data-i18n="book.preferContact">Prefer to speak to someone directly?</span>
-    <a href="/location" class="text-link" data-i18n="cta.contactBtn">Contact Us</a>
-    <span aria-hidden="true">/</span>
-    <a href="/location" class="text-link" data-i18n="book.checkStatusLink">Check your booking status</a>
-  </div>
-
-  <div class="room-list" id="roomList" hidden></div>
-</section>
-
-<section class="booking checkout-section" id="checkoutSection" style="display:none; padding-top:20px;">
-  <div class="section-head">
-    <span class="section-num">02</span>
-    <span class="section-label" data-i18n="book.completeBooking">Complete Your Booking</span>
-  </div>
-
-  <div class="checkout-steps" id="checkoutSteps">
-    <span class="checkout-step active" data-step="details"><i>1</i> <span data-i18n="book.stepDetails">Your details</span></span>
-    <span class="checkout-step-sep"></span>
-    <span class="checkout-step" data-step="payment"><i>2</i> <span data-i18n="book.stepPayment">Payment</span></span>
-  </div>
-
-  <div class="booking-grid" style="margin-top:30px;">
-    <div>
-
-      <div class="booking-form" id="checkoutDetailsPanel">
-        <button type="button" class="checkout-back" id="backToRooms">&larr; <span data-i18n="book.changeRoom">Change room</span></button>
-        <h3 style="font-family:var(--ff-display); font-weight:700; font-size:1.3rem; margin-bottom:22px;" data-i18n="book.stepDetails">Your details</h3>
-
-        <div class="form-row two-col">
-          <div>
-            <label data-i18n="book.firstName">First name</label>
-            <input type="text" id="coFirstName" autocomplete="given-name" placeholder="Jane" data-i18n-attr="placeholder:book.firstNamePlaceholder">
-            <span class="field-error" id="coFirstNameError" style="display:none;"></span>
-          </div>
-          <div>
-            <label data-i18n="book.lastName">Last name</label>
-            <input type="text" id="coLastName" autocomplete="family-name" placeholder="Smith" data-i18n-attr="placeholder:book.lastNamePlaceholder">
-            <span class="field-error" id="coLastNameError" style="display:none;"></span>
-          </div>
-        </div>
-        <div class="form-row two-col">
-          <div>
-            <label data-i18n="book.email">Email</label>
-            <input type="email" id="coEmail" autocomplete="email" placeholder="you@example.com">
-            <span class="field-error" id="coEmailError" style="display:none;"></span>
-          </div>
-          <div>
-            <label data-i18n="book.phoneNumber">Phone number</label>
-            <input type="tel" id="coPhone" autocomplete="tel" placeholder="+44 7&hellip;">
-            <span class="field-error" id="coPhoneError" style="display:none;"></span>
-          </div>
-        </div>
-        <div class="form-row">
-          <label data-i18n="book.address">Address</label>
-          <input type="text" id="coAddress" autocomplete="street-address" placeholder="123 Example Street" data-i18n-attr="placeholder:book.addressPlaceholder">
-          <span class="field-error" id="coAddressError" style="display:none;"></span>
-        </div>
-        <div class="form-row two-col">
-          <div>
-            <label data-i18n="book.city">City</label>
-            <input type="text" id="coCity" autocomplete="address-level2" placeholder="London" data-i18n-attr="placeholder:book.cityPlaceholder">
-            <span class="field-error" id="coCityError" style="display:none;"></span>
-          </div>
-          <div>
-            <label><span data-i18n="book.postcode">Postcode</span> <span style="text-transform:none; font-weight:400;" data-i18n="book.optional">(optional)</span></label>
-            <input type="text" id="coPostcode" autocomplete="postal-code" placeholder="W12 9DS">
-          </div>
-        </div>
-        <div class="form-row">
-          <label data-i18n="book.country">Country/region</label>
-          <select id="coCountry">
-            <option value="United Kingdom" selected>United Kingdom</option>
-            <option value="Ireland">Ireland</option>
-            <option value="France">France</option>
-            <option value="Germany">Germany</option>
-            <option value="Spain">Spain</option>
-            <option value="Italy">Italy</option>
-            <option value="Netherlands">Netherlands</option>
-            <option value="Portugal">Portugal</option>
-            <option value="Belgium">Belgium</option>
-            <option value="Switzerland">Switzerland</option>
-            <option value="Poland">Poland</option>
-            <option value="Sweden">Sweden</option>
-            <option value="Norway">Norway</option>
-            <option value="Denmark">Denmark</option>
-            <option value="United States">United States</option>
-            <option value="Canada">Canada</option>
-            <option value="Australia">Australia</option>
-            <option value="New Zealand">New Zealand</option>
-            <option value="United Arab Emirates">United Arab Emirates</option>
-            <option value="Saudi Arabia">Saudi Arabia</option>
-            <option value="India">India</option>
-            <option value="Pakistan">Pakistan</option>
-            <option value="China">China</option>
-            <option value="Japan">Japan</option>
-            <option value="South Korea">South Korea</option>
-            <option value="Singapore">Singapore</option>
-            <option value="South Africa">South Africa</option>
-            <option value="Nigeria">Nigeria</option>
-            <option value="Brazil">Brazil</option>
-            <option value="Mexico">Mexico</option>
-            <option value="Other">Other</option>
-          </select>
-          <span class="field-error" id="coCountryError" style="display:none;"></span>
-        </div>
-
-        <div class="form-row">
-          <label><span data-i18n="book.specialRequests">Special requests</span> <span style="text-transform:none; font-weight:400;" data-i18n="book.optional">(optional)</span></label>
-          <textarea id="coRequests" rows="3" placeholder="Late arrival, high floor, accessible room&hellip;" data-i18n-attr="placeholder:book.specialRequestsPlaceholder" style="width:100%; padding:13px 14px; border:1.5px solid var(--line); border-radius:6px; font-family:var(--ff-body); font-size:.95rem; color:var(--ink); background:var(--paper); resize:vertical;"></textarea>
-        </div>
-
-        <div class="form-row">
-          <label><span data-i18n="book.arrivalTime">Estimated arrival time</span> <span style="text-transform:none; font-weight:400;" data-i18n="book.optional">(optional)</span></label>
-          <select id="coArrivalTime">
-            <option value="" data-i18n="book.pleaseSelect">Please select</option>
-            <option value="14:00-15:00">14:00 &ndash; 15:00</option>
-            <option value="15:00-17:00">15:00 &ndash; 17:00</option>
-            <option value="17:00-19:00">17:00 &ndash; 19:00</option>
-            <option value="19:00-21:00">19:00 &ndash; 21:00</option>
-            <option value="21:00-23:00">21:00 &ndash; 23:00</option>
-            <option value="after-23:00" data-i18n="book.afterLateCheckin">After 23:00 (please call ahead)</option>
-          </select>
-          <p class="form-note" style="text-align:left; margin-top:8px;" data-i18n="book.arrivalTimeNote">Your room will be ready for check-in between 14:00 and 23:00.</p>
-        </div>
-
-        <div class="form-row">
-          <label><span data-i18n="book.bookingForLabel">Who are you booking for?</span> <span style="text-transform:none; font-weight:400;" data-i18n="book.optional">(optional)</span></label>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="coBookingFor" value="main" checked> <span data-i18n="book.bookingForMain">I am the main guest</span></label>
-            <label class="radio-option"><input type="radio" name="coBookingFor" value="someone_else"> <span data-i18n="book.bookingForOther">Booking is for someone else</span></label>
-          </div>
-          <div id="coMainGuestNameRow" style="display:none; margin-top:14px;">
-            <label data-i18n="book.mainGuestName">Main guest&rsquo;s name</label>
-            <input type="text" id="coMainGuestName" placeholder="Jane Smith" data-i18n-attr="placeholder:book.mainGuestNamePlaceholder">
-            <span class="field-error" id="coMainGuestNameError" style="display:none;"></span>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <label><span data-i18n="book.travelPurposeLabel">Are you travelling for work?</span> <span style="text-transform:none; font-weight:400;" data-i18n="book.optional">(optional)</span></label>
-          <div class="radio-group">
-            <label class="radio-option"><input type="radio" name="coTravelPurpose" value="yes"> <span data-i18n="common.yes">Yes</span></label>
-            <label class="radio-option"><input type="radio" name="coTravelPurpose" value="no" checked> <span data-i18n="common.no">No</span></label>
-          </div>
-          <div id="coBusinessRow" class="form-row two-col" style="display:none; margin-top:14px; margin-bottom:0;">
-            <div>
-              <label><span data-i18n="book.companyName">Company name</span> <span style="text-transform:none; font-weight:400;" data-i18n="book.optional">(optional)</span></label>
-              <input type="text" id="coCompanyName" autocomplete="organization" placeholder="Acme Ltd" data-i18n-attr="placeholder:book.companyNamePlaceholder">
-            </div>
-            <div>
-              <label><span data-i18n="book.vatNumber">VAT number</span> <span style="text-transform:none; font-weight:400;" data-i18n="book.optional">(optional)</span></label>
-              <input type="text" id="coVatNumber" placeholder="GB123456789" data-i18n-attr="placeholder:book.vatNumberPlaceholder">
-            </div>
-          </div>
-        </div>
-
-        <div class="form-error" id="coDetailsError"></div>
-        <button type="button" class="btn btn-primary" id="coContinueBtn" style="width:100%;" data-i18n="book.continueToPayment">Continue to Payment</button>
-        <p class="form-note" data-i18n="book.privacyNote">Your details are only used to manage this booking, we never sell or share them.</p>
-      </div>
-
-      <div class="booking-form" id="checkoutPaymentPanel" style="display:none;">
-        <button type="button" class="checkout-back" id="backToDetails">&larr; <span data-i18n="book.backToDetails">Back to your details</span></button>
-        <h3 style="font-family:var(--ff-display); font-weight:700; font-size:1.3rem; margin-bottom:10px;" data-i18n="book.stepPayment">Payment</h3>
-        <p style="color:var(--ink-soft); font-size:.9rem; margin-bottom:22px;" data-i18n="book.paymentDesc">You&rsquo;ll be redirected to our secure booking engine to confirm your stay.</p>
-
-        <div class="trust-row" style="justify-content:flex-start; padding:0 0 22px; margin:0;">
-          <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/><path d="M9 12l2 2 4-4"/></svg> <span data-i18n="book.encryption">256-bit encryption</span></span>
-          <span class="trust-item"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg> <span data-i18n="trust.instantConfirmation">Instant confirmation</span></span>
-        </div>
-
-        <div class="form-error" id="coPaymentError"></div>
-        <button type="button" class="btn btn-primary" id="coPayBtn" style="width:100%;"><span id="coPayLabel" data-i18n="book.paySecurely">Pay securely </span><span id="coPayAmount"></span></button>
-        <p class="form-note" data-i18n="book.nonRefundableNote">This booking is non-refundable.</p>
-      </div>
-
-    </div>
-
-    <div class="booking-summary" id="checkoutSummary">
-      <h3 data-i18n="book.yourStay">Your stay</h3>
-      <div class="summary-items" id="csItems"></div>
-      <div class="summary-row"><span data-i18n="search.checkin">Check-in</span><b id="csCheckIn" dir="ltr">, </b></div>
-      <div class="summary-row"><span data-i18n="search.checkout">Check-out</span><b id="csCheckOut" dir="ltr">, </b></div>
-      <div class="summary-row"><span data-i18n="book.nights">Nights</span><b id="csNights">, </b></div>
-      <div class="summary-row"><span data-i18n="search.guestsLabel">Guests</span><b id="csGuests">, </b></div>
-      <div class="summary-row"><span data-i18n="search.rooms">Rooms</span><b id="csRooms">, </b></div>
-      <div class="summary-total"><span data-i18n="book.total">Total</span><b id="csTotal">, </b></div>
-      <div class="summary-policies">
-        <p data-i18n="book.policy1">Pay now, direct to the hotel, no third-party booking fees.</p>
-        <p data-i18n="book.nonRefundable">Non-refundable</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-</main>
+<div class="reserve-occupancy">
+<div><label for="reserveAdults">Adults</label><input type="number" id="reserveAdults" name="adults" min="1" max="20" value="2" required></div>
+<div><label for="reserveChildren">Children</label><input type="number" id="reserveChildren" name="children" min="0" max="20" value="0" required></div>
+<div><label for="reserveRooms">Rooms</label><input type="number" id="reserveRooms" name="rooms" min="1" max="10" value="1" required></div>
+</div>
+<p class="reserve-field-note">Include all children travelling with you. Confirm ages and the guest allocation for each room in the booking engine.</p>
+<div class="reserve-preference"><label for="reserveRoomType">Room preference <span>optional</span></label><select id="reserveRoomType" name="room"><option value="">Show all room types</option><option value="single">Single · 1 single bed · up to 1 guest</option><option value="double12">Small Double · 1 double bed · up to 2 guests</option><option value="double">Large Double · 1 double bed · up to 2 guests</option><option value="twin">Twin · 2 single beds · up to 2 guests</option><option value="triple">Triple · 3 single beds · up to 3 guests</option><option value="quad">Quad · 2 double beds · up to 4 guests</option><option value="family">Family · 1 double &amp; 2 single beds · up to 4 guests</option></select><small id="roomPreferenceNote">Subject to availability. Your room and rate are confirmed in the next step.</small></div>
+<button type="submit" class="btn btn-primary reserve-search">Check live availability <span aria-hidden="true">↗</span></button>
+<p class="reserve-redirect-note">Continue securely with Little Hotelier, our official booking partner.</p>
+</form>
+<div class="reserve-promo"><div><span class="reserve-eyebrow">BOOK DIRECT</span><h3>Your direct-booking code</h3><p>Enter this code in the booking engine to check the available offer for your stay.</p></div><button id="copyReservePromo" type="button" aria-label="Copy promo code BOOKDIRECT15">BOOKDIRECT15 <span aria-hidden="true">⧉</span></button><span id="promoCopyStatus" role="status"></span></div>
+<div class="reserve-room-preview"><div><span class="reserve-eyebrow">ROOM FOR EVERY KIND OF TRIP</span><h2>Find your kind of comfortable.</h2><p>Seven room types. Private bathrooms, free WiFi, TV, and tea &amp; coffee facilities.</p></div><div class="reserve-preview-grid">
+<a href="/rooms"><img src="/images/site/single-room.jpg" loading="lazy" alt="Single room at Hotel 261"><span>Solo stays <small>Single rooms</small></span></a>
+<a href="/rooms"><img src="/images/site/double-room.jpg" loading="lazy" alt="Double room at Hotel 261"><span>For two <small>Double &amp; twin rooms</small></span></a>
+<a href="/rooms"><img src="/images/site/family-room.jpg" loading="lazy" alt="Family room at Hotel 261"><span>Bring everyone <small>Triple, quad &amp; family rooms</small></span></a>
+</div><a class="text-link" href="/rooms">Compare all room types →</a></div>
+<div class="reserve-faq"><span class="reserve-eyebrow">BEFORE YOU BOOK</span><h2>A few useful things to know.</h2>
+<details><summary>When do I pay?</summary><p>Full payment is required at booking. Visa, Mastercard and American Express are accepted. Review the final amount and the payment terms in the secure booking engine before confirming.</p></details>
+<details><summary>Can I change or cancel my reservation?</summary><p>The cancellation and amendment rules shown with your chosen rate apply. Read them before paying, including any non-refundable conditions. <a href="/policies#terms">View booking terms</a>.</p></details>
+<details><summary>What are the arrival and departure times?</summary><p>Check-in is from 14:00 to 23:00. Check-out is before 11:00. Reception is open from 08:00 to 23:30. Please contact reception before booking if you need a different arrival time.</p></details>
+<details><summary>Is parking available?</summary><p>Limited private parking is available from £15 per day, subject to availability. Contact reception to check arrangements before you arrive.</p></details>
+<details><summary>How do I book several rooms?</summary><p>Choose the total rooms and guests above. Each room needs at least one adult. Review the guest allocation and choose an available rate for each room in the booking engine. For more than ten rooms or special arrangements, contact reception.</p></details>
+<details><summary>How will I receive confirmation?</summary><p>Enter your correct email address in the booking engine. Check your confirmation email and keep your booking reference. Contact reception if it does not arrive, including after checking your spam folder.</p></details>
+</div></div>
+<aside class="reserve-sidebar" aria-label="Your stay summary"><div class="reserve-summary reserve-card"><span class="reserve-eyebrow">YOUR STAY AT A GLANCE</span><h2>Hotel 261</h2><p class="reserve-address">Shepherd’s Bush, West London<br>261–263 Uxbridge Road · W12 9DS</p>
+<dl><div><dt>Check-in</dt><dd id="reserveSummaryIn">Choose a date</dd></div><div><dt>Check-out</dt><dd id="reserveSummaryOut">Choose a date</dd></div><div><dt>Length of stay</dt><dd id="reserveSummaryNights">—</dd></div><div><dt>Guests &amp; rooms</dt><dd id="reserveSummaryGuests">2 adults · 1 room</dd></div><div><dt>Room preference</dt><dd id="reserveSummaryRoom">All room types</dd></div></dl>
+<div class="reserve-price-note"><b>Live rates. Clear choices.</b><p>Your total, available offers and rate conditions are shown in the next step.</p></div>
+<button type="submit" form="reservationForm" class="btn btn-primary reserve-summary-button">Find my room <span aria-hidden="true">↗</span></button>
+<div class="reserve-payment"><span>Full payment at booking</span><div aria-label="Accepted cards"><b>VISA</b><b>Mastercard</b><b>AMEX</b></div></div>
+<p class="reserve-terms">By continuing, you’ll view live options. Review the <a href="/policies#terms">booking terms</a>, <a href="/policies#privacy">privacy notice</a> and selected rate conditions before confirming a reservation.</p></div>
+<div class="reserve-support"><h3>A little help with your stay?</h3><p>For arrival arrangements, parking or an existing booking, speak to reception.</p><a href="mailto:reception@hotel261.com">reception@hotel261.com</a><a class="text-link" href="/location">Contact &amp; directions →</a></div>
+</aside></section></main>
 
 <footer class="site-footer">
   <div class="footer-top">
@@ -437,5 +179,6 @@
 <script src="js/script.js"></script>
 <script src="js/chatbot.js"></script>
 <script src="js/booking.js"></script>
+<script src="/js/reservation.js"></script>
 </body>
 </html>
