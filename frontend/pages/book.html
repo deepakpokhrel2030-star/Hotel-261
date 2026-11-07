@@ -26,7 +26,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="/css/responsive.css">
-<link rel="stylesheet" href="/css/reservation.css">
+<link rel="stylesheet" href="/css/reservation.css?v=3">
 </head>
 <body>
 
@@ -91,14 +91,14 @@
 
 <main class="reservation-page">
 <section class="hero hero--page reservation-intro"><div class="hero-inner">
-<p class="page-kicker">YOUR WEST LONDON STAY</p><h1 class="hero-title">A good stay starts here.</h1>
-<p class="hero-sub">Choose your dates and find your room at Hotel 261, Shepherd’s Bush.</p>
-<ol class="reservation-steps" aria-label="Booking steps"><li aria-current="step"><b>1</b> Plan your stay</li><li><b>2</b> Choose a live rate</li><li><b>3</b> Pay &amp; confirm</li></ol>
+<p class="page-kicker">YOUR WEST LONDON STAY</p><h1 class="hero-title">Reserve your stay.</h1>
+<p class="hero-sub">Choose your dates, guests and promo code.</p>
+
 </div></section>
 <section class="reservation-layout" aria-label="Plan your reservation">
 <div class="reservation-content">
 <form id="reservationForm" class="reserve-card" novalidate>
-<div class="reserve-card-heading"><span class="reserve-eyebrow">LET’S MAKE IT A DATE</span><h2>Your stay, your way.</h2><p>Check live availability for your dates. All prices are in GBP.</p></div>
+<div class="reserve-card-heading"><h2>Check availability</h2></div>
 <div id="reservationError" class="reservation-error" role="alert" hidden></div>
 <div class="reserve-fields">
 <div><label for="reserveCheckIn">Check-in</label><input type="date" id="reserveCheckIn" name="checkin" required><small>From 14:00</small></div>
@@ -110,33 +110,14 @@
 <div><label for="reserveRooms">Rooms</label><input type="number" id="reserveRooms" name="rooms" min="1" max="10" value="1" required></div>
 </div>
 <p class="reserve-field-note">Include all children travelling with you. Confirm ages and the guest allocation for each room in the booking engine.</p>
-<div class="reserve-preference"><label for="reserveRoomType">Room preference <span>optional</span></label><select id="reserveRoomType" name="room"><option value="">Show all room types</option><option value="single">Single · 1 single bed · up to 1 guest</option><option value="double12">Small Double · 1 double bed · up to 2 guests</option><option value="double">Large Double · 1 double bed · up to 2 guests</option><option value="twin">Twin · 2 single beds · up to 2 guests</option><option value="triple">Triple · 3 single beds · up to 3 guests</option><option value="quad">Quad · 2 double beds · up to 4 guests</option><option value="family">Family · 1 double &amp; 2 single beds · up to 4 guests</option></select><small id="roomPreferenceNote">Subject to availability. Your room and rate are confirmed in the next step.</small></div>
-<div class="reserve-promo-entry"><label for="reservePromoCode">Promo code <span>optional</span></label><div class="reserve-promo-controls"><input type="text" id="reservePromoCode" name="promocode" maxlength="100" autocomplete="off" spellcheck="false" aria-describedby="reservePromoHint" placeholder="Enter your code"><button type="button" id="useReservePromo">Use BOOKDIRECT15</button></div><small id="reservePromoHint">Your code will carry over to the secure booking page. Eligible offers and final prices are confirmed there.</small></div>
+
+<div class="reserve-promo-entry"><label for="reservePromoCode">Promo code <span>optional</span></label><div class="reserve-promo-controls"><input type="text" id="reservePromoCode" name="promocode" maxlength="100" autocomplete="off" spellcheck="false" aria-describedby="reservePromoHint" placeholder="Enter your code"><button type="button" id="useReservePromo">Use BOOKDIRECT15</button></div><small id="reservePromoHint">Your code applies on the next page, subject to offer eligibility.</small><span id="promoCopyStatus" role="status"></span></div>
+<details class="reserve-options"><summary>Room preference <span>optional</span></summary><div class="reserve-preference"><label for="reserveRoomType">Room preference <span>optional</span></label><select id="reserveRoomType" name="room"><option value="">Show all room types</option><option value="single">Single · 1 single bed · up to 1 guest</option><option value="double12">Small Double · 1 double bed · up to 2 guests</option><option value="double">Large Double · 1 double bed · up to 2 guests</option><option value="twin">Twin · 2 single beds · up to 2 guests</option><option value="triple">Triple · 3 single beds · up to 3 guests</option><option value="quad">Quad · 2 double beds · up to 4 guests</option><option value="family">Family · 1 double &amp; 2 single beds · up to 4 guests</option></select><small id="roomPreferenceNote">Subject to availability. Your room and rate are confirmed in the next step.</small></div></details>
 <button type="submit" class="btn btn-primary reserve-search">Check live availability <span aria-hidden="true">↗</span></button>
 <p class="reserve-redirect-note">Continue securely with Little Hotelier, our official booking partner.</p>
 </form>
-<div class="reserve-promo"><div><span class="reserve-eyebrow">BOOK DIRECT</span><h3>Your direct-booking code</h3><p>Add this code above and it will carry over when you check availability.</p></div><button id="copyReservePromo" type="button" aria-label="Use promo code BOOKDIRECT15">BOOKDIRECT15 <span aria-hidden="true">⧉</span></button><span id="promoCopyStatus" role="status"></span></div>
-<div class="reserve-room-preview"><div><span class="reserve-eyebrow">ROOM FOR EVERY KIND OF TRIP</span><h2>Find your kind of comfortable.</h2><p>Seven room types. Private bathrooms, free WiFi, TV, and tea &amp; coffee facilities.</p></div><div class="reserve-preview-grid">
-<a href="/rooms"><img src="/images/site/single-room.jpg" loading="lazy" alt="Single room at Hotel 261"><span>Solo stays <small>Single rooms</small></span></a>
-<a href="/rooms"><img src="/images/site/double-room.jpg" loading="lazy" alt="Double room at Hotel 261"><span>For two <small>Double &amp; twin rooms</small></span></a>
-<a href="/rooms"><img src="/images/site/family-room.jpg" loading="lazy" alt="Family room at Hotel 261"><span>Bring everyone <small>Triple, quad &amp; family rooms</small></span></a>
-</div><a class="text-link" href="/rooms">Compare all room types →</a></div>
-<div class="reserve-faq"><span class="reserve-eyebrow">BEFORE YOU BOOK</span><h2>A few useful things to know.</h2>
-<details><summary>When do I pay?</summary><p>Full payment is required at booking. Visa, Mastercard and American Express are accepted. Review the final amount and the payment terms in the secure booking engine before confirming.</p></details>
-<details><summary>Can I change or cancel my reservation?</summary><p>The cancellation and amendment rules shown with your chosen rate apply. Read them before paying, including any non-refundable conditions. <a href="/policies#terms">View booking terms</a>.</p></details>
-<details><summary>What are the arrival and departure times?</summary><p>Check-in is from 14:00 to 23:00. Check-out is before 11:00. Reception is open from 08:00 to 23:30. Please contact reception before booking if you need a different arrival time.</p></details>
-<details><summary>Is parking available?</summary><p>Limited private parking is available from £15 per day, subject to availability. Contact reception to check arrangements before you arrive.</p></details>
-<details><summary>How do I book several rooms?</summary><p>Choose the total rooms and guests above. Each room needs at least one adult. Review the guest allocation and choose an available rate for each room in the booking engine. For more than ten rooms or special arrangements, contact reception.</p></details>
-<details><summary>How will I receive confirmation?</summary><p>Enter your correct email address in the booking engine. Check your confirmation email and keep your booking reference. Contact reception if it does not arrive, including after checking your spam folder.</p></details>
-</div></div>
-<aside class="reserve-sidebar" aria-label="Your stay summary"><div class="reserve-summary reserve-card"><span class="reserve-eyebrow">YOUR STAY AT A GLANCE</span><h2>Hotel 261</h2><p class="reserve-address">Shepherd’s Bush, West London<br>261–263 Uxbridge Road · W12 9DS</p>
-<dl><div><dt>Check-in</dt><dd id="reserveSummaryIn">Choose a date</dd></div><div><dt>Check-out</dt><dd id="reserveSummaryOut">Choose a date</dd></div><div><dt>Length of stay</dt><dd id="reserveSummaryNights">—</dd></div><div><dt>Guests &amp; rooms</dt><dd id="reserveSummaryGuests">2 adults · 1 room</dd></div><div><dt>Room preference</dt><dd id="reserveSummaryRoom">All room types</dd></div><div><dt>Promo code</dt><dd id="reserveSummaryPromo">Not added</dd></div></dl>
-<div class="reserve-price-note"><b>Live rates. Clear choices.</b><p>Your total, available offers and rate conditions are shown in the next step.</p></div>
-<button type="submit" form="reservationForm" class="btn btn-primary reserve-summary-button">Find my room <span aria-hidden="true">↗</span></button>
-<div class="reserve-payment"><span>Full payment at booking</span><div aria-label="Accepted cards"><b>VISA</b><b>Mastercard</b><b>AMEX</b></div></div>
-<p class="reserve-terms">By continuing, you’ll view live options. Review the <a href="/policies#terms">booking terms</a>, <a href="/policies#privacy">privacy notice</a> and selected rate conditions before confirming a reservation.</p></div>
-<div class="reserve-support"><h3>A little help with your stay?</h3><p>For arrival arrangements, parking or an existing booking, speak to reception.</p><a href="mailto:reception@hotel261.com">reception@hotel261.com</a><a class="text-link" href="/location">Contact &amp; directions →</a></div>
-</aside></section></main>
+<div class="reserve-essential"><p><b>Pay securely at booking</b> · Visa, Mastercard &amp; Amex</p><p>Check-in 14:00–23:00 · Check-out by 11:00</p><p>Live prices and cancellation conditions appear before payment.</p><p><a href="/policies#terms">Booking terms</a> · <a href="/location">Need help? Contact reception</a></p></div>
+</div></section></main>
 
 <footer class="site-footer">
   <div class="footer-top">
@@ -180,6 +161,6 @@
 <script src="js/script.js"></script>
 <script src="js/chatbot.js"></script>
 <script src="js/booking.js"></script>
-<script src="/js/reservation.js"></script>
+<script src="/js/reservation.js?v=3"></script>
 </body>
 </html>

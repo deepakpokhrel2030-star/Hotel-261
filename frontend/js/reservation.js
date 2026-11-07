@@ -35,16 +35,10 @@
     if (!input.checkValidity()) input.value = input === adults ? 2 : input === rooms ? 1 : 0;
   }
   function render() {
-    document.getElementById('reserveSummaryPromo').textContent = promo.value.trim() || 'Not added';
     co.min = ci.value ? nextDay(ci.value) : nextDay(londonToday);
     const multi = Number(rooms.value) > 1;
     preference.disabled = multi;
     document.getElementById('roomPreferenceNote').textContent = multi ? 'Choose room types separately in the booking engine for a multiple-room stay.' : 'Subject to availability. Your room and rate are confirmed in the next step.';
-    document.getElementById('reserveSummaryIn').textContent = pretty(ci.value);
-    document.getElementById('reserveSummaryOut').textContent = pretty(co.value);
-    document.getElementById('reserveSummaryNights').textContent = nights() > 0 ? `${nights()} night${nights() === 1 ? '' : 's'}` : '—';
-    document.getElementById('reserveSummaryGuests').textContent = `${adults.value || '—'} adult${Number(adults.value) === 1 ? '' : 's'}${Number(children.value) ? ` · ${children.value} children` : ''} · ${rooms.value || '—'} room${Number(rooms.value) === 1 ? '' : 's'}`;
-    document.getElementById('reserveSummaryRoom').textContent = !multi && roomTypes[preference.value] ? roomTypes[preference.value].label : 'All room types';
     try { sessionStorage.setItem('hotel261-stay', JSON.stringify(Object.fromEntries([ci,co,adults,children,rooms,preference,promo].map(e=>[e.name,e.value])))); } catch {}
   }
   ci.addEventListener('change', () => { if (ci.value && (!co.value || co.value <= ci.value)) co.value = nextDay(ci.value); render(); });
@@ -81,7 +75,7 @@
     document.getElementById('promoCopyStatus').textContent = 'BOOKDIRECT15 added. It will carry over to the booking page.';
     promo.focus();
   }
-  document.getElementById('copyReservePromo').addEventListener('click', useDirectPromo);
+  document.getElementById('copyReservePromo')?.addEventListener('click', useDirectPromo);
   document.getElementById('useReservePromo').addEventListener('click', useDirectPromo);
 
   render();
