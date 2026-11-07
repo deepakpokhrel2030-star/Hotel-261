@@ -24,3 +24,5 @@ section.reservation-layout{padding-top:16px;padding-bottom:20px}.reserve-card{pa
 .reservation-page input,.reservation-page select{font-size:16px;min-height:46px;padding:10px 7px}.reserve-promo-controls{position:relative}.reserve-promo-controls input{padding-inline-end:56px;font-size:14px}.reserve-promo-controls button{position:absolute;right:3px;top:3px;bottom:3px;min-height:0;font-size:.6rem;padding:5px;border:0}.reserve-essential{font-size:.65rem;padding-top:12px}.reserve-essential span{display:block}
 }
 @media(min-width:2400px){.reservation-intro .hero-inner,section.reservation-layout{max-width:2700px}.reserve-card{padding:44px;gap:32px}.reservation-page input,.reservation-page select,.reserve-search{min-height:88px;padding:20px}.reserve-promo-controls button{padding-inline:28px}.reserve-card-heading h2{font-size:1.4rem}}
+.reserve-label-short{display:none}
+@media(max-width:760px){.reserve-preference{grid-row:4}.reserve-promo-entry{grid-row:5}.reserve-search{grid-row:5;justify-content:center}.reserve-search .reserve-label-short{display:inline}.reserve-search .reserve-label-long{display:none}}
