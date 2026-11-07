@@ -263,6 +263,13 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
   const promoInput = widget.querySelector('#hsPromoCode');
   if (promoInput) {
     try { promoInput.value = new URLSearchParams(location.search).get('promocode') ?? JSON.parse(sessionStorage.getItem('hotel261-stay') || '{}').promocode ?? ''; } catch (e) {}
+    const promoOffer = widget.querySelector('#hsPromoOffer');
+    if (promoOffer) promoOffer.addEventListener('change', () => {
+      if (!promoOffer.value) return;
+      promoInput.value = promoOffer.value;
+      promoInput.dispatchEvent(new Event('input', { bubbles: true }));
+      promoInput.focus();
+    });
     promoInput.addEventListener('input', () => {
       try {
         const saved = JSON.parse(sessionStorage.getItem('hotel261-stay') || '{}');
