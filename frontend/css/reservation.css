@@ -43,3 +43,23 @@ section.reservation-layout{padding-top:16px;padding-bottom:20px}.reserve-card{pa
 .reserve-offer-menu b{font-size:.82rem}.reserve-offer-menu span{display:block;font-size:.72rem;margin-top:4px;color:var(--ink-soft)}
 .reserve-search{align-self:center;margin-top:22px}
 @media(max-width:760px){.reserve-promo-controls{position:static}.reserve-promo-controls input{padding-inline-end:7px;font-size:16px}.reserve-promo-heading summary{min-height:36px}.reserve-promo-controls button{position:static;min-height:46px;padding:8px;font-size:.7rem}.reserve-search{margin-top:18px}}
+/* Consistent field baselines and a single primary action. */
+.reserve-card{column-gap:20px;row-gap:20px;padding:28px}
+.reserve-preference,.reserve-promo-entry{position:relative;padding-top:0}
+.reserve-promo-heading{height:22px;margin-bottom:7px;justify-content:flex-start}
+.reserve-promo-heading label{line-height:22px}
+.reserve-promo-heading details{margin-inline-start:auto}
+.reserve-promo-heading summary{min-height:0;padding:0;border:0;border-radius:0;background:transparent;font-size:.68rem;color:var(--ink-soft);gap:5px;text-decoration:underline;text-underline-offset:3px}
+.reserve-promo-heading summary:hover{color:var(--accent)}
+.reserve-preference>label{height:22px;line-height:22px}
+.reserve-promo-controls{gap:0;border:1px solid var(--line);border-radius:7px;overflow:hidden;background:var(--paper)}
+.reservation-page .reserve-promo-controls input{border:0;border-radius:0;background:transparent;min-height:48px;padding-inline:12px}
+.reserve-promo-controls button{min-height:48px;border:0;border-inline-start:1px solid var(--line);border-radius:0;background:var(--paper-2);color:var(--ink);padding-inline:18px;font-weight:600}
+.reserve-promo-controls button:hover{background:var(--surface);color:var(--accent)}
+.reserve-search{align-self:start;margin-top:29px;min-height:50px;justify-content:center;font-size:.85rem}
+.reserve-search>span[aria-hidden]{margin-inline-start:auto}
+#promoCopyStatus{font-size:.62rem;min-height:15px;margin-top:6px;color:var(--ink-soft)}
+@media(max-width:760px){.reserve-card{padding:18px;gap:12px}.reserve-preference>label,.reserve-promo-heading{height:20px;line-height:20px}.reserve-promo-heading label{line-height:20px}.reserve-promo-heading summary{font-size:.65rem;min-height:24px}.reserve-promo-controls button{padding:8px;min-height:44px}.reservation-page .reserve-promo-controls input{min-height:44px;padding-inline:8px}.reserve-search{margin-top:27px;min-height:46px;font-size:.75rem}}
+@media(min-width:2400px){.reserve-card{padding:44px;gap:32px}.reserve-promo-heading,.reserve-preference>label{height:40px;line-height:40px}.reserve-promo-heading label{line-height:40px}.reserve-search{margin-top:47px;min-height:88px}.reservation-page .reserve-promo-controls input,.reserve-promo-controls button{min-height:86px}}
+.reserve-promo-heading summary{min-height:26px;padding:3px 9px;border:1px solid var(--line);border-radius:5px;background:var(--surface);text-decoration:none;color:var(--ink);font-weight:600}
+.reserve-promo-heading summary:hover{background:var(--paper-2);border-color:var(--accent)}
