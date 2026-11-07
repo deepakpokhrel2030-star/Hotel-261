@@ -211,3 +211,11 @@ html { overflow-x: clip; }
     background: linear-gradient(90deg, rgba(12,16,20,.8), rgba(12,16,20,.45));
   }
 }
+
+/* Homepage booking bar: visible promo entry with the same secure handoff. */
+#heroSearchWidget{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.3fr) minmax(0,1fr) auto}
+.sw-promo-field input{width:100%;min-width:0;min-height:36px;border:0;background:transparent;color:var(--ink);font:inherit;font-size:1rem;padding:0}
+.sw-promo-field input::placeholder{color:var(--ink-soft);font-size:.82rem;opacity:1}
+.sw-promo-field .sw-optional{font-size:.6rem;font-weight:400;letter-spacing:0;text-transform:none}
+@media(max-width:1120px){#heroSearchWidget{grid-template-columns:repeat(2,minmax(0,1fr))}#heroSearchWidget .sw-guests-field{grid-column:1/-1}#heroSearchWidget .sw-submit{grid-column:auto;margin:4px;min-height:52px}}
+@media(max-width:760px){.sw-promo-field input{font-size:16px;min-height:44px}#heroSearchWidget .sw-promo-field{grid-column:1/-1}#heroSearchWidget .sw-submit{grid-column:1/-1;margin:8px 0 0}}

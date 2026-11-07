@@ -41,8 +41,8 @@ function littleHotelierBookingUrl(stay) {
   if (stay.checkIn) url.searchParams.set('checkInDate', stay.checkIn);
   if (stay.checkOut) url.searchParams.set('checkOutDate', stay.checkOut);
   url.searchParams.set('trackPage', 'no');
-  let promo = stay.promocode || new URLSearchParams(window.location.search).get('promocode');
-  if (!promo) {
+  let promo = stay.promocode ?? new URLSearchParams(window.location.search).get('promocode');
+  if (promo == null) {
     try { promo = JSON.parse(sessionStorage.getItem('hotel261-stay') || '{}').promocode; } catch (e) {}
   }
   if (typeof promo === 'string' && promo.trim()) url.searchParams.set('promocode', promo.trim());
@@ -260,6 +260,18 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
   const checkOut = widget.querySelector('#hsCheckOut');
   setDateConstraints(checkIn, checkOut, widget.querySelector('#hsNights'));
   const occupancyCtrl = initGuestsDropdown(widget);
+  const promoInput = widget.querySelector('#hsPromoCode');
+  if (promoInput) {
+    try { promoInput.value = new URLSearchParams(location.search).get('promocode') ?? JSON.parse(sessionStorage.getItem('hotel261-stay') || '{}').promocode ?? ''; } catch (e) {}
+    promoInput.addEventListener('input', () => {
+      try {
+        const saved = JSON.parse(sessionStorage.getItem('hotel261-stay') || '{}');
+        saved.promocode = promoInput.value.trim();
+        sessionStorage.setItem('hotel261-stay', JSON.stringify(saved));
+      } catch (e) {}
+    });
+  }
+
 
   widget.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
@@ -270,6 +282,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
       adults: occ.adults,
       children: occ.children,
       rooms: occ.rooms,
+      promocode: promoInput ? promoInput.value.trim() : undefined,
     });
   });
 })();
