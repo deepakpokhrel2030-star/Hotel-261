@@ -4,6 +4,7 @@
   const ci = form.elements.checkin, co = form.elements.checkout;
   const adults = form.elements.adults, children = form.elements.children, rooms = form.elements.rooms;
   const preference = form.elements.room;
+  const promo = form.elements.promocode;
   const error = document.getElementById('reservationError');
   const roomTypes = {
     single: { rate: 1054578, capacity: 1, label: 'Single Room' },
@@ -22,7 +23,7 @@
   const params = new URLSearchParams(location.search);
   let saved = {};
   try { saved = JSON.parse(sessionStorage.getItem('hotel261-stay') || '{}'); } catch {}
-  for (const field of [ci, co, adults, children, rooms, preference]) {
+  for (const field of [ci, co, adults, children, rooms, preference, promo]) {
     const value = params.get(field.name) ?? saved[field.name];
     if (value !== undefined && value !== null) field.value = String(value);
   }
@@ -34,6 +35,7 @@
     if (!input.checkValidity()) input.value = input === adults ? 2 : input === rooms ? 1 : 0;
   }
   function render() {
+    document.getElementById('reserveSummaryPromo').textContent = promo.value.trim() || 'Not added';
     co.min = ci.value ? nextDay(ci.value) : nextDay(londonToday);
     const multi = Number(rooms.value) > 1;
     preference.disabled = multi;
@@ -43,7 +45,7 @@
     document.getElementById('reserveSummaryNights').textContent = nights() > 0 ? `${nights()} night${nights() === 1 ? '' : 's'}` : '—';
     document.getElementById('reserveSummaryGuests').textContent = `${adults.value || '—'} adult${Number(adults.value) === 1 ? '' : 's'}${Number(children.value) ? ` · ${children.value} children` : ''} · ${rooms.value || '—'} room${Number(rooms.value) === 1 ? '' : 's'}`;
     document.getElementById('reserveSummaryRoom').textContent = !multi && roomTypes[preference.value] ? roomTypes[preference.value].label : 'All room types';
-    try { sessionStorage.setItem('hotel261-stay', JSON.stringify(Object.fromEntries([ci,co,adults,children,rooms,preference].map(e=>[e.name,e.value])))); } catch {}
+    try { sessionStorage.setItem('hotel261-stay', JSON.stringify(Object.fromEntries([ci,co,adults,children,rooms,preference,promo].map(e=>[e.name,e.value])))); } catch {}
   }
   ci.addEventListener('change', () => { if (ci.value && (!co.value || co.value <= ci.value)) co.value = nextDay(ci.value); render(); });
   form.addEventListener('input', render);
@@ -70,11 +72,17 @@
       aLeft-=assignedAdults;cLeft-=assignedChildren;
     }
     if(type)url.searchParams.set('items[0][rateId]',type.rate);
+    if(promo.value.trim()) url.searchParams.set('promocode',promo.value.trim());
     location.assign(url.toString());
   });
-  document.getElementById('copyReservePromo').addEventListener('click',async()=>{
-    const status=document.getElementById('promoCopyStatus');
-    try {await navigator.clipboard.writeText('BOOKDIRECT15');status.textContent='Copied. Paste it into the promo-code field when booking.';}catch{status.textContent='Use code BOOKDIRECT15 in the booking engine.';}
-  });
+  function useDirectPromo() {
+    promo.value = 'BOOKDIRECT15';
+    render();
+    document.getElementById('promoCopyStatus').textContent = 'BOOKDIRECT15 added. It will carry over to the booking page.';
+    promo.focus();
+  }
+  document.getElementById('copyReservePromo').addEventListener('click', useDirectPromo);
+  document.getElementById('useReservePromo').addEventListener('click', useDirectPromo);
+
   render();
 })();

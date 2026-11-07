@@ -41,6 +41,12 @@ function littleHotelierBookingUrl(stay) {
   if (stay.checkIn) url.searchParams.set('checkInDate', stay.checkIn);
   if (stay.checkOut) url.searchParams.set('checkOutDate', stay.checkOut);
   url.searchParams.set('trackPage', 'no');
+  let promo = stay.promocode || new URLSearchParams(window.location.search).get('promocode');
+  if (!promo) {
+    try { promo = JSON.parse(sessionStorage.getItem('hotel261-stay') || '{}').promocode; } catch (e) {}
+  }
+  if (typeof promo === 'string' && promo.trim()) url.searchParams.set('promocode', promo.trim());
+
 
   distributeOccupancy(stay.adults, stay.children, stay.rooms).forEach((item, index) => {
     url.searchParams.set(`items[${index}][adults]`, item.adults);
