@@ -260,6 +260,9 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
   const checkOut = widget.querySelector('#hsCheckOut');
   setDateConstraints(checkIn, checkOut, widget.querySelector('#hsNights'));
   const occupancyCtrl = initGuestsDropdown(widget);
+  new IntersectionObserver(([entry]) => {
+    document.body.classList.toggle('home-booking-visible', entry.isIntersecting);
+  }).observe(widget);
   const promoInput = widget.querySelector('#hsPromoCode');
   if (promoInput) {
     try { promoInput.value = new URLSearchParams(location.search).get('promocode') ?? JSON.parse(sessionStorage.getItem('hotel261-stay') || '{}').promocode ?? ''; } catch (e) {}
