@@ -266,14 +266,27 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
   const promoInput = widget.querySelector('#hsPromoCode');
   if (promoInput) {
     try { promoInput.value = new URLSearchParams(location.search).get('promocode') ?? JSON.parse(sessionStorage.getItem('hotel261-stay') || '{}').promocode ?? ''; } catch (e) {}
-    const promoOffer = widget.querySelector('#hsPromoOffer');
-    if (promoOffer) promoOffer.addEventListener('change', () => {
-      if (!promoOffer.value) return;
-      promoInput.value = promoOffer.value;
-      promoOffer.value = '';
+    const promoStatus = widget.querySelector('#hsPromoStatus');
+    const applyPromo = () => {
+      const code = promoInput.value.trim();
+      promoInput.value = code;
+      promoStatus.textContent = code ? `✓ ${code} applied · checked at checkout` : 'Enter a promo code first';
+      promoStatus.classList.toggle('is-added', Boolean(code));
       promoInput.dispatchEvent(new Event('input', { bubbles: true }));
-      promoInput.focus();
+    };
+    widget.querySelector('#hsPromoApply').addEventListener('click', applyPromo);
+    widget.querySelector('#hsDirectOffer').addEventListener('click', () => {
+      promoInput.value = 'BOOKDIRECT15';
+      widget.querySelector('#hsPromoOffers').open = false;
+      applyPromo();
     });
+    promoInput.addEventListener('input', (event) => {
+      if (event.isTrusted) {
+        promoStatus.textContent = 'Select Apply to add this code';
+        promoStatus.classList.remove('is-added');
+      }
+    });
+    if (promoInput.value) applyPromo();
     promoInput.addEventListener('input', () => {
       try {
         const saved = JSON.parse(sessionStorage.getItem('hotel261-stay') || '{}');

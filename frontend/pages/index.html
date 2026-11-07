@@ -74,7 +74,7 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/css/responsive.css?v=8">
+<link rel="stylesheet" href="/css/responsive.css?v=9">
 </head>
 <body>
 
@@ -218,7 +218,7 @@
               <button type="button" class="btn btn-outline guests-done" data-i18n="search.done">Done</button>
             </div>
           </div>
-          <div class="sw-field sw-promo-field"><label for="hsPromoCode">Promo code <span class="sw-optional">optional</span></label><div class="home-promo-controls"><input type="text" id="hsPromoCode" maxlength="100" autocomplete="off" spellcheck="false" placeholder="Type a code"><select id="hsPromoOffer" aria-label="Available promo codes"><option value="">Offers</option><option value="BOOKDIRECT15">BOOKDIRECT15 · 15% off</option></select></div></div>
+          <div class="sw-field sw-promo-field"><div class="home-promo-heading"><label for="hsPromoCode">Promo code</label><details id="hsPromoOffers"><summary>Offers</summary><div class="home-offer-menu"><button type="button" id="hsDirectOffer"><b>BOOKDIRECT15</b><span>15% direct-booking offer</span></button></div></details></div><div class="home-promo-controls"><input type="text" id="hsPromoCode" maxlength="100" autocomplete="off" spellcheck="false" placeholder="Enter code" aria-describedby="hsPromoStatus"><button type="button" id="hsPromoApply">Apply</button></div><span class="home-promo-status" id="hsPromoStatus" role="status">Eligibility confirmed at checkout</span></div>
           <button type="submit" class="sw-submit" data-i18n="search.checkAvailability">Check Availability</button>
         </div>
       </form>
@@ -444,6 +444,6 @@
 <script src="js/i18n.js"></script>
 <script src="js/script.js"></script>
 <script src="js/chatbot.js"></script>
-<script src="js/booking.js?v=8"></script>
+<script src="js/booking.js?v=9"></script>
 </body>
 </html>
