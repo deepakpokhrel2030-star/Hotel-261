@@ -238,3 +238,4 @@ html { overflow-x: clip; }
 .home-promo-controls select{width:100px;font-size:.75rem}
 }
 @media(min-width:2400px){.hero:not(.hero--page) .hero-inner{padding-bottom:350px}.hero-cta-bar .search-widget-wrap.overlap{margin-top:-240px}.home-promo-controls select{width:170px;min-height:70px}}
+@media(min-width:1121px) and (max-width:2399px){.hero:not(.hero--page) .hero-inner{padding-bottom:140px}}
