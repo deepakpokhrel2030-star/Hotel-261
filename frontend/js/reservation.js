@@ -69,14 +69,20 @@
     if(promo.value.trim()) url.searchParams.set('promocode',promo.value.trim());
     location.assign(url.toString());
   });
-  function useDirectPromo() {
-    promo.value = 'BOOKDIRECT15';
+  const promoStatus = document.getElementById('promoCopyStatus');
+  function applyPromo() {
+    promo.value = promo.value.trim();
     render();
-    document.getElementById('promoCopyStatus').textContent = 'BOOKDIRECT15 added. It will carry over to the booking page.';
-    promo.focus();
+    promoStatus.textContent = promo.value ? `✓ ${promo.value} applied` : 'Enter a promo code first';
   }
-  document.getElementById('copyReservePromo')?.addEventListener('click', useDirectPromo);
-  document.getElementById('useReservePromo').addEventListener('click', useDirectPromo);
+  document.getElementById('useReservePromo').addEventListener('click', applyPromo);
+  document.getElementById('reserveDirectOffer').addEventListener('click', () => {
+    promo.value = 'BOOKDIRECT15';
+    document.getElementById('reservePromoOffers').open = false;
+    applyPromo();
+  });
+  promo.addEventListener('input', () => { promoStatus.textContent = promo.value.trim() ? 'Select Apply to add this code' : ''; });
+  if (promo.value.trim()) applyPromo();
 
   render();
 })();
