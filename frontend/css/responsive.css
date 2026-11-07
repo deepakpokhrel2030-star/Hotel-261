@@ -140,21 +140,58 @@ section:not(.hero) { padding-inline: var(--page-gutter); }
   .hero-sub { max-width: 620px; }
   .room-rows { gap: 28px; }
 }
+/* TV layout uses the screen's width and viewing distance, rather than a narrow desktop column. */
 @media (min-width: 2400px) {
-  :root { --layout-width: 2000px; --header-height: 170px; }
-  html { font-size: 24px; }
-  .header-inner { max-width: var(--layout-width); }
-  .nav-row, .site-header.solid .nav-row { padding: 22px 48px; }
-  .logo-img, .site-header.solid .logo-img { height: 60px; }
-  .hero:not(.hero--page) { min-height: min(1400px, 90svh); }
-  .hero:not(.hero--page) .hero-inner { padding-bottom: 180px; }
-  .hero-title { font-size: 4.5rem; max-width: 1200px; }
-  .hero-sub { max-width: 850px; }
+  :root {
+    --layout-width: min(88vw, 3400px);
+    --page-gutter: clamp(64px, 3vw, 128px);
+    --header-height: 240px;
+  }
+  html { font-size: clamp(26px, .84vw, 36px); }
+  .header-inner { max-width: var(--layout-width); gap: 40px; }
+  .nav-row, .site-header.solid .nav-row { padding: 30px 64px; }
+  .promo-strip { min-height: 76px; gap: 30px; font-size: .8rem; }
+  .logo-img, .site-header.solid .logo-img { height: 88px; }
+  .main-nav { gap: 12px; font-size: .78rem; }
+  .main-nav a { padding: 20px 24px; }
+  .header-right { gap: 20px; }
+  .lang-switch-toggle, .theme-toggle { min-width: 80px; min-height: 80px; }
+  .btn-pill { padding: 24px 36px; }
+  .hero:not(.hero--page) { min-height: 92svh; }
+  .hero:not(.hero--page) .hero-inner {
+    padding-top: calc(var(--header-height) + 90px);
+    padding-bottom: 260px;
+  }
+  .hero-title { font-size: clamp(112px, 4.2vw, 176px); max-width: 2100px; line-height: 1.08; }
+  .hero-sub { max-width: 1300px; font-size: 1.1rem; margin-top: 40px; }
+  .hero-eyebrow { margin-bottom: 28px; }
+  .hero-cta { margin-top: 48px; gap: 24px; }
+  .btn { min-height: 88px; padding: 26px 40px; }
+  .hero-inner .trust-row { margin-top: 44px; gap: 40px; }
   .hero--page .hero-title { font-size: 3rem; }
-  .lang-switch-toggle, .theme-toggle { min-width: 56px; min-height: 56px; }
-  .search-widget-wrap { padding-bottom: 64px; }
-  .sw-field { padding: 24px; }
-  .sw-submit { padding-inline: 32px; }
+  .hero--page .hero-sub { max-width: 1400px; }
+  .hero--page .hero-inner { padding-bottom: 70px; }
+  .hero-cta-bar .search-widget-wrap.overlap { margin-top: -130px; }
+  .search-widget-wrap { padding-bottom: 88px; }
+  .search-widget { padding: 16px; border-radius: 16px; }
+  .sw-field { padding: 30px 36px; }
+  .sw-submit { padding-inline: 48px; }
+  .sw-field label { margin-bottom: 14px; }
+  section:not(.hero) { padding-block: 130px; }
+  .section-head { margin-bottom: 40px; gap: 20px; }
+  .room-rows { gap: 44px; }
+  .room-row-body { padding: 40px; }
+  .room-row-foot { gap: 28px; padding-top: 30px; }
+  .about-grid, .reviews-grid, .location-grid, .booking-grid { gap: 80px; padding: 56px; }
+  .amenities-home-grid { gap: 80px; }
+  .footer-top { gap: 80px; }
+  .footer-cols { gap: 90px; }
+  .footer-brand { max-width: 580px; }
+  .footer-tagline { max-width: 580px; }
+  .footer-top .logo-img { height: 88px; }
+  .chatbot { right: 48px; bottom: 48px; }
+  .chatbot-toggle { width: 100px; height: 100px; }
+  .chatbot-panel { width: 650px; height: min(900px, 72svh); bottom: 128px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
