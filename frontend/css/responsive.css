@@ -295,3 +295,19 @@ html { overflow-x: clip; }
 .home-offer-menu b{font-size:.82rem}.home-offer-menu span{display:block;font-size:.72rem;margin-top:4px;color:var(--ink-soft)}
 #heroSearchWidget .sw-submit{font-family:var(--ff-body);font-weight:600;letter-spacing:0}
 @media(max-width:760px){#heroSearchWidget .home-promo-controls input{font-size:16px}.home-promo-controls>button{min-height:40px}.home-promo-status{font-size:.65rem}.home-promo-heading details{font-size:.75rem}}
+/* Obvious actions, using the site's existing red button language. */
+.home-promo-heading{margin-bottom:6px;align-items:center}
+.home-promo-heading details{font-size:.7rem;color:var(--ink)}
+.home-promo-heading summary{display:flex;align-items:center;justify-content:center;gap:8px;min-height:32px;padding:5px 10px;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper-2);font-weight:600;text-decoration:none;transition:background .15s ease,border-color .15s ease}
+.home-promo-heading summary:hover,.home-promo-heading details[open] summary{border-color:var(--accent);color:var(--accent)}
+.home-promo-controls>button{background:var(--accent);border-color:var(--accent);color:#fff;min-height:38px;padding:9px 14px;border-radius:var(--radius);transition:background .15s ease}
+.home-promo-controls>button:hover{background:var(--accent-dark);border-color:var(--accent-dark);color:#fff}
+.home-promo-controls>button:active{transform:translateY(1px)}
+.home-promo-status{min-height:14px;margin-top:3px}
+.home-promo-status.is-added{font-weight:500;font-size:.64rem}
+.home-offer-menu{padding:6px}
+.home-offer-menu button{border:1px solid var(--line);transition:background .15s ease,border-color .15s ease}
+.home-offer-menu button:hover{border-color:var(--accent);background:var(--paper-2)}
+#heroSearchWidget .sw-promo-field{padding-block:5px}
+@media(max-width:760px){.home-promo-heading summary{min-height:36px}.home-promo-controls>button{min-height:44px}.home-promo-status.is-added{font-size:.65rem}}
+@media(max-width:760px){.hero-cta-bar .search-widget-wrap.overlap{margin-top:-380px}.hero:not(.hero--page) .trust-row{bottom:395px}}

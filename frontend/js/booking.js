@@ -270,7 +270,7 @@ function setDateConstraints(checkInInput, checkOutInput, nightsEl, onNightsStep)
     const applyPromo = () => {
       const code = promoInput.value.trim();
       promoInput.value = code;
-      promoStatus.textContent = code ? `✓ ${code} applied · checked at checkout` : 'Enter a promo code first';
+      promoStatus.textContent = code ? `✓ ${code} applied` : 'Enter a promo code first';
       promoStatus.classList.toggle('is-added', Boolean(code));
       promoInput.dispatchEvent(new Event('input', { bubbles: true }));
     };
