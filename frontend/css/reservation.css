@@ -79,3 +79,5 @@ section.reservation-layout{padding-top:16px;padding-bottom:20px}.reserve-card{pa
 #promoCopyStatus{font-weight:600}
 @media(max-width:760px){.reserve-promo-entry{grid-column:1/-1}.reserve-search{grid-column:1/-1;grid-row:6;margin-top:0}.reserve-search .reserve-label-short{display:none}.reserve-search .reserve-label-long{display:inline}.reserve-promo-controls>details>summary{min-height:46px;font-size:.72rem}.reservation-page label{font-size:.75rem}}
 @media(min-width:2400px){.reserve-promo-controls>details>summary{min-height:88px;padding-inline:24px}}
+
+.nonrefundable-notice{color:var(--ink);font-size:.76rem;margin-bottom:8px}

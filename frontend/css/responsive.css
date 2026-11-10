@@ -311,3 +311,5 @@ html { overflow-x: clip; }
 #heroSearchWidget .sw-promo-field{padding-block:5px}
 @media(max-width:760px){.home-promo-heading summary{min-height:36px}.home-promo-controls>button{min-height:44px}.home-promo-status.is-added{font-size:.65rem}}
 @media(max-width:760px){.hero-cta-bar .search-widget-wrap.overlap{margin-top:-380px}.hero:not(.hero--page) .trust-row{bottom:395px}}
+
+.home-rate-notice{font-family:var(--ff-body);font-size:.68rem;line-height:1.5;margin:8px 0 0;color:var(--ink);background:var(--surface);padding:8px 12px;border-radius:5px}.home-rate-notice a{text-decoration:underline;text-underline-offset:3px}
